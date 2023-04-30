@@ -1,0 +1,13 @@
+nxenesi-sign-up-view TODO: Florian
+nxenesi-log-in-view  TODO: Florian
+admin-sign-up-view   TODO: Fjolla
+admin-log-in-view    TODO: Fjolla
+profesori-sign-up-view  TODO: Gentrit
+profesori-log-in-views  TODO: Gentrit
+shto-komunen-view       TODO: Erza B
+shto-shtetin-view       TODO: Erza B
+shto-klasen-view        TODO: Erza M
+shto-lenden-view        TODO: Erza M
+shto-noten-view         TODO: Erza M
+shto-profesorit-lenden  TODO: Erza B
+shto-profesorit-klasen  TODO: Fjolla
