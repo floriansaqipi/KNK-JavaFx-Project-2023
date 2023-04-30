@@ -1,3 +1,5 @@
+USE notimi;
+
 ALTER TABLE nxenesit ADD CONSTRAINT pk_nxenesit PRIMARY KEY (id);
 ALTER TABLE nxenesit RENAME COLUMN prind_id TO prindi_id;
 ALTER TABLE nxenesit ADD CONSTRAINT unique_prind_id UNIQUE (prindi_id);

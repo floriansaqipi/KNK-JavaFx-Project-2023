@@ -1,3 +1,5 @@
+USE notimi;
+
 set foreign_key_checks = 0;
 
 ALTER TABLE nxenesit MODIFY COLUMN id INT AUTO_INCREMENT;
