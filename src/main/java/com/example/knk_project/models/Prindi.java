@@ -1,6 +1,6 @@
 package com.example.knk_project.models;
 
-public class Prind {
+public class Prindi {
     private int id;
     private String emri;
     private String mbiemri;
@@ -9,7 +9,7 @@ public class Prind {
     private String numriTelefonit;
     private String email;
 
-    public Prind(
+    public Prindi(
             int id,
             String emri,
             String mbiemri,
