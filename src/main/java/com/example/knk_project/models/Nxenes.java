@@ -2,7 +2,7 @@ package com.example.knk_project.models;
 
 import java.util.Date;
 
-public class Nxenesi {
+public class Nxenes {
     private int id;
     private String userId;
     private String salt;
@@ -15,7 +15,7 @@ public class Nxenesi {
     private int prindiId;
     private int klasaId;
 
-    public Nxenesi(
+    public Nxenes(
             int id,
             String userId,
             String salt,
