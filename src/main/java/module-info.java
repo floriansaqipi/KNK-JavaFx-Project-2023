@@ -5,4 +5,6 @@ module com.example.knk_project {
 
     opens com.example.knk_project to javafx.fxml;
     exports com.example.knk_project;
+    opens com.example.knk_project.controllers;
+    exports com.example.knk_project.controllers;
 }
