@@ -81,7 +81,7 @@
                               <Insets left="6.0" />
                            </GridPane.margin>
                         </Label>
-                        <DatePicker fx:id="dataLindjesTextField" prefHeight="31.0" prefWidth="262.0" promptText="Selekto date lindjen" style="-fx-pref-height: 30;" stylesheets="@styles/sign-up-nxenesi-view.css" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <DatePicker fx:id="dateLindjaDatePicker" prefHeight="31.0" prefWidth="262.0" promptText="Selekto date lindjen" style="-fx-pref-height: 30;" stylesheets="@styles/sign-up-nxenesi-view.css" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <Label text="Password" GridPane.rowIndex="4">
                            <font>
                               <Font size="16.0" />
