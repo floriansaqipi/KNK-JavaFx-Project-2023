@@ -13,7 +13,7 @@ public class NxenesiRepository implements NxenesiRepositoryInterface {
 
     @Override
     public void insert(CreateNxenesiDto createNxenesiDto) throws SQLException {
-        String sql = "INSERT INTO nxenesi(" +
+        String sql = "INSERT INTO nxenesit(" +
                 "username, salt, salted_password, emri, mbiemri, data_e_lindjes," +
                 "vendlindja_id, komuna_id, prindi_id, klasa_id ) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
