@@ -1,7 +1,6 @@
-package com.example.knk_project.models;
+package com.example.knk_project.models.dto;
 
-public class Profesori {
-    private int id;
+public class CreateProfesoriDto {
     private String username;
     private String salt;
     private String saltedPassword;
@@ -9,8 +8,7 @@ public class Profesori {
     private String mbiemri;
     private String titulli;
 
-    public Profesori(
-            int id,
+    public CreateProfesoriDto(
             String username,
             String salt,
             String saltedPassword,
@@ -18,17 +16,12 @@ public class Profesori {
             String mbiemri,
             String titulli)
     {
-        this.id = id;
         this.username = username;
         this.salt = salt;
         this.saltedPassword = saltedPassword;
         this.emri = emri;
         this.mbiemri = mbiemri;
         this.titulli = titulli;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public String getUsername() {
