@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Nxenesi {
     private int id;
-    private String userId;
+    private String username;
     private String salt;
     private String saltedPassword;
     private String emri;
@@ -17,7 +17,7 @@ public class Nxenesi {
 
     public Nxenesi(
             int id,
-            String userId,
+            String username,
             String salt,
             String saltedPassword,
             String emri,
@@ -29,7 +29,7 @@ public class Nxenesi {
             int klasaId)
     {
         this.id = id;
-        this.userId = userId;
+        this.username = username;
         this.salt = salt;
         this.saltedPassword = saltedPassword;
         this.emri = emri;
@@ -45,8 +45,8 @@ public class Nxenesi {
         return id;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getUsername() {
+        return username;
     }
 
     public String getSalt() {

@@ -14,12 +14,12 @@ public class NxenesiRepository implements NxenesiRepositoryInterface {
     @Override
     public void insert(CreateNxenesiDto createNxenesiDto) throws SQLException {
         String sql = "INSERT INTO nxenesi(" +
-                "userid, salt, salted_password, emri, mbiemri, date_e_lindjes," +
+                "username, salt, salted_password, emri, mbiemri, data_e_lindjes," +
                 "vendlindja_id, komuna_id, prindi_id, klasa_id ) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         Connection connection = ConnectionUtil.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setString(1, createNxenesiDto.getUserId());
+        statement.setString(1, createNxenesiDto.getUsername());
         statement.setString(2, createNxenesiDto.getSalt());
         statement.setString(3, createNxenesiDto.getSaltedPassword());
         statement.setString(4, createNxenesiDto.getEmri());

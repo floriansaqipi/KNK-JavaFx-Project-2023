@@ -3,7 +3,7 @@ package com.example.knk_project.models.dto;
 import java.util.Date;
 
 public class CreateNxenesiDto {
-    private String userId;
+    private String username;
     private String salt;
     private String saltedPassword;
     private String emri;
@@ -14,7 +14,7 @@ public class CreateNxenesiDto {
     private int prindiId;
     private int klasaId;
 
-    public CreateNxenesiDto(String userId,
+    public CreateNxenesiDto(String username,
                             String salt,
                             String saltedPassword,
                             String emri,
@@ -25,7 +25,7 @@ public class CreateNxenesiDto {
                             int prindiId,
                             int klasaId)
     {
-        this.userId = userId;
+        this.username = username;
         this.salt = salt;
         this.saltedPassword = saltedPassword;
         this.emri = emri;
@@ -37,8 +37,8 @@ public class CreateNxenesiDto {
         this.klasaId = klasaId;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getUsername() {
+        return username;
     }
 
     public String getSalt() {
