@@ -14,7 +14,7 @@ public class LoginApplication extends Application {
     public void start(Stage primarystage) throws IOException {
         stg=primarystage;
         primarystage.setResizable(false);
-        Parent root =FXMLLoader.load(getClass().getResource("login-admin-view.fxml"));
+        Parent root =FXMLLoader.load(getClass().getResource("log-in-admin-view.fxml"));
         primarystage.setTitle("Log in Admin");
         primarystage.setScene(new Scene(root,600,400));
         primarystage.show();
