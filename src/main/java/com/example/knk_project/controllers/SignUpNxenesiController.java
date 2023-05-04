@@ -1,5 +1,8 @@
 package com.example.knk_project.controllers;
 
+import com.example.knk_project.services.exceptions.ValidationException;
+import com.example.knk_project.services.interfaces.ValidatorInterface;
+import com.example.knk_project.services.validators.ValidatorService;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
@@ -42,8 +45,19 @@ public class SignUpNxenesiController implements Initializable {
     @FXML
     private TextField emailPrinditTextField;
 
+    private ValidatorInterface validator = new ValidatorService();
+
     public void signUpClick(){
 
+    }
+
+    private void validateInputs(){
+        try{
+            this.validator.validateEmriTextField(emriTextField);
+
+        }catch (ValidationException exception){
+
+        }
     }
 
     @Override
