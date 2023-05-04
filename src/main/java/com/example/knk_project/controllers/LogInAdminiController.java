@@ -1,4 +1,4 @@
-package com.example.knk_project;
+package com.example.knk_project.controllers;
 
 import com.example.knk_project.LoginApplication;
 import javafx.event.ActionEvent;
@@ -11,7 +11,7 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
-public class LogInController {
+public class LogInAdminiController {
 
     @FXML
     private CheckBox RememberMe;
@@ -48,7 +48,7 @@ public class LogInController {
         if(username.getText().toString().equals("javacoding") && password.getText().toString().equals("123")){
             wrongLogIn.setText("Success!");
 
-            m.changeScene("signup-admin-view.fxml");
+            m.changeScene("sign-up-admin-view.fxml");
         } else if (username.getText().isEmpty() && password.getText().isEmpty()) {
             wrongLogIn.setText("Please enter your data");
         }

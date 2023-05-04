@@ -14,7 +14,7 @@ public class SignupApplication extends Application {
     public void start(Stage primarystage) throws IOException {
         stg=primarystage;
         primarystage.setResizable(false);
-        Parent root =FXMLLoader.load(getClass().getResource("signup-admin-view.fxml"));
+        Parent root =FXMLLoader.load(getClass().getResource("sign-up-admin-view.fxml"));
         primarystage.setTitle("Signup");
         primarystage.setScene(new Scene(root,600,400));
         primarystage.show();
