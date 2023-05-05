@@ -1,5 +1,6 @@
 package com.example.knk_project.services.validators;
 
+import com.example.knk_project.services.exceptions.DifferentPasswordsException;
 import com.example.knk_project.services.exceptions.ValidationException;
 import com.example.knk_project.services.interfaces.ValidatorInterface;
 import javafx.scene.control.ComboBox;
@@ -110,6 +111,16 @@ public class ValidatorService implements ValidatorInterface {
             return;
         }
         this.setDefaultStyle(textField);
+    }
+
+    @Override
+    public void validateMatchingPasswords(PasswordField passwordField, PasswordField confirmPasswordField)
+            throws DifferentPasswordsException {
+                if(!passwordField.getText().trim().equals(confirmPasswordField.getText().trim())){
+                    this.setErrorStyle(passwordField);
+                    this.setErrorStyle(confirmPasswordField);
+                    throw new DifferentPasswordsException("Passwords must be different");
+                }
     }
 
     @Override

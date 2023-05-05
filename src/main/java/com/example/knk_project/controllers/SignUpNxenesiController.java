@@ -1,5 +1,6 @@
 package com.example.knk_project.controllers;
 
+import com.example.knk_project.services.exceptions.DifferentPasswordsException;
 import com.example.knk_project.services.exceptions.ValidationException;
 import com.example.knk_project.services.interfaces.ValidatorInterface;
 import com.example.knk_project.services.validators.ValidatorService;
@@ -53,6 +54,9 @@ public class SignUpNxenesiController implements Initializable {
 
     public void signUpClick(){
         this.validateInputs();
+
+
+
     }
 
     private void validateInputs(){
@@ -71,9 +75,12 @@ public class SignUpNxenesiController implements Initializable {
             this.validator.validatePhoneTextField(numriTelefonitPrinditTextField);
             this.validator.validateEmailTextField(emailPrinditTextField);
         try{
+            this.validator.validateMatchingPasswords(passwordPasswordField,confirmPasswordField);
             this.validator.throwIfInvalid();
         }catch (ValidationException exception){
             this.messageLabel.setText("Invalid inputs");
+        }catch (DifferentPasswordsException exception){
+            this.messageLabel.setText("Passwords must match");
         }
     }
 

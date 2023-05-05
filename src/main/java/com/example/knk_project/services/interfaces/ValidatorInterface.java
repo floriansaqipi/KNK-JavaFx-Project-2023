@@ -1,5 +1,6 @@
 package com.example.knk_project.services.interfaces;
 
+import com.example.knk_project.services.exceptions.DifferentPasswordsException;
 import com.example.knk_project.services.exceptions.ValidationException;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -16,6 +17,8 @@ public interface ValidatorInterface {
     void validateUsernameTextField(TextField textField) ;
     void validateEmriTextField(TextField textField) ;
     void validateMbiemriTextField(TextField textField) ;
+
+    void validateMatchingPasswords(PasswordField passwordField, PasswordField confirmPasswordField) throws DifferentPasswordsException;
 
     void throwIfInvalid() throws ValidationException;
 
