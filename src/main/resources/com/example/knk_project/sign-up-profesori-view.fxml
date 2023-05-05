@@ -31,7 +31,7 @@
             </Label>
             <HBox alignment="CENTER" prefHeight="59.0" prefWidth="446.0">
                <children>
-                  <TextField alignment="CENTER" prefHeight="34.0" prefWidth="235.0" promptText="Enter your name" style="-fx-background-radius: 6;">
+                  <TextField fx:id="emriTextField" alignment="CENTER" prefHeight="34.0" prefWidth="235.0" promptText="Enter your name" style="-fx-background-radius: 6;">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -39,7 +39,7 @@
                         <Insets right="18.0" />
                      </HBox.margin>
                   </TextField>
-                  <TextField alignment="CENTER" prefHeight="34.0" prefWidth="235.0" promptText="Enter your lastname" style="-fx-background-radius: 6;">
+                  <TextField fx:id="mbiemriTextField" alignment="CENTER" prefHeight="34.0" prefWidth="235.0" promptText="Enter your lastname" style="-fx-background-radius: 6;">
                      <opaqueInsets>
                         <Insets left="10.0" />
                      </opaqueInsets>
@@ -54,7 +54,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="43.0" prefWidth="404.0">
                <children>
-                  <TextField alignment="CENTER" prefHeight="35.0" prefWidth="235.0" promptText="Enter your username" style="-fx-background-radius: 6;">
+                  <TextField fx:id="usernameTextField" alignment="CENTER" prefHeight="35.0" prefWidth="235.0" promptText="Enter your username" style="-fx-background-radius: 6;">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -69,7 +69,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="43.0" prefWidth="404.0">
                <children>
-                  <TextField alignment="CENTER" prefHeight="35.0" prefWidth="235.0" promptText="Enter your title" style="-fx-background-radius: 6;">
+                  <TextField fx:id="titleTextField" alignment="CENTER" prefHeight="35.0" prefWidth="235.0" promptText="Enter your title" style="-fx-background-radius: 6;">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -82,12 +82,12 @@
                   <Insets />
                </opaqueInsets>
             </HBox>
-            <PasswordField alignment="CENTER" prefHeight="35.0" prefWidth="404.0" promptText="Enter your password" style="-fx-background-radius: 6;">
+            <PasswordField fx:id="passwordPasswordField" alignment="CENTER" prefHeight="35.0" prefWidth="404.0" promptText="Enter your password" style="-fx-background-radius: 6;">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
             </PasswordField>
-            <PasswordField alignment="CENTER" prefHeight="35.0" prefWidth="404.0" promptText="Confirm your password" style="-fx-background-radius: 6;">
+            <PasswordField fx:id="confirmPasswordField" alignment="CENTER" prefHeight="35.0" prefWidth="404.0" promptText="Confirm your password" style="-fx-background-radius: 6;">
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>

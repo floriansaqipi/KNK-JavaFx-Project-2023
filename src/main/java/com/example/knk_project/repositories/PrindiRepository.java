@@ -6,12 +6,13 @@ import com.example.knk_project.services.ConnectionUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class PrindiRepository implements PrindiRepositoryInterface {
     @Override
     public void insert(CreatePrindiDto createPrindiDto) throws SQLException {
-        String sql = "INSERT INTO prindi (emri, mbiemri, profesioni, adresa, numri_telefonit, email)" +
+        String sql = "INSERT INTO prinderit (emri, mbiemri, profesioni, adresa, numri_telefonit, email)" +
                 "VALUES (?, ?, ?, ?, ?, ?);";
         Connection connection = ConnectionUtil.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
@@ -23,5 +24,20 @@ public class PrindiRepository implements PrindiRepositoryInterface {
         statement.setString(6,createPrindiDto.getEmail());
 
         statement.executeUpdate();
+    }
+
+    @Override
+    public int getLastInsertedId() throws SQLException {
+        String sql = "SELECT LAST_INSERT_ID() as lastId";
+        Connection connection = ConnectionUtil.getConnection();
+        PreparedStatement statement = connection.prepareStatement(sql);
+
+        ResultSet resultSet = statement.executeQuery();
+
+        if(!resultSet.next()){
+            return -1;
+        }
+        return resultSet.getInt("lastId");
+
     }
 }

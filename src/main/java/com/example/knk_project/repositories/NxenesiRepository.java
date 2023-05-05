@@ -1,13 +1,11 @@
 package com.example.knk_project.repositories;
 
+import com.example.knk_project.models.Nxenesi;
 import com.example.knk_project.models.dto.CreateNxenesiDto;
 import com.example.knk_project.repositories.interfaces.NxenesiRepositoryInterface;
 import com.example.knk_project.services.ConnectionUtil;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class NxenesiRepository implements NxenesiRepositoryInterface {
 
@@ -32,4 +30,41 @@ public class NxenesiRepository implements NxenesiRepositoryInterface {
 
         statement.executeUpdate();
     }
+
+    @Override
+    public Nxenesi getNxenesiByUsername(String usernameValue) throws SQLException {
+        String sql = "SELECT * FROM nxenesit n WHERE n.username = ?";
+        Connection connection = ConnectionUtil.getConnection();
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1 , usernameValue);
+
+        ResultSet resultSet = statement.executeQuery();
+        if(!resultSet.next()){
+            return  null;
+        }
+        int id = resultSet.getInt("id");
+        String username = resultSet.getString("username");
+        String salt = resultSet.getString("salt");
+        String saltedPassword = resultSet.getString("salted_password");
+        String emri = resultSet.getString("emri");
+        String mbiemri = resultSet.getString("mbiemri");
+        Date dateLindja = resultSet.getDate("data_e_lindjes");
+        int vendlindjaId = resultSet.getInt("vendlindja_id");
+        int komunaId = resultSet.getInt("komuna_id");
+        int prindiId = resultSet.getInt("prindi_id");
+        int klasaId = resultSet.getInt("klasa_id");
+        return new Nxenesi(
+                id,
+                username,
+                salt,
+                saltedPassword,
+                emri,
+                mbiemri,
+                dateLindja,
+                vendlindjaId,
+                komunaId,
+                prindiId,
+                klasaId);
+    }
+
 }

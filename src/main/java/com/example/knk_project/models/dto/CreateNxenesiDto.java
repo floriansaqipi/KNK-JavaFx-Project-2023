@@ -22,7 +22,6 @@ public class CreateNxenesiDto {
                             Date dataLindjes,
                             int vendLindjaId,
                             int komunaId,
-                            int prindiId,
                             int klasaId)
     {
         this.username = username;
@@ -33,7 +32,6 @@ public class CreateNxenesiDto {
         this.dataLindjes = dataLindjes;
         this.vendLindjaId = vendLindjaId;
         this.komunaId = komunaId;
-        this.prindiId = prindiId;
         this.klasaId = klasaId;
     }
 
@@ -75,5 +73,9 @@ public class CreateNxenesiDto {
 
     public int getKlasaId() {
         return klasaId;
+    }
+
+    public void setPrindiId(int prindiId) {
+        this.prindiId = prindiId;
     }
 }

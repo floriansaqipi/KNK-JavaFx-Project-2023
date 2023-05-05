@@ -11,9 +11,13 @@ import java.util.ResourceBundle;
 
 
 
+
+
 public class LogInProfesoriController implements Initializable {
     @FXML
     private TextField usernameTextField;
+
+
     @FXML
     private PasswordField passwordPasswordField;
     @Override

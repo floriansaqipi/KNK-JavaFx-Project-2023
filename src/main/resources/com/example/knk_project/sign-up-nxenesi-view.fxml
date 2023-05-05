@@ -143,7 +143,7 @@
                         <TextField fx:id="mbiemriTextField" alignment="CENTER" prefHeight="30.0" prefWidth="260.0" promptText="Shkruani Mbiemrin" style="-fx-background-radius: 20px;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <TextField fx:id="usernameTextField" alignment="CENTER" prefHeight="30.0" prefWidth="260.0" promptText="Shkruani Username" style="-fx-background-radius: 20;" GridPane.rowIndex="3" />
                         <ComboBox fx:id="komunaComboBox" prefWidth="150.0" promptText="Zgjedh nje komune" style="-fx-pref-width: 260; -fx-background-radius: 20; -fx-pref-height: 30;" visibleRowCount="5" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                        <ComboBox fx:id="vendlindjaComboBox" prefWidth="150.0" promptText="Zgjedh nje komune" style="-fx-pref-width: 260; -fx-background-radius: 20; -fx-pref-height: 30;" visibleRowCount="5" GridPane.rowIndex="7" />
+                        <ComboBox fx:id="vendLindjaComboBox" prefWidth="150.0" promptText="Zgjedh nje komune" style="-fx-pref-width: 260; -fx-background-radius: 20; -fx-pref-height: 30;" visibleRowCount="5" GridPane.rowIndex="7" />
                         <ComboBox fx:id="klasaComboBox" prefWidth="150.0" promptText="Zgjedh nje klase" style="-fx-pref-width: 260; -fx-background-radius: 20; -fx-pref-height: 30;" visibleRowCount="5" GridPane.rowIndex="9" />
                      </children>
                      <padding>
