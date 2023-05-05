@@ -1,13 +1,11 @@
 package com.example.knk_project.repositories;
 
+import com.example.knk_project.models.Admini;
 import com.example.knk_project.models.dto.CreateAdminiDto;
 import com.example.knk_project.repositories.interfaces.AdminiRepositoryInterface;
 import com.example.knk_project.services.ConnectionUtil;
 
-import java.sql.Connection;
-
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class AdminiRepository implements AdminiRepositoryInterface {
 
@@ -21,5 +19,28 @@ public class AdminiRepository implements AdminiRepositoryInterface {
         statement.setString(3, createAdminiDto.getSaltedPassword());
 
         statement.executeUpdate();
+    }
+
+    @Override
+    public Admini getAdminiByUsername(String usernameValue) throws SQLException {
+        String sql = "SELECT * FROM admin n WHERE n.username = ?";
+        Connection connection = ConnectionUtil.getConnection();
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1 , usernameValue);
+
+        ResultSet resultSet = statement.executeQuery();
+        if(!resultSet.next()){
+            return  null;
+        }
+        int id = resultSet.getInt("id");
+        String username = resultSet.getString("username");
+        String salt = resultSet.getString("salt");
+        String saltedPassword = resultSet.getString("salted_password");
+        return new Admini(
+                id,
+                username,
+                salt,
+                saltedPassword
+        );
     }
 }
