@@ -23,8 +23,6 @@ public class SignUpAdminiController {
     @FXML
     private PasswordField confirmPasswordField;
 
-
-
     @FXML
     public void signupacction(ActionEvent event) throws IOException {
        SignupApplication m = new SignupApplication();;

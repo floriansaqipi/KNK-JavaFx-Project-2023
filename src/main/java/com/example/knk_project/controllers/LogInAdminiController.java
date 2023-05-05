@@ -14,28 +14,13 @@ import java.io.IOException;
 public class LogInAdminiController {
 
     @FXML
-    private CheckBox RememberMe;
+    private PasswordField passwordPasswordField;
+
+
 
     @FXML
-    private Label account;
+    private TextField usernameTextField;
 
-    @FXML
-    private Label forgetPassword;
-
-    @FXML
-    private Button login;
-
-    @FXML
-    private PasswordField password;
-
-    @FXML
-    private Label signup;
-
-    @FXML
-    private TextField username;
-
-    @FXML
-    private Label wrongLogIn;
 
     @FXML
     void loginaction(ActionEvent event) throws IOException {
@@ -44,17 +29,18 @@ public class LogInAdminiController {
     }
 
     private void checkLogin() throws IOException {
-        LoginApplication m = new LoginApplication();
-        if(username.getText().toString().equals("javacoding") && password.getText().toString().equals("123")){
-            wrongLogIn.setText("Success!");
+//        LoginApplication m = new LoginApplication();
+//        if(username.getText().toString().equals("javacoding") && password.getText().toString().equals("123")){
+//            wrongLogIn.setText("Success!");
+//
+//            m.changeScene("sign-up-admin-view.fxml");
+//        } else if (username.getText().isEmpty() && password.getText().isEmpty()) {
+//            wrongLogIn.setText("Please enter your data");
+//        }
+//        else{
+//            wrongLogIn.setText("Wrong username or password!");
+//        }
+  }
 
-            m.changeScene("sign-up-admin-view.fxml");
-        } else if (username.getText().isEmpty() && password.getText().isEmpty()) {
-            wrongLogIn.setText("Please enter your data");
-        }
-        else{
-            wrongLogIn.setText("Wrong username or password!");
-        }
-    }
 
 }
