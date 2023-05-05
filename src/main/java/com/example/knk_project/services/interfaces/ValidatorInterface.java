@@ -7,14 +7,16 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public interface ValidatorInterface {
-    void validateTextField(TextField textField) throws ValidationException;
-    void validateDatePicker(DatePicker datePicker) throws ValidationException;
-    void validateComboBox(ComboBox<String> comboBox) throws ValidationException;
-    void validatePasswordField(PasswordField passwordField) throws ValidationException;
-    void validatePhoneTextField(TextField textField) throws ValidationException;
-    void validateEmailTextField(TextField textField) throws ValidationException;
-    void validateUsernameTextField(TextField textField) throws ValidationException;
-    void validateEmriTextField(TextField textField) throws ValidationException;
-    void validateMbiemriTextField(TextField textField) throws ValidationException;
+    void validateTextField(TextField textField) ;
+    void validateDatePicker(DatePicker datePicker) ;
+    void validateComboBox(ComboBox<String> comboBox) ;
+    void validatePasswordField(PasswordField passwordField) ;
+    void validatePhoneTextField(TextField textField) ;
+    void validateEmailTextField(TextField textField) ;
+    void validateUsernameTextField(TextField textField) ;
+    void validateEmriTextField(TextField textField) ;
+    void validateMbiemriTextField(TextField textField) ;
+
+    void throwIfInvalid() throws ValidationException;
 
 }
