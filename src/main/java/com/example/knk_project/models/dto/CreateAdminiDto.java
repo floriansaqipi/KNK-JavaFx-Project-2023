@@ -5,24 +5,16 @@ public class CreateAdminiDto {
     private String username;
     private String salt;
     private String saltedPassword;
-    private String emri;
-    private String mbiemri;
-    private String titulli;
 
     public CreateAdminiDto(
             String username,
             String salt,
-            String saltedPassword,
-            String emri,
-            String mbiemri,
-            String titulli)
+            String saltedPassword)
     {
         this.username = username;
         this.salt = salt;
         this.saltedPassword = saltedPassword;
-        this.emri = emri;
-        this.mbiemri = mbiemri;
-        this.titulli = titulli;
+
     }
 
 
@@ -38,16 +30,5 @@ public class CreateAdminiDto {
         return saltedPassword;
     }
 
-    public String getEmri() {
-        return emri;
-    }
-
-    public String getMbiemri() {
-        return mbiemri;
-    }
-
-    public String getTitulli() {
-        return titulli;
-    }
 }
 

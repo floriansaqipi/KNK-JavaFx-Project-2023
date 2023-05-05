@@ -13,15 +13,12 @@ public class AdminiRepository implements AdminiRepositoryInterface {
 
     @Override
     public void insert(CreateAdminiDto createAdminiDto) throws SQLException {
-        String sql = "INSERT INTO profesoret(username, salt, salted_password, emri, mbiemri, titulli) VALUES (?, ?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO admin(username, salt, salted_password) VALUES (?, ?, ?);";
         Connection connection = ConnectionUtil.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setString(1, createAdminiDto.getUsername());
+        statement.setString(1,createAdminiDto.getUsername());
         statement.setString(2, createAdminiDto.getSalt());
         statement.setString(3, createAdminiDto.getSaltedPassword());
-        statement.setString(4, createAdminiDto.getEmri());
-        statement.setString(5,createAdminiDto.getMbiemri());
-        statement.setString(6, createAdminiDto.getTitulli());
 
         statement.executeUpdate();
     }
