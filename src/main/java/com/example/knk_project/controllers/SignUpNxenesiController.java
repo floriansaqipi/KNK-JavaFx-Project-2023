@@ -1,7 +1,13 @@
 package com.example.knk_project.controllers;
 
+import com.example.knk_project.models.dto.CreateNxenesiDto;
+import com.example.knk_project.models.dto.CreatePrindiDto;
+import com.example.knk_project.services.PasswordHasher;
+import com.example.knk_project.services.SignUpNxenesiService;
 import com.example.knk_project.services.exceptions.DifferentPasswordsException;
+import com.example.knk_project.services.exceptions.UserAlreadyExistsException;
 import com.example.knk_project.services.exceptions.ValidationException;
+import com.example.knk_project.services.interfaces.SignUpNxenesiServiceInterface;
 import com.example.knk_project.services.interfaces.ValidatorInterface;
 import com.example.knk_project.services.validators.ValidatorService;
 import javafx.fxml.FXML;
@@ -9,7 +15,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.net.URL;
+import java.sql.SQLException;
+import java.time.Instant;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
+import java.sql.Date;
 
 public class SignUpNxenesiController implements Initializable {
     @FXML
@@ -51,10 +61,25 @@ public class SignUpNxenesiController implements Initializable {
     private String[] klassaOptions = {"XII/1","XII/2"};
 
     private ValidatorInterface validator = new ValidatorService();
+    private SignUpNxenesiServiceInterface signUpNxenesiService = new SignUpNxenesiService();
 
     public void signUpClick(){
         this.validateInputs();
 
+        CreateNxenesiDto createNxenesiDto = this.initilializeCreateNxenesiDto();
+        CreatePrindiDto createPrindiDto = this.initializeCreatePrindiDto();
+
+        try{
+
+        this.signUpNxenesiService.signUp(createNxenesiDto,createPrindiDto);
+        this.messageLabel.setText("Succesfully added user");
+        } catch (UserAlreadyExistsException exception){
+            exception.printStackTrace();
+            this.messageLabel.setText("Username is taken");
+        } catch (SQLException exception){
+            exception.printStackTrace();
+            this.messageLabel.setText("Something went wrong with the database");
+        }
 
 
     }
@@ -78,8 +103,10 @@ public class SignUpNxenesiController implements Initializable {
             this.validator.validateMatchingPasswords(passwordPasswordField,confirmPasswordField);
             this.validator.throwIfInvalid();
         }catch (ValidationException exception){
+            exception.printStackTrace();
             this.messageLabel.setText("Invalid inputs");
         }catch (DifferentPasswordsException exception){
+            exception.printStackTrace();
             this.messageLabel.setText("Passwords must match");
         }
     }
@@ -89,5 +116,48 @@ public class SignUpNxenesiController implements Initializable {
         this.vendLindjaComboBox.getItems().addAll(this.vendLindjaOptions);
         this.komunaComboBox.getItems().addAll(this.komunaOptions);
         this.klasaComboBox.getItems().addAll(this.klassaOptions);
+    }
+
+    private CreateNxenesiDto initilializeCreateNxenesiDto(){
+        String username = this.usernameTextField.getText();
+        String emri =  this.emriTextField.getText();
+        String mbiemri = this.mbiemriTextField.getText();
+        LocalDate localDate = this.dateLindjaDatePicker.getValue();
+        Date dateLindja = Date.valueOf(localDate);
+        String password = this.passwordPasswordField.getText();
+        String salt = PasswordHasher.generateSalt();
+        String saltedPassword = PasswordHasher.generateSaltedHash(password,salt);
+        int vendLindjaId = 1;
+        int komunaId = 1;
+        int klasaId = 1;
+
+        return new CreateNxenesiDto(
+                        username,
+                        salt,
+                        saltedPassword,
+                        emri,
+                        mbiemri,
+                        dateLindja,
+                        vendLindjaId,
+                        komunaId,
+                        klasaId
+                );
+    }
+    private CreatePrindiDto initializeCreatePrindiDto(){
+        String emriPrindit = this.emriPrinditTextField.getText();
+        String mbiemriPrindit = this.mbiemriPrinditTextField.getText();
+        String adresa = this.adresaTextField.getText();
+        String profesioni = this.profesioniPrinditTextField.getText();
+        String numriTelefonitPrindit = this.numriTelefonitPrinditTextField.getText();
+        String emailPrindit = this.emailPrinditTextField.getText();
+
+        return new CreatePrindiDto(
+                        emriPrindit,
+                        mbiemriPrindit,
+                        profesioni,
+                        adresa,
+                        numriTelefonitPrindit,
+                        emailPrindit
+                );
     }
 }

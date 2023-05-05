@@ -47,7 +47,7 @@ public class ValidatorService implements ValidatorInterface {
 
     @Override
     public void validatePasswordField(PasswordField passwordField)  {
-        if(passwordField.getText().trim().length() < 9
+        if(passwordField.getText().trim().length() < 8
                 || !passwordField.getText().trim().matches(".*[0-9].*")){
             this.setErrorStyle(passwordField);
             passwordField.setPromptText("Sheno te paketen 8 karaktere dhe numra");
@@ -70,7 +70,7 @@ public class ValidatorService implements ValidatorInterface {
 
     @Override
     public void validateEmailTextField(TextField textField){
-        if(textField.getText().trim().matches("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
+        if(!textField.getText().trim().matches("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
                 + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})?$")){
             this.setErrorStyle(textField);
             textField.setPromptText("Sheno email valide");
@@ -116,6 +116,8 @@ public class ValidatorService implements ValidatorInterface {
     @Override
     public void validateMatchingPasswords(PasswordField passwordField, PasswordField confirmPasswordField)
             throws DifferentPasswordsException {
+        System.out.println(passwordField.getText());
+        System.out.println(confirmPasswordField.getText());
                 if(!passwordField.getText().trim().equals(confirmPasswordField.getText().trim())){
                     this.setErrorStyle(passwordField);
                     this.setErrorStyle(confirmPasswordField);
