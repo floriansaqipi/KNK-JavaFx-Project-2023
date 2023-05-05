@@ -38,7 +38,12 @@ public class NxenesiService implements NxenesiServiceInterface {
             throws UserNotFoundException, IncorrectPasswordException,SQLException {
         Nxenesi nxenesi = this.nxenesiRepository.getNxenesiByUsername(username);
         if(nxenesi == null){
-
+            throw new UserNotFoundException("User does not exist");
+        }
+        boolean isPasswordCorrect =
+                PasswordHasher.compareSaltedHash(password, nxenesi.getSalt(), nxenesi.getSaltedPassword());
+        if(!isPasswordCorrect){
+            throw new IncorrectPasswordException("Incorrect password");
         }
     }
 }
