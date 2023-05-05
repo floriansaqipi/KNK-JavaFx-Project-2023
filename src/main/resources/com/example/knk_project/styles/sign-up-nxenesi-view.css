@@ -1,0 +1,26 @@
+.date-picker {
+    -fx-background-radius: 20 20 20 20;
+}
+.date-picker > .text-field {
+    -fx-background-radius: 20 0 0 20;
+}
+
+.date-picker > .arrow-button {
+    -fx-background-radius: 0 20 20 0;
+}
+
+.ui-error-style, .ui-default-style{
+    -fx-pref-width: 260;
+    -fx-background-radius: 20;
+    -fx-pref-height: 30;
+}
+
+.ui-error-style{
+    -fx-border-color: red;
+    -fx-prompt-text-fill: red;
+}
+
+.ui-default-style{
+    -fx-border-color: red;
+    -fx-prompt-text-fill: red;
+}
