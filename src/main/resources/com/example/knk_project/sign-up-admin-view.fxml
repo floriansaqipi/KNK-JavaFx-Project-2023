@@ -24,5 +24,6 @@
       <Label layoutX="379.0" layoutY="361.0" text="Sign in " textFill="#d40e43" />
       <PasswordField fx:id="passwordPasswordField" layoutX="158.0" layoutY="185.0" prefHeight="30.0" prefWidth="260.0" promptText="Password" style="-fx-background-radius: 20px;" />
       <PasswordField fx:id="confirmPasswordField" layoutX="159.0" layoutY="227.0" prefHeight="30.0" prefWidth="260.0" promptText="Confirm password" style="-fx-background-radius: 20px;" />
+      <Label fx:id="messageLabel" alignment="CENTER" layoutX="207.0" layoutY="80.0" prefHeight="18.0" prefWidth="163.0" text="Message" />
    </children>
 </AnchorPane>
