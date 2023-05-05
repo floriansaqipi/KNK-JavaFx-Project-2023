@@ -9,13 +9,6 @@ import java.io.IOException;
 
 public class SignUpAdminiController {
 
-
-
-    @FXML
-    private TextField emriTextField;
-
-    @FXML
-    private TextField mbiemriTextField;
     @FXML
     private TextField emailTextField;
     @FXML
@@ -25,7 +18,7 @@ public class SignUpAdminiController {
 
     @FXML
     public void signupacction(ActionEvent event) throws IOException {
-       SignupApplication m = new SignupApplication();;
+       SignupApplication m = new SignupApplication();
         m.changeScene("log-in-admin-view.fxml");
 
     }

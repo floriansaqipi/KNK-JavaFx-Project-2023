@@ -15,13 +15,9 @@ public class LogInAdminiController {
 
     @FXML
     private PasswordField passwordPasswordField;
-
-
-
     @FXML
     private TextField usernameTextField;
-
-
+    
     @FXML
     void loginaction(ActionEvent event) throws IOException {
         checkLogin();
