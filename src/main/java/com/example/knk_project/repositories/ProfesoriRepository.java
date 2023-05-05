@@ -24,4 +24,5 @@ public class ProfesoriRepository implements ProfesoriRepositoryInterface {
 
         statement.executeUpdate();
     }
+
 }
