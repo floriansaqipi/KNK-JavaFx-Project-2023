@@ -10,19 +10,18 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.controllers.SignUpAdminiController">
    <children>
-      <TextField fx:id="usernameTextField" alignment="CENTER" layoutX="207.0" layoutY="105.0" prefHeight="30.0" prefWidth="163.0" promptText="Username" style="-fx-background-radius: 20px;" />
-      <TextField fx:id="emailTextField" layoutX="158.0" layoutY="146.0" prefHeight="30.0" prefWidth="260.0" promptText="Email" style="-fx-background-radius: 20px;" />
+      <TextField fx:id="usernameTextField" alignment="CENTER" layoutX="170.0" layoutY="134.0" prefHeight="30.0" prefWidth="260.0" promptText="Username" style="-fx-background-radius: 20px;" />
       <Label layoutX="238.0" layoutY="34.0" text="Sign up">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
-      <CheckBox fx:id="privacyandpolicy" layoutX="159.0" layoutY="274.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="198.0" text="I Agree with privacy and policy" />
-      <Button layoutX="159.0" layoutY="315.0" mnemonicParsing="false" onAction="#signUpClick" prefHeight="30.0" prefWidth="260.0" style="-fx-background-radius: 20px;" text="Sign up" />
+      <CheckBox fx:id="privacyandpolicy" layoutX="170.0" layoutY="273.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="198.0" text="I Agree with privacy and policy" />
+      <Button layoutX="170.0" layoutY="316.0" mnemonicParsing="false" onAction="#signUpClick" prefHeight="30.0" prefWidth="260.0" style="-fx-background-radius: 20px;" text="Sign up" />
       <Label layoutX="158.0" layoutY="361.0" text="Already have an account ? " />
       <Label layoutX="379.0" layoutY="361.0" text="Sign in " textFill="#d40e43" />
-      <PasswordField fx:id="passwordPasswordField" layoutX="158.0" layoutY="185.0" prefHeight="30.0" prefWidth="260.0" promptText="Password" style="-fx-background-radius: 20px;" />
-      <PasswordField fx:id="confirmPasswordField" layoutX="159.0" layoutY="227.0" prefHeight="30.0" prefWidth="260.0" promptText="Confirm password" style="-fx-background-radius: 20px;" />
+      <PasswordField fx:id="passwordPasswordField" alignment="CENTER" layoutX="170.0" layoutY="176.0" prefHeight="30.0" prefWidth="260.0" promptText="Password" style="-fx-background-radius: 20px;" />
+      <PasswordField fx:id="confirmPasswordField" alignment="CENTER" layoutX="170.0" layoutY="227.0" prefHeight="30.0" prefWidth="260.0" promptText="Confirm password" style="-fx-background-radius: 20px;" />
       <Label fx:id="messageLabel" alignment="CENTER" layoutX="207.0" layoutY="80.0" prefHeight="18.0" prefWidth="163.0" text="Message" />
    </children>
 </AnchorPane>
