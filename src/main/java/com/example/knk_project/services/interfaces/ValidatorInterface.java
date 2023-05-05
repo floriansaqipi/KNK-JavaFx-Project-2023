@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 
 public interface ValidatorInterface {
     void validateTextField(TextField textField) ;
+    void validateGeneralPasswordField(PasswordField passwordField);
     void validateDatePicker(DatePicker datePicker) ;
     void validateComboBox(ComboBox<String> comboBox) ;
     void validatePasswordField(PasswordField passwordField) ;

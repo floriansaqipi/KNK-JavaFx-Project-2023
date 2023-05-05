@@ -14,13 +14,24 @@ public class ValidatorService implements ValidatorInterface {
 
     @Override
     public void validateTextField(TextField textField)  {
-        if(textField.getText().isEmpty()){
+        if(textField.getText().trim().isEmpty()){
             this.setErrorStyle(textField);
             textField.setPromptText("Nuk mund te jete e zbrazet");
             this.isValid = false;
             return;
         }
         this.setDefaultStyle(textField);
+    }
+
+    @Override
+    public void validateGeneralPasswordField(PasswordField passwordField) {
+        if(passwordField.getText().trim().isEmpty()){
+            this.setErrorStyle(passwordField);
+            passwordField.setPromptText("Nuk mund te jete e zbrazet");
+            this.isValid = false;
+            return;
+        }
+        this.setDefaultStyle(passwordField);
     }
 
     @Override
