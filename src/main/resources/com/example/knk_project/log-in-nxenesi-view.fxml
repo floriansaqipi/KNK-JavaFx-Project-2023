@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -13,12 +14,12 @@
             <Font name="Arial" size="35.0" />
          </font>
       </Label>
-      <Label layoutX="286.0" layoutY="87.0" text="Label" />
-      <TextField alignment="CENTER" layoutX="170.0" layoutY="126.0" prefHeight="30.0" prefWidth="260.0" promptText="Enter your username" style="-fx-background-radius: 20px;" />
-      <TextField alignment="CENTER" layoutX="170.0" layoutY="169.0" prefHeight="30.0" prefWidth="260.0" promptText="Enter your password" style="-fx-background-radius: 20px;" />
+      <Label fx:id="messageLabel" layoutX="286.0" layoutY="87.0" text="Label" />
+      <TextField fx:id="usernameTextField" alignment="CENTER" layoutX="170.0" layoutY="126.0" prefHeight="30.0" prefWidth="260.0" promptText="Enter your username" style="-fx-background-radius: 20px;" />
       <Label layoutX="255.0" layoutY="216.0" text="Forgot Password ?" textFill="#cc1717" />
-      <Button layoutX="174.0" layoutY="256.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="260.0" style="-fx-background-radius: 20px;" text="Log in " />
+      <Button layoutX="174.0" layoutY="256.0" mnemonicParsing="false" onAction="#logInClick" prefHeight="30.0" prefWidth="260.0" style="-fx-background-radius: 20px;" text="Log in " />
       <Label layoutX="182.0" layoutY="329.0" text="Don't have an account ?" />
       <Label layoutX="393.0" layoutY="329.0" text="Sign up" textFill="#dc1919" />
+      <PasswordField fx:id="passwordPasswordField" alignment="CENTER" layoutX="170.0" layoutY="173.0" prefHeight="30.0" prefWidth="260.0" promptText="Enter your password" style="-fx-background-radius: 20;" />
    </children>
 </AnchorPane>

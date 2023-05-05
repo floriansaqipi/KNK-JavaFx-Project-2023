@@ -3,11 +3,11 @@ package com.example.knk_project.controllers;
 import com.example.knk_project.models.dto.CreateNxenesiDto;
 import com.example.knk_project.models.dto.CreatePrindiDto;
 import com.example.knk_project.services.PasswordHasher;
-import com.example.knk_project.services.SignUpNxenesiService;
+import com.example.knk_project.services.NxenesiService;
 import com.example.knk_project.services.exceptions.DifferentPasswordsException;
 import com.example.knk_project.services.exceptions.UserAlreadyExistsException;
 import com.example.knk_project.services.exceptions.ValidationException;
-import com.example.knk_project.services.interfaces.SignUpNxenesiServiceInterface;
+import com.example.knk_project.services.interfaces.NxenesiServiceInterface;
 import com.example.knk_project.services.interfaces.ValidatorInterface;
 import com.example.knk_project.services.validators.ValidatorService;
 import javafx.fxml.FXML;
@@ -16,7 +16,6 @@ import javafx.scene.control.*;
 
 import java.net.URL;
 import java.sql.SQLException;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.sql.Date;
@@ -61,7 +60,7 @@ public class SignUpNxenesiController implements Initializable {
     private String[] klassaOptions = {"XII/1","XII/2"};
 
     private ValidatorInterface validator = new ValidatorService();
-    private SignUpNxenesiServiceInterface signUpNxenesiService = new SignUpNxenesiService();
+    private NxenesiServiceInterface signUpNxenesiService = new NxenesiService();
 
     public void signUpClick(){
         this.validateInputs();
