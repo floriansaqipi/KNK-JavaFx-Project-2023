@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.addGradeController">
+   <children>
+      <TabPane prefHeight="400.0" prefWidth="593.0" style="-fx-background-color: #E5E4E2;" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="classSubjectTab" text="Zgjedh klasen dhe lenden">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #E5E4E2;">
+                     <children>
+                        <ComboBox fx:id="chooseClassComboBox" layoutX="110.0" layoutY="56.0" onAction="#select" prefHeight="48.0" prefWidth="346.0" promptText="Zgjedh klasen" style="-fx-background-color: #D3D3D3; -fx-background-radius: 20;" />
+                        <ComboBox fx:id="chooseSubjectComboBox" layoutX="111.0" layoutY="160.0" onAction="#select" prefHeight="48.0" prefWidth="348.0" promptText="Zgjedh lenden" style="-fx-background-color: #D3D3D3; -fx-background-radius: 20;" />
+                        <Button fx:id="buton1" layoutX="217.0" layoutY="262.0" mnemonicParsing="false" onAction="#contClick" prefHeight="41.0" prefWidth="159.0" style="-fx-background-color: #7393B3; -fx-background-radius: 20;" text="Vazhdo" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab fx:id="idTab" text="ID">
+            <content>
+              <AnchorPane fx:id="setIdTab" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #E5E4E2;">
+                     <children>
+                        <TextField fx:id="idTextField" layoutX="193.0" layoutY="135.0" prefHeight="25.0" prefWidth="206.0" style="-fx-background-color: #A9A9A9;" />
+                        <Label layoutX="198.0" layoutY="95.0" text="Shkruaj id e studentit">
+                           <font>
+                              <Font name="Times New Roman" size="23.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="buton2" layoutX="249.0" layoutY="195.0" mnemonicParsing="false" onAction="#contClick1" prefHeight="33.0" prefWidth="95.0" style="-fx-background-color: #7393B3;" text="Vazhdo" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab fx:id="setGradeTab" text="Vendos noten">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #E5E4E2;">
+                     <children>
+                        <TextField fx:id="stdNameTextField" layoutX="198.0" layoutY="27.0" prefHeight="42.0" prefWidth="225.0" style="-fx-background-color: #D3D3D3;" />
+                        <Label layoutX="42.0" layoutY="35.0" prefHeight="25.0" prefWidth="156.0" text="Emri i studentit">
+                           <font>
+                              <Font name="Times New Roman" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="42.0" layoutY="100.0" prefHeight="25.0" prefWidth="156.0" text="Mbiemri i studentit">
+                           <font>
+                              <Font name="Times New Roman" size="17.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="stdsurnameTextField" layoutX="198.0" layoutY="92.0" prefHeight="42.0" prefWidth="225.0" style="-fx-background-color: #D3D3D3;" />
+                        <RadioButton fx:id="grade1Radio" layoutX="129.0" layoutY="202.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="73.0" text="1" />
+                        <RadioButton fx:id="grade2Radio" layoutX="202.0" layoutY="199.0" mnemonicParsing="false" text="2" />
+                        <RadioButton fx:id="grade3Radio" layoutX="275.0" layoutY="199.0" mnemonicParsing="false" text="3" />
+                        <RadioButton fx:id="grade4Radio" layoutX="344.0" layoutY="199.0" mnemonicParsing="false" text="4" />
+                        <RadioButton fx:id="grade5Radio" layoutX="415.0" layoutY="199.0" mnemonicParsing="false" text="5" />
+                        <Label layoutX="266.0" layoutY="158.0" prefHeight="25.0" prefWidth="156.0" text="Zgjedh noten">
+                           <font>
+                              <Font name="Times New Roman" size="17.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="229.0" layoutY="284.0" mnemonicParsing="false" onAction="#finishClick" prefHeight="33.0" prefWidth="136.0" style="-fx-background-color: #7393B3;" text="Perfundo" />
+                        <CheckBox fx:id="confirmCheckBox" layoutX="129.0" layoutY="247.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="377.0" text="A jeni i sigurt qe deshironi te vendosni kete note?" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
