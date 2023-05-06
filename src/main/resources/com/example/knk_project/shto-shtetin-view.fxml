@@ -8,16 +8,21 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<fx:root fx:id="anchorPane" prefHeight="514.0" prefWidth="636.0" type="AnchorPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.controllers.ShtetiController">
+<fx:root prefHeight="514.0" prefWidth="636.0" type="AnchorPane" xmlns="http://javafx.com/javafx/19"
+         xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.controllers.ShtetiController">
     <children>
-        <Label fx:id="AddState" alignment="CENTER" contentDisplay="CENTER" layoutX="318.0" layoutY="52.0" prefHeight="34.0" prefWidth="198.0" text="Add State">
+        <Label fx:id="addStateLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="318.0" layoutY="52.0"
+               prefHeight="34.0" prefWidth="198.0" text="Add State">
             <font>
-                <Font size="24.0" />
+                <Font size="24.0"/>
             </font>
         </Label>
-        <Button fx:id="submitButton" layoutX="552.0" layoutY="371.0" mnemonicParsing="false" style="-fx-background-color: lightgray;" text="Submit" />
-        <TextField fx:id="writeState" layoutX="246.0" layoutY="193.0" prefHeight="68.0" prefWidth="342.0" promptText="Write your State" style="-fx-border-radius: 5px;" />
-        <CheckBox fx:id="terms" layoutX="260.0" layoutY="375.0" mnemonicParsing="false" text="I agree to the terms and conditions" />
-        <VBox fx:id="myVbox" layoutY="-2.0" prefHeight="526.0" prefWidth="198.0" style="-fx-background-color: lightgray;" />
+        <Button fx:id="submitStateClick" layoutX="552.0" layoutY="371.0" mnemonicParsing="false"
+                onAction="#submitStateClick" style="-fx-background-color: lightgray;" text="Submit"/>
+        <TextField fx:id="writeStateTextField" layoutX="246.0" layoutY="193.0" prefHeight="68.0" prefWidth="342.0"
+                   promptText="Write your State" style="-fx-border-radius: 5px;"/>
+        <CheckBox fx:id="termsandconditions" layoutX="260.0" layoutY="375.0" mnemonicParsing="false"
+                  text="I agree to the terms and conditions"/>
+        <VBox layoutY="-2.0" prefHeight="526.0" prefWidth="198.0" style="-fx-background-color: lightgray;"/>
     </children>
 </fx:root>
