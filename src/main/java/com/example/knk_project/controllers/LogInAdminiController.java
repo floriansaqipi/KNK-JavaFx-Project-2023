@@ -1,6 +1,6 @@
 package com.example.knk_project.controllers;
 
-import com.example.knk_project.LoginApplication;
+
 import com.example.knk_project.services.NxenesiService;
 import com.example.knk_project.services.exceptions.IncorrectPasswordException;
 import com.example.knk_project.services.exceptions.UserNotFoundException;
