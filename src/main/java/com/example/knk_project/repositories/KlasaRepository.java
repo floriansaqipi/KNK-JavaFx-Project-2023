@@ -7,7 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class KlasaRepository extends KlasaRepositoryInterface {
+public class KlasaRepository implements KlasaRepositoryInterface {
     @Override
     public void insert(CreateKlasaDto createKlasaDto) throws SQLException {
         String sql = "INSERT INTO klasat(klasa, paralelja, viti) VALUES (?, ?, ?);";
