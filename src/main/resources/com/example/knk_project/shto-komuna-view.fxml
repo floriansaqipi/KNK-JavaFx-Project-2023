@@ -8,16 +8,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<fx:root fx:id="anchorPane" prefHeight="514.0" prefWidth="636.0" type="AnchorPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.KomunaController">
+<fx:root prefHeight="514.0" prefWidth="636.0" type="AnchorPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.controllers.KomunaController">
    <children>
-      <Label fx:id="AddCity" alignment="CENTER" contentDisplay="CENTER" layoutX="318.0" layoutY="52.0" prefHeight="34.0" prefWidth="198.0" text="Add City">
+      <Label fx:id="addCityLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="318.0" layoutY="52.0" prefHeight="34.0" prefWidth="198.0" text="Add City">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Button fx:id="submitButton" layoutX="552.0" layoutY="371.0" mnemonicParsing="false" style="-fx-background-color: lightgray;" text="Submit" />
-      <TextField fx:id="writeCity" layoutX="246.0" layoutY="193.0" prefHeight="68.0" prefWidth="342.0" promptText="Write your City" style="-fx-border-radius: 5px;" />
-      <CheckBox fx:id="terms" layoutX="260.0" layoutY="375.0" mnemonicParsing="false" text="I agree to the terms and conditions" />
-      <VBox fx:id="myVbox" layoutY="-2.0" prefHeight="526.0" prefWidth="198.0" style="-fx-background-color: lightgray;" />
+      <Button fx:id="submitCityClick" layoutX="552.0" layoutY="371.0" mnemonicParsing="false" style="-fx-background-color: lightgray;" text="Submit" />
+      <TextField fx:id="writeCityTextField" layoutX="246.0" layoutY="193.0" prefHeight="68.0" prefWidth="342.0" promptText="Write your City" style="-fx-border-radius: 5px;" />
+      <CheckBox fx:id="termsandconditions" layoutX="260.0" layoutY="375.0" mnemonicParsing="false" text="I agree to the terms and conditions" />
+      <VBox layoutY="-2.0" prefHeight="526.0" prefWidth="198.0" style="-fx-background-color: lightgray;" />
    </children>
 </fx:root>
