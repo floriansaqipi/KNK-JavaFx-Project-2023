@@ -1,4 +1,4 @@
-package com.example.knk_project;
+package com.example.knk_project.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -8,10 +8,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
-public class KomunaController {
+public class ShtetiController {
 
     @FXML
-    private Label AddCity;
+    private Label AddState;
 
     @FXML
     private AnchorPane anchorPane;
@@ -26,6 +26,6 @@ public class KomunaController {
     private CheckBox terms;
 
     @FXML
-    private TextField writeCity;
+    private TextField writeState;
 
 }
