@@ -1,5 +1,6 @@
 package com.example.knk_project.repositories;
 
+import com.example.knk_project.models.profesoriKlasa;
 import com.example.knk_project.repositories.interfaces.ProfesoriKlasaRepositoryInterface;
 import com.example.knk_project.services.ConnectionUtil;
 
@@ -9,7 +10,7 @@ import java.sql.SQLException;
 
 public class ProfesoriKlasaRepository implements ProfesoriKlasaRepositoryInterface {
     @Override
-    public void insert(ProfesoriKlasa profesoriKlasa) throws SQLException {
+    public void insert(profesoriKlasa profesoriKlasa) throws SQLException {
         String sql = "INSERT INTO profesoret_klasat(profesori_id, klasa_id) VALUES (?,?);";
         Connection connection = ConnectionUtil.getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
