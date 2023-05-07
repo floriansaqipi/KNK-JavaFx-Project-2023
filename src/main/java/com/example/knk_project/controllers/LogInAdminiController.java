@@ -1,22 +1,18 @@
 package com.example.knk_project.controllers;
 
 
-import com.example.knk_project.services.NxenesiService;
+import com.example.knk_project.services.AdminiService;
 import com.example.knk_project.services.exceptions.IncorrectPasswordException;
 import com.example.knk_project.services.exceptions.UserNotFoundException;
 import com.example.knk_project.services.exceptions.ValidationException;
-import com.example.knk_project.services.interfaces.NxenesiServiceInterface;
+import com.example.knk_project.services.interfaces.AdminiServiceInterface;
 import com.example.knk_project.services.interfaces.ValidatorInterface;
 import com.example.knk_project.services.validators.ValidatorService;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-import java.io.IOException;
 import java.sql.SQLException;
 
 public class LogInAdminiController {
@@ -29,7 +25,7 @@ public class LogInAdminiController {
     private Label messageLabel;
 
 
-    private NxenesiServiceInterface nxenesiService = new NxenesiService();
+    private AdminiServiceInterface adminiService = new AdminiService();
 
     private ValidatorInterface validatorSerice = new ValidatorService();
 
@@ -39,7 +35,7 @@ public class LogInAdminiController {
         String password = passwordPasswordField.getText();
         try{
 
-            this.nxenesiService.logIn(username,password);
+            this.adminiService.logIn(username,password);
         }catch (UserNotFoundException exception){
             exception.printStackTrace();
             this.messageLabel.setText("User by username doesn't exist");

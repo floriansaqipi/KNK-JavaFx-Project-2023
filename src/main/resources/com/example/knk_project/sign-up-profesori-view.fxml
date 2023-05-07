@@ -91,7 +91,7 @@
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </PasswordField>
-            <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="102.0" style="-fx-background-radius: 6;" text="Sign Up">
+            <Button mnemonicParsing="false" onAction="#signUpClick" prefHeight="28.0" prefWidth="102.0" style="-fx-background-radius: 6;" text="Sign Up">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
