@@ -15,5 +15,7 @@ module com.example.knk_project {
 =======
     exports com.example.knk_project.controllers;
     opens com.example.knk_project.controllers to javafx.fxml;
+    exports com.example.knk_project.services;
+    opens com.example.knk_project.services;
 >>>>>>> Stashed changes
 }
