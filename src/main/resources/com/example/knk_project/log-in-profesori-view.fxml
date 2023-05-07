@@ -23,7 +23,7 @@
                   <Insets />
                </VBox.margin>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="29.0" prefWidth="306.0" text="Message" textAlignment="CENTER">
+            <Label fx:id="messageLabel" alignment="CENTER" contentDisplay="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="29.0" prefWidth="306.0" text="Message" textAlignment="CENTER">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>

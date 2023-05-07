@@ -66,6 +66,9 @@ import java.util.ResourceBundle;
        this.validator.validateUsernameTextField(usernameTextField);
        this.validator.validatePasswordField(passwordPasswordField);
        this.validator.validatePasswordField(confirmPasswordField);
+       this.validator.validateEmriTextField(emriTextField);
+       this.validator.validateMbiemriTextField(mbiemriTextField);
+       this.validator.validateTextField(titleTextField);
 
        try{
           this.validator.validateMatchingPasswords(passwordPasswordField,confirmPasswordField);
