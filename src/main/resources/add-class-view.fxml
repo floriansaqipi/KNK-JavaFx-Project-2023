@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<fx:root prefHeight="400.0" prefWidth="600.0" type="AnchorPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.controllers.addClassController">
+   <children>
+      <ComboBox fx:id="addClassComboBox" layoutX="181.0" layoutY="126.0" onAction="#selectComboBox" prefHeight="35.0" prefWidth="237.0" promptText="                              Klasa" style="-fx-background-radius: 20px;" />
+      <Label fx:id="label" layoutX="271.0" layoutY="180.0" text="Label">
+         <font>
+            <Font name="Times New Roman Bold" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="194.0" layoutY="48.0" prefHeight="54.0" prefWidth="317.0" text="Shto klasen">
+         <font>
+            <Font name="Arial" size="36.0" />
+         </font>
+      </Label>
+      <Button fx:id="addClassButton" layoutX="222.0" layoutY="230.0" mnemonicParsing="false" onAction="#addClassClick" prefHeight="30.0" prefWidth="155.0" style="-fx-background-radius: 20px;" text="Shto klasen" />
+   </children>
+</fx:root>
