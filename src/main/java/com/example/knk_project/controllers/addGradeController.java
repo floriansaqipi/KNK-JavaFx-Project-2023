@@ -11,22 +11,33 @@ import java.util.ResourceBundle;
 public class addGradeController implements Initializable {
     @FXML
     private Tab classSubjectTab;
+    @FXML
     private Tab idTab;
+    @FXML
     private Tab setGradeTab;
 
 
     @FXML
     private ComboBox chooseClassComboBox;
+    @FXML
     private ComboBox chooseSubjectComboBox;
 
+    @FXML
     private TextField idTextField;
     private TextField stdnameTextField;
+    @FXML
     private TextField stdsurnameTextField;
+    @FXML
     private RadioButton grade1Radio;
+    @FXML
     private RadioButton grade2Radio;
+    @FXML
     private RadioButton grade3Radio;
+    @FXML
     private RadioButton grade4Radio;
+    @FXML
     private RadioButton grade5Radio;
+    @FXML
     private CheckBox confirmCheckBox;
 
     private Label label1;
@@ -51,4 +62,12 @@ public class addGradeController implements Initializable {
 
     }
 
+    public void contClick(ActionEvent actionEvent) {
+    }
+
+    public void contClick1(ActionEvent actionEvent) {
+    }
+
+    public void finishClick(ActionEvent actionEvent) {
+    }
 }
