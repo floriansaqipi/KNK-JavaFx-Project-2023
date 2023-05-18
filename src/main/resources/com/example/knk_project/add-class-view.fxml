@@ -7,36 +7,36 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<fx:root prefHeight="400.0" prefWidth="600.0" type="AnchorPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.controllers.addClassController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.controllers.addClassController">
    <children>
-      <Label fx:id="messageLabel" layoutX="302.0" layoutY="68.0" text="Label">
+      <Label fx:id="messageLabel" layoutX="288.0" layoutY="68.0" text="Label">
          <font>
             <Font name="Arial" size="19.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="167.0" layoutY="14.0" prefHeight="54.0" prefWidth="317.0" text="Shto klasen">
+      <Label alignment="CENTER" layoutX="153.0" layoutY="14.0" prefHeight="54.0" prefWidth="317.0" text="Shto klasen">
          <font>
             <Font name="Arial" size="36.0" />
          </font>
       </Label>
-      <Button fx:id="addClassButton" layoutX="248.0" layoutY="316.0" mnemonicParsing="false" onAction="#addClassClick" prefHeight="30.0" prefWidth="155.0" style="-fx-background-radius: 20px;" text="Shto klasen" />
-      <Spinner fx:id="klasaSpinner" editable="true" layoutX="196.0" layoutY="128.0" prefHeight="30.0" prefWidth="260.0" />
+      <Button fx:id="addClassButton" layoutX="233.0" layoutY="317.0" mnemonicParsing="false" onAction="#addClassClick" prefHeight="30.0" prefWidth="155.0" style="-fx-background-radius: 20px;" text="Shto klasen" />
+      <Spinner fx:id="klasaSpinner" layoutX="196.0" layoutY="128.0" prefHeight="30.0" prefWidth="230.0" />
       <Label fx:id="label1" layoutX="197.0" layoutY="106.0" prefHeight="22.0" prefWidth="86.0" text="Klasa">
          <font>
             <Font name="Arial" size="15.0" />
          </font>
       </Label>
-      <Spinner fx:id="paraleljaSpinner" editable="true" layoutX="196.0" layoutY="200.0" prefHeight="30.0" prefWidth="260.0" />
+      <Spinner fx:id="paraleljaSpinner" layoutX="196.0" layoutY="200.0" prefHeight="30.0" prefWidth="230.0" />
       <Label fx:id="label11" layoutX="197.0" layoutY="177.0" prefHeight="22.0" prefWidth="86.0" text="Paralelja">
          <font>
             <Font name="Arial" size="15.0" />
          </font>
       </Label>
+      <TextField fx:id="vitiShkollorTextField" layoutX="196.0" layoutY="264.0" prefHeight="30.0" prefWidth="230.0" />
       <Label fx:id="label111" layoutX="197.0" layoutY="241.0" prefHeight="22.0" prefWidth="86.0" text="Viti shkollor">
          <font>
             <Font name="Arial" size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="vitiShkollorTextField" alignment="CENTER" layoutX="196.0" layoutY="263.0" prefHeight="30.0" prefWidth="260.0" style="-fx-background-radius: 20px;" />
    </children>
-</fx:root>
+</AnchorPane>
