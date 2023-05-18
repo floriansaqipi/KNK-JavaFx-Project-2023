@@ -11,7 +11,7 @@ public interface ValidatorInterface {
     void validateTextField(TextField textField) ;
     void validateGeneralPasswordField(PasswordField passwordField);
     void validateDatePicker(DatePicker datePicker) ;
-    void validateComboBox(ComboBox<String> comboBox) ;
+    <T> void validateComboBox(ComboBox<T> comboBox) ;
     void validatePasswordField(PasswordField passwordField) ;
     void validatePhoneTextField(TextField textField) ;
     void validateEmailTextField(TextField textField) ;
