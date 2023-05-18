@@ -1,31 +1,38 @@
 package com.example.knk_project.controllers;
 
+import com.example.knk_project.services.exceptions.ValidationException;
+import com.example.knk_project.services.interfaces.ValidatorInterface;
+import com.example.knk_project.services.validators.ValidatorService;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 
 public class ShtetiController {
+    private ValidatorInterface validator = new ValidatorService();
 
     @FXML
-    private Label AddState;
+    private Label addStateLabel;
 
     @FXML
-    private AnchorPane anchorPane;
+    private Label messageLabel;
 
     @FXML
-    private VBox myVbox;
+    private TextField shtetiTextField;
 
     @FXML
-    private Button submitButton;
+    void shtoShtetinClick(ActionEvent event) {
+       this.validateInputs();
+    }
 
-    @FXML
-    private CheckBox terms;
-
-    @FXML
-    private TextField writeState;
+    private void validateInputs(){
+        this.validator.validateTextField(shtetiTextField);
+        try{
+            this.validator.throwIfInvalid();
+        }catch (ValidationException exception){
+            exception.printStackTrace();
+            this.messageLabel.setText("Invalid inputs");
+        }
+    }
 
 }
