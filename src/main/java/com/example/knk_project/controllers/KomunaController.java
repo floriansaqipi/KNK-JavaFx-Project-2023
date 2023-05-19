@@ -49,6 +49,8 @@ public class KomunaController implements Initializable {
         try {
 
             this.komunaService.insert(new CreateKomunaDto(komunaName, shtetiId));
+            this.messageLabel.setText("Successfully added municipality");
+
         } catch (SQLException exception) {
             exception.printStackTrace();
             this.messageLabel.setText("Something went wrong with the database");

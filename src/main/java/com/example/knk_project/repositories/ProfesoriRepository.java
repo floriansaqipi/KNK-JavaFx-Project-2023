@@ -28,7 +28,7 @@ public class ProfesoriRepository implements ProfesoriRepositoryInterface {
     }
 
     public Profesori getProfesoriByUsername(String usernameValue) throws SQLException {
-        String sql = "SELECT * FROM profesor n WHERE n.username = ?";
+        String sql = "SELECT * FROM profesoret n WHERE n.username = ?";
         Connection connection = ConnectionUtil.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setString(1 , usernameValue);
