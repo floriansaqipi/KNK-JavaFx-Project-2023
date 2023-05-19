@@ -25,13 +25,13 @@
          </font>
       </Label>
       <Button layoutX="230.0" layoutY="308.0" mnemonicParsing="false" onAction="#addSubjectClick" prefHeight="30.0" prefWidth="151.0" style="-fx-background-radius: 20px;" text="Shto " textAlignment="CENTER" />
-      <ComboBox fx:id="chooseProfessorComboBox" layoutX="159.0" layoutY="242.0" onAction="#selectProfessor" prefHeight="34.0" prefWidth="285.0" promptText="                                   Profesori" style="-fx-background-radius: 20px;" />
+      <ComboBox fx:id="chooseProfessorComboBox" layoutX="163.0" layoutY="241.0" onAction="#selectProfessor" prefHeight="34.0" prefWidth="285.0" promptText="                                   Profesori" style="-fx-background-radius: 20px;" />
       <Label layoutX="168.0" layoutY="112.0" prefHeight="26.0" prefWidth="123.0" text="Zgjedh lenden">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="163.0" layoutY="200.0" prefHeight="26.0" prefWidth="285.0" text="Zgjedh profesorin per lenden">
+      <Label layoutX="168.0" layoutY="206.0" prefHeight="26.0" prefWidth="285.0" text="Zgjedh profesorin per lenden">
          <font>
             <Font size="14.0" />
          </font>
