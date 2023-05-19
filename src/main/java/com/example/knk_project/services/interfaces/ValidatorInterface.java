@@ -18,9 +18,11 @@ public interface ValidatorInterface {
     void validateUsernameTextField(TextField textField) ;
     void validateEmriTextField(TextField textField) ;
     void validateMbiemriTextField(TextField textField) ;
+    void validateVitiShkollorTextField(TextField textField) ;
 
     void validateMatchingPasswords(PasswordField passwordField, PasswordField confirmPasswordField) throws DifferentPasswordsException;
 
     void throwIfInvalid() throws ValidationException;
+
 
 }

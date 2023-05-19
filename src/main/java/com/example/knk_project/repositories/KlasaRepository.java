@@ -16,7 +16,7 @@ public class KlasaRepository implements KlasaRepositoryInterface {
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setInt(1,createKlasaDto.getKlasa());
         preparedStatement.setInt(2,createKlasaDto.getParalelja());
-        preparedStatement.setInt(3,createKlasaDto.getViti());
+        preparedStatement.setString(3,createKlasaDto.getViti());
 
         preparedStatement.executeUpdate();
 

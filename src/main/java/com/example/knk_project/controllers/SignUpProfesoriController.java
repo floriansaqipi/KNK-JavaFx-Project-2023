@@ -49,7 +49,7 @@ import java.util.ResourceBundle;
        try{
 
           this.signUpProfesoriService.signUp(createProfesoriDto);
-          this.messageLabel.setText("Succesfully added user");
+          this.messageLabel.setText("Successfully added user");
        } catch (UserAlreadyExistsException exception){
           exception.printStackTrace();
           this.messageLabel.setText("Username is taken");
