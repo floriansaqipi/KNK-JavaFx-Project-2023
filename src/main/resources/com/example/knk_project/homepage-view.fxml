@@ -10,12 +10,12 @@
 
 
 <AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.knk_project.controllers.HomePageController">
+            fx:controller="com.example.knk_project.controllers.homePageController">
     <VBox layoutX="-2.0" prefHeight="610.0" prefWidth="219.0" style="-fx-background-color: darkgreen;">
         <ImageView fx:id="homePageLogo" fitHeight="101.0" fitWidth="300.0" opacity="0.36" pickOnBounds="true"
                    preserveRatio="true" scaleX="1.2">
             <image>
-                <Image url="@download.png"/>
+                <Image url="@homeimage.png"/>
             </image>
         </ImageView>
 
@@ -58,7 +58,7 @@
                AnchorPane.bottomAnchor="21.377508544921852" AnchorPane.leftAnchor="246.0"
                AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="215.0">
         <image>
-            <Image url="@BlinkeredMedia-background-for-homepage-squares.jpg"/>
+            <Image url="@Background-image.jpg"/>
         </image>
     </ImageView>
 
