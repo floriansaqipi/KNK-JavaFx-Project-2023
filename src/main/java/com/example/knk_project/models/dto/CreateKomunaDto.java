@@ -5,7 +5,7 @@ public class CreateKomunaDto {
     private int shtetiId;
 
 
-    public CreateKomunaDto(int id, String emri, int shtetiId) {
+    public CreateKomunaDto(String emri, int shtetiId) {
         this.emri = emri;
         this.shtetiId = shtetiId;
     }
