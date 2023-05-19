@@ -46,7 +46,7 @@ public class ValidatorService implements ValidatorInterface {
     }
 
     @Override
-    public void validateComboBox(ComboBox<String> comboBox)  {
+    public <T> void validateComboBox(ComboBox<T> comboBox)  {
         if(comboBox.getValue() == null){
             this.setErrorStyle(comboBox);
             comboBox.setPromptText("Zgjedh nje opsion");
@@ -139,6 +139,7 @@ public class ValidatorService implements ValidatorInterface {
     @Override
     public void throwIfInvalid() throws ValidationException {
         if(!this.isValid){
+            this.isValid = true;
             throw new ValidationException("this is invalid");
         }
     }
