@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.MenuButton;
 import javafx.scene.image.ImageView;
 
-public class HomePageController {
+public class homePageController {
     @FXML
     private MenuButton SignUp;
 
