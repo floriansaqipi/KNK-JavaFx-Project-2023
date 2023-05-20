@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -15,7 +16,7 @@
          <top>
             <AnchorPane prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
                <children>
-                  <Pane layoutX="104.0" layoutY="14.0" prefHeight="35.0" prefWidth="900.0" style="-fx-background-color: #33CF99;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Pane layoutX="104.0" layoutY="14.0" prefHeight="35.0" prefWidth="900.0" style="-fx-background-color: #9BD2BE;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                   <HBox layoutX="120.0" layoutY="33.0" prefHeight="44.0" prefWidth="266.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <children>
                         <JFXButton prefHeight="46.0" prefWidth="122.0" text="LOG IN" />
@@ -26,25 +27,30 @@
                         </JFXButton>
                      </children>
                   </HBox>
+                  <Label layoutX="35.0" layoutY="42.0" prefHeight="31.0" prefWidth="203.0" text="Name of the system ">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </top>
          <left>
-            <AnchorPane fx:id="sliderAnchorPane" prefHeight="370.0" prefWidth="220.0" style="-fx-background-color: #33CF99;" BorderPane.alignment="CENTER">
+            <AnchorPane fx:id="sliderAnchorPane" prefHeight="370.0" prefWidth="220.0" style="-fx-background-color: #69AF96;" BorderPane.alignment="CENTER">
                <children>
-                  <VBox layoutY="68.0" prefHeight="438.0" prefWidth="230.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="68.0">
+                  <VBox layoutY="23.0" prefHeight="483.0" prefWidth="220.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="23.0">
                      <children>
-                        <JFXButton prefHeight="63.0" prefWidth="220.0" text="Shto shtetin" textFill="#f2f0f0">
+                        <JFXButton prefHeight="58.0" prefWidth="220.0" text="Shto shtetin" textFill="#f2f0f0">
                            <font>
                               <Font name="System Bold" size="17.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton prefHeight="62.0" prefWidth="220.0" text="Shto komunen" textFill="#f2f0f0">
+                        <JFXButton prefHeight="60.0" prefWidth="220.0" text="Shto komunen" textFill="#f2f0f0">
                            <font>
                               <Font name="System Bold" size="17.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton prefHeight="58.0" prefWidth="220.0" text="Shto lenden" textFill="#f2f0f0">
+                        <JFXButton prefHeight="63.0" prefWidth="220.0" text="Shto lenden" textFill="#f2f0f0">
                            <font>
                               <Font name="System Bold" size="17.0" />
                            </font>
@@ -59,7 +65,7 @@
                               <Font name="System Bold" size="17.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton prefHeight="63.0" prefWidth="220.0" text="Shto profesor/klasen " textFill="#f2f0f0">
+                        <JFXButton prefHeight="71.0" prefWidth="220.0" text="Shto profesor/klasen " textFill="#f2f0f0">
                            <font>
                               <Font name="System Bold" size="17.0" />
                            </font>
