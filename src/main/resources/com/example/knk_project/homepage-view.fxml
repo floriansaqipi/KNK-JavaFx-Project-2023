@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
@@ -8,59 +10,50 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.knk_project.controllers.homePageController">
-    <VBox layoutX="-2.0" prefHeight="610.0" prefWidth="219.0" style="-fx-background-color: darkgreen;">
-        <ImageView fx:id="homePageLogo" fitHeight="101.0" fitWidth="300.0" opacity="0.36" pickOnBounds="true"
-                   preserveRatio="true" scaleX="1.2">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.controllers.homePageController">
+    <VBox layoutX="-2.0" prefHeight="610.0" prefWidth="219.0" style="-fx-background-color: #69AF96;">
+        <ImageView fx:id="homePageLogo" fitHeight="101.0" fitWidth="300.0" opacity="0.36" pickOnBounds="true" preserveRatio="true" scaleX="1.2">
             <image>
-                <Image url="@homeimage.png"/>
+                <Image url="@homeimage.png" />
             </image>
         </ImageView>
 
         <Label prefHeight="117.0" prefWidth="206.0" text=" Name of the system" textFill="WHITE">
             <font>
-                <Font size="20.0"/>
+                <Font size="20.0" />
             </font>
         </Label>
     </VBox>
-    <HBox layoutX="214.0" prefHeight="218.0" prefWidth="718.0" style="-fx-background-color: #B2D2A4;">
-        <MenuButton fx:id="SignUp" mnemonicParsing="false" style="-fx-background-radius: 20;" text="Sign Up"
-                    translateX="300.0" translateY="160.0">
+    <HBox layoutX="214.0" prefHeight="218.0" prefWidth="718.0" style="-fx-background-color: #9BD2BE;">
+        <MenuButton fx:id="SignUp" alignment="CENTER" mnemonicParsing="false" prefHeight="37.0" prefWidth="114.0" style="-fx-background-radius: 20;" text="Sign Up" translateX="300.0" translateY="150.0">
             <items>
-                <MenuItem mnemonicParsing="false" text="Admin"/>
-                <MenuItem mnemonicParsing="false" text="Professor"/>
-                <MenuItem mnemonicParsing="false" text="Student"/>
+                <MenuItem mnemonicParsing="false" text="Admin" />
+                <MenuItem mnemonicParsing="false" text="Professor" />
+                <MenuItem mnemonicParsing="false" text="Student" />
             </items>
             <font>
-                <Font name="System Bold" size="12.0"/>
+                <Font name="System Bold" size="12.0" />
             </font>
         </MenuButton>
-        <MenuButton fx:id="LogIn" mnemonicParsing="false" style="-fx-background-radius: 20;" text="Log In"
-                    translateX="550.0" translateY="160.0">
+        <Label text="Already have an account" textFill="#434242" translateX="350.0" translateY="164.0" />
+        <MenuButton fx:id="LogIn" alignment="CENTER" mnemonicParsing="false" prefHeight="37.0" prefWidth="114.0" style="-fx-background-radius: 20;" text="Log In" translateX="355.0" translateY="150.0">
             <items>
-                <MenuItem mnemonicParsing="false" text="Admin"/>
-                <MenuItem mnemonicParsing="false" text="Professor"/>
-                <MenuItem mnemonicParsing="false" text="Student"/>
+                <MenuItem mnemonicParsing="false" text="Admin" />
+                <MenuItem mnemonicParsing="false" text="Professor" />
+                <MenuItem mnemonicParsing="false" text="Student" />
             </items>
             <font>
-                <Font name="System Bold" size="12.0"/>
+                <Font name="System Bold" size="12.0" />
             </font>
         </MenuButton>
-        <Label text="Already have an account" textFill="#434242" translateX="350.0" translateY="164.0"/>
     </HBox>
-    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="408.0" layoutY="217.0" pickOnBounds="true"
-               preserveRatio="true"/>
+    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="408.0" layoutY="217.0" pickOnBounds="true" preserveRatio="true" />
 
-    <ImageView fx:id="HomePageImage" fitHeight="393.0" fitWidth="655.0" layoutX="246.0" layoutY="215.0"
-               opacity="0.25" pickOnBounds="true" preserveRatio="true" scaleX="1.1" translateY="20.0"
-               AnchorPane.bottomAnchor="21.377508544921852" AnchorPane.leftAnchor="246.0"
-               AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="215.0">
+    <ImageView fx:id="HomePageImage" fitHeight="393.0" fitWidth="655.0" layoutX="246.0" layoutY="215.0" opacity="0.25" pickOnBounds="true" preserveRatio="true" scaleX="1.1" translateY="20.0" AnchorPane.bottomAnchor="21.377508544921852" AnchorPane.leftAnchor="246.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="215.0">
         <image>
-            <Image url="@Background-image.jpg"/>
+            <Image url="@Background-image.jpg" />
         </image>
     </ImageView>
 
-    <HBox layoutX="211.0" layoutY="193.0" prefHeight="50.0" prefWidth="721.0" style="-fx-background-color: darkgreen;"/>
+    <HBox layoutX="211.0" layoutY="193.0" prefHeight="50.0" prefWidth="721.0" style="-fx-background-color: #69AF96;" />
 </AnchorPane>
