@@ -5,8 +5,11 @@ import com.example.knk_project.models.Profesori;
 import com.example.knk_project.models.dto.CreateProfesoriDto;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public interface ProfesoriRepositoryInterface {
     public void insert(CreateProfesoriDto createProfesoriDto) throws SQLException;
     public Profesori getProfesoriByUsername(String username) throws SQLException;
+
+    public List<Profesori> getAllProfesoret() throws SQLException;
 }

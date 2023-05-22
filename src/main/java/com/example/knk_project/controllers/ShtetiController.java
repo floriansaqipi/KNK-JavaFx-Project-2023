@@ -31,6 +31,7 @@ public class ShtetiController {
         try{
 
         this.shtetiService.register(createShtetiDto);
+        this.messageLabel.setText("Successfully added state");
         } catch (SQLException exception){
             exception.printStackTrace();
             this.messageLabel.setText("Something went wrong with the database");
