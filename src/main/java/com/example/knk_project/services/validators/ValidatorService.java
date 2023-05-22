@@ -125,6 +125,26 @@ public class ValidatorService implements ValidatorInterface {
     }
 
     @Override
+    public void validateVitiShkollorTextField(TextField textField) {
+        if(!textField.getText().trim().matches("\\d{4}\\/\\d{4}")) {
+            this.setErrorStyle(textField);
+            textField.setPromptText("Sheno vitet e ndara me / dhe rishikoni gjatësinë e viteve");
+            this.isValid = false;
+            return;
+        }
+        String[] numbers = textField.getText().split("/");
+        Integer viti1 = Integer.parseInt(numbers[0]);
+        Integer viti2 = Integer.parseInt(numbers[1]);
+        if(viti2 - viti1 != 1) {
+            this.setErrorStyle(textField);
+            textField.setPromptText("Viti shkollor është i gabuar");
+            this.isValid = false;
+            return;
+        }
+        this.setDefaultStyle(textField);
+    }
+
+    @Override
     public void validateMatchingPasswords(PasswordField passwordField, PasswordField confirmPasswordField)
             throws DifferentPasswordsException {
                 if(!passwordField.getText().trim().equals(confirmPasswordField.getText().trim())){

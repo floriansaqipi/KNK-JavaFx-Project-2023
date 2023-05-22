@@ -11,7 +11,7 @@
    <children>
       <Label fx:id="messageLabel" layoutX="288.0" layoutY="83.0" text="Label">
          <font>
-            <Font name="Arial" size="19.0" />
+            <Font name="Arial" size="13.0" />
          </font>
       </Label>
       <Label alignment="CENTER" layoutX="153.0" layoutY="20.0" prefHeight="54.0" prefWidth="317.0" text="Shto klasen">
