@@ -4,9 +4,9 @@ public class Klasa {
     private int id;
     private int klasa;
     private int paralelja;
-    private int viti;
+    private String viti;
 
-    public Klasa(int id, int klasa, int paralelja, int viti) {
+    public Klasa(int id, int klasa, int paralelja, String viti) {
         this.id = id;
         this.klasa = klasa;
         this.paralelja = paralelja;
@@ -25,7 +25,7 @@ public class Klasa {
         return paralelja;
     }
 
-    public int getViti() {
+    public String getViti() {
         return viti;
     }
 }
