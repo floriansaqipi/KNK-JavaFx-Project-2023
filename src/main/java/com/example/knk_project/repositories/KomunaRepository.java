@@ -1,5 +1,6 @@
 package com.example.knk_project.repositories;
 
+import com.example.knk_project.models.dto.CreateKomunaDto;
 import com.example.knk_project.repositories.interfaces.KomunaRepositoryInterface;
 import com.example.knk_project.services.ConnectionUtil;
 

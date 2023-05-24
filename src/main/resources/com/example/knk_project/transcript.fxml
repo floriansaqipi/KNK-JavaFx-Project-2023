@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.knk_project.controllers.TranscriptController">
+    <children>
+        <HBox layoutX="50.0" layoutY="50.0" spacing="20.0">
+            <Label fx:id="titlelabel" layoutX="50.0" layoutY="360.0" style="-fx-font-weight: bold; -fx-font-size: 16px;"/>
+            <PieChart fx:id="piechart" prefHeight="400.0" prefWidth="400.0"/>
+            <TableView fx:id="tableview" prefHeight="400.0" prefWidth="445.0">
+                <columns>
+                    <TableColumn fx:id="subjectColumn" prefWidth="150.0" text="Subject"/>
+                    <TableColumn fx:id="professorColumn" prefWidth="150.0" text="Professor"/>
+                    <TableColumn fx:id="gradeColumn" prefWidth="150.0" text="Grade"/>
+                </columns>
+            </TableView>
+        </HBox>
+
+    </children>
+</AnchorPane>

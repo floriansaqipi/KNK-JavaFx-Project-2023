@@ -39,7 +39,7 @@ public class SignUpAdminiController {
         try{
 
             this.signUpAdminiService.signUp(createAdminiDto);
-            this.messageLabel.setText("Succesfully added user");
+            this.messageLabel.setText("Successfully added user");
         } catch (UserAlreadyExistsException exception){
             exception.printStackTrace();
             this.messageLabel.setText("Username is taken");

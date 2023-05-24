@@ -11,16 +11,18 @@ public interface ValidatorInterface {
     void validateTextField(TextField textField) ;
     void validateGeneralPasswordField(PasswordField passwordField);
     void validateDatePicker(DatePicker datePicker) ;
-    void validateComboBox(ComboBox<String> comboBox) ;
+    <T> void validateComboBox(ComboBox<T> comboBox) ;
     void validatePasswordField(PasswordField passwordField) ;
     void validatePhoneTextField(TextField textField) ;
     void validateEmailTextField(TextField textField) ;
     void validateUsernameTextField(TextField textField) ;
     void validateEmriTextField(TextField textField) ;
     void validateMbiemriTextField(TextField textField) ;
+    void validateVitiShkollorTextField(TextField textField) ;
 
     void validateMatchingPasswords(PasswordField passwordField, PasswordField confirmPasswordField) throws DifferentPasswordsException;
 
     void throwIfInvalid() throws ValidationException;
+
 
 }

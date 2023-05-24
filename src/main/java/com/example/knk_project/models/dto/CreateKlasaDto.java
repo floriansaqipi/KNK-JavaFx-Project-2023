@@ -1,21 +1,17 @@
 package com.example.knk_project.models.dto;
 
 public class CreateKlasaDto {
-    private int id;
+
     private int klasa;
     private int paralelja;
-    private int viti;
+    private String viti;
 
-    public CreateKlasaDto(int id, int klasa, int paralelja, int viti) {
-        this.id = id;
+    public CreateKlasaDto(int klasa, int paralelja, String viti) {
         this.klasa = klasa;
         this.paralelja = paralelja;
         this.viti = viti;
     }
 
-    public int getId() {
-        return id;
-    }
 
     public int getKlasa() {
         return klasa;
@@ -25,7 +21,7 @@ public class CreateKlasaDto {
         return paralelja;
     }
 
-    public int getViti() {
+    public String getViti() {
         return viti;
     }
 }
