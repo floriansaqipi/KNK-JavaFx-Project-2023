@@ -1,8 +1,11 @@
 package com.example.knk_project.controllers;
 
+import com.example.knk_project.models.dto.CreateLendaDto;
 import com.example.knk_project.models.dto.CreateShtetiDto;
+import com.example.knk_project.services.LendaService;
 import com.example.knk_project.services.exceptions.ValidationException;
 
+import com.example.knk_project.services.interfaces.LendaServiceInterface;
 import com.example.knk_project.services.interfaces.ValidatorInterface;
 import com.example.knk_project.services.validators.ValidatorService;
 import javafx.event.ActionEvent;
@@ -12,9 +15,9 @@ import javafx.scene.control.TextField;
 
 import java.sql.SQLException;
 
-public class addLendaController {
+public class AddLendaController {
     private ValidatorInterface validator = new ValidatorService();
-    private Lenda
+    private LendaServiceInterface lendaService = new LendaService();
 
 
     @FXML
@@ -28,27 +31,24 @@ public class addLendaController {
 
     @FXML
     void shtoLendenClick(ActionEvent event) {
-        this.validateInputs();
-        CreateShtetiDto createShtetiDto = new CreateShtetiDto(lendaTextField.getText());
         try{
-
-            this.shtetiService.register(createShtetiDto);
-            this.messageLabel.setText("Successfully added state");
-        } catch (SQLException exception){
+        this.validateInputs();
+        CreateLendaDto createLendaDto = new CreateLendaDto(lendaTextField.getText());
+            this.lendaService.insert(createLendaDto);
+            this.messageLabel.setText("Successfully added subject");
+        } catch (ValidationException exception){
+            exception.printStackTrace();
+            this.messageLabel.setText("Invalid inputs");
+        }catch (SQLException exception){
             exception.printStackTrace();
             this.messageLabel.setText("Something went wrong with the database");
         }
     }
 
 
-    private void validateInputs(){
+    private void validateInputs() throws ValidationException{
         this.validator.validateTextField(lendaTextField);
-        try{
-            this.validator.throwIfInvalid();
-        }catch (ValidationException exception){
-            exception.printStackTrace();
-            this.messageLabel.setText("Invalid inputs");
-        }
+        this.validator.throwIfInvalid();
     }
 
 }

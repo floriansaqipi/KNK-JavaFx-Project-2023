@@ -2,8 +2,14 @@ package com.example.knk_project.controllers;
 
 import com.example.knk_project.models.Lenda;
 import com.example.knk_project.models.Profesori;
+import com.example.knk_project.models.ProfesoriLenda;
+import com.example.knk_project.repositories.interfaces.ProfesoriLendaRepositoryInterface;
+import com.example.knk_project.services.LendaService;
+import com.example.knk_project.services.ProfesoriLendaService;
 import com.example.knk_project.services.ProfesoriService;
 import com.example.knk_project.services.exceptions.ValidationException;
+import com.example.knk_project.services.interfaces.LendaServiceInterface;
+import com.example.knk_project.services.interfaces.ProfesoriLendaServiceInterface;
 import com.example.knk_project.services.interfaces.ProfesoriServiceInterface;
 import com.example.knk_project.services.interfaces.ValidatorInterface;
 import com.example.knk_project.services.validators.ValidatorService;
@@ -23,6 +29,9 @@ import java.util.ResourceBundle;
 public class addProfesorLendaController implements Initializable {
     private ValidatorInterface validator = new ValidatorService();
     private ProfesoriServiceInterface profesoriService = new ProfesoriService();
+    private LendaServiceInterface lendaService = new LendaService();
+
+    private ProfesoriLendaServiceInterface profesoriLendaService = new ProfesoriLendaService();
 
     @FXML
     private ComboBox<Lenda> lendaComboBox;
@@ -38,18 +47,27 @@ public class addProfesorLendaController implements Initializable {
 
     @FXML
     void shtoLendenProfesoritClick(ActionEvent event) {
-        this.validateInputs();
-    }
-
-    private void validateInputs() {
-        this.validator.validateComboBox(lendaComboBox);
-        this.validator.validateComboBox(profesoriComboBox);
         try {
-            this.validator.throwIfInvalid();
+            this.validateInputs();
+            int profesoriId = this.profesoriComboBox.getValue().getId();
+            int lendaId = this.lendaComboBox.getValue().getId();
+            ProfesoriLenda profesoriLenda = new ProfesoriLenda(profesoriId,lendaId);
+            this.profesoriLendaService.insert(profesoriLenda);
+            this.messageLabel.setText("Successfully added subject to professor");
+
         } catch (ValidationException exception) {
             exception.printStackTrace();
             this.messageLabel.setText("Invalid inputs");
+        } catch (SQLException exception){
+            exception.printStackTrace();
+            this.messageLabel.setText("Something went wrong with the database");
         }
+    }
+
+    private void validateInputs() throws ValidationException {
+        this.validator.validateComboBox(lendaComboBox);
+        this.validator.validateComboBox(profesoriComboBox);
+        this.validator.throwIfInvalid();
     }
 
     @Override
@@ -69,9 +87,26 @@ public class addProfesorLendaController implements Initializable {
 
             @Override
             public Profesori fromString(String string) {
-                return profesoriComboBox.getItems().stream().filter(ap ->
-                        (ap.getEmri() + " " + ap.getMbiemri() + " (" + ap.getUsername() + ")")
-                                .equals(string)).findFirst().orElse(null);
+                return profesoriComboBox.getItems().stream().filter(ap -> (ap.getEmri() + " " + ap.getMbiemri() + " (" + ap.getUsername() + ")").equals(string)).findFirst().orElse(null);
+            }
+        });
+
+        try {
+            this.lendaComboBox.getItems().addAll(this.lendaService.getAllLendet());
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+            this.messageLabel.setText("Something went wrong with the database");
+        }
+
+        this.lendaComboBox.setConverter(new StringConverter<Lenda>() {
+            @Override
+            public String toString(Lenda object) {
+                return object.getEmri();
+            }
+
+            @Override
+            public Lenda fromString(String string) {
+                return lendaComboBox.getItems().stream().filter(ap -> ap.getEmri().equals(string)).findFirst().orElse(null);
             }
         });
     }
