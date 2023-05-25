@@ -1,66 +1,63 @@
 package com.example.knk_project.controllers;
 
-import javafx.animation.TranslateTransition;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
+import javafx.scene.Parent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.transform.Translate;
-import javafx.util.Duration;
+import javafx.scene.layout.BorderPane;
+
+import java.io.IOException;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class AdminpageController implements Initializable {
+    @FXML
+    private AnchorPane ap;
+    @FXML
+    private BorderPane bp;
 
     @FXML
-    private ImageView ExitImageView;
-
+    public void shtoshtetin(MouseEvent event) {
+        loadPage("shto-shtetin-view");
+    }
     @FXML
-    private Label MenuCloseLabel;
-
+    public void shtokomunen(MouseEvent event) {
+        loadPage("shto-komuna-view");
+    }
     @FXML
-    private Label MenuLabel;
-
+    public void shtoprofesorKlasen(MouseEvent event) {
+        loadPage("shto-profesor-klasa");
+    }
     @FXML
-    private AnchorPane sliderAnchorPane;
+    public void shtoklasen(MouseEvent event) {
+        loadPage("add-class-view");
+    }
+    @FXML
+    public void shtolenden(MouseEvent event) {
+        loadPage("add-subject-view");
+    }
+    @FXML
+    public void shtoprofesorLneden(MouseEvent event) {
+        loadPage("shto-profesori-lenda");
+    }
+    @FXML
+    private void loadPage(String page) {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/com/example/knk_project/" + page + ".fxml"));
+        } catch (IOException ex){
+            Logger.getLogger(AdminpageController.class.getName()).log(Level.SEVERE,null,ex);
+        }
+        bp.setCenter(root);
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ExitImageView.setOnMouseClicked(event ->{
-            System.exit(0);
-        });
-        sliderAnchorPane.setTranslateX(-176);
-        MenuLabel.setOnMouseClicked(event->{
-            TranslateTransition slide = new TranslateTransition();
-            slide.setDuration(Duration.seconds(0.4));
-            slide.setNode(sliderAnchorPane);
-            slide.setToX(0);
-            slide.play();
-            sliderAnchorPane.setTranslateX(-176);
-
-            slide.setOnFinished((ActionEvent e) ->{
-                MenuLabel.setVisible(false);
-                MenuCloseLabel.setVisible(true);
-            });
-        });
-
-        MenuCloseLabel.setOnMouseClicked(event->{
-            TranslateTransition slide = new TranslateTransition();
-            slide.setDuration(Duration.seconds(0.4));
-            slide.setNode(sliderAnchorPane);
-            slide.setToX(-176);
-            slide.play();
-
-            sliderAnchorPane.setTranslateX(0);
-            slide.setOnFinished((ActionEvent e) ->{
-                MenuLabel.setVisible(true);
-                MenuCloseLabel.setVisible(false);
-            });
-        });
 
     }
-
 }
