@@ -1,11 +1,14 @@
 package com.example.knk_project.repositories;
 
+import com.example.knk_project.models.Nota;
 import com.example.knk_project.models.Nxenesi;
 import com.example.knk_project.models.dto.CreateNxenesiDto;
 import com.example.knk_project.repositories.interfaces.NxenesiRepositoryInterface;
 import com.example.knk_project.services.ConnectionUtil;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class NxenesiRepository implements NxenesiRepositoryInterface {
 
@@ -65,6 +68,37 @@ public class NxenesiRepository implements NxenesiRepositoryInterface {
                 komunaId,
                 prindiId,
                 klasaId);
+    }
+
+    @Override
+    public List<Nxenesi> getAllNxenesitbyProfesoriID(int profesoriID) throws SQLException {
+        String sql = "SELECT n.* from profesoret p inner join profesoret_klasat pk on pk.profesori_id = p.id inner join klasa k on k.id = pk.klasa_id inner join nxenesit n on n.klasa_id = k.id where p.id =" + profesoriID + ";";
+        Connection connection = ConnectionUtil.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        List<Nxenesi> nxenesit = new ArrayList<>();
+
+        while (resultSet.next()){
+            nxenesit.add(
+                    new Nxenesi(
+                            resultSet.getInt(1),
+                            resultSet.getString(2),
+                            resultSet.getString(3),
+                            resultSet.getString(4),
+                            resultSet.getString(5),
+                            resultSet.getString(6),
+                            resultSet.getDate(7),
+                            resultSet.getInt(8),
+                            resultSet.getInt(9),
+                            resultSet.getInt(10),
+                            resultSet.getInt(11)
+
+                    )
+            );
+        }
+        return nxenesit;
     }
 
 }

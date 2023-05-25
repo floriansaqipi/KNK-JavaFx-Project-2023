@@ -71,7 +71,7 @@ public class SignUpNxenesiController implements Initializable {
         try{
 
         this.signUpNxenesiService.signUp(createNxenesiDto,createPrindiDto);
-        this.messageLabel.setText("Succesfully added user");
+        this.messageLabel.setText("Successfully added user");
         } catch (UserAlreadyExistsException exception){
             exception.printStackTrace();
             this.messageLabel.setText("Username is taken");

@@ -19,7 +19,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class homePageController implements Initializable {
+public class HomePageController implements Initializable {
+    @FXML
+    private MenuButton LogIn;
+    
     @FXML
     private AnchorPane anchorePaneHomePage;
 
