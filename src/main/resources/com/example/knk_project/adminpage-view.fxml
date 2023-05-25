@@ -8,31 +8,31 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.controllers.AdminpageController">
+<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.controllers.AdminpageController">
     <left>
         <VBox prefHeight="600.0" prefWidth="222.0" style="-fx-background-color: #69AF96;" BorderPane.alignment="CENTER">
             <children>
-                <Button mnemonicParsing="false" prefHeight="86.66" prefWidth="222.0" style="-fx-background-color: transaprent; -fx-border-color: white; -fx-border-width: 0px 0px 1px 0px;" text="SHTO SHTETIN" textFill="WHITE">
+                <Button mnemonicParsing="false" onMouseClicked="#shtoshtetin" prefHeight="86.66" prefWidth="222.0" style="-fx-background-color: transaprent; -fx-border-color: white; -fx-border-width: 0px 0px 1px 0px;" text="SHTO SHTETIN" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font></Button>
-                <Button mnemonicParsing="false" prefHeight="86.66" prefWidth="222.0" style="-fx-background-color: tra; -fx-border-color: white; -fx-border-width: 0px 0px 1px 0px;" text="SHTO KOMUNEN" textFill="WHITE">
+                <Button mnemonicParsing="false" onMouseClicked="#shtokomunen" prefHeight="86.66" prefWidth="222.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 1px 0px;" text="SHTO KOMUNEN" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font></Button>
-                <Button mnemonicParsing="false" prefHeight="87.0" prefWidth="254.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 1px 0px;" text="SHTO PROFESOR/KLASEN" textFill="WHITE">
+                <Button mnemonicParsing="false" onMouseClicked="#shtoprofesorKlasen" prefHeight="87.0" prefWidth="254.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 1px 0px;" text="SHTO PROFESOR/KLASEN" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font></Button>
-                <Button mnemonicParsing="false" prefHeight="86.66" prefWidth="222.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 1px 0px;" text="SHTO KLASEN" textFill="WHITE">
+                <Button mnemonicParsing="false" onMouseClicked="#shtoklasen" prefHeight="86.66" prefWidth="222.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 1px 0px;" text="SHTO KLASEN" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font></Button>
-                <Button mnemonicParsing="false" prefHeight="86.66" prefWidth="222.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 1px 0px;" text="SHTO LENDEN" textFill="WHITE">
+                <Button mnemonicParsing="false" onMouseClicked="#shtolenden" prefHeight="86.66" prefWidth="222.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 1px 0px;" text="SHTO LENDEN" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font></Button>
-            <Button mnemonicParsing="false" prefHeight="86.66" prefWidth="222.0" style="-fx-background-color: tra; -fx-border-color: white; -fx-border-width: 0px 0px 1px 0px;" text="SHTO KOMUNEN" textFill="WHITE">
+            <Button mnemonicParsing="false" onMouseClicked="#shtoprofesorLneden" prefHeight="86.66" prefWidth="222.0" style="-fx-background-color: tra; -fx-border-color: white; -fx-border-width: 0px 0px 1px 0px;" text="SHTO PROFESOR/LENDEN" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
@@ -52,6 +52,6 @@
          </children></HBox>
     </top>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+      <AnchorPane fx:id="ap" prefHeight="200.0" prefWidth="200.0" />
    </center>
 </BorderPane>
