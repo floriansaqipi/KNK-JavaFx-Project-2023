@@ -1,6 +1,7 @@
 package com.example.knk_project.controllers;
 
 
+import com.example.knk_project.HelloApplication;
 import com.example.knk_project.services.AdminiService;
 import com.example.knk_project.services.PasswordHasher;
 import com.example.knk_project.services.exceptions.IncorrectPasswordException;
@@ -14,12 +15,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 import java.sql.SQLException;
 
 public class LogInAdminiController {
-    private MainController mainController = new MainController();
+    private MainController mainController ;
 
     @FXML
     private TextField usernameTextField;
@@ -33,6 +36,10 @@ public class LogInAdminiController {
 
     private ValidatorInterface validatorSerice = new ValidatorService();
 
+    public void setMainController(MainController mainController) {
+        this.mainController = mainController;
+    }
+
     public void logInClick(){
         try {
 
@@ -41,8 +48,9 @@ public class LogInAdminiController {
         String password = passwordPasswordField.getText();
         this.adminiService.logIn(username,password);
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("admin-page-view"));
-        this.mainController.setMainPane(fxmlLoader.load());
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/knk_project/adminpage-view.fxml"));
+            BorderPane adminPagePane = fxmlLoader.load();
+            mainController.setMainPane(adminPagePane);
         }
         catch (ValidationException exception){
             exception.printStackTrace();
@@ -56,7 +64,8 @@ public class LogInAdminiController {
         } catch (SQLException exception){
             exception.printStackTrace();
             this.messageLabel.setText("Something went wrong with the database");
-        } catch (IOException exception) {
+        }
+        catch (IOException exception) {
             exception.printStackTrace();
             this.messageLabel.setText("Something went wrong with loader");
         }
