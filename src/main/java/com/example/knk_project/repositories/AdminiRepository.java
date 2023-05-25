@@ -14,9 +14,6 @@ public class AdminiRepository implements AdminiRepositoryInterface {
         String sql = "INSERT INTO admin(username, salt, salted_password) VALUES (?, ?, ?);";
         Connection connection = ConnectionUtil.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
-        System.out.println(createAdminiDto.getSalt());
-        System.out.println("===============================");
-        System.out.println(createAdminiDto.getSaltedPassword());
         statement.setString(1, createAdminiDto.getUsername());
         statement.setString(2, createAdminiDto.getSalt());
         statement.setString(3, createAdminiDto.getSaltedPassword());
