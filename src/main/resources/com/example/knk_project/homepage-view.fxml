@@ -14,7 +14,7 @@
 
 <BorderPane fx:id="homePagebp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.knk_project.controllers.homePageController">
+            fx:controller="com.example.knk_project.controllers.HomePageController">
     <top>
         <HBox fx:id="homePageHBox" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #69AF96;"
               BorderPane.alignment="CENTER">
