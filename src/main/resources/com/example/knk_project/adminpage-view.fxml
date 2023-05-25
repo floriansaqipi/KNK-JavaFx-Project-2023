@@ -43,7 +43,7 @@
     <top>
         <HBox prefHeight="80.0" prefWidth="900.0" style="-fx-background-color: #69AF96; -fx-border-color: white; -fx-border-width: 0px 0px 1px 0px;" BorderPane.alignment="CENTER">
          <children>
-            <Label prefHeight="79.0" prefWidth="778.0" text="NAME OF THE SYSTEM">
+            <Label prefHeight="79.0" prefWidth="779.0" text="NAME OF THE SYSTEM">
                <font>
                   <Font size="16.0" />
                </font>
