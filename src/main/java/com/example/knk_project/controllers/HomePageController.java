@@ -8,7 +8,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class homePageController {
+public class HomePageController {
 
     @FXML
     private MenuButton LogIn;
