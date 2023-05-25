@@ -8,27 +8,27 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.controllers.ProfesorPageController">
+<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.controllers.ProfesorPageController">
    <left>
       <VBox prefHeight="600.0" prefWidth="222.0" style="-fx-background-color: #69af96;" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" prefHeight="104.0" prefWidth="227.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 1px 0px;" text="SHTO NOTEN" textFill="WHITE">
+            <Button mnemonicParsing="false" onMouseClicked="#ShtoNoten" prefHeight="104.0" prefWidth="227.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 1px 0px;" text="SHTO NOTEN" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font></Button>
-            <Button mnemonicParsing="false" prefHeight="104.0" prefWidth="221.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 1px 0px;" text="NOTAT" textFill="WHITE">
+            <Button mnemonicParsing="false" onMouseClicked="#Notat" prefHeight="104.0" prefWidth="221.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 1px 0px;" text="NOTAT" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font></Button>
-            <Button mnemonicParsing="false" prefHeight="104.0" prefWidth="222.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 1px 0px;" text="SHIKO LENDET E MIA" textFill="WHITE">
+            <Button mnemonicParsing="false" onMouseClicked="#ShikoLendet" prefHeight="104.0" prefWidth="222.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 1px 0px;" text="SHIKO LENDET E MIA" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font></Button>
-            <Button mnemonicParsing="false" prefHeight="104.0" prefWidth="223.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 1px 0px;" text="KLASAT E MIA" textFill="WHITE">
+            <Button mnemonicParsing="false" onMouseClicked="#KlasatEmia" prefHeight="104.0" prefWidth="223.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 1px 0px;" text="KLASAT E MIA" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font></Button>
-            <Button mnemonicParsing="false" prefHeight="104.0" prefWidth="223.0" style="-fx-background-color: transparent;" text="PROFILI" textFill="WHITE">
+            <Button mnemonicParsing="false" onMouseClicked="#ShikoProfilin" prefHeight="104.0" prefWidth="223.0" style="-fx-background-color: transparent;" text="PROFILI" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font></Button>
@@ -47,6 +47,6 @@
          </children></HBox>
    </top>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <AnchorPane fx:id="ap" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>
