@@ -47,7 +47,7 @@ public class ProfesorPageController implements Initializable {
     }
     @FXML
     public void ShikoProfilin(MouseEvent event) {
-
+      loadPage("profile-professor-view");
     }
     public void LogOut(MouseEvent event) {
         try {
