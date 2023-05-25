@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class LogInNxenesiController {
+    private MainController mainController;
     @FXML
     private TextField usernameTextField;
     @FXML
@@ -27,7 +28,6 @@ public class LogInNxenesiController {
     private NxenesiServiceInterface nxenesiService = new NxenesiService();
 
     private ValidatorInterface validatorSerice = new ValidatorService();
-    private MainController mainController = new MainController();
 
     public void logInClick(){
         try{
@@ -62,5 +62,9 @@ public class LogInNxenesiController {
         this.validatorSerice.validateGeneralPasswordField(passwordPasswordField);
         this.validatorSerice.throwIfInvalid();
 
+    }
+
+    public void setMainController(MainController mainController) {
+        this.mainController = mainController;
     }
 }
