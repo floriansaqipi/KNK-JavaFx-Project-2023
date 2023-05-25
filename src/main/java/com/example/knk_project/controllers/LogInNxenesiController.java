@@ -60,7 +60,7 @@ public class LogInNxenesiController {
     private void validateInputs() throws ValidationException {
         this.validatorSerice.validateTextField(usernameTextField);
         this.validatorSerice.validateGeneralPasswordField(passwordPasswordField);
-            this.validatorSerice.throwIfInvalid();
+        this.validatorSerice.throwIfInvalid();
 
     }
 
