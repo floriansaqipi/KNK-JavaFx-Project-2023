@@ -1,11 +1,14 @@
 package com.example.knk_project.repositories.interfaces;
 
+import com.example.knk_project.models.Komuna;
+import com.example.knk_project.models.Lenda;
 import com.example.knk_project.models.dto.CreateKomunaDto;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public interface KomunaRepositoryInterface {
 
-
     void insert(CreateKomunaDto createKomunaDto) throws SQLException;
+    List<Komuna> getAllKomunat() throws SQLException;
 }
