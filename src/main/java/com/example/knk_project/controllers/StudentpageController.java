@@ -33,7 +33,7 @@ public class StudentpageController implements Initializable {
     }
 
     public void profili(MouseEvent event) {
-        loadPage("shto-shtetin-view");
+        loadPage("profilistudent-view");
     }
     @FXML
     private void loadPage(String page) {
