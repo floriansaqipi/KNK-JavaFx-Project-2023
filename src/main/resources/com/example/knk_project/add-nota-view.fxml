@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.knk_project.AddNotaView"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.controllers.AddGradeController">
+   <children>
+      <Label alignment="CENTER" layoutX="204.0" layoutY="14.0" prefHeight="44.0" prefWidth="208.0" text="ADD GRADE">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Label fx:id="messageLabel" alignment="CENTER" layoutX="255.0" layoutY="58.0" prefHeight="18.0" prefWidth="89.0" text="Message" />
+      <Spinner fx:id="vleraNotesSpinner" layoutX="188.0" layoutY="101.0" prefHeight="26.0" prefWidth="260.0" style="-fx-background-radius: 20; -fx-pref-width: 260; -fx-pref-height: 30;" />
+      <Label layoutX="188.0" layoutY="82.0" prefHeight="18.0" prefWidth="89.0" text="Vlera e notës :" />
+      <ComboBox fx:id="lendaComboBox" layoutX="188.0" layoutY="251.0" prefWidth="150.0" promptText="Zgjedh Lëndën" style="-fx-pref-width: 260; -fx-background-radius: 20; -fx-pref-height: 30;" visibleRowCount="5" />
+      <ComboBox fx:id="nxenesiComboBox" layoutX="188.0" layoutY="291.0" prefWidth="150.0" promptText="Zgjedh Nxenesin" style="-fx-pref-width: 260; -fx-background-radius: 20; -fx-pref-height: 30;" visibleRowCount="5" />
+      <Button layoutX="188.0" layoutY="355.0" mnemonicParsing="false" onAction="#shtoNotenClick" prefHeight="30.0" prefWidth="260.0" style="-fx-background-radius: 20px;" text="Shto Notën" />
+      <Spinner fx:id="rubrikaSpinner" layoutX="188.0" layoutY="155.0" prefHeight="26.0" prefWidth="260.0" style="-fx-background-radius: 20; -fx-pref-width: 260; -fx-pref-height: 30;" />
+      <Label layoutX="188.0" layoutY="136.0" prefHeight="18.0" prefWidth="89.0" text="Rubrika :" />
+      <Label layoutX="188.0" layoutY="191.0" prefHeight="18.0" prefWidth="89.0" text="Gjysmëvjetori :" />
+      <Spinner fx:id="gjysmevjetoriSpinner" layoutX="188.0" layoutY="209.0" prefHeight="26.0" prefWidth="260.0" style="-fx-background-radius: 20; -fx-pref-width: 260; -fx-pref-height: 30;" />
+   </children>
 </AnchorPane>

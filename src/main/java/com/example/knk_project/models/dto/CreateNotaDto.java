@@ -1,7 +1,7 @@
 package com.example.knk_project.models.dto;
 
 public class CreateNotaDto {
-        private int id;
+
         private int vlera;
         private int rubrika;
         private int gjysmevjetori;
@@ -9,8 +9,8 @@ public class CreateNotaDto {
         private int lendaId;
         private int nxenesiId;
 
-        public CreateNotaDto(int id, int vlera, int rubrika, int gjysmevjetori, int profesoriId, int lendaId, int nxenesiId) {
-            this.id = id;
+        public CreateNotaDto(int vlera, int rubrika, int gjysmevjetori, int profesoriId, int lendaId, int nxenesiId) {
+
             this.vlera = vlera;
             this.rubrika = rubrika;
             this.gjysmevjetori = gjysmevjetori;
@@ -19,9 +19,6 @@ public class CreateNotaDto {
             this.nxenesiId = nxenesiId;
         }
 
-        public int getId() {
-            return id;
-        }
 
         public int getVlera() {
             return vlera;
