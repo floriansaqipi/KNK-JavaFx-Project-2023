@@ -4,9 +4,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -22,6 +25,8 @@ public class ProfesorPageController implements Initializable {
 
     @FXML
     private BorderPane bp;
+    @FXML
+    private Button logOutButton;
 
 
     @FXML
@@ -44,7 +49,25 @@ public class ProfesorPageController implements Initializable {
     public void ShikoProfilin(MouseEvent event) {
 
     }
+    public void LogOut(MouseEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/knk_project/homepage-view.fxml"));
+            Parent root = loader.load();
 
+            // Create a new stage
+            Stage stage = new Stage();
+            stage.setTitle("Homepage");
+            stage.setScene(new Scene(root));
+            stage.show();
+
+            // Close the current stage
+            Stage currentStage = (Stage) logOutButton.getScene().getWindow();
+            currentStage.close();
+        } catch (IOException ex) {
+            Logger.getLogger(ProfesorPageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
 
     private void loadPage(String page){
         Parent root = null;
@@ -56,8 +79,12 @@ public class ProfesorPageController implements Initializable {
         bp.setCenter(root);
     }
 
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
+
+
 }
