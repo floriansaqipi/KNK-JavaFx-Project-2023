@@ -24,15 +24,19 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/knk_project/log-in-admin-view.fxml"));
-//        try {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/knk_project/homepage-view.fxml"));
+        try {
+        BorderPane borderPane = fxmlLoader.load();
+        HomePageController homePageController = fxmlLoader.getController();
+        homePageController.setMainController(this);
+        this.setMainPane(borderPane);
 //            LogInAdminiController logInAdminiController = fxmlLoader.getController();
 //            logInAdminiController.setMainController(this);
 //            this.setMainPane(anchorPane);
-//
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
 

@@ -21,6 +21,7 @@ import java.sql.SQLException;
 
 
 public class LogInProfesoriController {
+    private MainController mainController;
     @FXML
     private TextField usernameTextField;
 
@@ -32,8 +33,7 @@ public class LogInProfesoriController {
 
     private ProfesoriServiceInterface profesoriService = new ProfesoriService();
 
-    private ValidatorInterface validatorSerice = new ValidatorService();
-    private MainController mainController = new MainController();
+    private ValidatorInterface validatorService = new ValidatorService();
 
     public void logInClick(){
         this.validateInputs();
@@ -62,10 +62,10 @@ public class LogInProfesoriController {
     }
 
     private void validateInputs(){
-        this.validatorSerice.validateTextField(usernameTextField);
-        this.validatorSerice.validatePasswordField(passwordPasswordField);
+        this.validatorService.validateTextField(usernameTextField);
+        this.validatorService.validatePasswordField(passwordPasswordField);
         try {
-            this.validatorSerice.throwIfInvalid();
+            this.validatorService.throwIfInvalid();
         } catch (ValidationException exception){
             exception.printStackTrace();
             this.messageLabel.setText("Invalid inputs");
@@ -73,5 +73,7 @@ public class LogInProfesoriController {
     }
 
 
-
+    public void setMainController(MainController mainController) {
+        this.mainController = mainController;
+    }
 }
