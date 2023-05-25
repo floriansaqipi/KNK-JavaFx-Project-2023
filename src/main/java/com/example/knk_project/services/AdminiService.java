@@ -33,6 +33,7 @@ public class AdminiService implements AdminiServiceInterface {
         if(admini == null){
             throw new UserNotFoundException("User does not exist");
         }
+
         boolean isPasswordCorrect =
                 PasswordHasher.compareSaltedHash(password, admini.getSalt(), admini.getSaltedPassword());
         if(!isPasswordCorrect){

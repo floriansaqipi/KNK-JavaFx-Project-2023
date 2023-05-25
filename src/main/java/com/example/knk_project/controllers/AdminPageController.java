@@ -12,43 +12,54 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-
-
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ProfesorPageController implements Initializable {
+public class AdminPageController implements Initializable {
     @FXML
     private AnchorPane ap;
-
     @FXML
     private BorderPane bp;
     @FXML
     private Button logOutButton;
 
+    public void shtoshtetin(MouseEvent event) {
+        loadPage("shto-shtetin-view");
+    }
 
-    @FXML
-    public void ShtoNoten(MouseEvent event) {
-        loadPage("add-grade-view");
+    public void shtokomunen(MouseEvent event) {
+        loadPage("shto-komuna-view");
     }
-    @FXML
-    public void Notat(MouseEvent event) {
-        loadPage("transcript");
+
+    public void shtoklasen(MouseEvent event) {
+        loadPage("add-class-view");
     }
-    @FXML
-    public void ShikoLendet(MouseEvent event) {
+
+
+    public void shtolenden(MouseEvent event) {
+        loadPage("shto-lenden-view");
+    }
+
+    public void shtoProfesorLenden(MouseEvent event) {
         loadPage("shto-profesor-lenda-view");
     }
-    @FXML
-    public void KlasatEmia(MouseEvent event) {
+
+    public void shtoProfesorKlasen(MouseEvent event) {
         loadPage("add-profesor-klasa-view");
     }
     @FXML
-    public void ShikoProfilin(MouseEvent event) {
-      loadPage("profile-professor-view");
+    private void loadPage(String page) {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/com/example/knk_project/" + page + ".fxml"));
+        } catch (IOException ex){
+            Logger.getLogger(AdminPageController.class.getName()).log(Level.SEVERE,null,ex);
+        }
+        bp.setCenter(root);
     }
+
     public void LogOut(MouseEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/knk_project/homepage-view.fxml"));
@@ -68,23 +79,8 @@ public class ProfesorPageController implements Initializable {
         }
 
     }
-
-    private void loadPage(String page){
-        Parent root = null;
-        try {
-            root = FXMLLoader.load(getClass().getResource("/com/example/knk_project/"+page + ".fxml"));
-        } catch (IOException ex) {
-            Logger.getLogger(ProfesorPageController.class.getName()).log(Level.SEVERE,null,ex);
-        }
-        bp.setCenter(root);
-    }
-
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
-
-
 }

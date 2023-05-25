@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class StudentpageController implements Initializable {
+public class StudentPageController implements Initializable {
     @FXML
     private AnchorPane ap;
     @FXML
@@ -41,7 +41,7 @@ public class StudentpageController implements Initializable {
         try {
             root = FXMLLoader.load(getClass().getResource("/com/example/knk_project/" + page + ".fxml"));
         } catch (IOException ex){
-            Logger.getLogger(StudentpageController.class.getName()).log(Level.SEVERE,null,ex);
+            Logger.getLogger(StudentPageController.class.getName()).log(Level.SEVERE,null,ex);
         }
         bp.setCenter(root);
     }

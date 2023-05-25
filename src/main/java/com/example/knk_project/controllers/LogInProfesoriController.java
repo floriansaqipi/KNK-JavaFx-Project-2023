@@ -8,10 +8,12 @@ import com.example.knk_project.services.interfaces.ProfesoriServiceInterface;
 import com.example.knk_project.services.interfaces.ValidatorInterface;
 import com.example.knk_project.services.validators.ValidatorService;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 
@@ -31,6 +33,7 @@ public class LogInProfesoriController {
     private ProfesoriServiceInterface profesoriService = new ProfesoriService();
 
     private ValidatorInterface validatorSerice = new ValidatorService();
+    private MainController mainController = new MainController();
 
     public void logInClick(){
         this.validateInputs();
@@ -39,6 +42,9 @@ public class LogInProfesoriController {
         try{
 
             this.profesoriService.logIn(username,password);
+            this.messageLabel.setText("Log in was successfull");
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("admin-page-view"));
+            this.mainController.setMainPane(fxmlLoader.load());
         }catch (UserNotFoundException exception){
             exception.printStackTrace();
             this.messageLabel.setText("User by username doesn't exist");
@@ -48,6 +54,9 @@ public class LogInProfesoriController {
         } catch (SQLException exception){
             exception.printStackTrace();
             this.messageLabel.setText("Something went wrong with the database");
+        } catch (IOException exception) {
+            exception.printStackTrace();
+            this.messageLabel.setText("Something went wrong with loader");
         }
 
     }

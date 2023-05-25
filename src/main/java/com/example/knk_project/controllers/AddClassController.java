@@ -17,7 +17,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class addClassController implements Initializable {
+public class AddClassController implements Initializable {
 
 
     @FXML
@@ -47,30 +47,29 @@ public class addClassController implements Initializable {
 
     @FXML
     void addClassClick() {
-        this.validateInputs();
+
 
         CreateKlasaDto createKlasaDto = this.initilializeCreateKlasaDto();
 
         try {
-
+            this.validateInputs();
             this.klasaService.register(createKlasaDto);
             this.messageLabel.setText("Succesfully added class");
 
+        } catch (ValidationException exception) {
+            exception.printStackTrace();
+            this.messageLabel.setText("Invalid inputs");
         } catch (SQLException exception) {
             exception.printStackTrace();
             this.messageLabel.setText("Something went wrong with the database");
         }
     }
 
-    private void validateInputs() {
+    private void validateInputs() throws ValidationException {
 
         this.validator.validateVitiShkollorTextField(vitiShkollorTextField);
-        try {
-            this.validator.throwIfInvalid();
-        } catch (ValidationException exception) {
-            exception.printStackTrace();
-            this.messageLabel.setText("Invalid inputs");
-        }
+        this.validator.throwIfInvalid();
+
     }
 
 
