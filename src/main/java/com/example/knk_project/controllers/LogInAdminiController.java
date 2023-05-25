@@ -65,7 +65,7 @@ public class LogInAdminiController {
 
     private void validateInputs() throws ValidationException {
         this.validatorSerice.validateTextField(usernameTextField);
-//        this.validatorSerice.validatePasswordField(passwordPasswordField);
+        this.validatorSerice.validateGeneralPasswordField(passwordPasswordField);
         this.validatorSerice.throwIfInvalid();
 
     }
