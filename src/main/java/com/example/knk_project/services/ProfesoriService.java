@@ -10,9 +10,10 @@ import com.example.knk_project.services.exceptions.UserNotFoundException;
 import com.example.knk_project.services.interfaces.ProfesoriServiceInterface;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class ProfesoriService implements ProfesoriServiceInterface {
-    private ProfesoriRepositoryInterface ProfesoriRepository = new ProfesoriRepository();
+    private ProfesoriRepositoryInterface profesoriRepository = new ProfesoriRepository();
 
     @Override
     public void signUp(CreateProfesoriDto createProfesoriDto)
@@ -20,16 +21,16 @@ public class ProfesoriService implements ProfesoriServiceInterface {
     {
 
         String username = createProfesoriDto.getUsername();
-        if(this.ProfesoriRepository.getProfesoriByUsername(username) != null){
+        if(this.profesoriRepository.getProfesoriByUsername(username) != null){
             throw new UserAlreadyExistsException("Username already taken!");
         }
-        this.ProfesoriRepository.insert(createProfesoriDto);
+        this.profesoriRepository.insert(createProfesoriDto);
     }
 
     @Override
     public void logIn(String username, String password)
             throws UserNotFoundException, IncorrectPasswordException,SQLException {
-        Profesori Profesori = this.ProfesoriRepository.getProfesoriByUsername(username);
+        Profesori Profesori = this.profesoriRepository.getProfesoriByUsername(username);
         if(Profesori == null){
             throw new UserNotFoundException("User does not exist");
         }
@@ -38,5 +39,10 @@ public class ProfesoriService implements ProfesoriServiceInterface {
         if(!isPasswordCorrect){
             throw new IncorrectPasswordException("Incorrect password");
         }
+    }
+
+    @Override
+    public List<Profesori> getAllProfesoret() throws SQLException {
+        return this.profesoriRepository.getAllProfesoret();
     }
 }

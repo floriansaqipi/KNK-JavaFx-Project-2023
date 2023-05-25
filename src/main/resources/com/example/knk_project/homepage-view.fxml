@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="homePagebp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.knk_project.controllers.homePageController">
+    <top>
+        <HBox fx:id="homePageHBox" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #69AF96;"
+              BorderPane.alignment="CENTER">
+            <children>
+                <Label text="Name of the system">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Label>
+            </children>
+        </HBox>
+    </top>
+    <left>
+        <VBox fx:id="homePageVBox" prefHeight="490.0" prefWidth="166.0" style="-fx-background-color: #69AF96;"
+              BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fx:id="homePageLogo" fitHeight="89.0" fitWidth="209.0" nodeOrientation="INHERIT"
+                           opacity="0.36" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@homeimage.png"/>
+                    </image>
+                    <viewport>
+                        <Rectangle2D height="170.0" width="350.0"/>
+                    </viewport>
+                </ImageView>
+            </children>
+        </VBox>
+    </left>
+    <center>
+        <AnchorPane fx:id="anchorePaneHomePage" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fx:id="homePageImage" cache="true" fitHeight="507.0" fitWidth="756.0" layoutX="38.0"
+                           layoutY="4.0" opacity="0.21" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@exam-student-graduation-university.jpg"/>
+                    </image>
+                    <viewport>
+                        <Rectangle2D height="600.0" width="900.0"/>
+                    </viewport>
+                </ImageView>
+                <Label layoutX="128.0" layoutY="57.0" text="Welcome!" textFill="#7b7575">
+                    <font>
+                        <Font name="Calibri" size="36.0"/>
+                    </font>
+                </Label>
+                <MenuButton fx:id="LogIn" alignment="CENTER" layoutX="481.0" layoutY="143.0" mnemonicParsing="false"
+                            prefHeight="37.0" prefWidth="114.0" style="-fx-background-radius: 20;" text="Log In">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Admin"/>
+                        <MenuItem mnemonicParsing="false" text="Professor"/>
+                        <MenuItem mnemonicParsing="false" text="Student"/>
+                    </items>
+                    <font>
+                        <Font name="System Bold" size="12.0"/>
+                    </font>
+                </MenuButton>
+                <MenuButton fx:id="signUp" alignment="CENTER" layoutX="119.0" layoutY="143.0" mnemonicParsing="false"
+                            prefHeight="37.0" prefWidth="114.0" style="-fx-background-radius: 20;" text="Sign Up">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Admin"/>
+                        <MenuItem mnemonicParsing="false" text="Professor"/>
+                        <MenuItem mnemonicParsing="false" text="Student"/>
+                    </items>
+                    <font>
+                        <Font name="System Bold" size="12.0"/>
+                    </font>
+                </MenuButton>
+                <Label layoutX="344.0" layoutY="153.0" text="Already have an account"/>
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>

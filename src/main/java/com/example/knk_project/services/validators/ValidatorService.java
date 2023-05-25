@@ -147,8 +147,6 @@ public class ValidatorService implements ValidatorInterface {
     @Override
     public void validateMatchingPasswords(PasswordField passwordField, PasswordField confirmPasswordField)
             throws DifferentPasswordsException {
-        System.out.println(passwordField.getText());
-        System.out.println(confirmPasswordField.getText());
                 if(!passwordField.getText().trim().equals(confirmPasswordField.getText().trim())){
                     this.setErrorStyle(passwordField);
                     this.setErrorStyle(confirmPasswordField);

@@ -11,7 +11,7 @@ public class AdminiRepository implements AdminiRepositoryInterface {
 
     @Override
     public void insert(CreateAdminiDto createAdminiDto) throws SQLException {
-        String sql = "INSERT INTO admin(username, salt, salted_password) VALUES (?, ?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO admin(username, salt, salted_password) VALUES (?, ?, ?);";
         Connection connection = ConnectionUtil.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setString(1, createAdminiDto.getUsername());

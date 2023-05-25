@@ -11,3 +11,19 @@ shto-lenden-view        TODO: Erza M
 shto-noten-view         TODO: Erza M
 shto-profesorit-lenden  TODO: Erza B
 shto-profesorit-klasen  TODO: Fjolla
+
+
+TODO: NAVBAR: profil Admin-page Shto shtetin/klasen/komunen/lenden profesor-klasen / profesor-lenden LOGOUT
+TODO: NAVBAR: Profesori page Shto noten/ Notat / shiko lendet e mia / klasat e mia/ profili
+Tabela
+ADD note
+Filters ==========================
+searchBox() |  gjysemvjetori   |   Lenda | Vlera notes | viti |
+________________________________________________
+Id, Vlera e notes, Lenda, Nxenesi, gjysemvjetori, //rubrika, viti    EDIT DELETE
+________________________________________________________
+
+1|2|3|4|5|6|
+
+TODO: Nxenesi Transkripta(Notat) / Shiko Klasen / Profili /
+

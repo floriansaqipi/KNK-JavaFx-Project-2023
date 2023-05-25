@@ -1,10 +1,10 @@
 package com.example.knk_project.models;
 
-public class profesoriKlasa {
+public class ProfesoriKlasa {
     private int profesoriId;
     private int klasaId;
 
-    public profesoriKlasa(int profesoriId, int klasaId) {
+    public ProfesoriKlasa(int profesoriId, int klasaId) {
         this.profesoriId = profesoriId;
         this.klasaId = klasaId;
     }
