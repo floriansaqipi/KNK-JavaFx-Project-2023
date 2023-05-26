@@ -24,16 +24,31 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+       try{
+           this.intializeSetHomePage();
+       } catch (IOException e) {
+           throw new RuntimeException(e);
+       }
+    }
+
+    private void intializeSetHomePage() throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/knk_project/homepage-view.fxml"));
-        try {
-        BorderPane borderPane = fxmlLoader.load();
-        HomePageController homePageController = fxmlLoader.getController();
-        homePageController.setMainController(this);
-        this.setMainPane(borderPane);
+
+            BorderPane borderPane = fxmlLoader.load();
+            HomePageController homePageController = fxmlLoader.getController();
+            homePageController.setMainController(this);
+            this.setMainPane(borderPane);
 //            LogInAdminiController logInAdminiController = fxmlLoader.getController();
 //            logInAdminiController.setMainController(this);
 //            this.setMainPane(anchorPane);
 
+
+    }
+
+    public void reset(){
+        try{
+
+        this.intializeSetHomePage();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

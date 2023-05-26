@@ -13,6 +13,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.w3c.dom.events.MouseEvent;
 
@@ -115,21 +116,19 @@ public class HomePageController implements Initializable {
 
 
     public void GoBack(javafx.scene.input.MouseEvent mouseEvent) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/knk_project/homepage-view.fxml"));
-            Parent root = loader.load();
-
-            // Create a new stage
-            Stage stage = new Stage();
-            stage.setTitle("Homepage");
-            stage.setScene(new Scene(root));
-            stage.show();
+//        try {
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/knk_project/homepage-view.fxml"));
+//            BorderPane root = loader.load();
+            this.mainController.reset();
+//            this.mainController.setMainPane(root);
+//            this.setMainController(mainController);
+//            this.mainController.setMainPane(root);
 
             // Close the current stage
-            Stage currentStage = (Stage) goBackButton.getScene().getWindow();
-            currentStage.close();
-        } catch (IOException ex) {
-            Logger.getLogger(ProfesorPageController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//            Stage currentStage = (Stage) goBackButton.getScene().getWindow();
+//            currentStage.close();
+//        } catch (IOException ex) {
+//            Logger.getLogger(ProfesorPageController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 }

@@ -12,7 +12,7 @@
         public void start(Stage stage) throws IOException {
 
 
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("admin-dashboard.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("main-controller-view.fxml"));
 
             Scene scene = new Scene(fxmlLoader.load());
             stage.setTitle("Hello!");

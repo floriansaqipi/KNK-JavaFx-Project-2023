@@ -112,7 +112,7 @@ public class NxenesiRepository implements NxenesiRepositoryInterface {
 
         List<Nxenesi> nxenesit = new ArrayList<>();
 
-        while (resultSet.next()){
+        while (resultSet.next()) {
             nxenesit.add(
                     new Nxenesi(
                             resultSet.getInt(1),
@@ -131,6 +131,7 @@ public class NxenesiRepository implements NxenesiRepositoryInterface {
             );
         }
         return nxenesit;
+    }
 
     public int getNumberOfNxenesve() throws SQLException {
         String sql = "SELECT COUNT(*) FROM nxenesit;";
