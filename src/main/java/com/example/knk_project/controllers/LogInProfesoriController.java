@@ -68,9 +68,9 @@ public class LogInProfesoriController {
         this.mainController = mainController;
     }
     private void validateInputs() throws ValidationException {
-        this.validatorSerice.validateTextField(usernameTextField);
-        this.validatorSerice.validateGeneralPasswordField(passwordPasswordField);
-        this.validatorSerice.throwIfInvalid();
+        this.validatorService.validateTextField(usernameTextField);
+        this.validatorService.validateGeneralPasswordField(passwordPasswordField);
+        this.validatorService.throwIfInvalid();
     }
 
 }
