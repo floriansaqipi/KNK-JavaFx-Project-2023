@@ -52,11 +52,8 @@ public class ProfesorPageController implements Initializable {
     }
     @FXML
     public void Notat(MouseEvent event) {
-        loadPage("transcript");
+        loadPage("table-nota-view-new");
     }
-
-
-
     @FXML
     public void ShikoProfilin(MouseEvent event) {
       loadPage("profile-professor-view");

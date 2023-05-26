@@ -50,13 +50,31 @@ public class AdminPageController implements Initializable {
     public void shtoProfesorKlasen(MouseEvent event) {
         loadPage("add-profesor-klasa-view");
     }
+    public void tabelakomuna(MouseEvent event) {
+        loadPage("table-komuna-view");
+    }
+    public void tabelashteti(MouseEvent event) {
+        loadPage("table-shteti-view");
+    }
+
+
+    public void tabelaprofesorlenda(MouseEvent event) {
+        loadPage("table-profesor-lenda-view");
+    }
+
+
+    public void tabelaprofesorklasa(MouseEvent event) {
+        loadPage("table-profesor-klasa-view");
+    }
+
+
     @FXML
     private void loadPage(String page) {
         Parent root = null;
         try {
             root = FXMLLoader.load(getClass().getResource("/com/example/knk_project/" + page + ".fxml"));
-        } catch (IOException ex){
-            Logger.getLogger(AdminPageController.class.getName()).log(Level.SEVERE,null,ex);
+        } catch (IOException ex) {
+            Logger.getLogger(AdminPageController.class.getName()).log(Level.SEVERE, null, ex);
         }
         bp.setCenter(root);
     }
@@ -80,8 +98,10 @@ public class AdminPageController implements Initializable {
         }
 
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
+
 }

@@ -32,7 +32,7 @@
    <left>
       <Pane prefHeight="200.0" prefWidth="222.0" style="-fx-background-color: #150050;" BorderPane.alignment="CENTER">
          <children>
-            <VBox layoutY="98.0" prefHeight="314.0" prefWidth="222.0">
+            <VBox layoutY="47.0" prefHeight="420.0" prefWidth="222.0">
                <children>
                   <JFXButton onMouseClicked="#shtoshtetin" prefHeight="42.0" prefWidth="222.0" text="SHTO SHTETIN" textFill="WHITE">
                      <font>
@@ -60,6 +60,26 @@
                      </font>
                   </JFXButton>
                   <JFXButton onMouseClicked="#shtoProfesorKlasen" prefHeight="40.0" prefWidth="222.0" text="SHTO PROFESOR/KLASEN" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton onMouseClicked="#tabelakomuna" prefHeight="40.0" prefWidth="224.0" text="TABELA KOMUNA" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton onMouseClicked="#tabelashteti" prefHeight="42.0" prefWidth="225.0" text="TABELA SHTETI" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton onMouseClicked="#tabelaprofesorlenda" prefHeight="41.0" prefWidth="225.0" text="TABELA PROFESOR/LENDA" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton onMouseClicked="#tabelaprofesorklasa" prefHeight="42.0" prefWidth="228.0" text="TABELA PROFESOR/KLASA" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
