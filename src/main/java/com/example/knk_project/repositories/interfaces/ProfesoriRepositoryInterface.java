@@ -10,6 +10,8 @@ import java.util.List;
 public interface ProfesoriRepositoryInterface {
     public void insert(CreateProfesoriDto createProfesoriDto) throws SQLException;
     public Profesori getProfesoriByUsername(String username) throws SQLException;
+    public Profesori getProfesoriById(int profesoriId) throws SQLException;
 
     public List<Profesori> getAllProfesoret() throws SQLException;
+    int getNumberOfProfesoreve() throws SQLException;
 }

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.knk_project.controllers.TableShtetiController">
+    <children>
+        <Label layoutX="197.0" layoutY="44.0" text="Tabela Shteti">
+            <font>
+                <Font size="30.0"/>
+            </font>
+        </Label>
+        <TableView fx:id="shtetiTableView" layoutX="80.0" layoutY="115.0" prefHeight="250.0" prefWidth="450.0">
+        </TableView>
+    </children>
+</AnchorPane>

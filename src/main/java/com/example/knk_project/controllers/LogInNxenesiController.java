@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -36,8 +37,9 @@ public class LogInNxenesiController {
         String username = usernameTextField.getText();
         String password = passwordPasswordField.getText();
         this.nxenesiService.logIn(username,password);
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("admin-page-view"));
-            this.mainController.setMainPane(fxmlLoader.load());
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/knk_project/studentpage-view.fxml"));
+            BorderPane nxenesiPagePane = fxmlLoader.load();
+            mainController.setMainPane(nxenesiPagePane);
         }catch (ValidationException exception){
             exception.printStackTrace();
             this.messageLabel.setText("Invalid inputs");

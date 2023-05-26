@@ -1,5 +1,6 @@
 package com.example.knk_project.controllers;
 
+import com.example.knk_project.models.Profesori;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,6 +21,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ProfesorPageController implements Initializable {
+    private Profesori profesori ;
     @FXML
     private AnchorPane ap;
 
@@ -28,22 +30,29 @@ public class ProfesorPageController implements Initializable {
     @FXML
     private Button logOutButton;
 
+    public void setProfesori(Profesori profesori) {
+        this.profesori = profesori;
+    }
 
     @FXML
     public void ShtoNoten(MouseEvent event) {
-        loadPage("add-grade-view");
+
+        AnchorPane root = null;
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/knk_project/" + "add-nota-view" + ".fxml"));
+            root =  fxmlLoader.load();
+            AddGradeController addGradeController = fxmlLoader.getController();
+            addGradeController.setProfesori(this.profesori);
+            addGradeController.initData();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        bp.setCenter(root);
+
     }
     @FXML
     public void Notat(MouseEvent event) {
-        loadPage("transcript");
-    }
-    @FXML
-    public void ShikoLendet(MouseEvent event) {
-        loadPage("shto-profesor-lenda-view");
-    }
-    @FXML
-    public void KlasatEmia(MouseEvent event) {
-        loadPage("add-profesor-klasa-view");
+        loadPage("table-nota-view-new");
     }
     @FXML
     public void ShikoProfilin(MouseEvent event) {
@@ -85,6 +94,7 @@ public class ProfesorPageController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
+
 
 
 }

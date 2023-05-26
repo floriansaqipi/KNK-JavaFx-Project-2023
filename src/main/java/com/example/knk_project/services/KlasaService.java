@@ -21,4 +21,16 @@ public class KlasaService implements KlasaServiceInterface {
         return this.klasaRepository.getAllKlasat();
     }
 
+    @Override
+
+    public List<Klasa> getAllKlasatByProfesorId(int profesoriId) throws SQLException {
+        return this.klasaRepository.getAllKlasatByProfesorId(profesoriId);
+    }
+
+
+    public int getNumberOfKlaseve() throws SQLException {
+        return this.klasaRepository.getNumberOfKlaseve();
+    }
+
+
 }

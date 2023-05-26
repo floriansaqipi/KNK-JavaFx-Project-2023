@@ -1,5 +1,6 @@
 package com.example.knk_project.repositories;
 
+import com.example.knk_project.models.Klasa;
 import com.example.knk_project.models.Lenda;
 import com.example.knk_project.models.Profesori;
 import com.example.knk_project.models.dto.CreateLendaDto;
@@ -44,5 +45,28 @@ public class LendaRepository implements LendaRepositoryInterface {
         }
         return lendet;
 
+    }
+
+    @Override
+    public List<Lenda> getAllLendetByProfesoriId(int profesoriId) throws SQLException {
+        String sql = "SELECT l.* FROM lendet l INNER JOIN profesoret_lendet pl ON l.id = pl.lenda_id WHERE " +
+                " pl.profesori_id =  ? ;";
+        Connection connection = ConnectionUtil.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1,profesoriId);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        List<Lenda> lendet = new ArrayList<>();
+
+        while (resultSet.next()){
+            lendet.add(
+                    new Lenda(
+                            resultSet.getInt(1),
+                            resultSet.getString(2)
+                    )
+            );
+        }
+        return lendet;
     }
 }
