@@ -19,15 +19,15 @@ public class TableNotaControllerNew {
     public void initialize() {
         // Create table columns
 
-        TableColumn<Nota, Integer> idColumn = new TableColumn<>("ID");
-        TableColumn<Nota, Integer> vleraColumn = new TableColumn<>("Vlera");
-        TableColumn<Nota, Integer> rubrikaColumn = new TableColumn<>("Rubrika");
-        TableColumn<Nota, Integer> gjysmevjetoriColumn = new TableColumn<>("Gjysmevjetori");
-        TableColumn<Nota, Integer> profesori_idColumn = new TableColumn<>("Profesori_id");
-        TableColumn<Nota, Integer> lenda_idColumn = new TableColumn<>("Lenda_id");
-        TableColumn<Nota, Integer> nxenesi_idColumn = new TableColumn<>("Nxenesi_id");
-        TableColumn<Nota, Void> editColumn = new TableColumn<>("Edit");
-        TableColumn<Nota, Void> deleteColumn = new TableColumn<>("Delete");
+        TableColumn<TableNotaControllerNew.Nota, Integer> idColumn = new TableColumn<>("ID");
+        TableColumn<TableNotaControllerNew.Nota,Integer> vleraColumn = new TableColumn<>("Vlera");
+        TableColumn<TableNotaControllerNew.Nota,Integer> rubrikaColumn = new TableColumn<>("Rubrika");
+        TableColumn<TableNotaControllerNew.Nota,Integer> gjysmevjetoriColumn = new TableColumn<>("Gjysmevjetori");
+        TableColumn<TableNotaControllerNew.Nota,Integer> profesori_idColumn = new TableColumn<>("Profesori_id");
+        TableColumn<TableNotaControllerNew.Nota,Integer> lenda_idColumn = new TableColumn<>("Lenda_id");
+        TableColumn<TableNotaControllerNew.Nota,Integer> nxenesi_idColumn = new TableColumn<>("Nxenesi_id");
+        TableColumn<TableNotaControllerNew.Nota,Void> editColumn = new TableColumn<>("Edit");
+        TableColumn<TableNotaControllerNew.Nota,Void> deleteColumn = new TableColumn<>("Delete");
 
         // Set cell value factories
 
