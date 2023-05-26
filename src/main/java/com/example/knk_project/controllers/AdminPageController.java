@@ -25,6 +25,7 @@ public class AdminPageController implements Initializable {
     @FXML
     private Button logOutButton;
 
+
     public void shtoshtetin(MouseEvent event) {
         loadPage("shto-shtetin-view");
     }
