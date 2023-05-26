@@ -20,4 +20,6 @@ public interface NxenesiServiceInterface {
 
     List<Nxenesi> getAllNxenesitbyProfesoriID(int profesoriID) throws SQLException;
 
+    List<Nxenesi> getAllNxenesitByKlasaId(int klasaId) throws SQLException;
+
 }

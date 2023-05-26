@@ -12,4 +12,6 @@ public interface NxenesiRepositoryInterface {
     public Nxenesi getNxenesiByUsername(String username) throws SQLException;
 
     List<Nxenesi> getAllNxenesitbyProfesoriID(int profesoriID) throws SQLException;
+
+    List<Nxenesi> getAllNxenesitByKlasaId(int klasaId) throws SQLException;
 }

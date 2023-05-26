@@ -23,7 +23,7 @@ public class KlasaService implements KlasaServiceInterface {
 
     @Override
     public List<Klasa> getAllKlasatByProfesorId(int profesoriId) throws SQLException {
-        return null;
+        return this.klasaRepository.getAllKlasatByProfesorId(profesoriId);
     }
 
 }

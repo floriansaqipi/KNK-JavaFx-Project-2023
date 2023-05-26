@@ -42,6 +42,7 @@ public class ProfesorPageController implements Initializable {
             root =  fxmlLoader.load();
             AddGradeController addGradeController = fxmlLoader.getController();
             addGradeController.setProfesori(this.profesori);
+            addGradeController.initData();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
