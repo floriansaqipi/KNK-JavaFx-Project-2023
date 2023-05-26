@@ -27,10 +27,10 @@ public class TableKomunaController {
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         emriColumn.setCellValueFactory(new PropertyValueFactory<>("emri"));
         shtetiIdColumn.setCellValueFactory(new PropertyValueFactory<>("shtetiId"));
-        idColumn.setPrefWidth(99);
-        emriColumn.setPrefWidth(99);
-        shtetiIdColumn.setPrefWidth(99);
-        deleteColumn.setPrefWidth(99);
+        idColumn.setPrefWidth(98);
+        emriColumn.setPrefWidth(98);
+        shtetiIdColumn.setPrefWidth(98);
+        deleteColumn.setPrefWidth(98);
 
 
         komunaTableView.getColumns().addAll(idColumn, emriColumn, shtetiIdColumn, editColumn, deleteColumn);
