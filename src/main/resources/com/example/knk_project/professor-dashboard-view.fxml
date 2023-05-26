@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="609.0" prefWidth="944.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.controllers.ProfessorDashboardController">
+    <children>
+        <Pane layoutX="-3.0" layoutY="-14.0" prefHeight="126.0" prefWidth="950.0" style="-fx-background-color: #150050;" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="-3.0" AnchorPane.topAnchor="-14.0">
+            <children>
+                <Label layoutX="281.0" layoutY="37.0" text="Professor Dashboard" textFill="WHITE">
+                    <font>
+                        <Font name="Segoe UI" size="48.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+        <GridPane hgap="15.0" layoutX="38.0" layoutY="130.0" prefHeight="103.0" prefWidth="869.0" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="37.0" AnchorPane.topAnchor="130.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Pane prefHeight="103.0" prefWidth="200.0" style="-fx-background-color: #3A84C3; -fx-background-radius: 1em;">
+                    <children>
+                        <Label alignment="CENTER" layoutX="81.0" layoutY="67.0" text="Numri i nxenesve" textFill="WHITE">
+                            <font>
+                                <Font size="13.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="numriNotaveLabel" alignment="CENTER" layoutX="93.0" layoutY="25.0" text="500" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="36.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </Pane>
+                <Pane prefHeight="103.0" prefWidth="200.0" style="-fx-background-color: #5CB55B; -fx-background-radius: 1em;" GridPane.columnIndex="1">
+                    <children>
+                        <Label layoutX="90.0" layoutY="69.0" text="Numri i lendëve" textFill="WHITE">
+                            <font>
+                                <Font size="13.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="numriProfesoreveLabel" layoutX="119.0" layoutY="25.0" text="10" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="36.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </Pane>
+                <Pane prefHeight="103.0" prefWidth="200.0" style="-fx-background-color: #D7534E; -fx-background-radius: 1em;" GridPane.columnIndex="2">
+                    <children>
+                        <Label layoutX="74.0" layoutY="69.0" prefHeight="19.0" prefWidth="150.0" text="Suksesi i pergjithshem" textFill="WHITE">
+                            <font>
+                                <Font size="13.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="numriKlasaveLabel" layoutX="130.0" layoutY="25.0" text="2" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="36.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </Pane>
+            </children>
+        </GridPane>
+        <SplitPane dividerPositions="0.6874279123414071" layoutX="42.0" layoutY="299.0" prefHeight="287.0" prefWidth="869.0" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="42.0" AnchorPane.rightAnchor="33.0" AnchorPane.topAnchor="299.0">
+            <items>
+                <GridPane>
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <TableView fx:id="usersTableView" prefHeight="286.0" prefWidth="602.0">
+                            <columns>
+                                <TableColumn fx:id="nxenesiIdTableColumn" prefWidth="122.6666806936264" text="ID e nxenesit" />
+                                <TableColumn fx:id="nxenesiTableColumn" prefWidth="163.33333587646484" text="Nxenesi" />
+                                <TableColumn fx:id="lendaTableColumn" prefWidth="103.33332824707031" text="Lenda" />
+                                <TableColumn fx:id="gjysemvjetoriTableColumn" prefWidth="98.66659545898438" text="Gjysemvjetori" />
+                                <TableColumn fx:id="notaTableColumn" prefWidth="107.33340454101562" text="Nota" />
+                            </columns>
+                        </TableView>
+                    </children>
+                </GridPane>
+                <GridPane>
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <LineChart fx:id="lineChart">
+                            <xAxis>
+                                <CategoryAxis side="BOTTOM" />
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis side="LEFT" />
+                            </yAxis>
+                        </LineChart>
+                    </children>
+                </GridPane>
+            </items>
+        </SplitPane>
+    </children>
+</AnchorPane>
