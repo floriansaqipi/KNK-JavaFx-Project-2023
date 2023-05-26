@@ -11,45 +11,47 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 
-public class TabelPorfesorLendaController {
+public class TableProfesorKlasaController {
 
     @FXML
-    private TableView<ProfesorLenda> ProfesorLendaTableView;
+    private TableView<ProfesorKlasa> ProfesorKlasaTableView;
 
     public void initialize() {
         // Create table columns
 
-        TableColumn<ProfesorLenda, String> profesoriColumn = new TableColumn<>("Profesori");
-        TableColumn<ProfesorLenda, String> lendaColumn = new TableColumn<>("Lenda");
-        TableColumn<ProfesorLenda, Void> editColumn = new TableColumn<>("Edit");
-        TableColumn<ProfesorLenda, Void> deleteColumn = new TableColumn<>("Delete");
+        TableColumn<ProfesorKlasa, String> profesoriColumn = new TableColumn<>("Profesori");
+        TableColumn<ProfesorKlasa, String> klasaColumn = new TableColumn<>("Klasa");
+        TableColumn<ProfesorKlasa, Void> editColumn = new TableColumn<>("Edit");
+        TableColumn<ProfesorKlasa, Void> deleteColumn = new TableColumn<>("Delete");
 
         // Set cell value factories
 
 
         profesoriColumn.setCellValueFactory(new PropertyValueFactory<>("profesori"));
-        lendaColumn.setCellValueFactory(new PropertyValueFactory<>("lenda"));
+        klasaColumn.setCellValueFactory(new PropertyValueFactory<>("klasa"));
+
+
         profesoriColumn.setPrefWidth(112);
-        lendaColumn.setPrefWidth(112);
+        klasaColumn.setPrefWidth(112);
         editColumn.setPrefWidth(112);
         deleteColumn.setPrefWidth(112);
 
         // Add columns to table
 
-        ProfesorLendaTableView.getColumns().addAll(profesoriColumn, lendaColumn, editColumn, deleteColumn);
+        ProfesorKlasaTableView.getColumns().addAll(profesoriColumn, klasaColumn, editColumn, deleteColumn);
 
         // Create button cell factories for edit and delete columns
-        Callback<TableColumn<ProfesorLenda, Void>, TableCell<ProfesorLenda, Void>> editCellFactory = new Callback<>() {
+        Callback<TableColumn<ProfesorKlasa, Void>, TableCell<ProfesorKlasa, Void>> editCellFactory = new Callback<>() {
             @Override
-            public TableCell<ProfesorLenda, Void> call(final TableColumn<ProfesorLenda, Void> param) {
-                final TableCell<ProfesorLenda, Void> cell = new TableCell<>() {
+            public TableCell<ProfesorKlasa, Void> call(final TableColumn<ProfesorKlasa, Void> param) {
+                final TableCell<ProfesorKlasa, Void> cell = new TableCell<>() {
                     private final Button editButton = new Button("Edit");
 
                     {
                         editButton.setOnAction((ActionEvent event) -> {
-                            ProfesorLenda profesorLenda = getTableView().getItems().get(getIndex());
+                            ProfesorKlasa profesorKlasa = getTableView().getItems().get(getIndex());
                             // Handle the edit button click here
-                            System.out.println("Edit button clicked for Profesor Lenda with ID: " + profesorLenda.getLenda());
+                            System.out.println("Edit button clicked for Profesor Lenda with ID: " + profesorKlasa.getKlasa());
                         });
                     }
 
@@ -67,17 +69,17 @@ public class TabelPorfesorLendaController {
             }
         };
 
-        Callback<TableColumn<ProfesorLenda, Void>, TableCell<ProfesorLenda, Void>> deleteCellFactory = new Callback<>() {
+        Callback<TableColumn<ProfesorKlasa, Void>, TableCell<ProfesorKlasa, Void>> deleteCellFactory = new Callback<>() {
             @Override
-            public TableCell<ProfesorLenda, Void> call(final TableColumn<ProfesorLenda, Void> param) {
-                final TableCell<ProfesorLenda, Void> cell = new TableCell<>() {
+            public TableCell< ProfesorKlasa, Void> call(final TableColumn<ProfesorKlasa, Void> param) {
+                final TableCell<ProfesorKlasa, Void> cell = new TableCell<>() {
                     private final Button deleteButton = new Button("Delete");
 
                     {
                         deleteButton.setOnAction((ActionEvent event) -> {
-                            ProfesorLenda profesorLenda = getTableView().getItems().get(getIndex());
+                            ProfesorKlasa profesorKlasa = getTableView().getItems().get(getIndex());
                             // Handle the delete button click here
-                            System.out.println("Delete button clicked for Profesor Lenda with ID: " + profesorLenda.getLenda());
+                            System.out.println("Delete button clicked for Profesor Lenda with ID: " + profesorKlasa.getKlasa());
                         });
                     }
 
@@ -101,22 +103,22 @@ public class TabelPorfesorLendaController {
 
         // Add sample data
 
-        ProfesorLendaTableView.getItems().add(new ProfesorLenda("fjolla","biologji"));
-        ProfesorLendaTableView.getItems().add(new ProfesorLenda("fjolla", "matematike"));
-        ProfesorLendaTableView.getItems().add(new ProfesorLenda("fjolla", "kimi"));
+        ProfesorKlasaTableView.getItems().add(new ProfesorKlasa("fjolla","X"));
+        ProfesorKlasaTableView.getItems().add(new ProfesorKlasa("fjolla", "V"));
+        ProfesorKlasaTableView.getItems().add(new ProfesorKlasa("fjolla", "XI"));
         // Add more rows as needed
     }
 
     // Sample data class
-    public static class ProfesorLenda {
+    public static class ProfesorKlasa {
 
         private String profesori;
-        private String lenda;
+        private String klasa;
 
-        public ProfesorLenda( String profesori, String lenda) {
+        public ProfesorKlasa( String profesori, String klasa) {
 
             this.profesori = profesori;
-            this.lenda = lenda;
+            this.klasa = klasa;
         }
 
 
@@ -124,8 +126,8 @@ public class TabelPorfesorLendaController {
             return profesori;
         }
 
-        public String getLenda() {
-            return lenda;
+        public String getKlasa() {
+            return klasa;
         }
     }
 }
