@@ -31,20 +31,15 @@ public class ProfesorPageController implements Initializable {
 
     @FXML
     public void ShtoNoten(MouseEvent event) {
-        loadPage("add-grade-view");
+        loadPage("add-nota-view");
     }
     @FXML
     public void Notat(MouseEvent event) {
         loadPage("transcript");
     }
-    @FXML
-    public void ShikoLendet(MouseEvent event) {
-        loadPage("shto-profesor-lenda-view");
-    }
-    @FXML
-    public void KlasatEmia(MouseEvent event) {
-        loadPage("add-profesor-klasa-view");
-    }
+
+
+
     @FXML
     public void ShikoProfilin(MouseEvent event) {
       loadPage("profile-professor-view");
@@ -85,6 +80,7 @@ public class ProfesorPageController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
+
 
 
 }
