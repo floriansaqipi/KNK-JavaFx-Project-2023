@@ -38,7 +38,7 @@
                         <Font size="16.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton onMouseClicked="#Notat" prefHeight="40.0" prefWidth="224.0" text="NOTAT" textFill="WHITE">
+                  <JFXButton onMouseClicked="#Notat" prefHeight="40.0" prefWidth="224.0" text="TABELA NOTAT" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
