@@ -1,8 +1,8 @@
 package com.example.knk_project.controllers;
 
 import com.example.knk_project.models.User;
-import com.example.knk_project.services.AdminDashboardService;
-import com.example.knk_project.services.interfaces.AdminDashboardServiceInterface;
+import com.example.knk_project.services.*;
+import com.example.knk_project.services.interfaces.*;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -52,16 +52,20 @@ public class AdminDashboardController implements Initializable {
 
 
     private AdminDashboardServiceInterface adminDashboardService = new AdminDashboardService();
+    private NotaServiceInterface notaService = new NotaService();
+    private NxenesiServiceInterface nxenesiService = new NxenesiService();
+    private ProfesoriServiceInterface profesoriService = new ProfesoriService();
+    private KlasaServiceInterface klasaService =  new KlasaService();
 
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            this.numriNotaveLabel.setText(this.adminDashboardService.getNumberOfGrades() + " ");
-            this.numriNxenesveLabel.setText(this.adminDashboardService.getNumberOfNxenesve() + " ");
-            this.numriProfesoreveLabel.setText(this.adminDashboardService.getNumberOfProfesoreve() + " ");
-            this.numriKlasaveLabel.setText(this.adminDashboardService.getNumberOfKlaseve() + " ");
+            this.numriNotaveLabel.setText(this.notaService.getNumberOfGrades() + " ");
+            this.numriNxenesveLabel.setText(this.nxenesiService.getNumberOfNxenesve() + " ");
+            this.numriProfesoreveLabel.setText(this.profesoriService.getNumberOfProfesoreve() + " ");
+            this.numriKlasaveLabel.setText(this.klasaService.getNumberOfKlaseve() + " ");
             this.initalizeUsersTableView();
             this.initializeAdminPieChart();
         } catch (SQLException e) {
@@ -83,8 +87,8 @@ public class AdminDashboardController implements Initializable {
 
     public void initializeAdminPieChart() throws SQLException {
          ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
-                 new PieChart.Data("Nxenesit", this.adminDashboardService.getNumberOfNxenesve()),
-                 new PieChart.Data("Profesoret", this.adminDashboardService.getNumberOfProfesoreve())
+                 new PieChart.Data("Nxenesit", this.nxenesiService.getNumberOfNxenesve()),
+                 new PieChart.Data("Profesoret", this.profesoriService.getNumberOfProfesoreve())
          );
          adminPieChart.setData(pieChartData);
     }

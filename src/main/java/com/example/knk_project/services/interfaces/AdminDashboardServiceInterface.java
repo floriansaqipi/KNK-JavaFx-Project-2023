@@ -8,8 +8,7 @@ import java.util.List;
 
 public interface AdminDashboardServiceInterface {
     List<User> getAllUsers() throws SQLException;
-    int getNumberOfGrades() throws SQLException;
-    int getNumberOfNxenesve() throws SQLException;
-    int getNumberOfProfesoreve() throws SQLException;
-    int getNumberOfKlaseve() throws SQLException;
+
+
+
 }

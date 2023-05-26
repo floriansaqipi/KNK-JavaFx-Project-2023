@@ -58,6 +58,34 @@ public class ProfesoriRepository implements ProfesoriRepositoryInterface {
         );
     }
 
+    public Profesori getProfesoriById(int profesoriId) throws SQLException {
+        String sql = "SELECT * FROM profesoret n WHERE n.id = ?";
+        Connection connection = ConnectionUtil.getConnection();
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setInt(1 , profesoriId);
+
+        ResultSet resultSet = statement.executeQuery();
+        if(!resultSet.next()){
+            return  null;
+        }
+        int id = resultSet.getInt("id");
+        String username = resultSet.getString("username");
+        String salt = resultSet.getString("salt");
+        String saltedPassword = resultSet.getString("salted_password");
+        String emri = resultSet.getString("emri");
+        String mbiemri = resultSet.getString("mbiemri");
+        String titulli = resultSet.getString("titulli");
+        return new Profesori(
+                id,
+                username,
+                salt,
+                saltedPassword,
+                emri,
+                mbiemri,
+                titulli
+        );
+    }
+
     @Override
     public List<Profesori> getAllProfesoret() throws SQLException {
         String sql = "SELECT * FROM profesoret;";
@@ -83,6 +111,22 @@ public class ProfesoriRepository implements ProfesoriRepositoryInterface {
         }
         return profesoret;
 
+    }
+
+    @Override
+    public int getNumberOfProfesoreve() throws SQLException {
+        String sql = "SELECT COUNT(*) FROM profesoret;";
+        Connection connection = ConnectionUtil.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        int numberOfProfesoreve = 0;
+
+        while (resultSet.next()){
+            numberOfProfesoreve = resultSet.getInt(1);
+        }
+        return numberOfProfesoreve ;
     }
 
 }

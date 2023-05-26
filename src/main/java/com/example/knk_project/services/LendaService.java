@@ -22,4 +22,9 @@ public class LendaService implements LendaServiceInterface {
         return this.lendaRepository.getAllLendet();
     }
 
+    @Override
+    public List<Lenda> getAllLendetByProfesoriId(int profesoriId) throws SQLException {
+        return this.lendaRepository.getAllLendetByProfesoriId(profesoriId);
+    }
+
 }

@@ -16,7 +16,7 @@ import java.util.List;
 public class NotaRepository implements NotaRepositoryInterface {
     @Override
     public void insert(CreateNotaDto createNotaDto) throws SQLException {
-        String sql = "INSERT INTO notat(vlera, rubrika, gjysemvjetori, profesori_id, lenda_id, nxenesi_id) " +
+        String sql = "INSERT INTO notat(vlera, rubrika, gjysmevjetori, profesori_id, lenda_id, nxenesi_id) " +
                 "VALUES (?, ?, ?, ?, ?, ?);";
         Connection connection = ConnectionUtil.getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -55,6 +55,22 @@ public class NotaRepository implements NotaRepositoryInterface {
             );
         }
         return notat;
+    }
+
+    @Override
+    public int getNumberOfGrades() throws SQLException {
+        String sql = "SELECT COUNT(*) FROM notat;";
+        Connection connection = ConnectionUtil.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        int numberOfGrades = 0;
+
+        while (resultSet.next()){
+            numberOfGrades = resultSet.getInt(1);
+        }
+        return numberOfGrades ;
     }
 
 }
