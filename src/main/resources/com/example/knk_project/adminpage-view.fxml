@@ -10,7 +10,9 @@
 
 <BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.controllers.AdminPageController">
    <left>
+
       <VBox prefHeight="600.0" prefWidth="222.0" style="-fx-background-color: #150050; -fx-border-color: white;" BorderPane.alignment="CENTER">
+
          <children>
             <JFXButton onMouseClicked="#shtoshtetin" prefHeight="38.0" prefWidth="183.0" text="SHTO SHTETIN" textFill="WHITE">
                <font>
@@ -46,7 +48,9 @@
       </VBox>
    </left>
    <top>
+
       <HBox prefHeight="40.0" prefWidth="900.0" style="-fx-background-color: #150050; -fx-border-color: white;" BorderPane.alignment="CENTER">
+
          <children>
             <Label alignment="CENTER" prefHeight="46.0" prefWidth="373.0" text="NAME OF THE SYSTEM" textFill="WHITE">
                <font>

@@ -17,10 +17,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 
-
-
-
 public class LogInProfesoriController {
+    private MainController mainController;
     @FXML
     private TextField usernameTextField;
 
@@ -32,26 +30,29 @@ public class LogInProfesoriController {
 
     private ProfesoriServiceInterface profesoriService = new ProfesoriService();
 
-    private ValidatorInterface validatorSerice = new ValidatorService();
-    private MainController mainController = new MainController();
+    private ValidatorInterface validatorService = new ValidatorService();
 
-    public void logInClick(){
-        this.validateInputs();
-        String username = usernameTextField.getText();
-        String password = passwordPasswordField.getText();
-        try{
+    public void logInClick() {
 
-            this.profesoriService.logIn(username,password);
+        try {
+            this.validateInputs();
+            String username = usernameTextField.getText();
+            String password = passwordPasswordField.getText();
+
+            this.profesoriService.logIn(username, password);
             this.messageLabel.setText("Log in was successfull");
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("admin-page-view"));
             this.mainController.setMainPane(fxmlLoader.load());
-        }catch (UserNotFoundException exception){
+        } catch (ValidationException exception) {
+            exception.printStackTrace();
+            this.messageLabel.setText("Invalid inputs");
+        } catch (UserNotFoundException exception) {
             exception.printStackTrace();
             this.messageLabel.setText("User by username doesn't exist");
-        } catch (IncorrectPasswordException exception){
+        } catch (IncorrectPasswordException exception) {
             exception.printStackTrace();
             this.messageLabel.setText("Password is incorrect");
-        } catch (SQLException exception){
+        } catch (SQLException exception) {
             exception.printStackTrace();
             this.messageLabel.setText("Something went wrong with the database");
         } catch (IOException exception) {
@@ -61,17 +62,15 @@ public class LogInProfesoriController {
 
     }
 
-    private void validateInputs(){
-        this.validatorSerice.validateTextField(usernameTextField);
-        this.validatorSerice.validatePasswordField(passwordPasswordField);
-        try {
-            this.validatorSerice.throwIfInvalid();
-        } catch (ValidationException exception){
-            exception.printStackTrace();
-            this.messageLabel.setText("Invalid inputs");
-        }
+
+
+    public void setMainController(MainController mainController) {
+        this.mainController = mainController;
     }
-
-
+    private void validateInputs() throws ValidationException {
+        this.validatorService.validateTextField(usernameTextField);
+        this.validatorService.validateGeneralPasswordField(passwordPasswordField);
+        this.validatorService.throwIfInvalid();
+    }
 
 }

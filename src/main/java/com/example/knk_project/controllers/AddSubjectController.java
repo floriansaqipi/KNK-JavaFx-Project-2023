@@ -8,7 +8,7 @@ import javafx.scene.control.ComboBox;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class addSubjectController implements Initializable {
+public class AddSubjectController implements Initializable {
     @FXML
     private ComboBox addSubjectComboBox;
     @FXML
