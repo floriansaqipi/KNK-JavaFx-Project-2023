@@ -12,4 +12,5 @@ public interface NotaServiceInterface {
     void insert(CreateNotaDto createNotaDto) throws SQLException;
 
     public List<Nota> getAllNotat() throws SQLException;
+    int getNumberOfGrades() throws SQLException;
 }

@@ -10,6 +10,6 @@ import java.util.List;
 public interface NxenesiRepositoryInterface {
     public void insert(CreateNxenesiDto createNxenesiDto) throws SQLException;
     public Nxenesi getNxenesiByUsername(String username) throws SQLException;
-
     List<Nxenesi> getAllNxenesitbyProfesoriID(int profesoriID) throws SQLException;
+    int getNumberOfNxenesve() throws SQLException;
 }

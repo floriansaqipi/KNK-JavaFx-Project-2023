@@ -18,26 +18,11 @@ public class AdminDashboardService implements AdminDashboardServiceInterface {
         return this.adminDashboardRepository.getAllUsers();
     }
 
-    @Override
-    public int getNumberOfGrades() throws SQLException {
-        return this.adminDashboardRepository.getNumberOfGrades();
-    }
 
-    @Override
-    public int getNumberOfNxenesve() throws SQLException {
-        return this.adminDashboardRepository.getNumberOfNxenesve();
-    }
 
-    @Override
-    public int getNumberOfProfesoreve() throws SQLException {
-        return this.adminDashboardRepository.getNumberOfProfesoreve();
 
-    }
 
-    @Override
-    public int getNumberOfKlaseve() throws SQLException {
-        return this.adminDashboardRepository.getNumberOfKlaseve();
 
-    }
+
 
 }

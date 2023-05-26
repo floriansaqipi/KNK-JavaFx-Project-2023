@@ -49,5 +49,20 @@ public class KlasaRepository implements KlasaRepositoryInterface {
         return klasat;
     }
 
+    @Override
+    public int getNumberOfKlaseve() throws SQLException {
+        String sql = "SELECT COUNT(*) FROM klasat;";
+        Connection connection = ConnectionUtil.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        int numberOfKlasave = 0;
+
+        while (resultSet.next()){
+            numberOfKlasave = resultSet.getInt(1);
+        }
+        return numberOfKlasave ;
+    }
 
 }

@@ -85,4 +85,20 @@ public class ProfesoriRepository implements ProfesoriRepositoryInterface {
 
     }
 
+    @Override
+    public int getNumberOfProfesoreve() throws SQLException {
+        String sql = "SELECT COUNT(*) FROM profesoret;";
+        Connection connection = ConnectionUtil.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        int numberOfProfesoreve = 0;
+
+        while (resultSet.next()){
+            numberOfProfesoreve = resultSet.getInt(1);
+        }
+        return numberOfProfesoreve ;
+    }
+
 }

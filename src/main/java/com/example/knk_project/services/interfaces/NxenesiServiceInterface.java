@@ -19,5 +19,6 @@ public interface NxenesiServiceInterface {
             UserNotFoundException, IncorrectPasswordException,SQLException;
 
     List<Nxenesi> getAllNxenesitbyProfesoriID(int profesoriID) throws SQLException;
+    int getNumberOfNxenesve() throws SQLException;
 
 }

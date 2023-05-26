@@ -45,4 +45,8 @@ public class ProfesoriService implements ProfesoriServiceInterface {
     public List<Profesori> getAllProfesoret() throws SQLException {
         return this.profesoriRepository.getAllProfesoret();
     }
+    @Override
+    public int getNumberOfProfesoreve() throws SQLException {
+        return this.profesoriRepository.getNumberOfProfesoreve();
+    }
 }
