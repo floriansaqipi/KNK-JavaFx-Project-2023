@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -24,12 +25,11 @@ public class StudentPageController implements Initializable {
     private BorderPane bp;
     @FXML
     private Button logOutButton;
-    public void transkripta(MouseEvent event) {
-        loadPage("shto-shtetin-view");
-    }
+    @FXML
+    private Pane p;
 
-    public void shikoklasen(MouseEvent event) {
-        loadPage("shto-shtetin-view");
+    public void transkripta(MouseEvent event) {
+        loadPage("transcript");
     }
 
     public void profili(MouseEvent event) {
@@ -61,7 +61,7 @@ public class StudentPageController implements Initializable {
             Stage currentStage = (Stage) logOutButton.getScene().getWindow();
             currentStage.close();
         } catch (IOException ex) {
-            Logger.getLogger(ProfesorPageController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(StudentPageController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
