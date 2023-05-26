@@ -11,6 +11,8 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.zip.InflaterInputStream;
 
 public class ProfileProfessorController implements Initializable {
@@ -56,7 +58,17 @@ public class ProfileProfessorController implements Initializable {
 
     @FXML
     void editProfileClick(ActionEvent event) {
+        loadPage("edit-professor-view");
 
+    }
+
+    private void loadPage(String page){
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/com/example/knk_project/"+page + ".fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(ProfesorPageController.class.getName()).log(Level.SEVERE,null,ex);
+        }
     }
 
 }
