@@ -83,7 +83,7 @@ public class HomePageController implements Initializable {
     }
     public void professorLogIn(ActionEvent actionEvent){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/knk_project/" + "log-in-nxenesi-view" + ".fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/knk_project/" + "log-in-profesori-view" + ".fxml"));
             AnchorPane loadedPane = loader.load();
             LogInProfesoriController logInProfesoriController = loader.getController();
             logInProfesoriController.setMainController(mainController);

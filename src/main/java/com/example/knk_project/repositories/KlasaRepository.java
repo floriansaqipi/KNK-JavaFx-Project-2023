@@ -49,5 +49,28 @@ public class KlasaRepository implements KlasaRepositoryInterface {
         return klasat;
     }
 
+    @Override
+    public List<Klasa> getAllKlasatByProfesorId(int profesoriId) throws SQLException {
+        String sql = "SELECT k.* FROM klasat k INNER JOIN profesoret_klasat pk ON k.id = pk.profesori_id ";
+        Connection connection = ConnectionUtil.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        List<Klasa> klasat = new ArrayList<>();
+
+        while (resultSet.next()){
+            klasat.add(
+                    new Klasa(
+                            resultSet.getInt(1),
+                            resultSet.getInt(2),
+                            resultSet.getInt(3),
+                            resultSet.getString(4)
+                    )
+            );
+        }
+        return klasat;
+    }
+
 
 }

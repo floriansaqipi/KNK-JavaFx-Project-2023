@@ -11,5 +11,7 @@ public interface KlasaRepositoryInterface {
 
     List<Klasa> getAllKlasat() throws SQLException;
 
+    List<Klasa> getAllKlasatByProfesorId(int profesoriId) throws SQLException;
+
 
 }
