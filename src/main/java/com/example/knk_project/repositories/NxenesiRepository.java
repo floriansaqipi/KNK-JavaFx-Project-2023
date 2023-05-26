@@ -102,6 +102,7 @@ public class NxenesiRepository implements NxenesiRepositoryInterface {
     }
 
     @Override
+
     public List<Nxenesi> getAllNxenesitByKlasaId(int klasaId) throws SQLException {
         String sql = "SELECT * FROM nxenesit n WHERE n.klasa_id = ? ;";
         Connection connection = ConnectionUtil.getConnection();
@@ -130,6 +131,21 @@ public class NxenesiRepository implements NxenesiRepositoryInterface {
             );
         }
         return nxenesit;
+
+    public int getNumberOfNxenesve() throws SQLException {
+        String sql = "SELECT COUNT(*) FROM nxenesit;";
+        Connection connection = ConnectionUtil.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        int numberOfNxenseve = 0;
+
+        while (resultSet.next()){
+            numberOfNxenseve = resultSet.getInt(1);
+        }
+        return numberOfNxenseve ;
+
     }
 
 }

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="609.0" prefWidth="944.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.controllers.AdminDashboardController">
+    <children>
+        <Pane layoutX="-3.0" layoutY="-14.0" prefHeight="126.0" prefWidth="950.0" style="-fx-background-color: #150050;" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="-3.0" AnchorPane.topAnchor="-14.0">
+            <children>
+                <Label layoutX="281.0" layoutY="37.0" text="Admin Dashboard" textFill="WHITE">
+                    <font>
+                        <Font name="Segoe UI" size="48.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+        <GridPane hgap="15.0" layoutX="38.0" layoutY="130.0" prefHeight="103.0" prefWidth="869.0" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="37.0" AnchorPane.topAnchor="130.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Pane prefHeight="103.0" prefWidth="200.0" style="-fx-background-color: #3A84C3; -fx-background-radius: 1em;">
+                    <children>
+                        <Label alignment="CENTER" layoutX="62.0" layoutY="65.0" text="Numri i Notave" textFill="WHITE">
+                            <font>
+                                <Font size="13.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="numriNotaveLabel" alignment="CENTER" layoutX="72.0" layoutY="20.0" text="500" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="36.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </Pane>
+                <Pane prefHeight="103.0" prefWidth="200.0" style="-fx-background-color: #EEAC4C; -fx-background-radius: 1em;" GridPane.columnIndex="1">
+                    <children>
+                        <Label layoutX="52.0" layoutY="69.0" text="Numri i Nxënesve" textFill="WHITE">
+                            <font>
+                                <Font size="13.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="numriNxenesveLabel" layoutX="59.0" layoutY="25.0" text="1000" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="36.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </Pane>
+                <Pane prefHeight="103.0" prefWidth="200.0" style="-fx-background-color: #5CB55B; -fx-background-radius: 1em;" GridPane.columnIndex="2">
+                    <children>
+                        <Label layoutX="43.0" layoutY="69.0" text="Numri i Profesorëve" textFill="WHITE">
+                            <font>
+                                <Font size="13.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="numriProfesoreveLabel" layoutX="79.0" layoutY="25.0" text="10" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="36.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </Pane>
+                <Pane prefHeight="103.0" prefWidth="200.0" style="-fx-background-color: #D7534E; -fx-background-radius: 1em;" GridPane.columnIndex="3">
+                    <children>
+                        <Label layoutX="57.0" layoutY="70.0" text="Numri i Klasëve" textFill="WHITE">
+                            <font>
+                                <Font size="13.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="numriKlasaveLabel" layoutX="91.0" layoutY="25.0" text="2" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="36.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </Pane>
+            </children>
+        </GridPane>
+        <SplitPane dividerPositions="0.6874279123414071" layoutX="42.0" layoutY="299.0" prefHeight="287.0" prefWidth="869.0" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="42.0" AnchorPane.rightAnchor="33.0" AnchorPane.topAnchor="299.0">
+            <items>
+                <GridPane>
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                  <TableView fx:id="usersTableView" prefHeight="286.0" prefWidth="602.0">
+                    <columns>
+                                <TableColumn fx:id="userIdTableColumn" prefWidth="120.4" text="UserID" />
+                        <TableColumn fx:id="usernameTableColumn" prefWidth="120.4" text="Username" />
+                                <TableColumn fx:id="emriTableColumn" prefWidth="120.4" text="Emri" />
+                                <TableColumn fx:id="mbiemriTableColumn" prefWidth="120.4" text="Mbiemri" />
+                        <TableColumn fx:id="roliTableColumn" prefWidth="107.20001220703125" text="Roli" />
+                    </columns>
+                  </TableView>
+                    </children>
+                </GridPane>
+                <GridPane>
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+               <children>
+                  <PieChart fx:id="adminPieChart" prefHeight="286.0" prefWidth="250.0" />
+               </children>
+                </GridPane>
+            </items>
+        </SplitPane>
+    </children>
+</AnchorPane>

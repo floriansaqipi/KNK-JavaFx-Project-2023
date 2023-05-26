@@ -53,8 +53,14 @@ public class NxenesiService implements NxenesiServiceInterface {
         return this.nxenesiRepository.getAllNxenesitbyProfesoriID(profesoriID);
     }
 
+
     @Override
     public List<Nxenesi> getAllNxenesitByKlasaId(int klasaId) throws SQLException {
         return this.nxenesiRepository.getAllNxenesitByKlasaId(klasaId);
+
+    @Override
+    public int getNumberOfNxenesve() throws SQLException {
+        return this.nxenesiRepository.getNumberOfNxenesve();
+
     }
 }

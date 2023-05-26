@@ -36,6 +36,7 @@ public class ProfesorPageController implements Initializable {
 
     @FXML
     public void ShtoNoten(MouseEvent event) {
+
         AnchorPane root = null;
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/knk_project/" + "add-nota-view" + ".fxml"));
@@ -47,19 +48,15 @@ public class ProfesorPageController implements Initializable {
             ex.printStackTrace();
         }
         bp.setCenter(root);
+
     }
     @FXML
     public void Notat(MouseEvent event) {
         loadPage("transcript");
     }
-    @FXML
-    public void ShikoLendet(MouseEvent event) {
-        loadPage("shto-profesor-lenda-view");
-    }
-    @FXML
-    public void KlasatEmia(MouseEvent event) {
-        loadPage("add-profesor-klasa-view");
-    }
+
+
+
     @FXML
     public void ShikoProfilin(MouseEvent event) {
       loadPage("profile-professor-view");
@@ -100,6 +97,7 @@ public class ProfesorPageController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
+
 
 
 }

@@ -1,52 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.controllers.ProfesorPageController">
-   <left>
-      <VBox prefHeight="600.0" prefWidth="222.0" style="-fx-background-color: #69af96;" BorderPane.alignment="CENTER">
-         <children>
-            <Button mnemonicParsing="false" onMouseClicked="#ShtoNoten" prefHeight="104.0" prefWidth="227.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 1px 0px;" text="SHTO NOTEN" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font></Button>
-            <Button mnemonicParsing="false" onMouseClicked="#Notat" prefHeight="104.0" prefWidth="221.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 1px 0px;" text="NOTAT" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font></Button>
-            <Button mnemonicParsing="false" onMouseClicked="#ShikoLendet" prefHeight="104.0" prefWidth="222.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 1px 0px;" text="SHIKO LENDET E MIA" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font></Button>
-            <Button mnemonicParsing="false" onMouseClicked="#KlasatEmia" prefHeight="104.0" prefWidth="223.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 1px 0px;" text="KLASAT E MIA" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font></Button>
-            <Button mnemonicParsing="false" onMouseClicked="#ShikoProfilin" prefHeight="104.0" prefWidth="223.0" style="-fx-background-color: transparent;" text="PROFILI" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font></Button>
-         </children>
-      </VBox>
-   </left>
+<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.controllers.ProfesorPageController">
    <top>
-      <HBox prefHeight="80.0" prefWidth="900.0" style="-fx-background-color: #69af96; -fx-border-color: white; -fx-border-width: 0px 0px 1px 0px;" BorderPane.alignment="CENTER">
+      <HBox prefHeight="50.0" prefWidth="1200.0" style="-fx-background-color: #150050; -fx-border-color: white;" BorderPane.alignment="CENTER">
          <children>
-            <Label prefHeight="79.0" prefWidth="789.0" text="       NAME OF THE SYSTEM">
+            <Label prefHeight="46.0" prefWidth="373.0" text="       NAME OF THE SYSTEM" textFill="WHITE">
                <font>
-                  <Font size="16.0" />
+                  <Font name="System Italic" size="30.0" />
                </font>
             </Label>
-            <Button fx:id="logOutButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#LogOut" prefHeight="52.0" prefWidth="117.0" text="LOG OUT" translateX="-10.0" translateY="10.0" />
+            <JFXButton fx:id="logOutButton" onMouseClicked="#LogOut" prefHeight="49.0" prefWidth="135.0" style="-fx-border-color: WHITE; -fx-border-width: 0PX 0PX 0PX 1PX;" text="LOG OUT " textFill="WHITE" translateX="390.0">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </JFXButton>
          </children></HBox>
    </top>
    <center>
       <AnchorPane fx:id="ap" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </center>
+   <left>
+      <Pane prefHeight="200.0" prefWidth="222.0" style="-fx-background-color: #150050; -fx-border-color: white;" BorderPane.alignment="CENTER">
+         <children>
+            <VBox layoutY="187.0" prefHeight="216.0" prefWidth="222.0">
+               <children>
+                  <JFXButton onMouseClicked="#ShtoNoten" prefHeight="39.0" prefWidth="221.0" text="SHTO NOTEN " textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton onMouseClicked="#Notat" prefHeight="40.0" prefWidth="224.0" text="NOTAT" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXButton>
+
+                  <JFXButton onMouseClicked="#ShikoProfilin" prefHeight="40.0" prefWidth="226.0" text="PROFILI" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+   </left>
 </BorderPane>

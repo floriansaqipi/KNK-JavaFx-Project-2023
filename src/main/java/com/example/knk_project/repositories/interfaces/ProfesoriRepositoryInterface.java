@@ -13,4 +13,5 @@ public interface ProfesoriRepositoryInterface {
     public Profesori getProfesoriById(int profesoriId) throws SQLException;
 
     public List<Profesori> getAllProfesoret() throws SQLException;
+    int getNumberOfProfesoreve() throws SQLException;
 }

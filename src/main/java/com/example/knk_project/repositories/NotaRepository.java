@@ -57,4 +57,20 @@ public class NotaRepository implements NotaRepositoryInterface {
         return notat;
     }
 
+    @Override
+    public int getNumberOfGrades() throws SQLException {
+        String sql = "SELECT COUNT(*) FROM notat;";
+        Connection connection = ConnectionUtil.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        int numberOfGrades = 0;
+
+        while (resultSet.next()){
+            numberOfGrades = resultSet.getInt(1);
+        }
+        return numberOfGrades ;
+    }
+
 }
