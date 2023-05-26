@@ -7,7 +7,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+
 import javafx.scene.control.*;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -21,6 +23,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class HomePageController implements Initializable {
+    private MainController mainController;
     @FXML
     private MenuButton LogIn;
     
@@ -37,6 +40,10 @@ public class HomePageController implements Initializable {
     private MenuItem professorItem;
     @FXML
     private Button goBackButton;
+
+    public void setMainController(MainController mainController) {
+        this.mainController = mainController;
+    }
 
 
     // Action event handler for the adminItem
@@ -57,13 +64,37 @@ public class HomePageController implements Initializable {
         loadFXML("sign-up-profesori-view");
     }
     public void adminLogIn(ActionEvent actionEvent) {
-        loadFXML("log-in-admin-view");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/knk_project/" + "log-in-admin-view" + ".fxml"));
+            AnchorPane loadedPane = loader.load();
+            LogInAdminiController logInAdminiController = loader.getController();
+            logInAdminiController.setMainController(mainController);
+            anchorePaneHomePage.getChildren().setAll(loadedPane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     public void studentLogIn(ActionEvent actionEvent) {
-        loadFXML("log-in-nxenesi-view");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/knk_project/" + "log-in-nxenesi-view" + ".fxml"));
+            AnchorPane loadedPane = loader.load();
+            LogInNxenesiController logInNxenesiController = loader.getController();
+            logInNxenesiController.setMainController(mainController);
+            anchorePaneHomePage.getChildren().setAll(loadedPane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     public void professorLogIn(ActionEvent actionEvent){
-        loadFXML("log-in-profesori-view");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/knk_project/" + "log-in-nxenesi-view" + ".fxml"));
+            AnchorPane loadedPane = loader.load();
+            LogInProfesoriController logInProfesoriController = loader.getController();
+            logInProfesoriController.setMainController(mainController);
+            anchorePaneHomePage.getChildren().setAll(loadedPane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 

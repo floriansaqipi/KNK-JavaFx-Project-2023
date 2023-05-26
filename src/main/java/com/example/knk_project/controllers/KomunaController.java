@@ -42,15 +42,17 @@ public class KomunaController implements Initializable {
 
     @FXML
     void shtoKomunaClick(ActionEvent event) {
-        this.validateInputs();
 
-        String komunaName = this.komunaTextField.getText();
-        int shtetiId = this.shtetiComboBox.getValue().getId();
         try {
-
+            this.validateInputs();
+            String komunaName = this.komunaTextField.getText();
+            int shtetiId = this.shtetiComboBox.getValue().getId();
             this.komunaService.insert(new CreateKomunaDto(komunaName, shtetiId));
             this.messageLabel.setText("Successfully added municipality");
 
+        } catch (ValidationException exception) {
+            exception.printStackTrace();
+            this.messageLabel.setText("Invalid inputs");
         } catch (SQLException exception) {
             exception.printStackTrace();
             this.messageLabel.setText("Something went wrong with the database");
@@ -58,15 +60,11 @@ public class KomunaController implements Initializable {
 
     }
 
-    private void validateInputs() {
+    private void validateInputs() throws ValidationException {
         this.validator.validateTextField(komunaTextField);
         this.validator.validateComboBox(shtetiComboBox);
-        try {
-            this.validator.throwIfInvalid();
-        } catch (ValidationException exception) {
-            exception.printStackTrace();
-            this.messageLabel.setText("Invalid inputs");
-        }
+        this.validator.throwIfInvalid();
+
     }
 
     @Override
@@ -79,7 +77,6 @@ public class KomunaController implements Initializable {
         }
 
         this.shtetiComboBox.setConverter(new StringConverter<Shteti>() {
-
             @Override
             public String toString(Shteti object) {
                 return object.getEmri();
