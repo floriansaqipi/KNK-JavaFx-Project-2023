@@ -1,5 +1,6 @@
 package com.example.knk_project.controllers;
 
+import com.example.knk_project.models.Profesori;
 import com.example.knk_project.services.ProfesoriService;
 import com.example.knk_project.services.exceptions.IncorrectPasswordException;
 import com.example.knk_project.services.exceptions.UserNotFoundException;
@@ -12,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -41,8 +43,14 @@ public class LogInProfesoriController {
 
             this.profesoriService.logIn(username, password);
             this.messageLabel.setText("Log in was successfull");
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("admin-page-view"));
-            this.mainController.setMainPane(fxmlLoader.load());
+
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/knk_project/profesor-page-view.fxml"));
+            BorderPane profesorPagePane = fxmlLoader.load();
+            ProfesorPageController profesorPageController = fxmlLoader.getController();
+            Profesori profesori = this.profesoriService.getProfesorByUsername(username);
+            profesorPageController.setProfesori(profesori);
+            mainController.setMainPane(profesorPagePane);
         } catch (ValidationException exception) {
             exception.printStackTrace();
             this.messageLabel.setText("Invalid inputs");

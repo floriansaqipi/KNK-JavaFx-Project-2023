@@ -183,9 +183,9 @@ public class SignUpNxenesiController implements Initializable {
         String password = this.passwordPasswordField.getText();
         String salt = PasswordHasher.generateSalt();
         String saltedPassword = PasswordHasher.generateSaltedHash(password, salt);
-        int vendLindjaId = 1;
-        int komunaId = 1;
-        int klasaId = 1;
+        int vendLindjaId = this.vendLindjaComboBox.getValue().getId();
+        int komunaId = this.komunaComboBox.getValue().getId();
+        int klasaId = this.klasaComboBox.getValue().getId();
 
         return new CreateNxenesiDto(
                 username,
