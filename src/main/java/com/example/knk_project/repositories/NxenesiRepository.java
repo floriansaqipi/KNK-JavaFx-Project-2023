@@ -101,4 +101,20 @@ public class NxenesiRepository implements NxenesiRepositoryInterface {
         return nxenesit;
     }
 
+    @Override
+    public int getNumberOfNxenesve() throws SQLException {
+        String sql = "SELECT COUNT(*) FROM nxenesit;";
+        Connection connection = ConnectionUtil.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        int numberOfNxenseve = 0;
+
+        while (resultSet.next()){
+            numberOfNxenseve = resultSet.getInt(1);
+        }
+        return numberOfNxenseve ;
+    }
+
 }

@@ -11,5 +11,6 @@ public interface NotaRepositoryInterface {
     void insert(CreateNotaDto createNotaDto) throws SQLException;
 
     List<Nota> getAllNotat() throws SQLException;
+    int getNumberOfGrades() throws SQLException;
 
 }

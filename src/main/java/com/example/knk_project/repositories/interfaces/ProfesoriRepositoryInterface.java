@@ -12,4 +12,5 @@ public interface ProfesoriRepositoryInterface {
     public Profesori getProfesoriByUsername(String username) throws SQLException;
 
     public List<Profesori> getAllProfesoret() throws SQLException;
+    int getNumberOfProfesoreve() throws SQLException;
 }

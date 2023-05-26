@@ -22,4 +22,9 @@ public class NotaService implements NotaServiceInterface {
         return this.notaRepository.getAllNotat();
     }
 
+    @Override
+    public int getNumberOfGrades() throws SQLException {
+        return this.notaRepository.getNumberOfGrades();
+    }
+
 }

@@ -9,4 +9,5 @@ import java.util.List;
 public interface KlasaServiceInterface {
     public void register(CreateKlasaDto createKlasaDto) throws SQLException;
     List<Klasa> getAllKlasat() throws SQLException;
+    int getNumberOfKlaseve() throws SQLException;
 }

@@ -16,4 +16,6 @@ public interface ProfesoriServiceInterface {
     public void logIn(String username, String password) throws
             UserNotFoundException, IncorrectPasswordException,SQLException;
     public List<Profesori> getAllProfesoret() throws SQLException;
+    int getNumberOfProfesoreve() throws SQLException;
+
 }
