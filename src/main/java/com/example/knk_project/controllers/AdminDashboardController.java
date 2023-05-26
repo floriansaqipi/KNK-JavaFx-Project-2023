@@ -13,6 +13,7 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
@@ -49,6 +50,9 @@ public class AdminDashboardController implements Initializable {
     private TableColumn<User, String> mbiemriTableColumn;
     @FXML
     private TableColumn<User, String> roliTableColumn;
+
+    @FXML
+    private TextField adminfilter;
 
 
     private AdminDashboardServiceInterface adminDashboardService = new AdminDashboardService();
