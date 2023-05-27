@@ -44,7 +44,7 @@ public class StudentPageController implements Initializable {
 //        System.out.println(this.mainController);
         nxenesiHomePageController.setMainController(this.mainController);
         nxenesiHomePageController.setNxenesi(this.nxenesi);
-        nxenesiHomePageController.printNxenesi();
+//        nxenesiHomePageController.printNxenesi();
 
 //            AddGradeController addGradeController = fxmlLoader.getController();
 //            addGradeController.setProfesori(this.profesori);

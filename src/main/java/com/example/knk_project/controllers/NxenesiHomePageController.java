@@ -22,7 +22,7 @@ public class NxenesiHomePageController {
             StudentDashboardController studentDashboardController = fxmlLoader.getController();
             studentDashboardController.setNxenesi(this.nxenesi);
 //            studentDashboardController.initData();
-            studentDashboardController.printNxenesi();
+//            studentDashboardController.printNxenesi();
             mainController.setMainPane(anchorPane);
         } catch (IOException e) {
             throw new RuntimeException(e);

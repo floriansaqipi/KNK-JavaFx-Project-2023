@@ -18,6 +18,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class AdminPageController implements Initializable {
+
+
+    private MainController mainController;
     @FXML
     private AnchorPane ap;
     @FXML
@@ -102,6 +105,32 @@ public class AdminPageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+    }
+
+    public void setAdminPage() throws IOException {
+
+            AnchorPane root = null;
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/knk_project/" + "admin-home-page-view" + ".fxml"));
+            root =  fxmlLoader.load();
+            AdminHomePageController adminHomePageController = fxmlLoader.getController();
+            adminHomePageController.setMainController(mainController);
+
+            bp.setCenter(root);
+
+    }
+
+    public void initData() {
+        try{
+
+        this.setAdminPage();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void setMainController(MainController mainController) {
+        this.mainController = mainController;
     }
 
 }
