@@ -14,7 +14,7 @@ import java.util.List;
 public class AdminDashboardRepository implements AdminDashboardRepositoryInterface {
     @Override
     public List<User> getAllUsers() throws SQLException {
-        String sql = "SELECT * FROM combined_view;";
+        String sql = "SELECT * FROM users;";
         Connection connection = ConnectionUtil.getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
 

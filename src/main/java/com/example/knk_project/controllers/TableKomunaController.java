@@ -1,130 +1,77 @@
 package com.example.knk_project.controllers;
 
+import com.example.knk_project.models.KomunaShteti;
+import com.example.knk_project.models.User;
+import com.example.knk_project.models.dto.CreateUpdatedKomunaDto;
+import com.example.knk_project.services.*;
+import com.example.knk_project.services.interfaces.*;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.util.Callback;
 
-public class TableKomunaController {
+import java.io.IOException;
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
+
+public class TableKomunaController implements Initializable {
+    @FXML
+    private TableView<KomunaShteti> komunaTableView;
+    @FXML
+    private TableColumn<KomunaShteti, String> deleteColumn;
 
     @FXML
-    private TableView<Komuna> komunaTableView;
+    private TableColumn<KomunaShteti, String> editColumn;
 
-    public void initialize() {
+    @FXML
+    private TableColumn<KomunaShteti, String> emriColumn;
 
-        TableColumn<Komuna, Integer> idColumn = new TableColumn<>("ID");
-        TableColumn<Komuna, String> emriColumn = new TableColumn<>("Emri");
-        TableColumn<Komuna, Integer> shtetiIdColumn = new TableColumn<>("Shteti_Id");
-        TableColumn<Komuna, Void> editColumn = new TableColumn<>("Edit");
-        TableColumn<Komuna, Void> deleteColumn = new TableColumn<>("Delete");
+    @FXML
+    private TableColumn<KomunaShteti, String> emriShtetitColumn;
 
+    @FXML
+    private TableColumn<KomunaShteti, Integer> komunaIDColumn;
 
-        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-        emriColumn.setCellValueFactory(new PropertyValueFactory<>("emri"));
-        shtetiIdColumn.setCellValueFactory(new PropertyValueFactory<>("shtetiId"));
-        idColumn.setPrefWidth(98);
-        emriColumn.setPrefWidth(98);
-        shtetiIdColumn.setPrefWidth(98);
-        deleteColumn.setPrefWidth(98);
+    @FXML
+    private TableColumn<KomunaShteti, Integer> shtetiIDColumn;
 
 
-        komunaTableView.getColumns().addAll(idColumn, emriColumn, shtetiIdColumn, editColumn, deleteColumn);
+
+    private KomunaServiceInterface komunaService = new KomunaService();
 
 
-        Callback<TableColumn<Komuna, Void>, TableCell<Komuna, Void>> editCellFactory = new Callback<>() {
-            @Override
-            public TableCell<Komuna, Void> call(final TableColumn<Komuna, Void> param) {
-                final TableCell<Komuna, Void> cell = new TableCell<>() {
-                    private final Button editButton = new Button("Edit");
-
-                    {
-                        editButton.setOnAction((ActionEvent event) -> {
-                            Komuna komuna = getTableView().getItems().get(getIndex());
-
-                            System.out.println("Edit button clicked for Komuna with ID: " + komuna.getId());
-                        });
-                    }
-
-                    @Override
-                    protected void updateItem(Void item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (empty) {
-                            setGraphic(null);
-                        } else {
-                            setGraphic(editButton);
-                        }
-                    }
-                };
-                return cell;
-            }
-        };
-
-        Callback<TableColumn<Komuna, Void>, TableCell<Komuna, Void>> deleteCellFactory = new Callback<>() {
-            @Override
-            public TableCell<Komuna, Void> call(final TableColumn<Komuna, Void> param) {
-                final TableCell<Komuna, Void> cell = new TableCell<>() {
-                    private final Button deleteButton = new Button("Delete");
-
-                    {
-                        deleteButton.setOnAction((ActionEvent event) -> {
-                            Komuna komuna = getTableView().getItems().get(getIndex());
-
-                            System.out.println("Delete button clicked for Komuna with ID: " + komuna.getId());
-                        });
-                    }
-
-                    @Override
-                    protected void updateItem(Void item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (empty) {
-                            setGraphic(null);
-                        } else {
-                            setGraphic(deleteButton);
-                        }
-                    }
-                };
-                return cell;
-            }
-        };
-
-
-        editColumn.setCellFactory(editCellFactory);
-        deleteColumn.setCellFactory(deleteCellFactory);
-
-
-        komunaTableView.getItems().add(new Komuna(1, "Komuna 1", 1));
-        komunaTableView.getItems().add(new Komuna(2, "Komuna 2", 2));
-        komunaTableView.getItems().add(new Komuna(3, "Komuna 3", 1));
-
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            this.initalizeKomunaShtetiTableView();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
+    void initalizeKomunaShtetiTableView() throws SQLException {
+        ObservableList<KomunaShteti> listOfUsers = FXCollections.observableArrayList(this.komunaService.getKomunaShtetiTable());
+        komunaIDColumn.setCellValueFactory(p -> new SimpleIntegerProperty(p.getValue().getKomunaID()).asObject());
+        emriColumn.setCellValueFactory( p -> new SimpleStringProperty(p.getValue().getEmriKomunes()));
+        shtetiIDColumn.setCellValueFactory(p -> new SimpleIntegerProperty(p.getValue().getShtetiID()).asObject());
+        emriShtetitColumn.setCellValueFactory(p -> new SimpleStringProperty(p.getValue().getEmriShtetit()));
 
-    public static class Komuna {
-        private int id;
-        private String emri;
-        private int shtetiId;
+        komunaTableView.setItems(listOfUsers);
 
-        public Komuna(int id, String emri, int shtetiId) {
-            this.id = id;
-            this.emri = emri;
-            this.shtetiId = shtetiId;
-        }
 
-        public int getId() {
-            return id;
-        }
-
-        public String getEmri() {
-            return emri;
-        }
-
-        public int getShtetiId() {
-            return shtetiId;
-        }
     }
 }
