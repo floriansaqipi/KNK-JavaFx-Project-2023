@@ -44,7 +44,7 @@ public class ProfesorPageController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/knk_project/" + "profesor-home-page-view" + ".fxml"));
             root =  fxmlLoader.load();
             ProfesorHomePageController profesorHomePageController = fxmlLoader.getController();
-        System.out.println(this.mainController);
+//        System.out.println(this.mainController);
             profesorHomePageController.setMainController(this.mainController);
             profesorHomePageController.setProfesori(this.profesori);
             profesorHomePageController.printProfesori();

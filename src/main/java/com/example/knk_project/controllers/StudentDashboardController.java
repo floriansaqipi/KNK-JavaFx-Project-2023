@@ -1,5 +1,6 @@
 package com.example.knk_project.controllers;
 
+import com.example.knk_project.models.Nxenesi;
 import com.example.knk_project.models.User;
 import com.example.knk_project.services.AdminDashboardService;
 import com.example.knk_project.services.interfaces.AdminDashboardServiceInterface;
@@ -22,6 +23,10 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class StudentDashboardController implements Initializable {
+
+
+    private MainController mainController;
+    private Nxenesi nxenesi;
 
     @FXML
     private PieChart adminPieChart;
@@ -74,5 +79,17 @@ public class StudentDashboardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+    }
+
+    public void setMainController(MainController mainController) {
+        this.mainController = mainController;
+    }
+
+    public void setNxenesi(Nxenesi nxenesi) {
+        this.nxenesi = nxenesi;
+    }
+
+    public void printNxenesi(){
+        System.out.println(this.nxenesi);
     }
 }

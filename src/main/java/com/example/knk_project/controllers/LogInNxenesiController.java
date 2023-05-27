@@ -1,5 +1,6 @@
 package com.example.knk_project.controllers;
 
+import com.example.knk_project.models.Nxenesi;
 import com.example.knk_project.services.NxenesiService;
 import com.example.knk_project.services.exceptions.IncorrectPasswordException;
 import com.example.knk_project.services.exceptions.UserNotFoundException;
@@ -39,6 +40,11 @@ public class LogInNxenesiController {
         this.nxenesiService.logIn(username,password);
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/knk_project/studentpage-view.fxml"));
             BorderPane nxenesiPagePane = fxmlLoader.load();
+            StudentPageController studentPageController = fxmlLoader.getController();
+            studentPageController.setMainController(mainController);
+            Nxenesi nxenesi = this.nxenesiService.getNxenesiByUsername(username);
+            studentPageController.setNxenesi(nxenesi);
+            studentPageController.initData();
             mainController.setMainPane(nxenesiPagePane);
         }catch (ValidationException exception){
             exception.printStackTrace();
