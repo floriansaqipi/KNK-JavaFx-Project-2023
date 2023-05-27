@@ -69,4 +69,26 @@ public class LendaRepository implements LendaRepositoryInterface {
         }
         return lendet;
     }
+
+    @Override
+    public Lenda getLendaByLendaId(int lendaId) throws SQLException {
+        String sql = "SELECT * FROM lendet l WHERE l.id = ? ;";
+        Connection connection = ConnectionUtil.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1,lendaId);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        Lenda lenda = null;
+
+        if (resultSet.next()){
+            lenda =
+                    new Lenda(
+                            resultSet.getInt(1),
+                            resultSet.getString(2)
+                    );
+
+        }
+        return lenda;
+    }
 }

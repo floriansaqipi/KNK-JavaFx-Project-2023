@@ -149,4 +149,40 @@ public class NxenesiRepository implements NxenesiRepositoryInterface {
 
     }
 
+    @Override
+    public Nxenesi getNxenesiByNxenesiId(int nxenesiId) throws SQLException {
+        String sql = "SELECT * FROM nxenesit n WHERE n.id = ?";
+        Connection connection = ConnectionUtil.getConnection();
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setInt(1 , nxenesiId);
+
+        ResultSet resultSet = statement.executeQuery();
+        if(!resultSet.next()){
+            return  null;
+        }
+        int id = resultSet.getInt("id");
+        String username = resultSet.getString("username");
+        String salt = resultSet.getString("salt");
+        String saltedPassword = resultSet.getString("salted_password");
+        String emri = resultSet.getString("emri");
+        String mbiemri = resultSet.getString("mbiemri");
+        Date dateLindja = resultSet.getDate("data_e_lindjes");
+        int vendlindjaId = resultSet.getInt("vendlindja_id");
+        int komunaId = resultSet.getInt("komuna_id");
+        int prindiId = resultSet.getInt("prindi_id");
+        int klasaId = resultSet.getInt("klasa_id");
+        return new Nxenesi(
+                id,
+                username,
+                salt,
+                saltedPassword,
+                emri,
+                mbiemri,
+                dateLindja,
+                vendlindjaId,
+                komunaId,
+                prindiId,
+                klasaId);
+    }
+
 }

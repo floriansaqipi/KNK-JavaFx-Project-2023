@@ -13,4 +13,6 @@ public interface NotaRepositoryInterface {
     List<Nota> getAllNotat() throws SQLException;
     int getNumberOfGrades() throws SQLException;
 
+    List<Nota> getAllNotatByProfesoriId(int profesoriId) throws SQLException;
+
 }

@@ -14,6 +14,7 @@ module com.example.knk_project {
     exports com.example.knk_project.services.validators;
     exports com.example.knk_project.services;
     opens com.example.knk_project.services;
+    opens com.example.knk_project.models;
 
 
 }
