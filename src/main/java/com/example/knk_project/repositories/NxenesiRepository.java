@@ -72,9 +72,10 @@ public class NxenesiRepository implements NxenesiRepositoryInterface {
 
     @Override
     public List<Nxenesi> getAllNxenesitbyProfesoriID(int profesoriID) throws SQLException {
-        String sql = "SELECT n.* from profesoret p inner join profesoret_klasat pk on pk.profesori_id = p.id inner join klasa k on k.id = pk.klasa_id inner join nxenesit n on n.klasa_id = k.id where p.id =" + profesoriID + ";";
+        String sql = "SELECT n.* from profesoret p inner join profesoret_klasat pk on pk.profesori_id = p.id inner join klasa k on k.id = pk.klasa_id inner join nxenesit n on n.klasa_id = k.id where p.id = ?;";
         Connection connection = ConnectionUtil.getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1 , profesoriID);
 
         ResultSet resultSet = preparedStatement.executeQuery();
 
