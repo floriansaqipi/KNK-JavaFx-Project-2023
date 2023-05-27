@@ -60,6 +60,11 @@ public class NxenesiService implements NxenesiServiceInterface {
     }
 
     @Override
+    public Nxenesi getNxenesiByUsername(String username) throws SQLException {
+        return this.nxenesiRepository.getNxenesiByUsername(username);
+    }
+
+    @Override
     public int getNumberOfNxenesve() throws SQLException {
         return this.nxenesiRepository.getNumberOfNxenesve();
 

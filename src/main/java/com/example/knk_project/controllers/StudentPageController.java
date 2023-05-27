@@ -1,5 +1,6 @@
 package com.example.knk_project.controllers;
 
+import com.example.knk_project.models.Nxenesi;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -19,6 +20,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class StudentPageController implements Initializable {
+    private Nxenesi nxenesi;
+
+
+
+    private MainController mainController;
     @FXML
     private AnchorPane ap;
     @FXML
@@ -27,6 +33,25 @@ public class StudentPageController implements Initializable {
     private Button logOutButton;
     @FXML
     private Pane p;
+
+    private void setNxenesiPage() throws IOException {
+        AnchorPane root = null;
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/knk_project/" + "nxenesi-home-page-view" + ".fxml"));
+        root =  fxmlLoader.load();
+
+        NxenesiHomePageController nxenesiHomePageController = fxmlLoader.getController();
+//        System.out.println(this.mainController);
+        nxenesiHomePageController.setMainController(this.mainController);
+        nxenesiHomePageController.setNxenesi(this.nxenesi);
+//        nxenesiHomePageController.printNxenesi();
+
+//            AddGradeController addGradeController = fxmlLoader.getController();
+//            addGradeController.setProfesori(this.profesori);
+//            addGradeController.initData();
+
+        bp.setCenter(root);
+    }
 
     public void transkripta(MouseEvent event) {
         loadPage("transcript");
@@ -68,5 +93,21 @@ public class StudentPageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+    }
+
+    public void initData(){
+        try{
+        this.setNxenesiPage();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void setNxenesi(Nxenesi nxenesi) {
+        this.nxenesi = nxenesi;
+    }
+
+    public void setMainController(MainController mainController) {
+        this.mainController = mainController;
     }
 }

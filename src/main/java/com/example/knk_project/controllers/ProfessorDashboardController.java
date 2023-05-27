@@ -1,5 +1,6 @@
 package com.example.knk_project.controllers;
 
+import com.example.knk_project.models.Profesori;
 import com.example.knk_project.models.User;
 import com.example.knk_project.services.AdminDashboardService;
 import com.example.knk_project.services.interfaces.AdminDashboardServiceInterface;
@@ -22,6 +23,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class ProfessorDashboardController implements Initializable {
+    private Profesori profesori;
 
     @FXML
     private PieChart adminPieChart;
@@ -69,6 +71,14 @@ public class ProfessorDashboardController implements Initializable {
 
         // Add the series to the line chart
         lineChart.getData().add(series);
+    }
+
+    public void setProfesori(Profesori profesori){
+        this.profesori = profesori;
+    }
+
+    public void printProfesori(){
+        System.out.println(this.profesori);
     }
 
     @Override

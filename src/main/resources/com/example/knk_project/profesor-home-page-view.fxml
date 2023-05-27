@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="549.0" prefWidth="657.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.controllers.ProfesorHomePageController">
+   <children>
+      <ImageView fitHeight="549.0" fitWidth="668.0" pickOnBounds="true">
+         <image>
+            <Image url="@images/prof-bg.jpg" />
+         </image>
+      </ImageView>
+      <Button contentDisplay="TOP" layoutX="248.0" layoutY="207.0" mnemonicParsing="false" onAction="#loadDashboard" prefHeight="152.0" prefWidth="191.0" text="Dashboard">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Button>
+      <Label layoutX="200.0" layoutY="48.0" text="WELCOME PROFESSOR">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+      <Label layoutX="190.0" layoutY="153.0" text="Click button below to show dashboard">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

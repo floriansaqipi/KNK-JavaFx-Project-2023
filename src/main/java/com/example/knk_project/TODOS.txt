@@ -38,3 +38,11 @@ Nota mesatare
 
 TODO: Nxenesi Transkripta(Notat)  / Profili / Dashboard
 
+
+TODO: florian
+pass id to profesori dashboard
+pass id to nxenesi dashboard
+implement loading in dashboard automatically
+implement profesori dashboard
+fix log outs
+

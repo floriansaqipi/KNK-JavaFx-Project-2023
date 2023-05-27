@@ -50,6 +50,9 @@ public class LogInAdminiController {
 
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/knk_project/adminpage-view.fxml"));
             BorderPane adminPagePane = fxmlLoader.load();
+            AdminPageController adminPageController = fxmlLoader.getController();
+            adminPageController.setMainController(mainController);
+            adminPageController.initData();
             mainController.setMainPane(adminPagePane);
         }
         catch (ValidationException exception){
