@@ -82,7 +82,19 @@ public class ProfesorPageController implements Initializable {
     }
     @FXML
     public void Notat(MouseEvent event) {
-        loadPage("table-nota-view-new");
+        AnchorPane anchorPane = null;
+        try{
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/knk_project/" + "table-nota-view-new" + ".fxml"));
+        anchorPane = fxmlLoader.load();
+        TableNotaControllerNew tableNotaControllerNew = fxmlLoader.getController();
+        tableNotaControllerNew.setProfesori(this.profesori);
+        tableNotaControllerNew.initData();
+        }catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        bp.setCenter(anchorPane);
+
     }
     @FXML
     public void ShikoProfilin(MouseEvent event) {

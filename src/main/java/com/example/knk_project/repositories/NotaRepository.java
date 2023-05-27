@@ -73,4 +73,32 @@ public class NotaRepository implements NotaRepositoryInterface {
         return numberOfGrades ;
     }
 
+    @Override
+    public List<Nota> getAllNotatByProfesoriId(int profesoriId) throws SQLException {
+        String sql = "SELECT * FROM notat n WHERE n.profesori_id = ? ;";
+        Connection connection = ConnectionUtil.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1,profesoriId);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        List<Nota> notat = new ArrayList<>();
+
+        while (resultSet.next()){
+            notat.add(
+                    new Nota(
+                            resultSet.getInt(1),
+                            resultSet.getInt(2),
+                            resultSet.getInt(3),
+                            resultSet.getInt(4),
+                            resultSet.getInt(5),
+                            resultSet.getInt(6),
+                            resultSet.getInt(7)
+
+                    )
+            );
+        }
+        return notat;
+    }
+
 }

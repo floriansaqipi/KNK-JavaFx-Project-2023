@@ -17,4 +17,7 @@ public interface NxenesiRepositoryInterface {
 
     int getNumberOfNxenesve() throws SQLException;
 
+    Nxenesi getNxenesiByNxenesiId(int nxenesiId) throws SQLException;
+
+
 }

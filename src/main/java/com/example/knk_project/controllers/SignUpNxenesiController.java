@@ -79,10 +79,10 @@ public class SignUpNxenesiController implements Initializable {
         } catch (UserAlreadyExistsException exception) {
             exception.printStackTrace();
             this.messageLabel.setText("Username is taken");
-        } catch (SQLException exception) {
-            exception.printStackTrace();
-            this.messageLabel.setText("Something went wrong with the database");
-        }
+            } catch (SQLException exception) {
+                exception.printStackTrace();
+                this.messageLabel.setText("Something went wrong with the database");
+            }
 
 
     }

@@ -13,4 +13,6 @@ public interface LendaRepositoryInterface {
 
     List<Lenda> getAllLendetByProfesoriId(int profesoriId) throws SQLException;
 
+    Lenda getLendaByLendaId(int lendaId) throws SQLException;
+
 }
