@@ -42,7 +42,7 @@
                                 <Font size="13.0" />
                             </font>
                         </Label>
-                        <Label fx:id="numriNotaveLabel" alignment="CENTER" layoutX="93.0" layoutY="25.0" text="500" textFill="WHITE">
+                        <Label fx:id="numriNxenesveLabel" alignment="CENTER" layoutX="93.0" layoutY="25.0" text="500" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="36.0" />
                             </font>
@@ -56,7 +56,7 @@
                                 <Font size="13.0" />
                             </font>
                         </Label>
-                        <Label fx:id="numriProfesoreveLabel" layoutX="119.0" layoutY="25.0" text="10" textFill="WHITE">
+                        <Label fx:id="numriLendeveLabel" layoutX="119.0" layoutY="25.0" text="10" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="36.0" />
                             </font>
@@ -70,7 +70,7 @@
                                 <Font size="13.0" />
                             </font>
                         </Label>
-                        <Label fx:id="numriKlasaveLabel" layoutX="130.0" layoutY="25.0" text="2" textFill="WHITE">
+                        <Label fx:id="suksesiLabel" layoutX="130.0" layoutY="25.0" text="2" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="36.0" />
                             </font>
