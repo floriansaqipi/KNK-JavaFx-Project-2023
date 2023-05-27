@@ -48,8 +48,10 @@ public class LogInProfesoriController {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/knk_project/profesor-page-view.fxml"));
             BorderPane profesorPagePane = fxmlLoader.load();
             ProfesorPageController profesorPageController = fxmlLoader.getController();
+            profesorPageController.setMainController(mainController);
             Profesori profesori = this.profesoriService.getProfesorByUsername(username);
             profesorPageController.setProfesori(profesori);
+            profesorPageController.initData();
             mainController.setMainPane(profesorPagePane);
         } catch (ValidationException exception) {
             exception.printStackTrace();

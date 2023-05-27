@@ -22,6 +22,11 @@ public class MainController implements Initializable {
         this.mainPane.getChildren().add(mainPane);
     }
 
+    public void setMainPane(AnchorPane mainPane) {
+        this.mainPane.getChildren().clear();
+        this.mainPane.getChildren().add(mainPane);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
        try{
