@@ -2,7 +2,7 @@ package com.example.knk_project.controllers;
 
 import com.example.knk_project.models.KomunaShteti;
 import com.example.knk_project.models.User;
-import com.example.knk_project.models.dto.CreateUpdatedKomunaDto;
+import com.example.knk_project.models.dto.UpdateKomunaDto;
 import com.example.knk_project.services.*;
 import com.example.knk_project.services.interfaces.*;
 import javafx.beans.property.SimpleIntegerProperty;
