@@ -32,5 +32,10 @@ public class KlasaService implements KlasaServiceInterface {
         return this.klasaRepository.getNumberOfKlaseve();
     }
 
+    @Override
+    public Klasa getKlasaByNxenesiId(int nxenesiId) throws SQLException {
+        return  this.klasaRepository.getKlasaByNxenesiId(nxenesiId);
+    }
+
 
 }

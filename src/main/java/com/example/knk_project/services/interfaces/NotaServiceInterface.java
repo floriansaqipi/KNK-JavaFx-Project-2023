@@ -5,6 +5,7 @@ import com.example.knk_project.models.Nota;
 import com.example.knk_project.models.ProfesoriNotaTableView;
 import com.example.knk_project.models.dto.CreateLendaDto;
 import com.example.knk_project.models.dto.CreateNotaDto;
+import com.example.knk_project.models.dto.UpdateNotaDto;
 import javafx.collections.ObservableList;
 
 import java.sql.SQLException;
@@ -17,4 +18,8 @@ public interface NotaServiceInterface {
     int getNumberOfGrades() throws SQLException;
 
     void addDataToGradesDataList(ObservableList<ProfesoriNotaTableView> gradesDatalist, int profesoriId) throws SQLException;
+
+    void deleteNotaByNotaId(int notaId) throws SQLException;
+
+    void update(UpdateNotaDto updateNotaDto) throws SQLException;
 }

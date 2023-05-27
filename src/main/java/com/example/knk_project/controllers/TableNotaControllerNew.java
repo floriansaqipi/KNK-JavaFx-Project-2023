@@ -9,11 +9,16 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Date;
@@ -21,9 +26,12 @@ import java.util.ResourceBundle;
 
 
 public class TableNotaControllerNew implements Initializable {
+    private boolean clickedOnce = false;
 
 
     private Profesori profesori;
+
+    TableNotaControllerNew tableNotaControllerNew = this;
 
     private NotaServiceInterface notaService = new NotaService();
 
@@ -73,6 +81,7 @@ public class TableNotaControllerNew implements Initializable {
 
     public void initData(){
         try{
+            this.clickedOnce = false;
             insertData();
 
         }catch (SQLException exception) {
@@ -94,7 +103,13 @@ public class TableNotaControllerNew implements Initializable {
                     // Handle button click event here
                     // You can access the row item using getTableView().getItems().get(getIndex())
                     Nota nota = getTableView().getItems().get(getIndex()).getNota();
-                    System.out.println(nota);
+                    try{
+                    notaService.deleteNotaByNotaId(nota.getId());
+                    initData();
+                    }catch (SQLException exception) {
+                        exception.printStackTrace();
+                        messageLabel.setText("Something went wrong with the database");
+                    }
                 });
             }
 
@@ -118,8 +133,35 @@ public class TableNotaControllerNew implements Initializable {
                 button.setOnAction(event -> {
                     // Handle button click event here
                     // You can access the row item using getTableView().getItems().get(getIndex())
-                    Nota nota = getTableView().getItems().get(getIndex()).getNota();
-                    System.out.println(nota);
+                    if (clickedOnce){
+                        return;
+                    }
+                    clickedOnce = true;
+                    ProfesoriNotaTableView profesoriNotaTableView = getTableView().getItems().get(getIndex());
+                    Nota nota = profesoriNotaTableView.getNota();
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/knk_project/" +
+                            "edit-nota-profesori-view.fxml"));
+                    AnchorPane anchorPane = null;
+                    try {
+                        anchorPane = loader.load();
+                        EditGradeController editGradeController = loader.getController();
+                        editGradeController.setProfesori(profesori);
+                        editGradeController.setProfesoriNotaTableView(profesoriNotaTableView);
+                        editGradeController.setTableNotaControllerNew(tableNotaControllerNew);
+                        editGradeController.initData();
+                        Scene scene = new Scene(anchorPane);
+                        Stage editStage = new Stage();
+                        editStage.setOnCloseRequest(eventClose -> {
+                            tableNotaControllerNew.initData();
+                            editStage.close();
+                        });
+                        editStage.setScene(scene);
+                        editStage.show();
+                    } catch (IOException e) {
+                            e.printStackTrace();
+                            messageLabel.setText("Something went wrong with the controller");
+
+                    }
                 });
             }
 

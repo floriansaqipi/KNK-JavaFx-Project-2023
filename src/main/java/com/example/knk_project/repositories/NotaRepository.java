@@ -1,8 +1,8 @@
 package com.example.knk_project.repositories;
 
-import com.example.knk_project.models.Klasa;
 import com.example.knk_project.models.Nota;
 import com.example.knk_project.models.dto.CreateNotaDto;
+import com.example.knk_project.models.dto.UpdateNotaDto;
 import com.example.knk_project.repositories.interfaces.NotaRepositoryInterface;
 import com.example.knk_project.services.ConnectionUtil;
 
@@ -20,12 +20,12 @@ public class NotaRepository implements NotaRepositoryInterface {
                 "VALUES (?, ?, ?, ?, ?, ?);";
         Connection connection = ConnectionUtil.getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setInt(1,createNotaDto.getVlera());
-        preparedStatement.setInt(2,createNotaDto.getRubrika());
-        preparedStatement.setInt(3,createNotaDto.getGjysmevjetori());
-        preparedStatement.setInt(4,createNotaDto.getProfesoriId());
-        preparedStatement.setInt(5,createNotaDto.getLendaId());
-        preparedStatement.setInt(6,createNotaDto.getNxenesiId());
+        preparedStatement.setInt(1, createNotaDto.getVlera());
+        preparedStatement.setInt(2, createNotaDto.getRubrika());
+        preparedStatement.setInt(3, createNotaDto.getGjysmevjetori());
+        preparedStatement.setInt(4, createNotaDto.getProfesoriId());
+        preparedStatement.setInt(5, createNotaDto.getLendaId());
+        preparedStatement.setInt(6, createNotaDto.getNxenesiId());
 
         preparedStatement.executeUpdate();
     }
@@ -40,7 +40,7 @@ public class NotaRepository implements NotaRepositoryInterface {
 
         List<Nota> notat = new ArrayList<>();
 
-        while (resultSet.next()){
+        while (resultSet.next()) {
             notat.add(
                     new Nota(
                             resultSet.getInt(1),
@@ -67,10 +67,10 @@ public class NotaRepository implements NotaRepositoryInterface {
 
         int numberOfGrades = 0;
 
-        while (resultSet.next()){
+        while (resultSet.next()) {
             numberOfGrades = resultSet.getInt(1);
         }
-        return numberOfGrades ;
+        return numberOfGrades;
     }
 
     @Override
@@ -78,13 +78,13 @@ public class NotaRepository implements NotaRepositoryInterface {
         String sql = "SELECT * FROM notat n WHERE n.profesori_id = ? ;";
         Connection connection = ConnectionUtil.getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setInt(1,profesoriId);
+        preparedStatement.setInt(1, profesoriId);
 
         ResultSet resultSet = preparedStatement.executeQuery();
 
         List<Nota> notat = new ArrayList<>();
 
-        while (resultSet.next()){
+        while (resultSet.next()) {
             notat.add(
                     new Nota(
                             resultSet.getInt(1),
@@ -100,5 +100,33 @@ public class NotaRepository implements NotaRepositoryInterface {
         }
         return notat;
     }
+
+    @Override
+    public void deleteNotaByNotaId(int notaId) throws SQLException {
+        String sql = "DELETE FROM notat n WHERE n.id = ? ;";
+        Connection connection = ConnectionUtil.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1, notaId);
+        preparedStatement.executeUpdate();
+
+    }
+
+    @Override
+    public void update(UpdateNotaDto updateNotaDto) throws SQLException {
+
+        String sql = "UPDATE notat SET vlera = ?, gjysmevjetori = ?, rubrika = ?, lenda_id = ?, nxenesi_id = ? " +
+                "WHERE id = ? ";
+        Connection connection = ConnectionUtil.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1, updateNotaDto.getVlera());
+        preparedStatement.setInt(2, updateNotaDto.getGjysmevjetori());
+        preparedStatement.setInt(3, updateNotaDto.getRubrika());
+        preparedStatement.setInt(4, updateNotaDto.getLendaId());
+        preparedStatement.setInt(5, updateNotaDto.getNxenesiId());
+        preparedStatement.setInt(6, updateNotaDto.getId());
+
+        preparedStatement.executeUpdate();
+    }
+
 
 }

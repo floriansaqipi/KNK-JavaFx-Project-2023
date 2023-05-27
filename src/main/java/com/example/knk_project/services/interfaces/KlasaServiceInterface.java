@@ -15,4 +15,7 @@ public interface KlasaServiceInterface {
 
     int getNumberOfKlaseve() throws SQLException;
 
+    Klasa getKlasaByNxenesiId(int nxenesiId) throws SQLException;
+
+
 }

@@ -1,11 +1,8 @@
 package com.example.knk_project.controllers;
 
-import com.example.knk_project.models.Klasa;
-import com.example.knk_project.models.Lenda;
-import com.example.knk_project.models.Nxenesi;
-import com.example.knk_project.models.Profesori;
+import com.example.knk_project.models.*;
 import com.example.knk_project.models.dto.CreateNotaDto;
-import com.example.knk_project.repositories.interfaces.NxenesiRepositoryInterface;
+import com.example.knk_project.models.dto.UpdateNotaDto;
 import com.example.knk_project.services.*;
 import com.example.knk_project.services.exceptions.ValidationException;
 import com.example.knk_project.services.interfaces.*;
@@ -13,18 +10,25 @@ import com.example.knk_project.services.validators.ValidatorService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.Node;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.util.StringConverter;
 
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class AddGradeController implements Initializable {
-    Profesori profesori;
+public class EditGradeController implements Initializable {
+    private Profesori profesori;
+
+    private ProfesoriNotaTableView profesoriNotaTableView;
+
+    private TableNotaControllerNew tableNotaControllerNew;
+
+    private NxenesiServiceInterface nxenesiService = new NxenesiService();
+
     @FXML
     private Spinner<Integer> gjysmevjetoriSpinner;
 
@@ -47,23 +51,38 @@ public class AddGradeController implements Initializable {
     private Spinner<Integer> vleraNotesSpinner;
     private KlasaServiceInterface klasaService = new KlasaService();
     private LendaServiceInterface lendaService = new LendaService();
-    private NxenesiServiceInterface nxenesiService = new NxenesiService();
     private ValidatorInterface validator = new ValidatorService();
     private NotaServiceInterface notaService = new NotaService();
 
     public void setProfesori(Profesori profesori) {
         this.profesori = profesori;
     }
+    public void setProfesoriNotaTableView(ProfesoriNotaTableView profesoriNotaTableView) {
+        this.profesoriNotaTableView = profesoriNotaTableView;
+    }
+
+    public void setTableNotaControllerNew(TableNotaControllerNew tableNotaControllerNew) {
+        this.tableNotaControllerNew = tableNotaControllerNew;
+    }
+
+    private void close(ActionEvent event){
+        Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        this.tableNotaControllerNew.initData();
+        stage.close();
+    }
+
 
     @FXML
-    void shtoNotenClick(ActionEvent event) throws SQLException {
+    void editNotenClick(ActionEvent event) throws SQLException {
+        int id = this.profesoriNotaTableView.getNota().getId();
         int vlera = this.vleraNotesSpinner.getValue();
         int rubrika = this.rubrikaSpinner.getValue();
         int gjysmevjetori = this.gjysmevjetoriSpinner.getValue();
         int profesoriId = this.profesori.getId();
         int lendaId = this.lendaComboBox.getValue().getId();
         int nxenesiId = this.nxenesiComboBox.getValue().getId();
-        CreateNotaDto createNotaDto = new CreateNotaDto(
+        UpdateNotaDto updateNotaDto = new UpdateNotaDto(
+                id,
                 vlera,
                 rubrika,
                 gjysmevjetori,
@@ -73,8 +92,9 @@ public class AddGradeController implements Initializable {
         );
         try {
             validateInputs();
-            this.notaService.insert(createNotaDto);
-            this.messageLabel.setText("Successfully added grade");
+            this.notaService.update(updateNotaDto);
+            this.messageLabel.setText("Successfully edited grade");
+            this.close(event);
         }catch (ValidationException exception) {
             exception.printStackTrace();
             this.messageLabel.setText("Invalid inputs");
@@ -120,6 +140,26 @@ public class AddGradeController implements Initializable {
         });
     }
 
+    private void loadInSpinnerData(){
+        this.vleraNotesSpinner.getValueFactory().setValue(this.profesoriNotaTableView.getNota().getVlera());
+        this.gjysmevjetoriSpinner.getValueFactory().setValue(this.profesoriNotaTableView.getNota().getGjysmevjetori());
+        this.rubrikaSpinner.getValueFactory().setValue(this.profesoriNotaTableView.getNota().getRubrika());
+    }
+
+    private void loadInKlasaComboBoxData() throws SQLException {
+        Klasa klasa = this.klasaService.getKlasaByNxenesiId(this.profesoriNotaTableView.getNota().getNxenesiId());
+        this.klasaComboBox.setValue(klasa);
+        this.generateOtherComboBoxes(new ActionEvent());
+    }
+
+    private void loadInLendaComboBoxData(){
+        this.lendaComboBox.setValue(this.profesoriNotaTableView.getLenda());
+    }
+
+    private void loadInNxenesiComboBoxData(){
+        this.nxenesiComboBox.setValue(this.profesoriNotaTableView.getNxenesi());
+    }
+
 
     public void generateOtherComboBoxes(ActionEvent event) {
 //        System.out.println(this.klasaComboBox.getValue().getId());
@@ -127,8 +167,8 @@ public class AddGradeController implements Initializable {
         this.nxenesiComboBox.setVisible(true);
         try {
 
-        this.initializeLendaComboBox();
-        this.initializeNxenesiComboBox();
+            this.initializeLendaComboBox();
+            this.initializeNxenesiComboBox();
         } catch (SQLException exception) {
             exception.printStackTrace();
             this.messageLabel.setText("Something went wrong with the database");
@@ -170,7 +210,7 @@ public class AddGradeController implements Initializable {
             @Override
             public Nxenesi fromString(String string) {
                 return nxenesiComboBox.getItems().stream().filter(ap ->
-                        (ap.getEmri()+ " " + ap.getMbiemri()  + " (" +  ap.getUsername() + ")").equals(string))
+                                (ap.getEmri()+ " " + ap.getMbiemri()  + " (" +  ap.getUsername() + ")").equals(string))
                         .findFirst().orElse(null);
             }
         });
@@ -180,6 +220,10 @@ public class AddGradeController implements Initializable {
     public void initData() {
         try {
             this.initializeKlasaComboBox();
+            this.loadInSpinnerData();
+            this.loadInKlasaComboBoxData();
+            this.loadInLendaComboBoxData();
+            this.loadInNxenesiComboBoxData();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

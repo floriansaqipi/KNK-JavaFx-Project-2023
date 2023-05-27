@@ -2,6 +2,7 @@ package com.example.knk_project.repositories;
 
 import com.example.knk_project.models.Klasa;
 import com.example.knk_project.models.dto.CreateKlasaDto;
+import com.example.knk_project.models.dto.UpdateNotaDto;
 import com.example.knk_project.repositories.interfaces.KlasaRepositoryInterface;
 import com.example.knk_project.services.ConnectionUtil;
 
@@ -75,6 +76,37 @@ public class KlasaRepository implements KlasaRepositoryInterface {
         }
 
         return klasat;
+    }
+
+    @Override
+    public Klasa getKlasaByNxenesiId(int nxenesiId) throws SQLException {
+        String sql = "SELECT k.* FROM klasat k INNER JOIN nxenesit n ON k.id = n.klasa_id " +
+                "WHERE n.id = ? ; ";
+        Connection connection = ConnectionUtil.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1,nxenesiId);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        Klasa klasa = null;
+
+        if (resultSet.next()){
+            klasa =
+                    new Klasa(
+                            resultSet.getInt(1),
+                            resultSet.getInt(2),
+                            resultSet.getInt(3),
+                            resultSet.getString(4)
+                    );
+
+        }
+
+        return klasa;
+    }
+
+    @Override
+    public void update(UpdateNotaDto updateNotaDto) throws SQLException {
+
     }
 
     public int getNumberOfKlaseve() throws SQLException {
