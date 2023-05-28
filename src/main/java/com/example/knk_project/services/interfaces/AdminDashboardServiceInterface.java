@@ -8,6 +8,9 @@ import java.util.List;
 
 public interface AdminDashboardServiceInterface {
     List<User> getAllUsers() throws SQLException;
+    List<User> getAllUsersNxenes() throws SQLException;
+    List<User> getAllUsersProfesor() throws SQLException;
+
 
 
 

@@ -50,7 +50,7 @@ public class EditKomunaController implements Initializable {
         this.komunaShtetiTableView = komunaShtetiTableView;
     }
 
-    public void setTableNotaControllerNew(TableKomunaController tableKomunaController) {
+    public void setTableKomunaController(TableKomunaController tableKomunaController) {
         this.tableKomunaController = tableKomunaController;
     }
 

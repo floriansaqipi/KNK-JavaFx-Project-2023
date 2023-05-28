@@ -1,129 +1,170 @@
-
-
 package com.example.knk_project.controllers;
 
-        import com.example.knk_project.models.Shteti;
-        import javafx.event.ActionEvent;
-        import javafx.fxml.FXML;
-        import javafx.scene.control.Button;
-        import javafx.scene.control.TableCell;
-        import javafx.scene.control.TableColumn;
-        import javafx.scene.control.TableView;
-        import javafx.scene.control.cell.PropertyValueFactory;
-        import javafx.scene.layout.AnchorPane;
-        import javafx.util.Callback;
+import com.example.knk_project.models.Komuna;
+import com.example.knk_project.models.KomunaShtetiTableView;
+import com.example.knk_project.models.Shteti;
+import com.example.knk_project.repositories.interfaces.ShtetiRepositoryInterface;
+import com.example.knk_project.services.KomunaService;
+import com.example.knk_project.services.ShtetiService;
+import com.example.knk_project.services.interfaces.KomunaServiceInterface;
+import com.example.knk_project.services.interfaces.ShtetiServiceInterface;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
-public class TableShtetiController {
+import java.io.IOException;
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
+
+public class TableShtetiController implements Initializable {
+
+    private boolean clickedOnce = false;
+    private TableShtetiController tableShtetiController =  this;
+
+    @FXML
+    private TableColumn<Shteti, Shteti> deleteColumn;
+
+    @FXML
+    private TableColumn<Shteti, Shteti> editColumn;
+
+    @FXML
+    private TableColumn<Shteti, String> emriShtetitColumn;
 
     @FXML
     private TableView<Shteti> shtetiTableView;
 
-    public void initialize() {
+    @FXML
+    private Label messageLabel;
 
-        TableColumn<Shteti, Integer> idColumn = new TableColumn<>("ID");
-        TableColumn<Shteti, String> emriColumn = new TableColumn<>("Emri");
-        TableColumn<Shteti, Void> editColumn = new TableColumn<>("Edit");
-        TableColumn<Shteti, Void> deleteColumn = new TableColumn<>("Delete");
-
-
-        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-        emriColumn.setCellValueFactory(new PropertyValueFactory<>("emri"));
-        idColumn.setPrefWidth(112);
-        emriColumn.setPrefWidth(112);
-        editColumn.setPrefWidth(112);
-        deleteColumn.setPrefWidth(112);
+    @FXML
+    private TableColumn<Shteti, Integer> shtetiIDColumn;
 
 
-        shtetiTableView.getColumns().addAll(idColumn, emriColumn, editColumn, deleteColumn);
+    private ObservableList<Shteti> shtetiDatalist;
 
 
-        Callback<TableColumn<Shteti, Void>, TableCell<Shteti, Void>> editCellFactory = new Callback<>() {
-            @Override
-            public TableCell<Shteti, Void> call(final TableColumn<Shteti, Void> param) {
-                final TableCell<Shteti, Void> cell = new TableCell<>() {
-                    private final Button editButton = new Button("Edit");
-
-                    {
-                        editButton.setOnAction((ActionEvent event) -> {
-                            Shteti shteti = getTableView().getItems().get(getIndex());
-
-                            System.out.println("Edit button clicked for Shteti with ID: " + shteti.getId());
-                        });
-                    }
-
-                    @Override
-                    protected void updateItem(Void item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (empty) {
-                            setGraphic(null);
-                        } else {
-                            setGraphic(editButton);
-                        }
-                    }
-                };
-                return cell;
-            }
-        };
-
-        Callback<TableColumn<Shteti, Void>, TableCell<Shteti, Void>> deleteCellFactory = new Callback<>() {
-            @Override
-            public TableCell<Shteti, Void> call(final TableColumn<Shteti, Void> param) {
-                final TableCell<Shteti, Void> cell = new TableCell<>() {
-                    private final Button deleteButton = new Button("Delete");
-
-                    {
-                        deleteButton.setOnAction((ActionEvent event) -> {
-                            Shteti komuna = getTableView().getItems().get(getIndex());
-
-                            System.out.println("Delete button clicked for Komuna with ID: " + komuna.getId());
-                        });
-                    }
-
-                    @Override
-                    protected void updateItem(Void item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (empty) {
-                            setGraphic(null);
-                        } else {
-                            setGraphic(deleteButton);
-                        }
-                    }
-                };
-                return cell;
-            }
-        };
+    private ShtetiServiceInterface shtetiService = new ShtetiService();
 
 
-        editColumn.setCellFactory(editCellFactory);
-        deleteColumn.setCellFactory(deleteCellFactory);
 
-
-        shtetiTableView.getItems().add(new Shteti(1, "Shteti 1"));
-        shtetiTableView.getItems().add(new Shteti(2, "Shteti 2"));
-        shtetiTableView.getItems().add(new Shteti(3, "Shteti 3"));
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        initalizeShtetiTableView();
 
     }
 
+    public void initData(){
+        try{
+            this.clickedOnce = false;
+            insertData();
 
-    public static class Shteti {
-        private int id;
-        private String emri;
-
-
-        public Shteti(int id, String emri) {
-            this.id = id;
-            this.emri = emri;
-
+        }catch (SQLException exception) {
+            exception.printStackTrace();
+            this.messageLabel.setText("Something went wrong with the database");
         }
+        this.shtetiTableView.setItems(shtetiDatalist);
+        this.addDeleteButtonToTable();
+        this.addEditButtonToTable();
+    }
 
-        public int getId() {
-            return id;
-        }
+    private void addDeleteButtonToTable(){
 
-        public String getEmri() {
-            return emri;
-        }
+        deleteColumn.setCellFactory(column -> new TableCell<>() {
+            private final Button button = new Button("Delete");
 
+            {
+                button.setOnAction(event -> {
+                    // Handle button click event here
+                    // You can access the row item using getTableView().getItems().get(getIndex())
+                    Shteti shteti = getTableView().getItems().get(getIndex());
+                    try{
+                        shtetiService.deleteShtetiByShtetiId(shteti.getId());
+                        initData();
+                    }catch (SQLException exception) {
+                        exception.printStackTrace();
+                        messageLabel.setText("Something went wrong with the database");
+                    }
+                });
+            }
 
+            @Override
+            protected void updateItem(Shteti shteti, boolean empty) {
+                super.updateItem(shteti, empty);
+                if (!empty) {
+                    setGraphic(button);
+                } else {
+                    setGraphic(null);
+                }
+            }
+        });
+    }
+
+    private void addEditButtonToTable(){
+        editColumn.setCellFactory(column -> new TableCell<>() {
+            private final Button button = new Button("Edit");
+
+            {
+                button.setOnAction(event -> {
+                    // Handle button click event here
+                    // You can access the row item using getTableView().getItems().get(getIndex())
+                    if (clickedOnce){
+                        return;
+                    }
+                    clickedOnce = true;
+                    Shteti shteti = getTableView().getItems().get(getIndex());
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/knk_project/" +
+                            "edit-shteti-view.fxml"));
+                    AnchorPane anchorPane = null;
+                    try {
+                        anchorPane = loader.load();
+                        EditShtetiController editShtetiController = loader.getController();
+                        editShtetiController.setShteti(shteti);
+                        editShtetiController.setTableShtetiController(tableShtetiController);
+                        editShtetiController.initData();
+                        Scene scene = new Scene(anchorPane);
+                        Stage editStage = new Stage();
+                        editStage.setOnCloseRequest(eventClose -> {
+                            tableShtetiController.initData();
+                            editStage.close();
+                        });
+                        editStage.setScene(scene);
+                        editStage.show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        messageLabel.setText("Something went wrong with the controller");
+
+                    }
+                });
+            }
+
+            @Override
+            protected void updateItem(Shteti shteti, boolean empty) {
+                super.updateItem(shteti, empty);
+                if (!empty) {
+                    setGraphic(button);
+                } else {
+                    setGraphic(null);
+                }
+            }
+        });
+
+    }
+
+    private void insertData() throws SQLException {
+        this.shtetiDatalist = FXCollections.observableArrayList(this.shtetiService.getAllShtetet());
+    }
+
+    void initalizeShtetiTableView() {
+        shtetiIDColumn.setCellValueFactory(p -> new SimpleIntegerProperty(p.getValue().getId()).asObject());
+        emriShtetitColumn.setCellValueFactory( p -> new SimpleStringProperty(p.getValue().getEmri()));
     }
 }
