@@ -2,169 +2,194 @@ package com.example.knk_project.controllers;
 
 
 
+import com.example.knk_project.models.AdminProfesorLendaTableView;
+import com.example.knk_project.models.Nota;
+import com.example.knk_project.models.ProfesoriLenda;
+import com.example.knk_project.models.ProfesoriNotaTableView;
+import com.example.knk_project.services.ProfesoriLendaService;
+import com.example.knk_project.services.interfaces.ProfesoriLendaServiceInterface;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 
-public class TableProfesorLendaController {
+import java.io.IOException;
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
+
+public class TableProfesorLendaController implements Initializable {
+    private boolean clickedOnce = false;
+
+    private TableProfesorLendaController tableProfesorLendaController = this;
+
+    private ProfesoriLendaServiceInterface profesoriLendaService = new ProfesoriLendaService();
 
     @FXML
-    private TableView<ProfesorLenda> ProfesorLendaTableView;
+    private TableColumn<AdminProfesorLendaTableView, AdminProfesorLendaTableView> deleteCol;
 
-    public void initialize() {
-        // Create table columns
+    @FXML
+    private TableColumn<AdminProfesorLendaTableView, AdminProfesorLendaTableView> editCol;
 
-        TableColumn<TableProfesorLendaController.ProfesorLenda, Integer> profesori_idColumn = new TableColumn<>("Profesori_id");
-        TableColumn<TableProfesorLendaController.ProfesorLenda, String> usernameColumn = new TableColumn<>("Username");
-        TableColumn<TableProfesorLendaController.ProfesorLenda, String> emriColumn = new TableColumn<>("Emri");
-        TableColumn<TableProfesorLendaController.ProfesorLenda, String> mbiemriColumn = new TableColumn<>("Mbiemri");
-        TableColumn<TableProfesorLendaController.ProfesorLenda, String> emri_lendesColumn = new TableColumn<>("Lenda");
-        TableColumn<TableProfesorLendaController.ProfesorLenda, String> lenda_idColumn = new TableColumn<>("Lenda_id");
-        TableColumn<TableProfesorLendaController.ProfesorLenda, Void> editColumn = new TableColumn<>("Edit");
-        TableColumn<TableProfesorLendaController.ProfesorLenda, Void> deleteColumn = new TableColumn<>("Delete");
+    @FXML
+    private TableColumn<AdminProfesorLendaTableView, String> lendaEmriCol;
 
-        // Set cell value factories
+    @FXML
+    private TableColumn<AdminProfesorLendaTableView, Integer> lendaIdCol;
+
+    @FXML
+    private Label messageLabel;
+
+    @FXML
+    private TableColumn<AdminProfesorLendaTableView, String> profesorEmriCol;
+
+    @FXML
+    private TableView<AdminProfesorLendaTableView> profesorKlasaTableView;
+
+    @FXML
+    private TableColumn<AdminProfesorLendaTableView, Integer> profesoriIdCol;
+
+    @FXML
+    private TableColumn<AdminProfesorLendaTableView, String> profesoriMbiemriCol;
+
+    @FXML
+    private TableColumn<AdminProfesorLendaTableView, String> usernameCol;
+
+    private ObservableList<AdminProfesorLendaTableView> profesorLendaDataList = FXCollections.observableArrayList();
 
 
-        profesori_idColumn.setCellValueFactory(new PropertyValueFactory<>("Profesori_id"));
-        usernameColumn.setCellValueFactory(new PropertyValueFactory<>("Username"));
-        emriColumn.setCellValueFactory(new PropertyValueFactory<>("Emri"));
-        mbiemriColumn.setCellValueFactory(new PropertyValueFactory<>("Mbiemri"));
-        emri_lendesColumn.setCellValueFactory(new PropertyValueFactory<>("Lenda"));
-        lenda_idColumn.setCellValueFactory(new PropertyValueFactory<>("Lenda_id"));
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.setTableData();
+    }
 
-        profesori_idColumn.setPrefWidth(50);
-        usernameColumn.setPrefWidth(70);
-        emriColumn.setPrefWidth(50);
-        mbiemriColumn.setPrefWidth(70);
-        emri_lendesColumn.setPrefWidth(90);
+    public void initData(){
+        try{
+            this.clickedOnce = false;
+            insertData();
 
+        }catch (SQLException exception) {
+            exception.printStackTrace();
+            this.messageLabel.setText("Something went wrong with the database");
+        }
+        this.profesorKlasaTableView.setItems(profesorLendaDataList);
+        this.addDeleteButtonToTable();
+        this.addEditButtonToTable();
+    }
 
-        editColumn.setPrefWidth(60);
-        deleteColumn.setPrefWidth(60);
+    private void insertData() throws SQLException {
+        this.profesoriLendaService.addDataToProfesorLendaDataList(profesorLendaDataList);
+    }
 
-        // Add columns to table
+    private void addDeleteButtonToTable(){
 
-        ProfesorLendaTableView.getColumns().addAll(profesori_idColumn,usernameColumn,emriColumn,mbiemriColumn,emri_lendesColumn,lenda_idColumn,editColumn,deleteColumn);
+        deleteCol.setCellFactory(column -> new TableCell<>() {
+            private final Button button = new Button("Delete");
 
-        // Create button cell factories for edit and delete columns
-        Callback<TableColumn<ProfesorLenda, Void>, TableCell<ProfesorLenda, Void>> editCellFactory = new Callback<>() {
-            @Override
-            public TableCell<ProfesorLenda, Void> call(final TableColumn<ProfesorLenda, Void> param) {
-                final TableCell<ProfesorLenda, Void> cell = new TableCell<>() {
-                    private final Button editButton = new Button("Edit");
+            {
+                button.setOnAction(event -> {
+                    // Handle button click event here
+                    // You can access the row item using getTableView().getItems().get(getIndex())
+                    AdminProfesorLendaTableView profesorLendaTableView = getTableView().getItems().get(getIndex());
+                    ProfesoriLenda profesoriLenda =
+                            new ProfesoriLenda(profesorLendaTableView.getProfesori().getId(),
+                                    profesorLendaTableView.getLenda().getId()
+                                    );
 
-                    {
-                        editButton.setOnAction((ActionEvent event) -> {
-                            ProfesorLenda profesorLenda = getTableView().getItems().get(getIndex());
-                            // Handle the edit button click here
-                            System.out.println("Edit button clicked for Profesor Lenda with ID: " + profesorLenda.getProfesori_id());
-                        });
+                    try{
+                        profesoriLendaService.delete(profesoriLenda);
+                        initData();
+                    }catch (SQLException exception) {
+                        exception.printStackTrace();
+                        messageLabel.setText("Something went wrong with the database");
                     }
-
-                    @Override
-                    protected void updateItem(Void item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (empty) {
-                            setGraphic(null);
-                        } else {
-                            setGraphic(editButton);
-                        }
-                    }
-                };
-                return cell;
+                });
             }
-        };
 
-        Callback<TableColumn<ProfesorLenda, Void>, TableCell<ProfesorLenda, Void>> deleteCellFactory = new Callback<>() {
             @Override
-            public TableCell<ProfesorLenda, Void> call(final TableColumn<ProfesorLenda, Void> param) {
-                final TableCell<ProfesorLenda, Void> cell = new TableCell<>() {
-                    private final Button deleteButton = new Button("Delete");
-
-                    {
-                        deleteButton.setOnAction((ActionEvent event) -> {
-                            ProfesorLenda profesorLenda = getTableView().getItems().get(getIndex());
-                            // Handle the delete button click here
-                            System.out.println("Delete button clicked for Profesor Lenda with ID: " + profesorLenda.getProfesori_id());
-                        });
-                    }
-
-                    @Override
-                    protected void updateItem(Void item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (empty) {
-                            setGraphic(null);
-                        } else {
-                            setGraphic(deleteButton);
-                        }
-                    }
-                };
-                return cell;
+            protected void updateItem(AdminProfesorLendaTableView adminProfesorLendaTableView, boolean empty) {
+                super.updateItem(adminProfesorLendaTableView, empty);
+                if (!empty) {
+                    setGraphic(button);
+                } else {
+                    setGraphic(null);
+                }
             }
-        };
-
-        // Set cell factories for edit and delete columns
-        editColumn.setCellFactory(editCellFactory);
-        deleteColumn.setCellFactory(deleteCellFactory);
-
-        // Add sample data
-
-        ProfesorLendaTableView.getItems().add(new TableProfesorLendaController.ProfesorLenda(1, "test@gmail.com", "test", "test", "biologji",4));
-        ProfesorLendaTableView.getItems().add(new TableProfesorLendaController.ProfesorLenda(1, "test@gmail.com", "test", "test", "biologji",4));
-        ProfesorLendaTableView.getItems().add(new TableProfesorLendaController.ProfesorLenda(1, "test@gmail.com", "test", "test", "biologji",4));
-        // Add more rows as needed
+        });
     }
 
-    // Sample data class
-    public static class ProfesorLenda {
-        private int profesori_id;
-        private String username;
-        private String emri;
-        private String mbiemri;
-        private String emri_lendes;
-        private int lenda_id;
+    private void addEditButtonToTable(){
+        editCol.setCellFactory(column -> new TableCell<>() {
+            private final Button button = new Button("Edit");
 
+            {
+                button.setOnAction(event -> {
+                    // Handle button click event here
+                    // You can access the row item using getTableView().getItems().get(getIndex())
+                    if (clickedOnce){
+                        return;
+                    }
+                    clickedOnce = true;
+                    AdminProfesorLendaTableView adminProfesorLendaTableView = getTableView().getItems().get(getIndex());
 
-        public ProfesorLenda(int profesori_id, String username, String emri, String mbiemri,String emri_lendes, int lenda_id ) {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/knk_project/" +
+                            "edit-profesor-lenda-view.fxml"));
+                    AnchorPane anchorPane = null;
+                    try {
+                        anchorPane = loader.load();
+                        EditProfesorLendaController editProfesorLendaController = loader.getController();
+                        editProfesorLendaController.setAdminProfesorLendaTableView(adminProfesorLendaTableView);
+                        editProfesorLendaController.setTableProfesorLendaController(tableProfesorLendaController);
 
-            this.username = username;
-            this.emri = emri;
-            this.mbiemri = mbiemri;
-            this.profesori_id = profesori_id;
-            this.emri_lendes= emri_lendes;
-            this.lenda_id = lenda_id;
-        }
+                        editProfesorLendaController.initData();
+                        Scene scene = new Scene(anchorPane);
+                        Stage editStage = new Stage();
+                        editStage.setOnCloseRequest(eventClose -> {
+                            tableProfesorLendaController.initData();
+                            editStage.close();
+                        });
+                        editStage.setScene(scene);
+                        editStage.show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        messageLabel.setText("Something went wrong with the controller");
 
+                    }
+                });
+            }
 
-        public int getProfesori_id() {
-            return profesori_id;
-        }
+            @Override
+            protected void updateItem(AdminProfesorLendaTableView adminProfesorLendaTableView, boolean empty) {
+                super.updateItem(adminProfesorLendaTableView, empty);
+                if (!empty) {
+                    setGraphic(button);
+                } else {
+                    setGraphic(null);
+                }
+            }
+        });
 
-
-        public String getUsername() {
-            return username;
-        }
-
-        public String getEmri() {
-            return emri;
-        }
-
-        public String getMbiemri() {
-            return mbiemri;
-        }
-        public String getEmri_lendes() {
-            return emri_lendes;
-        }
-
-        public int getLenda_id() {
-            return lenda_id;
-        }
     }
+
+    private void setTableData(){
+        profesoriIdCol.setCellValueFactory(data -> new SimpleIntegerProperty(data.getValue().getProfesori().getId()).asObject());
+        profesorEmriCol.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getProfesori().getEmri()));
+        profesoriMbiemriCol.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getProfesori().getMbiemri()));
+        usernameCol.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getProfesori().getUsername()));
+        lendaIdCol.setCellValueFactory(data -> new SimpleIntegerProperty(data.getValue().getLenda().getId()).asObject());
+        lendaEmriCol.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getLenda().getEmri()));
+
     }
+
+}
 

@@ -1,18 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.controllers.TableProfesorLendaController">
+<AnchorPane prefHeight="546.0" prefWidth="671.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.controllers.TableProfesorLendaController">
     <children>
-        <Label layoutX="160.0" layoutY="44.0" text="Tabela Profesor Lenda">
+        <Label layoutX="188.0" layoutY="32.0" text="Tabela Profesor Lenda">
             <font>
                 <Font size="30.0" />
             </font>
         </Label>
-        <TableView fx:id="ProfesorLendaTableView" layoutX="80.0" layoutY="115.0" prefHeight="250.0" prefWidth="450.0">
-        </TableView>
+        <TableView fx:id="profesorKlasaTableView" layoutX="12.0" layoutY="148.0" prefHeight="250.0" prefWidth="650.0">
+         <columns>
+            <TableColumn fx:id="profesoriIdCol" prefWidth="75.0" text="profesori ID" />
+            <TableColumn fx:id="profesorEmriCol" prefWidth="75.0" text="Emri" />
+            <TableColumn fx:id="profesoriMbiemriCol" prefWidth="75.0" text="Mbiemri" />
+            <TableColumn fx:id="usernameCol" prefWidth="75.0" text="Username" />
+            <TableColumn fx:id="lendaIdCol" prefWidth="75.0" text="Lenda ID" />
+            <TableColumn fx:id="lendaEmriCol" prefWidth="99.20001220703125" text="Emri" />
+            <TableColumn fx:id="editCol" prefWidth="86.4000244140625" text="Edit" />
+            <TableColumn fx:id="deleteCol" minWidth="8.79998779296875" prefWidth="81.60003662109375" text="Delete" />
+         </columns></TableView>
+      <Label fx:id="messageLabel" alignment="CENTER" layoutX="6.0" layoutY="107.0" prefHeight="18.0" prefWidth="658.0" />
     </children>
 </AnchorPane>
