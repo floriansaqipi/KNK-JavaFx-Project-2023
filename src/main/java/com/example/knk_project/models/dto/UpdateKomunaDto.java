@@ -5,7 +5,7 @@ public class UpdateKomunaDto {
     private String emri;
     private int shteti_id;
 
-    public void UpdatedKomunaDto(int id, String emri, int shteti_id) {
+    public UpdateKomunaDto(int id, String emri, int shteti_id) {
         this.id = id;
         this.emri = emri;
         this.shteti_id = shteti_id;

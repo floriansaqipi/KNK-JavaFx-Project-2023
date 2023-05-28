@@ -6,17 +6,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="514.0" prefWidth="636.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.controllers.EditKomunaController">
+<AnchorPane prefHeight="550.0" prefWidth="670.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.controllers.EditKomunaController">
    <children>
-      <Label fx:id="AddCity" alignment="CENTER" contentDisplay="CENTER" layoutX="219.0" layoutY="52.0" prefHeight="34.0" prefWidth="198.0" text="Edit Komuna">
+      <Label fx:id="addCityLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="214.0" layoutY="64.0" prefHeight="51.0" prefWidth="242.0" text="Edit Komunen">
          <font>
-            <Font size="30.0" />
+            <Font size="35.0" />
          </font>
       </Label>
-      <Button layoutX="289.0" layoutY="257.0" mnemonicParsing="false" onAction="#updateOnAction" style="-fx-background-color: lightgray;" text="Update" />
-      <Label layoutX="187.0" layoutY="180.0" prefHeight="18.0" prefWidth="98.0" text="Emri i komunës" />
-      <TextField fx:id="komunaIDTextField" alignment="CENTER" layoutX="187.0" layoutY="140.0" prefHeight="30.0" prefWidth="260.0" promptText="ID" style="-fx-background-radius: 20px;" />
-      <TextField fx:id="emriKomunesTextField" alignment="CENTER" layoutX="187.0" layoutY="199.0" prefHeight="30.0" prefWidth="260.0" promptText="Komuna" style="-fx-background-radius: 20px;" />
-      <Label layoutX="187.0" layoutY="121.0" prefHeight="18.0" prefWidth="98.0" text="ID e komunës" />
+      <TextField fx:id="komunaTextField" alignment="CENTER" layoutX="205.0" layoutY="169.0" prefHeight="30.0" prefWidth="260.0" promptText="Ndrysho Komunen" style="-fx-background-radius: 20px;" />
+      <Label fx:id="messageLabel" layoutX="321.0" layoutY="116.0" text="Label" />
+      <Button layoutX="205.0" layoutY="226.0" mnemonicParsing="false" onAction="#editKomunaClick" prefHeight="30.0" prefWidth="260.0" style="-fx-background-radius: 20px;" text="Ndrysho" />
    </children>
 </AnchorPane>

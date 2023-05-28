@@ -1,9 +1,9 @@
 package com.example.knk_project.services;
 
 import com.example.knk_project.models.Komuna;
-import com.example.knk_project.models.KomunaShteti;
+import com.example.knk_project.models.KomunaShtetiTableView;
 import com.example.knk_project.models.dto.CreateKomunaDto;
-import com.example.knk_project.models.dto.CreateUpdatedKomunaDto;
+import com.example.knk_project.models.dto.UpdateKomunaDto;
 import com.example.knk_project.repositories.KomunaRepository;
 import com.example.knk_project.repositories.interfaces.KomunaRepositoryInterface;
 import com.example.knk_project.services.interfaces.KomunaServiceInterface;
@@ -24,12 +24,18 @@ public class KomunaService implements KomunaServiceInterface {
     }
 
     @Override
-    public List<KomunaShteti> getKomunaShtetiTable() throws SQLException {
+    public List<KomunaShtetiTableView> getKomunaShtetiTable() throws SQLException {
         return this.komunaRepository.getKomunaShtetiTable();
     }
 
     @Override
-    public void updateKomuna(CreateUpdatedKomunaDto createUpdatedKomunaDto) throws SQLException {
-        this.komunaRepository.updateKomuna(createUpdatedKomunaDto);
+    public void deleteKomunaByKomunaId(int komunaID) throws SQLException {
+        this.komunaRepository.deleteKomunaByKomunaId(komunaID);
     }
+
+    @Override
+    public void update(UpdateKomunaDto updateKomunaDto) throws SQLException {
+        this.komunaRepository.update(updateKomunaDto);
+    }
+
 }

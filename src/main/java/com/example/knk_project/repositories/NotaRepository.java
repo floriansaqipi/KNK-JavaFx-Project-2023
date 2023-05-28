@@ -108,7 +108,6 @@ public class NotaRepository implements NotaRepositoryInterface {
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setInt(1, notaId);
         preparedStatement.executeUpdate();
-
     }
 
     @Override
