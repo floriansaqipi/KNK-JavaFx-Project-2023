@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -24,6 +25,14 @@
                         <Font name="Segoe UI" size="48.0" />
                     </font>
                 </Label>
+            <JFXButton layoutX="63.0" layoutY="40.0" onAction="#goBackDashboard" prefHeight="53.0" prefWidth="139.0" text="GO BACK" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" glyphName="ANGLE_DOUBLE_LEFT" size="32" />
+               </graphic>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXButton>
             </children>
         </Pane>
         <GridPane hgap="15.0" layoutX="38.0" layoutY="130.0" prefHeight="103.0" prefWidth="869.0" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="37.0" AnchorPane.topAnchor="130.0">

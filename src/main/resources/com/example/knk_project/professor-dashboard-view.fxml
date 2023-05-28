@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -15,9 +18,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TableColumn?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="609.0" prefWidth="944.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.controllers.ProfessorDashboardController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.controllers.ProfessorDashboardController">
     <children>
         <Pane layoutX="-3.0" layoutY="-14.0" prefHeight="126.0" prefWidth="950.0" style="-fx-background-color: #150050;" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="-3.0" AnchorPane.topAnchor="-14.0">
             <children>
@@ -26,6 +27,14 @@
                         <Font name="Segoe UI" size="48.0" />
                     </font>
                 </Label>
+            <JFXButton layoutX="82.0" layoutY="38.0" onAction="#goBackDashboard" prefHeight="53.0" prefWidth="139.0" text="GO BACK" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" glyphName="ANGLE_DOUBLE_LEFT" size="32" />
+               </graphic>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXButton>
             </children>
         </Pane>
         <GridPane hgap="15.0" layoutX="38.0" layoutY="130.0" prefHeight="103.0" prefWidth="869.0" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="37.0" AnchorPane.topAnchor="130.0">
@@ -95,10 +104,10 @@
                         <TableView fx:id="usersTableView" prefHeight="286.0" prefWidth="602.0">
                             <columns>
                                 <TableColumn fx:id="nxenesiIdTableColumn" prefWidth="122.6666806936264" text="ID e nxenesit" />
-                                <TableColumn fx:id="nxenesiTableColumn" prefWidth="163.33333587646484" text="Nxenesi" />
-                                <TableColumn fx:id="lendaTableColumn" prefWidth="103.33332824707031" text="Lenda" />
-                                <TableColumn fx:id="gjysemvjetoriTableColumn" prefWidth="98.66659545898438" text="Gjysemvjetori" />
-                                <TableColumn fx:id="notaTableColumn" prefWidth="107.33340454101562" text="Nota" />
+                                <TableColumn fx:id="nxenesiTableColumn" prefWidth="102.40000915527344" text="Nxenesi" />
+                                <TableColumn fx:id="lendaTableColumn" prefWidth="88.80000305175781" text="Lenda" />
+                                <TableColumn fx:id="gjysemvjetoriTableColumn" prefWidth="123.20001220703125" text="Gjysemvjetori" />
+                        <TableColumn fx:id="lendaTableColumn1" prefWidth="113.60003662109375" text="Nota" />
                             </columns>
                         </TableView>
                     </children>

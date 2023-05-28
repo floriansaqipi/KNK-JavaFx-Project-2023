@@ -47,7 +47,7 @@ public class ProfesorPageController implements Initializable {
 //        System.out.println(this.mainController);
             profesorHomePageController.setMainController(this.mainController);
             profesorHomePageController.setProfesori(this.profesori);
-            profesorHomePageController.printProfesori();
+//            profesorHomePageController.printProfesori();
 
 //            AddGradeController addGradeController = fxmlLoader.getController();
 //            addGradeController.setProfesori(this.profesori);

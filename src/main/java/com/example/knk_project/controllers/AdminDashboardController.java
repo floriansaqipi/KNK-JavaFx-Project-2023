@@ -7,7 +7,9 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
@@ -15,12 +17,16 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class AdminDashboardController implements Initializable {
+    private MainController mainController;
 
     @FXML
     private PieChart adminPieChart;
@@ -53,6 +59,23 @@ public class AdminDashboardController implements Initializable {
 
     @FXML
     private TextField adminfilter;
+
+    @FXML
+    public void goBackDashboard(ActionEvent event){
+        BorderPane adminPagePane = null;
+        try{
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/knk_project/adminpage-view.fxml"));
+            adminPagePane = fxmlLoader.load();
+            AdminPageController adminPageController = fxmlLoader.getController();
+            adminPageController.setMainController(mainController);
+            adminPageController.initData();
+            mainController.setMainPane(adminPagePane);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 
     private AdminDashboardServiceInterface adminDashboardService = new AdminDashboardService();
@@ -95,5 +118,9 @@ public class AdminDashboardController implements Initializable {
                  new PieChart.Data("Profesoret", this.profesoriService.getNumberOfProfesoreve())
          );
          adminPieChart.setData(pieChartData);
+    }
+
+    public void setMainController(MainController mainController) {
+        this.mainController = mainController;
     }
 }

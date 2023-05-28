@@ -8,7 +8,9 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.PieChart;
@@ -17,7 +19,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.BorderPane;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -58,6 +62,23 @@ public class StudentDashboardController implements Initializable {
     private TableColumn<User, String> roliTableColumn;
     @FXML
     private LineChart<String, Number> lineChart;
+
+    @FXML
+    public void goBackDashboard(ActionEvent event){
+        BorderPane nxenesiPagePane = null;
+        try{
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/knk_project/studentpage-view.fxml"));
+            nxenesiPagePane = fxmlLoader.load();
+            StudentPageController studentPageController = fxmlLoader.getController();
+            studentPageController.setMainController(mainController);
+            studentPageController.setNxenesi(nxenesi);
+            studentPageController.initData();
+            mainController.setMainPane(nxenesiPagePane);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
     public void initialize() {

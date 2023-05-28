@@ -19,7 +19,7 @@ public class AdminHomePageController {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/knk_project/admin-dashboard.fxml"));
             AnchorPane anchorPane = fxmlLoader.load();
             AdminDashboardController adminDashboardController = fxmlLoader.getController();
-//            adminDashboardController.setMain
+            adminDashboardController.setMainController(mainController);
             mainController.setMainPane(anchorPane);
         } catch (IOException e) {
             throw new RuntimeException(e);
