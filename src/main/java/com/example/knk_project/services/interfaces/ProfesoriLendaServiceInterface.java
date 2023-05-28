@@ -2,7 +2,7 @@ package com.example.knk_project.services.interfaces;
 
 import com.example.knk_project.models.AdminProfesorLendaTableView;
 import com.example.knk_project.models.ProfesoriLenda;
-import com.example.knk_project.models.dto.UpdateProfesoriKlasaDto;
+import com.example.knk_project.models.dto.UpdateProfesoriLendaDto;
 import javafx.collections.ObservableList;
 
 import java.sql.SQLException;
@@ -17,5 +17,5 @@ public interface ProfesoriLendaServiceInterface {
 
     List<ProfesoriLenda> getAllProfesorLendet() throws SQLException;
 
-    void update(UpdateProfesoriKlasaDto updateProfesoriKlasaDto) throws SQLException;
+    void update(UpdateProfesoriLendaDto updateProfesoriLendaDto) throws SQLException;
 }

@@ -105,8 +105,27 @@ public class KlasaRepository implements KlasaRepositoryInterface {
     }
 
     @Override
-    public void update(UpdateNotaDto updateNotaDto) throws SQLException {
+    public Klasa getKlasaByKlasaId(int klasaId) throws SQLException {
+        String sql = "SELECT * FROM klasat k WHERE k.id = ? ";
+        Connection connection = ConnectionUtil.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1,klasaId);
 
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        Klasa klasa = null;
+
+        if (resultSet.next()){
+            klasa =
+                    new Klasa(
+                            resultSet.getInt(1),
+                            resultSet.getInt(2),
+                            resultSet.getInt(3),
+                            resultSet.getString(4)
+                    );
+
+        }
+        return klasa;
     }
 
     public int getNumberOfKlaseve() throws SQLException {

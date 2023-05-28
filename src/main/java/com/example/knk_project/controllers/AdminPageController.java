@@ -79,7 +79,20 @@ public class AdminPageController implements Initializable {
 
 
     public void tabelaprofesorklasa(MouseEvent event) {
-        loadPage("table-profesor-klasa-view");
+
+        AnchorPane anchorPane = null;
+        try{
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/knk_project/" +
+                    "table-profesor-klasa-view" + ".fxml"));
+            anchorPane = fxmlLoader.load();
+            TableProfesorKlasaController tableProfesorKlasaController = fxmlLoader.getController();
+            tableProfesorKlasaController.initData();
+
+        }catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        bp.setCenter(anchorPane);
     }
 
 

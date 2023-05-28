@@ -3,8 +3,7 @@ package com.example.knk_project.controllers;
 import com.example.knk_project.models.AdminProfesorLendaTableView;
 import com.example.knk_project.models.Lenda;
 import com.example.knk_project.models.Profesori;
-import com.example.knk_project.models.ProfesoriLenda;
-import com.example.knk_project.models.dto.UpdateProfesoriKlasaDto;
+import com.example.knk_project.models.dto.UpdateProfesoriLendaDto;
 import com.example.knk_project.services.LendaService;
 import com.example.knk_project.services.ProfesoriLendaService;
 import com.example.knk_project.services.ProfesoriService;
@@ -61,9 +60,9 @@ public class EditProfesorLendaController implements Initializable {
             int lendaId = this.adminProfesorLendaTableView.getLenda().getId();
             int newProfesoriId = this.profesoriComboBox.getValue().getId();
             int newLendaId = this.lendaComboBox.getValue().getId();
-            UpdateProfesoriKlasaDto updateProfesoriKlasaDto =
-                    new UpdateProfesoriKlasaDto(profesoriId,lendaId,newProfesoriId,newLendaId);
-            this.profesoriLendaService.update(updateProfesoriKlasaDto);
+            UpdateProfesoriLendaDto updateProfesoriLendaDto =
+                    new UpdateProfesoriLendaDto(profesoriId,lendaId,newProfesoriId,newLendaId);
+            this.profesoriLendaService.update(updateProfesoriLendaDto);
             this.messageLabel.setText("Successfully updated subject to professor");
             this.close(event);
 

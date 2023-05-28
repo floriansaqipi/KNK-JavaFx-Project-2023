@@ -1,7 +1,7 @@
 package com.example.knk_project.repositories;
 
 import com.example.knk_project.models.ProfesoriLenda;
-import com.example.knk_project.models.dto.UpdateProfesoriKlasaDto;
+import com.example.knk_project.models.dto.UpdateProfesoriLendaDto;
 import com.example.knk_project.repositories.interfaces.ProfesoriLendaRepositoryInterface;
 import com.example.knk_project.services.ConnectionUtil;
 
@@ -55,15 +55,15 @@ public class ProfesoriLendaRepository implements ProfesoriLendaRepositoryInterfa
     }
 
     @Override
-    public void update(UpdateProfesoriKlasaDto updateProfesoriKlasaDto) throws SQLException {
+    public void update(UpdateProfesoriLendaDto updateProfesoriLendaDto) throws SQLException {
         String sql = "UPDATE profesoret_lendet pl SET profesori_id = ?, lenda_id = ? " +
                 "WHERE profesori_id = ? AND lenda_id = ? ;";
         Connection connection = ConnectionUtil.getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setInt(1,updateProfesoriKlasaDto.getNewProfesoriId());
-        preparedStatement.setInt(2,updateProfesoriKlasaDto.getNewLendaId());
-        preparedStatement.setInt(3,updateProfesoriKlasaDto.getProfesoriId());
-        preparedStatement.setInt(4,updateProfesoriKlasaDto.getLendaId());
+        preparedStatement.setInt(1, updateProfesoriLendaDto.getNewProfesoriId());
+        preparedStatement.setInt(2, updateProfesoriLendaDto.getNewLendaId());
+        preparedStatement.setInt(3, updateProfesoriLendaDto.getProfesoriId());
+        preparedStatement.setInt(4, updateProfesoriLendaDto.getLendaId());
         preparedStatement.executeUpdate();
     }
 
