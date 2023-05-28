@@ -33,6 +33,11 @@
          <children>
             <VBox layoutY="190.0" prefHeight="115.0" prefWidth="201.0">
                <children>
+                  <JFXButton onAction="#loadNxenesiHomePage" prefHeight="26.0" prefWidth="222.0" text="FAQJA KRYESORE" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXButton>
                   <JFXButton onMouseClicked="#transkripta" prefHeight="46.0" prefWidth="200.0" text="TRANSKRIPTA" textFill="WHITE">
                      <font>
                         <Font size="16.0" />

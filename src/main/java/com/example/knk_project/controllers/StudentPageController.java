@@ -1,6 +1,7 @@
 package com.example.knk_project.controllers;
 
 import com.example.knk_project.models.Nxenesi;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -51,6 +52,11 @@ public class StudentPageController implements Initializable {
 //            addGradeController.initData();
 
         bp.setCenter(root);
+    }
+
+    @FXML
+    public void loadNxenesiHomePage(ActionEvent event){
+        initData();
     }
 
     public void transkripta(MouseEvent event) {

@@ -33,6 +33,11 @@
          <children>
             <VBox layoutY="187.0" prefHeight="216.0" prefWidth="222.0">
                <children>
+                  <JFXButton onAction="#loadProfesoriHomePage" prefHeight="26.0" prefWidth="222.0" text="FAQJA KRYESORE" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXButton>
                   <JFXButton onMouseClicked="#ShtoNoten" prefHeight="39.0" prefWidth="221.0" text="SHTO NOTEN " textFill="WHITE">
                      <font>
                         <Font size="16.0" />
