@@ -1,6 +1,7 @@
 package com.example.knk_project.controllers;
 
 import com.example.knk_project.models.Profesori;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -36,7 +37,10 @@ public class ProfesorPageController implements Initializable {
     }
 
 
-
+    @FXML
+    public void loadProfesoriHomePage(ActionEvent event){
+        initData();
+    }
 
     private void setProfesorPage() throws IOException {
         AnchorPane root = null;
@@ -47,7 +51,7 @@ public class ProfesorPageController implements Initializable {
 //        System.out.println(this.mainController);
             profesorHomePageController.setMainController(this.mainController);
             profesorHomePageController.setProfesori(this.profesori);
-            profesorHomePageController.printProfesori();
+//            profesorHomePageController.printProfesori();
 
 //            AddGradeController addGradeController = fxmlLoader.getController();
 //            addGradeController.setProfesori(this.profesori);

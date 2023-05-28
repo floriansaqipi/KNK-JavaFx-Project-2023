@@ -34,6 +34,11 @@
          <children>
             <VBox layoutY="47.0" prefHeight="420.0" prefWidth="222.0">
                <children>
+                  <JFXButton onAction="#loadAdminHomePage" prefHeight="26.0" prefWidth="222.0" text="FAQJA KRYESORE" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXButton>
                   <JFXButton onMouseClicked="#shtoshtetin" prefHeight="42.0" prefWidth="222.0" text="SHTO SHTETIN" textFill="WHITE">
                      <font>
                         <Font size="16.0" />

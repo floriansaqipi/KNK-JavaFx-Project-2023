@@ -21,8 +21,9 @@ public class ProfesorHomePageController {
             AnchorPane anchorPane = fxmlLoader.load();
             ProfessorDashboardController professorDashboardController = fxmlLoader.getController();
             professorDashboardController.setProfesori(this.profesori);
+            professorDashboardController.setMainController(mainController);
 //            professorDashboardController.initData();
-            professorDashboardController.printProfesori();
+//            professorDashboardController.printProfesori();
             mainController.setMainPane(anchorPane);
             } catch (IOException e) {
                 throw new RuntimeException(e);

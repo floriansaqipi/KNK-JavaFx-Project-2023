@@ -1,5 +1,6 @@
 package com.example.knk_project.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -127,10 +128,17 @@ public class AdminPageController implements Initializable {
         bp.setCenter(root);
     }
 
+    @FXML
+    public void loadAdminHomePage(ActionEvent event){
+        initData();
+    }
+
     public void LogOut(MouseEvent event) {
         this.mainController.reset();
 
     }
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

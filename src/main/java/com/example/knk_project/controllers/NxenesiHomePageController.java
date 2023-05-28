@@ -21,6 +21,7 @@ public class NxenesiHomePageController {
             AnchorPane anchorPane = fxmlLoader.load();
             StudentDashboardController studentDashboardController = fxmlLoader.getController();
             studentDashboardController.setNxenesi(this.nxenesi);
+            studentDashboardController.setMainController(mainController);
 //            studentDashboardController.initData();
 //            studentDashboardController.printNxenesi();
             mainController.setMainPane(anchorPane);
