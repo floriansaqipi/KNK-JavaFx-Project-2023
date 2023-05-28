@@ -2,6 +2,7 @@ package com.example.knk_project.services;
 
 import com.example.knk_project.models.Shteti;
 import com.example.knk_project.models.dto.CreateShtetiDto;
+import com.example.knk_project.models.dto.UpdateShtetiDto;
 import com.example.knk_project.repositories.ShtetiRepository;
 import com.example.knk_project.repositories.interfaces.ShtetiRepositoryInterface;
 import com.example.knk_project.services.interfaces.ShtetiServiceInterface;
@@ -21,5 +22,15 @@ public class ShtetiService implements ShtetiServiceInterface {
     @Override
     public List<Shteti> getAllShtetet() throws SQLException {
         return this.shtetiRepository.getAllShtetet();
+    }
+
+    @Override
+    public void deleteShtetiByShtetiId(int shtetiID) throws SQLException {
+        this.shtetiRepository.deleteShtetiByShtetiId(shtetiID);
+    }
+
+    @Override
+    public void update(UpdateShtetiDto updateShtetiDto) throws SQLException {
+          this.shtetiRepository.update(updateShtetiDto);
     }
 }

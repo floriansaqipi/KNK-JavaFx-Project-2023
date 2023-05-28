@@ -2,6 +2,8 @@ package com.example.knk_project.repositories;
 
 import com.example.knk_project.models.Shteti;
 import com.example.knk_project.models.dto.CreateShtetiDto;
+import com.example.knk_project.models.dto.UpdateKomunaDto;
+import com.example.knk_project.models.dto.UpdateShtetiDto;
 import com.example.knk_project.repositories.interfaces.ShtetiRepositoryInterface;
 import com.example.knk_project.services.ConnectionUtil;
 
@@ -38,5 +40,26 @@ public class ShtetiRepository implements ShtetiRepositoryInterface {
         }
         return shtetet;
 
+    }
+
+    @Override
+    public void deleteShtetiByShtetiId(int shtetiID) throws SQLException {
+        String sql = "DELETE FROM shtetet sh WHERE sh.id = ? ;";
+        Connection connection = ConnectionUtil.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1, shtetiID);
+        preparedStatement.executeUpdate();
+    }
+
+    @Override
+    public void update(UpdateShtetiDto updateShtetiDto) throws SQLException {
+        String sql = "UPDATE shtetet sh SET sh.emri = ? WHERE sh.id = ?;";
+
+        Connection connection = ConnectionUtil.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1,updateShtetiDto.getEmri());
+        preparedStatement.setInt(2,updateShtetiDto.getId());
+
+        preparedStatement.executeUpdate();
     }
 }

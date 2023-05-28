@@ -101,22 +101,7 @@ public class ProfesorPageController implements Initializable {
       loadPage("profile-professor-view");
     }
     public void LogOut(MouseEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/knk_project/homepage-view.fxml"));
-            Parent root = loader.load();
-
-            // Create a new stage
-            Stage stage = new Stage();
-            stage.setTitle("Homepage");
-            stage.setScene(new Scene(root));
-            stage.show();
-
-            // Close the current stage
-            Stage currentStage = (Stage) logOutButton.getScene().getWindow();
-            currentStage.close();
-        } catch (IOException ex) {
-            Logger.getLogger(ProfesorPageController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        this.mainController.reset();
 
     }
 

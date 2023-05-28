@@ -2,10 +2,8 @@ package com.example.knk_project.controllers;
 
 import com.example.knk_project.models.Komuna;
 import com.example.knk_project.models.KomunaShtetiTableView;
-import com.example.knk_project.models.Nota;
-import com.example.knk_project.models.ProfesoriNotaTableView;
-import com.example.knk_project.services.*;
-import com.example.knk_project.services.interfaces.*;
+import com.example.knk_project.services.KomunaService;
+import com.example.knk_project.services.interfaces.KomunaServiceInterface;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -130,7 +128,7 @@ public class TableKomunaController implements Initializable {
                         EditKomunaController editKomunaController = loader.getController();
                         editKomunaController.setKomuna(komuna);
                         editKomunaController.setKomunaShtetiTableView(komunaShtetiTableView);
-                        editKomunaController.setTableNotaControllerNew(tableKomunaController);
+                        editKomunaController.setTableKomunaController(tableKomunaController);
                         editKomunaController.initData();
                         Scene scene = new Scene(anchorPane);
                         Stage editStage = new Stage();

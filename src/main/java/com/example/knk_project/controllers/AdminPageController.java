@@ -67,7 +67,17 @@ public class AdminPageController implements Initializable {
         bp.setCenter(anchorPane);
     }
     public void tabelashteti(MouseEvent event) {
-        loadPage("table-shteti-view");
+        AnchorPane anchorPane = null;
+        try{
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/knk_project/" + "table-shteti-view" + ".fxml"));
+            anchorPane = fxmlLoader.load();
+            TableShtetiController tableShtetiController = fxmlLoader.getController();
+            tableShtetiController.initData();
+        }catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        bp.setCenter(anchorPane);
     }
 
 
@@ -105,22 +115,7 @@ public class AdminPageController implements Initializable {
     }
 
     public void LogOut(MouseEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/knk_project/homepage-view.fxml"));
-            Parent root = loader.load();
-
-            // Create a new stage
-            Stage stage = new Stage();
-            stage.setTitle("Homepage");
-            stage.setScene(new Scene(root));
-            stage.show();
-
-            // Close the current stage
-            Stage currentStage = (Stage) logOutButton.getScene().getWindow();
-            currentStage.close();
-        } catch (IOException ex) {
-            Logger.getLogger(ProfesorPageController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        this.mainController.reset();
 
     }
 

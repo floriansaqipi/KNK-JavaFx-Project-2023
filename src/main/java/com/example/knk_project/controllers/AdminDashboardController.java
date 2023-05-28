@@ -7,13 +7,13 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.PieChart;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
@@ -50,9 +50,12 @@ public class AdminDashboardController implements Initializable {
     private TableColumn<User, String> mbiemriTableColumn;
     @FXML
     private TableColumn<User, String> roliTableColumn;
+    @FXML
+    private TextField searchTextField;
 
     @FXML
-    private TextField adminfilter;
+    private ComboBox<String> roleFilterComboBox;
+
 
 
     private AdminDashboardServiceInterface adminDashboardService = new AdminDashboardService();
@@ -60,7 +63,8 @@ public class AdminDashboardController implements Initializable {
     private NxenesiServiceInterface nxenesiService = new NxenesiService();
     private ProfesoriServiceInterface profesoriService = new ProfesoriService();
     private KlasaServiceInterface klasaService =  new KlasaService();
-
+    ObservableList<User> listOfUsers;
+    private String[] rolesOptions = {"nxenes", "profesor","asnjera"};
 
 
     @Override
@@ -70,7 +74,10 @@ public class AdminDashboardController implements Initializable {
             this.numriNxenesveLabel.setText(this.nxenesiService.getNumberOfNxenesve() + " ");
             this.numriProfesoreveLabel.setText(this.profesoriService.getNumberOfProfesoreve() + " ");
             this.numriKlasaveLabel.setText(this.klasaService.getNumberOfKlaseve() + " ");
-            this.initalizeUsersTableView();
+            listOfUsers = FXCollections.observableArrayList(this.adminDashboardService.getAllUsers());
+            this.initializeRoleFilerComboBox();
+            this.initializeUsersTableView();
+            initializeSearchTextField();
             this.initializeAdminPieChart();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -78,8 +85,41 @@ public class AdminDashboardController implements Initializable {
 
     }
 
-    public void initalizeUsersTableView() throws SQLException {
-        ObservableList<User> listOfUsers = FXCollections.observableArrayList(this.adminDashboardService.getAllUsers());
+    private void initializeSearchTextField() {
+        FilteredList<User> filteredData =  new FilteredList<>(listOfUsers, b -> true);
+        searchTextField.textProperty().addListener((observable,oldValue,newValue) ->{
+            filteredData.setPredicate(user -> {
+                if (newValue.isEmpty() || newValue.isBlank() || newValue == null){
+                     return true;
+                }
+                String searchKeyWord =  newValue.toLowerCase();
+
+                if(user.getEmri().toLowerCase().contains(searchKeyWord)){
+                    return true;
+                }
+                else if(user.getMbiemri().toLowerCase().contains(searchKeyWord)){
+                    return true;
+                }
+                else if(user.getUsername().toLowerCase().contains(searchKeyWord)){
+                    return true;
+                } else if (user.getRoli().contains(searchKeyWord)) {
+                    return true;
+                } else if (Integer.toString(user.getId()).contains(searchKeyWord)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+
+                });
+
+        SortedList<User>  sortedData =  new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(usersTableView.comparatorProperty());
+        usersTableView.setItems(sortedData);
+
+    }
+
+    private void initializeUsersTableView() throws SQLException {
         userIdTableColumn.setCellValueFactory(p -> new SimpleIntegerProperty(p.getValue().getId()).asObject());
         usernameTableColumn.setCellValueFactory( p -> new SimpleStringProperty(p.getValue().getUsername()));
         emriTableColumn.setCellValueFactory(p -> new SimpleStringProperty(p.getValue().getEmri()));
@@ -89,11 +129,32 @@ public class AdminDashboardController implements Initializable {
         usersTableView.setItems(listOfUsers);
     }
 
-    public void initializeAdminPieChart() throws SQLException {
+    private void initializeAdminPieChart() throws SQLException {
          ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
                  new PieChart.Data("Nxenesit", this.nxenesiService.getNumberOfNxenesve()),
                  new PieChart.Data("Profesoret", this.profesoriService.getNumberOfProfesoreve())
          );
          adminPieChart.setData(pieChartData);
+    }
+
+    private void initializeRoleFilerComboBox() {
+       this.roleFilterComboBox.getItems().addAll(this.rolesOptions);
+    }
+
+    @FXML
+    void filterTableByRole(ActionEvent event) throws SQLException {
+        this.searchTextField.setText("");
+        String role = this.roleFilterComboBox.getValue();
+        if(role == "nxenes") {
+            listOfUsers = FXCollections.observableArrayList(this.adminDashboardService.getAllUsersNxenes());
+        }
+        else if (role == "profesor") {
+            listOfUsers = FXCollections.observableList(this.adminDashboardService.getAllUsersProfesor());
+        }
+        else {
+            listOfUsers = FXCollections.observableArrayList(this.adminDashboardService.getAllUsers());
+        }
+        usersTableView.setItems(listOfUsers);
+        initializeSearchTextField();
     }
 }
