@@ -62,7 +62,19 @@ public class AdminPageController implements Initializable {
 
 
     public void tabelaprofesorlenda(MouseEvent event) {
-        loadPage("table-profesor-lenda-view");
+        AnchorPane anchorPane = null;
+        try{
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/knk_project/" +
+                    "table-profesor-lenda-view" + ".fxml"));
+            anchorPane = fxmlLoader.load();
+            TableProfesorLendaController tableProfesorLendaController = fxmlLoader.getController();
+            tableProfesorLendaController.initData();
+
+        }catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        bp.setCenter(anchorPane);
     }
 
 
