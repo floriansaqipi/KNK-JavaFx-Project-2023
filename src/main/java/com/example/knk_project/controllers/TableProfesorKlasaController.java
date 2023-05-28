@@ -7,6 +7,7 @@ import com.example.knk_project.models.AdminProfesorLendaTableView;
 import com.example.knk_project.models.ProfesoriKlasa;
 import com.example.knk_project.models.ProfesoriLenda;
 import com.example.knk_project.services.ProfesoriKlasaService;
+import com.example.knk_project.services.interfaces.ProfesoriKlasaServiceInterface;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -30,7 +31,7 @@ import java.util.ResourceBundle;
 public class TableProfesorKlasaController implements Initializable {
     private boolean clickedOnce = false;
 
-    private ProfesoriKlasaService profesoriKlasaService;
+    private ProfesoriKlasaServiceInterface profesoriKlasaService = new ProfesoriKlasaService();
 
     private TableProfesorKlasaController tableProfesorKlasaController = this;
 
@@ -150,7 +151,7 @@ public class TableProfesorKlasaController implements Initializable {
                         Scene scene = new Scene(anchorPane);
                         Stage editStage = new Stage();
                         editStage.setOnCloseRequest(eventClose -> {
-                            editProfesoriKlasaController.initData();
+                            tableProfesorKlasaController.initData();
                             editStage.close();
                         });
                         editStage.setScene(scene);

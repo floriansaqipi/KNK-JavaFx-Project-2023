@@ -54,7 +54,6 @@ public class EditProfesoriKlasaController implements Initializable {
             int klasaId = this.adminProfesorKlasaTableView.getKlasa().getId();
             int profesoriIdNew = this.profesoriComboBox.getValue().getId();
             int klasaIdNew = this.klasaComboBox.getValue().getId();
-
             UpdateProfesoriKlasaDto updateProfesoriKlasaDto = new UpdateProfesoriKlasaDto(
                     profesoriId, klasaId, profesoriIdNew, klasaIdNew
             );

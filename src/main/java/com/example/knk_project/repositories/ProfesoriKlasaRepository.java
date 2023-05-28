@@ -66,7 +66,7 @@ public class ProfesoriKlasaRepository implements ProfesoriKlasaRepositoryInterfa
         preparedStatement.setInt(1, updateProfesoriKlasaDto.getNewProfesoriId());
         preparedStatement.setInt(2, updateProfesoriKlasaDto.getNewKlasaId());
         preparedStatement.setInt(3, updateProfesoriKlasaDto.getProfesoriId());
-        preparedStatement.setInt(4, updateProfesoriKlasaDto.getNewKlasaId());
+        preparedStatement.setInt(4, updateProfesoriKlasaDto.getKlasaId());
         preparedStatement.executeUpdate();
     }
 
