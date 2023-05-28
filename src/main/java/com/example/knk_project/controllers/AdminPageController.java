@@ -54,7 +54,17 @@ public class AdminPageController implements Initializable {
         loadPage("add-profesor-klasa-view");
     }
     public void tabelakomuna(MouseEvent event) {
-        loadPage("table-komuna-view");
+        AnchorPane anchorPane = null;
+        try{
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/knk_project/" + "table-komuna-view" + ".fxml"));
+            anchorPane = fxmlLoader.load();
+            TableKomunaController tableKomunaController = fxmlLoader.getController();
+            tableKomunaController.initData();
+        }catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        bp.setCenter(anchorPane);
     }
     public void tabelashteti(MouseEvent event) {
         loadPage("table-shteti-view");

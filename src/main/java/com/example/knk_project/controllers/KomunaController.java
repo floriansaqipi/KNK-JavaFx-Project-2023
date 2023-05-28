@@ -38,7 +38,6 @@ public class KomunaController implements Initializable {
     @FXML
     private ComboBox<Shteti> shtetiComboBox = new ComboBox<>();
 
-    private List<Shteti> options = new ArrayList<>();
 
     @FXML
     void shtoKomunaClick(ActionEvent event) {

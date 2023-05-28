@@ -14,7 +14,7 @@ import java.util.List;
 public interface NotaServiceInterface {
     void insert(CreateNotaDto createNotaDto) throws SQLException;
 
-    public List<Nota> getAllNotat() throws SQLException;
+     List<Nota> getAllNotat() throws SQLException;
     int getNumberOfGrades() throws SQLException;
 
     void addDataToGradesDataList(ObservableList<ProfesoriNotaTableView> gradesDatalist, int profesoriId) throws SQLException;
