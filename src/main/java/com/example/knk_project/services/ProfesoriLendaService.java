@@ -1,14 +1,13 @@
 package com.example.knk_project.services;
 
 import com.example.knk_project.models.*;
-import com.example.knk_project.models.dto.UpdateProfesoriKlasaDto;
+import com.example.knk_project.models.dto.UpdateProfesoriLendaDto;
 import com.example.knk_project.repositories.LendaRepository;
 import com.example.knk_project.repositories.ProfesoriLendaRepository;
 import com.example.knk_project.repositories.ProfesoriRepository;
 import com.example.knk_project.repositories.interfaces.LendaRepositoryInterface;
 import com.example.knk_project.repositories.interfaces.ProfesoriLendaRepositoryInterface;
 import com.example.knk_project.repositories.interfaces.ProfesoriRepositoryInterface;
-import com.example.knk_project.services.interfaces.LendaServiceInterface;
 import com.example.knk_project.services.interfaces.ProfesoriLendaServiceInterface;
 import javafx.collections.ObservableList;
 
@@ -46,7 +45,7 @@ public class ProfesoriLendaService implements ProfesoriLendaServiceInterface {
     }
 
     @Override
-    public void update(UpdateProfesoriKlasaDto updateProfesoriKlasaDto) throws SQLException {
-        this.profesoriLendaRepository.update(updateProfesoriKlasaDto);
+    public void update(UpdateProfesoriLendaDto updateProfesoriLendaDto) throws SQLException {
+        this.profesoriLendaRepository.update(updateProfesoriLendaDto);
     }
 }

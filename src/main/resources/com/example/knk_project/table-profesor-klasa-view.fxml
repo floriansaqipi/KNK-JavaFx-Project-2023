@@ -1,18 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.controllers.TableProfesorLendaController">
+<AnchorPane prefHeight="550.0" prefWidth="664.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.controllers.TableProfesorKlasaController">
     <children>
-        <Label layoutX="160.0" layoutY="44.0" text="Tabela Profesor Lenda">
+        <Label layoutX="194.0" layoutY="52.0" text="Tabela Profesor Klasa">
             <font>
                 <Font size="30.0" />
             </font>
         </Label>
-        <TableView fx:id="ProfesorLendaTableView" layoutX="80.0" layoutY="115.0" prefHeight="250.0" prefWidth="450.0">
-        </TableView>
+        <TableView fx:id="profesorKlasaTableView" layoutX="16.0" layoutY="155.0" prefHeight="258.0" prefWidth="638.0">
+         <columns>
+            <TableColumn fx:id="profesoriIdCol" prefWidth="83.20001220703125" text="Profesori Id" />
+            <TableColumn fx:id="usernameCol" prefWidth="67.20001220703125" text="Username" />
+            <TableColumn fx:id="klasaIdCol" prefWidth="75.0" text="Klasa Id" />
+            <TableColumn fx:id="klasaCol" prefWidth="75.0" text="Klasa" />
+            <TableColumn fx:id="paraleljaCol" prefWidth="87.20001220703125" text="Paralelja" />
+            <TableColumn fx:id="vitiCol" prefWidth="77.60003662109375" text="Viti" />
+            <TableColumn fx:id="editCol" prefWidth="76.800048828125" text="Edit" />
+            <TableColumn fx:id="deleteCol" prefWidth="93.5999755859375" text="Delete" />
+         </columns></TableView>
+      <Label fx:id="messageLabel" alignment="CENTER" layoutX="4.0" layoutY="116.0" prefHeight="18.0" prefWidth="658.0" />
     </children>
 </AnchorPane>

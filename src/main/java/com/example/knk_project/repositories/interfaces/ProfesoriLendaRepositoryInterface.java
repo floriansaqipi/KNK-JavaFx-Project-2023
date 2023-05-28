@@ -1,7 +1,7 @@
 package com.example.knk_project.repositories.interfaces;
 
 import com.example.knk_project.models.ProfesoriLenda;
-import com.example.knk_project.models.dto.UpdateProfesoriKlasaDto;
+import com.example.knk_project.models.dto.UpdateProfesoriLendaDto;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -13,5 +13,5 @@ public interface ProfesoriLendaRepositoryInterface {
 
     List<ProfesoriLenda> getAllProfesoriLendet() throws SQLException;
 
-    void update(UpdateProfesoriKlasaDto updateProfesoriKlasaDto) throws SQLException;
+    void update(UpdateProfesoriLendaDto updateProfesoriLendaDto) throws SQLException;
 }

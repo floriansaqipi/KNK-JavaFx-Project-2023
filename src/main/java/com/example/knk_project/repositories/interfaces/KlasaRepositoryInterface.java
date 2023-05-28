@@ -17,7 +17,7 @@ public interface KlasaRepositoryInterface {
 
     Klasa getKlasaByNxenesiId(int nxenesiId) throws SQLException;
 
-    void update(UpdateNotaDto updateNotaDto) throws SQLException;
+    Klasa getKlasaByKlasaId(int klasaId) throws SQLException;
 
 
 
