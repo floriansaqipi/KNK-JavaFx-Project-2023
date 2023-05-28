@@ -18,11 +18,15 @@ public class AdminDashboardService implements AdminDashboardServiceInterface {
         return this.adminDashboardRepository.getAllUsers();
     }
 
+    @Override
+    public List<User> getAllUsersNxenes() throws SQLException {
+        return this.adminDashboardRepository.getAllUsersNxenes();
+    }
 
-
-
-
-
+    @Override
+    public List<User> getAllUsersProfesor() throws SQLException {
+        return this.adminDashboardRepository.getAllUsersProfesor();
+    }
 
 
 }
