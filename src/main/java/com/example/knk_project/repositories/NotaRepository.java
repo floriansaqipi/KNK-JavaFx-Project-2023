@@ -111,6 +111,26 @@ public class NotaRepository implements NotaRepositoryInterface {
     }
 
     @Override
+    public int getAverageGrade(int studentiID) throws SQLException {
+        String sql = "SELECT ROUND(AVG(vlera), 2) AS average_grade " +
+                "FROM notat " +
+                "WHERE nxenesi_id = ?;";
+
+        Connection connection = ConnectionUtil.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1, studentiID);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        int averageGrade = 0;
+
+        while (resultSet.next()) {
+            averageGrade = resultSet.getInt(1);
+        }
+        return averageGrade;
+    }
+
+    @Override
     public void update(UpdateNotaDto updateNotaDto) throws SQLException {
 
         String sql = "UPDATE notat SET vlera = ?, gjysmevjetori = ?, rubrika = ?, lenda_id = ?, nxenesi_id = ? " +

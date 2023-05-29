@@ -1,29 +1,33 @@
 package com.example.knk_project.controllers;
 
+import com.example.knk_project.models.Klasa;
 import com.example.knk_project.models.Nxenesi;
+import com.example.knk_project.models.NxenesiDashboardTableView;
 import com.example.knk_project.models.User;
-import com.example.knk_project.services.AdminDashboardService;
-import com.example.knk_project.services.interfaces.AdminDashboardServiceInterface;
+import com.example.knk_project.services.*;
+import com.example.knk_project.services.interfaces.*;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.LineChart;
-import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Array;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.ResourceBundle;
 
 public class StudentDashboardController implements Initializable {
@@ -33,35 +37,58 @@ public class StudentDashboardController implements Initializable {
     private Nxenesi nxenesi;
 
     @FXML
-    private PieChart adminPieChart;
+    private TableColumn<NxenesiDashboardTableView, Integer> gjysmevjetoriTableColumn;
 
     @FXML
-    private Label numriNotaveLabel;
+    private TableColumn<NxenesiDashboardTableView, String> lendaTableColumn;
 
     @FXML
-    private Label numriNxenesveLabel;
+    private LineChart<Integer, Integer> lineChart;
 
     @FXML
-    private Label numriProfesoreveLabel;
-    @FXML
-    private Label numriKlasaveLabel;
-    @FXML
-    private TableView<User> usersTableView;
+    private Label nrKlasaveLabel;
 
     @FXML
-    private TableColumn<User, Integer> userIdTableColumn;
+    private Label nrLendeveLabel;
 
     @FXML
-    private TableColumn<User, String> usernameTableColumn;
-    @FXML
-    private TableColumn<User, String> emriTableColumn;
+    private TableColumn<NxenesiDashboardTableView, String> profesoriUsernameTableColumn;
 
     @FXML
-    private TableColumn<User, String> mbiemriTableColumn;
+    private TableColumn<NxenesiDashboardTableView, Integer> rubrikaNotesTableColumn;
+
     @FXML
-    private TableColumn<User, String> roliTableColumn;
+    private TextField searchTextField;
+
     @FXML
-    private LineChart<String, Number> lineChart;
+    private Label suksesiLabel;
+
+    @FXML
+    private ComboBox<String> subjectFilterComboBox;
+
+    @FXML
+    private ComboBox<Integer> gradeValFilterComboBox;
+
+    @FXML
+    private TableView<NxenesiDashboardTableView> notatTableView;
+
+    @FXML
+    private TableColumn<NxenesiDashboardTableView, Integer> vleraNotesTableColumn;
+
+    private NxenesiDashboardServiceInterface nxenesiDashboardService = new NxenesiDashboardService();
+    private NotaServiceInterface notaService = new NotaService();
+    private LendaServiceInterface lendaService = new LendaService();
+    private NxenesiServiceInterface nxenesiService = new NxenesiService();
+    private ProfesoriServiceInterface profesoriService = new ProfesoriService();
+    private KlasaServiceInterface klasaService =  new KlasaService();
+
+
+    ObservableList<NxenesiDashboardTableView> listOfNxenesiDashboardTableView;
+
+    @FXML
+    void filterTable(ActionEvent event) {
+
+    }
 
     @FXML
     public void goBackDashboard(ActionEvent event){
@@ -81,20 +108,23 @@ public class StudentDashboardController implements Initializable {
     }
 
 
-    public void initialize() {
-        // Create a new series
-        XYChart.Series<String, Number> series = new XYChart.Series<>();
-        series.setName("Grades in Subjects");
+    public void initData() {
+        try {
+            this.suksesiLabel.setText(this.notaService.getAverageGrade(this.nxenesi.getId()) + " ");
+            this.nrLendeveLabel.setText(this.lendaService.getNumberOfLendeveOfNxenesi(this.nxenesi.getId()) + " ");
+            Klasa klasaENxenesit = this.klasaService.getKlasaByNxenesiId(nxenesi.getId());
+            this.nrKlasaveLabel.setText(
+                    klasaENxenesit.getKlasa()+ " / " +
+                    klasaENxenesit.getParalelja());
 
-        // Add data points to the series
-        series.getData().add(new XYChart.Data<>("Subject 1", 5));
-        series.getData().add(new XYChart.Data<>("Subject 2", 4));
-        series.getData().add(new XYChart.Data<>("Subject 3", 3));
-        series.getData().add(new XYChart.Data<>("Subject 4", 5));
-        series.getData().add(new XYChart.Data<>("Subject 5", 4));
-
-        // Add the series to the line chart
-        lineChart.getData().add(series);
+            listOfNxenesiDashboardTableView = FXCollections.observableArrayList(this.nxenesiDashboardService.getNxenesiDashboardTableView(nxenesi.getId()));
+            initializeNotatTableView();
+            initializeLinechart();
+            initializeFiltersComboBox();
+            initializeSearchTextField();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -110,7 +140,86 @@ public class StudentDashboardController implements Initializable {
         this.nxenesi = nxenesi;
     }
 
-    public void printNxenesi(){
-        System.out.println(this.nxenesi);
+    private void initializeNotatTableView() throws SQLException {
+        vleraNotesTableColumn.setCellValueFactory(p -> new SimpleIntegerProperty(p.getValue().getVleraNotes()).asObject());
+        rubrikaNotesTableColumn.setCellValueFactory( p -> new SimpleIntegerProperty(p.getValue().getRubrikaNotes()).asObject());
+        gjysmevjetoriTableColumn.setCellValueFactory( p -> new SimpleIntegerProperty(p.getValue().getGjysmevjetoriNotes()).asObject());
+        lendaTableColumn.setCellValueFactory(p -> new SimpleStringProperty(p.getValue().getEmriLendes()));
+        profesoriUsernameTableColumn.setCellValueFactory(p -> new SimpleStringProperty(p.getValue().getProfesoriUsername()));
+
+        notatTableView.setItems(listOfNxenesiDashboardTableView);
     }
+
+    private void initializeSearchTextField() {
+        FilteredList<NxenesiDashboardTableView> filteredData =  new FilteredList<>(listOfNxenesiDashboardTableView, b -> true);
+        searchTextField.textProperty().addListener((observable,oldValue,newValue) ->{
+            filteredData.setPredicate(nota -> {
+                if (newValue.isEmpty() || newValue.isBlank() || newValue == null){
+                    return true;
+                }
+                String searchKeyWord =  newValue.toLowerCase();
+
+                if(nota.getEmriLendes().toLowerCase().contains(searchKeyWord)){
+                    return true;
+                }
+                else if(nota.getProfesoriUsername().toLowerCase().contains(searchKeyWord)){
+                    return true;
+                }
+                else if(Integer.toString(nota.getVleraNotes()).toLowerCase().contains(searchKeyWord)){
+                    return true;
+                }
+                else if (Integer.toString(nota.getRubrikaNotes()).contains(searchKeyWord)) {
+                    return true;
+                }
+                else if(Integer.toString(nota.getGjysmevjetoriNotes()).toLowerCase().contains(searchKeyWord)){
+                    return true;
+                }
+                 else {
+                    return false;
+                }
+            });
+
+        });
+
+        SortedList<NxenesiDashboardTableView> sortedData =  new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(notatTableView.comparatorProperty());
+        notatTableView.setItems(sortedData);
+
+    }
+
+    private void initializeLinechart() {
+        int i = 0;
+        XYChart.Series series = new XYChart.Series();
+        series.setName("Notat");
+        for (NxenesiDashboardTableView n : listOfNxenesiDashboardTableView) {
+
+            series.getData().add(new XYChart.Data<>(Integer.toString(i), n.getVleraNotes()));
+            i++;
+
+        }
+        lineChart.getData().add(series);
+    }
+
+    private void initializeFiltersComboBox(){
+        ArrayList<String> subjectOptions = new ArrayList<>();
+        ArrayList<Integer> gradeOptions =  new ArrayList<>();
+         for(NxenesiDashboardTableView n: listOfNxenesiDashboardTableView){
+            if(!subjectOptions.contains(n.getEmriLendes())){
+                subjectOptions.add(n.getEmriLendes());
+                this.subjectFilterComboBox.getItems().add(n.getEmriLendes());
+
+            }
+             if(!gradeOptions.contains(n.getVleraNotes())){
+                 gradeOptions.add(n.getVleraNotes());
+                 this.gradeValFilterComboBox.getItems().add(n.getVleraNotes());
+             }
+             Collections.sort(gradeValFilterComboBox.getItems());
+        }
+//         String[] subjectOptionsAsArray = (String[]) subjectOptions.toArray();
+//         Integer[] gradeOptionsAsArray = (Integer[]) gradeOptions.toArray();
+//        this.subjectFilterComboBox.getItems().addAll(subjectOptionsAsArray);
+//        this.gradeValFilterComboBox.getItems().addAll(gradeOptionsAsArray);
+    }
+
+
 }

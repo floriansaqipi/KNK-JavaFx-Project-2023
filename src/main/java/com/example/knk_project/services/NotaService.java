@@ -57,6 +57,11 @@ public class NotaService implements NotaServiceInterface {
     }
 
     @Override
+    public int getAverageGrade(int studentiID) throws SQLException {
+        return this.notaRepository.getAverageGrade(studentiID);
+    }
+
+    @Override
     public void update(UpdateNotaDto updateNotaDto) throws SQLException {
         this.notaRepository.update(updateNotaDto);
     }

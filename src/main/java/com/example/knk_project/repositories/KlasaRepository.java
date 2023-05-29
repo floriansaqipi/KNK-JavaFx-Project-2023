@@ -127,7 +127,7 @@ public class KlasaRepository implements KlasaRepositoryInterface {
         }
         return klasa;
     }
-
+    @Override
     public int getNumberOfKlaseve() throws SQLException {
         String sql = "SELECT COUNT(*) FROM klasat;";
         Connection connection = ConnectionUtil.getConnection();
@@ -142,6 +142,7 @@ public class KlasaRepository implements KlasaRepositoryInterface {
         }
         return numberOfKlasave ;
     }
+
 
 
 }

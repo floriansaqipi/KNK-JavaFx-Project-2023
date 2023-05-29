@@ -14,5 +14,7 @@ public interface LendaServiceInterface {
     public List<Lenda> getAllLendet() throws SQLException;
 
     List<Lenda> getAllLendetByProfesoriId(int profesoriId) throws SQLException;
+    int getNumberOfLendeveOfNxenesi(int nxenesiID) throws SQLException;
+
 
 }

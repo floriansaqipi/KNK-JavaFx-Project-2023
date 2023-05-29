@@ -91,4 +91,23 @@ public class LendaRepository implements LendaRepositoryInterface {
         }
         return lenda;
     }
+
+    @Override
+    public int getNumberOfLendeveOfNxenesi(int nxenesiID) throws SQLException {
+        String sql = "SELECT COUNT(DISTINCT lenda_id) AS num_lendet " +
+                "FROM notat " +
+                "WHERE nxenesi_id = ?;";
+        Connection connection = ConnectionUtil.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1,nxenesiID);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        int numberOfLendeve = 0;
+
+        while (resultSet.next()){
+            numberOfLendeve = resultSet.getInt(1);
+        }
+        return numberOfLendeve ;
+    }
 }

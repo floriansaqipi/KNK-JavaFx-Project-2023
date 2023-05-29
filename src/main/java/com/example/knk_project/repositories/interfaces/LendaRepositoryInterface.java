@@ -15,4 +15,6 @@ public interface LendaRepositoryInterface {
 
     Lenda getLendaByLendaId(int lendaId) throws SQLException;
 
+    int getNumberOfLendeveOfNxenesi(int nxenesiID) throws SQLException;
+
 }

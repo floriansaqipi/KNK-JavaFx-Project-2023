@@ -20,6 +20,7 @@ public interface NotaServiceInterface {
     void addDataToGradesDataList(ObservableList<ProfesoriNotaTableView> gradesDatalist, int profesoriId) throws SQLException;
 
     void deleteNotaByNotaId(int notaId) throws SQLException;
+    int getAverageGrade(int studentiID) throws SQLException;
 
     void update(UpdateNotaDto updateNotaDto) throws SQLException;
 }
