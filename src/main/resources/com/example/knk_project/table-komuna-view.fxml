@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="550.0" prefWidth="670.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.controllers.TableKomunaController">
+    <children>
+        <Label layoutX="231.0" layoutY="14.0" prefHeight="66.0" prefWidth="208.0" text="Tabela Komuna">
+            <font>
+                <Font size="30.0" />
+            </font>
+        </Label>
+        <TableView fx:id="komunaTableView" layoutX="19.0" layoutY="166.0" prefHeight="347.0" prefWidth="634.0">
+         <columns>
+            <TableColumn fx:id="komunaIDColumn" minWidth="67.20001220703125" prefWidth="103.99996566772461" text="KomunaID" />
+            <TableColumn fx:id="emriColumn" minWidth="81.60003662109375" prefWidth="104.800048828125" text="Emri" />
+            <TableColumn fx:id="emriShtetitColumn" minWidth="84.1" prefWidth="138.3999786376953" text="Emri i Shtetit" />
+            <TableColumn fx:id="shtetiIDColumn" minWidth="16.800048828125" prefWidth="84.79998779296875" text="ShtetiID" />
+            <TableColumn fx:id="editColumn" minWidth="29.5999755859375" prefWidth="100.00006103515625" text="Edit" />
+            <TableColumn fx:id="deleteColumn" minWidth="46.40008544921875" prefWidth="95.99993896484375" text="Delete" />
+         </columns></TableView>
+      <Label fx:id="messageLabel" alignment="CENTER" layoutX="12.0" layoutY="110.0" prefHeight="18.0" prefWidth="646.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+    </children>
+</AnchorPane>

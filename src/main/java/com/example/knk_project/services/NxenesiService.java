@@ -14,6 +14,7 @@ import com.example.knk_project.services.interfaces.NxenesiServiceInterface;
 
 import javax.security.auth.login.LoginException;
 import java.sql.SQLException;
+import java.util.List;
 
 public class NxenesiService implements NxenesiServiceInterface {
     private NxenesiRepositoryInterface nxenesiRepository = new NxenesiRepository();
@@ -45,5 +46,27 @@ public class NxenesiService implements NxenesiServiceInterface {
         if(!isPasswordCorrect){
             throw new IncorrectPasswordException("Incorrect password");
         }
+    }
+
+    @Override
+    public List<Nxenesi> getAllNxenesitbyProfesoriID(int profesoriID) throws SQLException {
+        return this.nxenesiRepository.getAllNxenesitbyProfesoriID(profesoriID);
+    }
+
+
+    @Override
+    public List<Nxenesi> getAllNxenesitByKlasaId(int klasaId) throws SQLException {
+        return this.nxenesiRepository.getAllNxenesitByKlasaId(klasaId);
+    }
+
+    @Override
+    public Nxenesi getNxenesiByUsername(String username) throws SQLException {
+        return this.nxenesiRepository.getNxenesiByUsername(username);
+    }
+
+    @Override
+    public int getNumberOfNxenesve() throws SQLException {
+        return this.nxenesiRepository.getNumberOfNxenesve();
+
     }
 }

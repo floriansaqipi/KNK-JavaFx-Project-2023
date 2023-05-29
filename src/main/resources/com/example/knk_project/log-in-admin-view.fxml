@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -13,20 +14,34 @@
    <children>
       <Pane layoutY="-4.0" prefHeight="404.0" prefWidth="600.0">
          <children>
-            <Label layoutX="255.0" layoutY="36.0" text="Log In ">
+            <Label fx:id="logInBanner" layoutX="255.0" layoutY="36.0" text="Log In ">
                <font>
                   <Font name="Arial" size="35.0" />
                </font>
             </Label>
             <TextField fx:id="usernameTextField" alignment="CENTER" layoutX="178.0" layoutY="116.0" prefHeight="30.0" prefWidth="260.0" promptText="Enter your username" style="-fx-background-radius: 20px;" />
-            <CheckBox layoutX="178.0" layoutY="194.0" mnemonicParsing="false" text="Remember me" />
-            <Label layoutX="347.0" layoutY="194.0" text="Forget Password" textFill="#cc1717" />
-            <Button layoutX="178.0" layoutY="255.0" mnemonicParsing="false" onAction="#logInClick" prefHeight="30.0" prefWidth="260.0" style="-fx-background-radius: 20px;" text="Log in " />
-            <Label layoutX="182.0" layoutY="361.0" text="Don't have an account ?" />
-            <Label layoutX="397.0" layoutY="361.0" text="Sign up" textFill="#dc1919" />
+            <Button fx:id="logInButton" layoutX="178.0" layoutY="255.0" mnemonicParsing="false" onAction="#logInClick" prefHeight="30.0" prefWidth="260.0" style="-fx-background-radius: 20px;" text="Log in " />
             <Label alignment="CENTER" layoutX="210.0" layoutY="231.0" prefHeight="17.0" prefWidth="214.0" textFill="#e10b0b" />
             <PasswordField fx:id="passwordPasswordField" alignment="CENTER" layoutX="179.0" layoutY="155.0" prefHeight="30.0" prefWidth="260.0" promptText="Enter your password" style="-fx-background-radius: 20px;" />
-            <Label fx:id="messageLabel" layoutX="286.0" layoutY="88.0" text="Message" />
+            <Label fx:id="messageLabel" alignment="CENTER" layoutX="81.0" layoutY="88.0" prefHeight="17.0" prefWidth="433.0" />
+            <Button layoutX="424.0" layoutY="17.0" mnemonicParsing="false" onAction="#loadEnglishText">
+               <graphic>
+                  <ImageView fitHeight="36.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/UK-US_flag.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="506.0" layoutY="17.0" mnemonicParsing="false" onAction="#loadAlbanianText">
+               <graphic>
+                  <ImageView fitHeight="36.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/Flag_of_the_Democratic_Government_of_Albania_(1944–1946).png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </Pane>
    </children>

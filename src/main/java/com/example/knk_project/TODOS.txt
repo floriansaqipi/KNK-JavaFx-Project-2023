@@ -11,3 +11,38 @@ shto-lenden-view        TODO: Erza M
 shto-noten-view         TODO: Erza M
 shto-profesorit-lenden  TODO: Erza B
 shto-profesorit-klasen  TODO: Fjolla
+
+
+TODO: NAVBAR: profil Admin-page Shto shtetin/klasen/komunen/lenden profesor-klasen / profesor-lenden LOGOUT dashboard
+nr-notave nr-nxenesve- nr-profesorave- nr-klaseve filtera grafika
+
+notat - tabel
+
+
+
+TODO: NAVBAR: Profesori page Shto noten/ Notat / //// shiko lendet e mia //// klasat e mia/ profili dashboard
+
+Nr lendeve, nr nxenseve, suksesi i pergjithshem,
+Tabela
+ADD note
+Filters ==========================
+searchBox() |  gjysemvjetori   |   Lenda | Vlera notes | viti |
+________________________________________________
+Id, Vlera e notes, Lenda, Nxenesi, gjysemvjetori, //rubrika, viti    EDIT DELETE
+________________________________________________________
+
+1|2|3|4|5|6|
+
+
+Nota mesatare
+
+TODO: Nxenesi Transkripta(Notat)  / Profili / Dashboard
+
+
+TODO: florian
+pass id to profesori dashboard
+pass id to nxenesi dashboard
+implement loading in dashboard automatically
+implement profesori dashboard
+fix log outs
+

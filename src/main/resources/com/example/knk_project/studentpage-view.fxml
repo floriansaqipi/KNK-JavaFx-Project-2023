@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.controllers.StudentPageController">
+   <top>
+      <HBox prefHeight="40.0" prefWidth="900.0" style="-fx-background-color: #150050; -fx-border-color: white;" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" prefHeight="46.0" prefWidth="373.0" text="NAME OF THE SYSTEM" textFill="WHITE">
+               <font>
+                  <Font name="System Italic" size="30.0" />
+               </font></Label>
+            <JFXButton fx:id="logOutButton" onMouseClicked="#LogOut" prefHeight="46.0" prefWidth="125.0" style="-fx-border-color: WHITE; -fx-border-width: 0px 0px 0px 1px;" text="LOG OUT" textFill="WHITE" translateX="400.0">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <AnchorPane fx:id="ap" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
+   <left>
+      <Pane fx:id="p" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #150050;" BorderPane.alignment="CENTER">
+         <children>
+            <VBox layoutY="190.0" prefHeight="115.0" prefWidth="201.0">
+               <children>
+                  <JFXButton onAction="#loadNxenesiHomePage" prefHeight="26.0" prefWidth="222.0" text="FAQJA KRYESORE" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton onMouseClicked="#transkripta" prefHeight="46.0" prefWidth="200.0" text="TRANSKRIPTA" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton onMouseClicked="#profili" prefHeight="46.0" prefWidth="199.0" text="PROFILI" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+   </left>
+</BorderPane>

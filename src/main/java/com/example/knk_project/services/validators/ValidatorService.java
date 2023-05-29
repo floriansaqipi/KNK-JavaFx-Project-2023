@@ -9,14 +9,23 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Control;
 
+import java.util.ResourceBundle;
+
 public class ValidatorService implements ValidatorInterface {
     private boolean isValid = true;
+
+    private ResourceBundle bundle;
+
+    public void setBundle(ResourceBundle bundle) {
+//        System.out.println(bundle.getString("not.empty.val"));
+        this.bundle = bundle;
+    }
 
     @Override
     public void validateTextField(TextField textField)  {
         if(textField.getText().trim().isEmpty()){
             this.setErrorStyle(textField);
-            textField.setPromptText("Nuk mund te jete e zbrazet");
+            textField.setPromptText(bundle.getString("not.empty.val"));
             this.isValid = false;
             return;
         }
@@ -27,7 +36,7 @@ public class ValidatorService implements ValidatorInterface {
     public void validateGeneralPasswordField(PasswordField passwordField) {
         if(passwordField.getText().trim().isEmpty()){
             this.setErrorStyle(passwordField);
-            passwordField.setPromptText("Nuk mund te jete e zbrazet");
+            passwordField.setPromptText(bundle.getString("not.empty.val"));
             this.isValid = false;
             return;
         }
@@ -46,7 +55,7 @@ public class ValidatorService implements ValidatorInterface {
     }
 
     @Override
-    public void validateComboBox(ComboBox<String> comboBox)  {
+    public <T> void validateComboBox(ComboBox<T> comboBox)  {
         if(comboBox.getValue() == null){
             this.setErrorStyle(comboBox);
             comboBox.setPromptText("Zgjedh nje opsion");
@@ -125,10 +134,28 @@ public class ValidatorService implements ValidatorInterface {
     }
 
     @Override
+    public void validateVitiShkollorTextField(TextField textField) {
+        if(!textField.getText().trim().matches("\\d{4}\\/\\d{4}")) {
+            this.setErrorStyle(textField);
+            textField.setPromptText("Sheno vitet e ndara me / dhe rishikoni gjatësinë e viteve");
+            this.isValid = false;
+            return;
+        }
+        String[] numbers = textField.getText().split("/");
+        Integer viti1 = Integer.parseInt(numbers[0]);
+        Integer viti2 = Integer.parseInt(numbers[1]);
+        if(viti2 - viti1 != 1) {
+            this.setErrorStyle(textField);
+            textField.setPromptText("Viti shkollor është i gabuar");
+            this.isValid = false;
+            return;
+        }
+        this.setDefaultStyle(textField);
+    }
+
+    @Override
     public void validateMatchingPasswords(PasswordField passwordField, PasswordField confirmPasswordField)
             throws DifferentPasswordsException {
-        System.out.println(passwordField.getText());
-        System.out.println(confirmPasswordField.getText());
                 if(!passwordField.getText().trim().equals(confirmPasswordField.getText().trim())){
                     this.setErrorStyle(passwordField);
                     this.setErrorStyle(confirmPasswordField);
@@ -139,6 +166,7 @@ public class ValidatorService implements ValidatorInterface {
     @Override
     public void throwIfInvalid() throws ValidationException {
         if(!this.isValid){
+            this.isValid = true;
             throw new ValidationException("this is invalid");
         }
     }

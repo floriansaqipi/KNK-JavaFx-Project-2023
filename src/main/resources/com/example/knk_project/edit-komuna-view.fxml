@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="550.0" prefWidth="670.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.controllers.EditKomunaController">
+   <children>
+      <Label fx:id="addCityLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="214.0" layoutY="64.0" prefHeight="51.0" prefWidth="242.0" text="Edit Komunen">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
+      <TextField fx:id="komunaTextField" alignment="CENTER" layoutX="205.0" layoutY="169.0" prefHeight="30.0" prefWidth="260.0" promptText="Ndrysho Komunen" style="-fx-background-radius: 20px;" />
+      <Label fx:id="messageLabel" layoutX="321.0" layoutY="116.0" text="Label" />
+      <Button layoutX="205.0" layoutY="226.0" mnemonicParsing="false" onAction="#editKomunaClick" prefHeight="30.0" prefWidth="260.0" style="-fx-background-radius: 20px;" text="Ndrysho" />
+   </children>
+</AnchorPane>
