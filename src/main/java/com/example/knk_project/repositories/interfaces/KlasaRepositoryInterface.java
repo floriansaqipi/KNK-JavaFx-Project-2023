@@ -19,6 +19,4 @@ public interface KlasaRepositoryInterface {
 
     Klasa getKlasaByKlasaId(int klasaId) throws SQLException;
 
-
-
 }

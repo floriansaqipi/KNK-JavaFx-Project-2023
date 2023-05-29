@@ -27,4 +27,9 @@ public class LendaService implements LendaServiceInterface {
         return this.lendaRepository.getAllLendetByProfesoriId(profesoriId);
     }
 
+    @Override
+    public int getNumberOfLendeveOfNxenesi(int nxenesiID) throws SQLException {
+        return this.lendaRepository.getNumberOfLendeveOfNxenesi(nxenesiID);
+    }
+
 }
