@@ -9,14 +9,23 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Control;
 
+import java.util.ResourceBundle;
+
 public class ValidatorService implements ValidatorInterface {
     private boolean isValid = true;
+
+    private ResourceBundle bundle;
+
+    public void setBundle(ResourceBundle bundle) {
+//        System.out.println(bundle.getString("not.empty.val"));
+        this.bundle = bundle;
+    }
 
     @Override
     public void validateTextField(TextField textField)  {
         if(textField.getText().trim().isEmpty()){
             this.setErrorStyle(textField);
-            textField.setPromptText("Nuk mund te jete e zbrazet");
+            textField.setPromptText(bundle.getString("not.empty.val"));
             this.isValid = false;
             return;
         }
@@ -27,7 +36,7 @@ public class ValidatorService implements ValidatorInterface {
     public void validateGeneralPasswordField(PasswordField passwordField) {
         if(passwordField.getText().trim().isEmpty()){
             this.setErrorStyle(passwordField);
-            passwordField.setPromptText("Nuk mund te jete e zbrazet");
+            passwordField.setPromptText(bundle.getString("not.empty.val"));
             this.isValid = false;
             return;
         }

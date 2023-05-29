@@ -19,28 +19,61 @@ import org.w3c.dom.events.MouseEvent;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class HomePageController implements Initializable {
+public class HomePageController extends BaseController implements Initializable {
     private MainController mainController;
     @FXML
     private MenuButton LogIn;
-    
-    @FXML
-    private AnchorPane anchorePaneHomePage;
 
     @FXML
     private MenuItem adminItem;
 
     @FXML
-    private MenuItem studentItem;
+    private MenuItem adminSignUpItem;
+
+    @FXML
+    private AnchorPane anchorePaneHomePage;
+
+    @FXML
+    private Button goBackButton;
+
+    @FXML
+    private Label goBackInstruction;
+
+    @FXML
+    private Label homeControllerBaner;
+
+
+
+    @FXML
+    private ImageView homePageImage;
+
+
+
+    @FXML
+    private Label homePageWelcome;
+
+    @FXML
+    private BorderPane homePagebp;
 
     @FXML
     private MenuItem professorItem;
+
     @FXML
-    private Button goBackButton;
+    private MenuItem professorSignUpItem;
+
+    @FXML
+    private MenuButton signUp;
+
+    @FXML
+    private MenuItem studentItem;
+
+    @FXML
+    private MenuItem studentSignUpItem;
 
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
@@ -111,6 +144,36 @@ public class HomePageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Locale.setDefault(new Locale("en"));
+
+        loadLang();
+    }
+
+    @FXML
+    void loadAlbanianText(ActionEvent event) {
+        Locale.setDefault(new Locale("sq"));
+        loadLang();
+    }
+
+    @FXML
+    void loadEnglishText(ActionEvent event) {
+        Locale.setDefault(new Locale("en"));
+        loadLang();
+    }
+
+
+
+    @Override
+    public void translate(ResourceBundle bundle) {
+        this.LogIn.setText(bundle.getString("login.button.text"));
+        this.signUp.setText(bundle.getString("signup.button.text"));
+        this.goBackInstruction.setText(bundle.getString("goback.instruction"));
+        this.homePageWelcome.setText(bundle.getString("home.welcome"));
+        this.homeControllerBaner.setText(bundle.getString("home.banner"));
+        this.professorSignUpItem.setText(bundle.getString("home.professor.option"));
+        this.professorItem.setText(bundle.getString("home.professor.option"));
+        this.studentSignUpItem.setText(bundle.getString("home.student.option"));        this.professorSignUpItem.setText(bundle.getString("home.professor.option"));
+        this.studentItem.setText(bundle.getString("home.student.option"));
 
     }
 
@@ -131,4 +194,7 @@ public class HomePageController implements Initializable {
 //            Logger.getLogger(ProfesorPageController.class.getName()).log(Level.SEVERE, null, ex);
 //        }
     }
+
+
+
 }
