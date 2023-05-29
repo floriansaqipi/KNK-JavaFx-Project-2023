@@ -7,6 +7,8 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
+import java.util.ResourceBundle;
+
 public interface ValidatorInterface {
     void validateTextField(TextField textField) ;
     void validateGeneralPasswordField(PasswordField passwordField);
@@ -25,4 +27,5 @@ public interface ValidatorInterface {
     void throwIfInvalid() throws ValidationException;
 
 
+    void setBundle(ResourceBundle bundle);
 }

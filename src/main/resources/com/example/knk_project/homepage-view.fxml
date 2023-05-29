@@ -20,34 +20,56 @@
 
     <top>
         <HBox fx:id="homePageHBox" prefHeight="46.0" prefWidth="900.0" style="-fx-background-color: #150050;" BorderPane.alignment="CENTER">
-            <children>
-                <Label text="NAME OF THE SYSTEM" textFill="WHITE" translateX="20.0" translateY="5.0">
-                    <font>
-                        <Font name="System Italic" size="30.0" />
-                    </font>
-                </Label>
-                <MenuButton fx:id="signUp" alignment="CENTER" mnemonicParsing="false" prefHeight="37.0" prefWidth="114.0" text="Sign Up" translateX="300.0" translateY="5.0">
-                    <font>
-                        <Font name="System Bold" size="12.0" />
-                    </font>
-                    <items>
-                        <MenuItem fx:id="adminSignUpItem" onAction="#adminSignUp" text="Admin" />
-                        <MenuItem fx:id="studentSignUpItem" onAction="#studentSignUp" text="Student" />
-                        <MenuItem fx:id="professorSignUpItem" onAction="#professorSignUp" text="Professor" />
-                    </items>
-                </MenuButton>
-               <MenuButton fx:id="LogIn" alignment="CENTER" mnemonicParsing="false" prefHeight="37.0" prefWidth="114.0" text="Log In" translateX="372.0" translateY="5.0">
-
-                    <font>
-                        <Font name="System Bold" size="12.0" />
-                    </font>
-                    <items>
-                        <MenuItem fx:id="adminItem" onAction="#adminLogIn" text="Admin" />
-                        <MenuItem fx:id="studentItem" onAction="#studentLogIn" text="Student" />
-                        <MenuItem fx:id="professorItem" onAction="#professorLogIn" text="Professor" />
-                    </items>
-                </MenuButton>
-            </children>
+         <children>
+            <AnchorPane prefHeight="46.0" prefWidth="910.0">
+               <children>
+                      <Label fx:id="homeControllerBaner" layoutX="7.0" layoutY="-4.0" text="SISTEMI I NOTIMIT" textFill="WHITE">
+                          <font>
+                              <Font name="System Italic" size="30.0" />
+                          </font>
+                      </Label>
+                      <MenuButton fx:id="signUp" alignment="CENTER" layoutX="672.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="114.0" text="Sign Up">
+                          <font>
+                              <Font name="System Bold" size="12.0" />
+                          </font>
+                          <items>
+                              <MenuItem fx:id="adminSignUpItem" onAction="#adminSignUp" text="Admin" />
+                              <MenuItem fx:id="studentSignUpItem" onAction="#studentSignUp" text="Student" />
+                              <MenuItem fx:id="professorSignUpItem" onAction="#professorSignUp" text="Professor" />
+                          </items>
+                      </MenuButton>
+                     <MenuButton fx:id="LogIn" alignment="CENTER" layoutX="804.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="114.0" text="Log In">
+      
+                          <font>
+                              <Font name="System Bold" size="12.0" />
+                          </font>
+                          <items>
+                              <MenuItem fx:id="adminItem" onAction="#adminLogIn" text="Admin" />
+                              <MenuItem fx:id="studentItem" onAction="#studentLogIn" text="Student" />
+                              <MenuItem fx:id="professorItem" onAction="#professorLogIn" text="Professor" />
+                          </items>
+                      </MenuButton>
+                  <Button layoutX="488.0" layoutY="3.0" mnemonicParsing="false" onAction="#loadEnglishText">
+                     <graphic>
+                        <ImageView fitHeight="36.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/UK-US_flag.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="572.0" layoutY="1.0" mnemonicParsing="false" onAction="#loadAlbanianText">
+                     <graphic>
+                        <ImageView fitHeight="36.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/Flag_of_the_Democratic_Government_of_Albania_(1944–1946).png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
         </HBox>
     </top>
     <left>
@@ -57,7 +79,7 @@
                <graphic>
                   <FontAwesomeIcon fill="WHITE" glyphName="HOME" size="60" />
                </graphic></Button>
-            <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" text="Click on the image to go back" textFill="#ffffffa3" translateX="15.0" />
+            <Label fx:id="goBackInstruction" alignment="CENTER_RIGHT" contentDisplay="CENTER" text="Click on the image to go back" textFill="#ffffffa3" translateX="15.0" />
          </children>
         </VBox>
     </left>
@@ -72,7 +94,7 @@
                         <Rectangle2D height="600.0" width="900.0" />
                     </viewport>
                 </ImageView>
-                <Label layoutX="128.0" layoutY="57.0" text="Welcome!" textFill="#7b7575">
+                <Label fx:id="homePageWelcome" layoutX="128.0" layoutY="57.0" text="Welcome!" textFill="#7b7575">
                     <font>
                         <Font name="Calibri Bold Italic" size="36.0" />
                     </font>
