@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -13,16 +16,39 @@
    <top>
 
       <HBox prefHeight="40.0" prefWidth="900.0" style="-fx-background-color: #150050; -fx-border-color: white;" BorderPane.alignment="CENTER">
-
          <children>
-            <Label alignment="CENTER" prefHeight="46.0" prefWidth="373.0" text="NAME OF THE SYSTEM" textFill="WHITE">
-               <font>
-                  <Font name="System Italic" size="30.0" />
-               </font></Label>
-            <JFXButton fx:id="logOutButton" onMouseClicked="#LogOut" prefHeight="46.0" prefWidth="125.0" style="-fx-border-color: white; -fx-border-width: 0px 0px 0px 1px;" text="LOG OUT" textFill="WHITE" translateX="400.0">
-               <font>
-                  <Font name="System Bold" size="17.0" />
-               </font></JFXButton>
+            <AnchorPane prefHeight="38.0" prefWidth="898.0">
+               <children>
+                  <Label fx:id="mainHomeLabel" alignment="CENTER" layoutX="-27.0" layoutY="-4.0" prefHeight="46.0" prefWidth="373.0" text="EMRI I SISTEMIT" textFill="WHITE">
+                     <font>
+                        <Font name="System Italic" size="30.0" />
+                     </font>
+                  </Label>
+                  <JFXButton fx:id="logOutButton" layoutX="758.0" layoutY="-2.0" onMouseClicked="#LogOut" prefHeight="46.0" prefWidth="125.0" style="-fx-border-color: white; -fx-border-width: 0px 0px 0px 1px;" text="LOG OUT" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </JFXButton>
+                  <Button layoutX="578.0" layoutY="3.0" mnemonicParsing="false" onAction="#loadEnglishText">
+                     <graphic>
+                        <ImageView fitHeight="36.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/UK-US_flag.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="672.0" layoutY="1.0" mnemonicParsing="false" onAction="#loadAlbanianText">
+                     <graphic>
+                        <ImageView fitHeight="36.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/Flag_of_the_Democratic_Government_of_Albania_(1944–1946).png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </AnchorPane>
          </children>
       </HBox>
    </top>
@@ -34,57 +60,57 @@
          <children>
             <VBox layoutY="47.0" prefHeight="420.0" prefWidth="222.0">
                <children>
-                  <JFXButton onAction="#loadAdminHomePage" prefHeight="26.0" prefWidth="222.0" text="FAQJA KRYESORE" textFill="WHITE">
+                  <JFXButton fx:id="mainPage" onAction="#loadAdminHomePage" prefHeight="26.0" prefWidth="222.0" text="FAQJA KRYESORE" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton onMouseClicked="#shtoshtetin" prefHeight="42.0" prefWidth="222.0" text="SHTO SHTETIN" textFill="WHITE">
+                  <JFXButton fx:id="addState" onMouseClicked="#shtoshtetin" prefHeight="42.0" prefWidth="222.0" text="SHTO SHTETIN" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton onMouseClicked="#shtokomunen" prefHeight="40.0" prefWidth="222.0" text="SHTO KOMUNEN" textFill="WHITE">
+                  <JFXButton fx:id="addKomuna" onMouseClicked="#shtokomunen" prefHeight="40.0" prefWidth="222.0" text="SHTO KOMUNEN" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton onMouseClicked="#shtoklasen" prefHeight="40.0" prefWidth="221.0" text="SHTO KLASEN" textFill="WHITE">
+                  <JFXButton fx:id="addKlasa" onMouseClicked="#shtoklasen" prefHeight="40.0" prefWidth="221.0" text="SHTO KLASEN" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton onMouseClicked="#shtolenden" prefHeight="40.0" prefWidth="226.0" text="SHTO LENDEN" textFill="WHITE">
+                  <JFXButton fx:id="addLenden" onMouseClicked="#shtolenden" prefHeight="40.0" prefWidth="226.0" text="SHTO LENDEN" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton onMouseClicked="#shtoProfesorLenden" prefHeight="40.0" prefWidth="225.0" text="SHTO PROFESOR/LENDEN" textFill="WHITE">
+                  <JFXButton fx:id="addProfesorLenden" onMouseClicked="#shtoProfesorLenden" prefHeight="40.0" prefWidth="225.0" text="SHTO PROFESOR/LENDEN" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton onMouseClicked="#shtoProfesorKlasen" prefHeight="40.0" prefWidth="222.0" text="SHTO PROFESOR/KLASEN" textFill="WHITE">
+                  <JFXButton fx:id="addProfesorKlasen" onMouseClicked="#shtoProfesorKlasen" prefHeight="40.0" prefWidth="222.0" text="SHTO PROFESOR/KLASEN" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton onMouseClicked="#tabelakomuna" prefHeight="40.0" prefWidth="224.0" text="TABELA KOMUNA" textFill="WHITE">
+                  <JFXButton fx:id="komunatTable" onMouseClicked="#tabelakomuna" prefHeight="40.0" prefWidth="224.0" text="TABELA KOMUNA" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton onMouseClicked="#tabelashteti" prefHeight="42.0" prefWidth="225.0" text="TABELA SHTETI" textFill="WHITE">
+                  <JFXButton fx:id="tableState" onMouseClicked="#tabelashteti" prefHeight="42.0" prefWidth="225.0" text="TABELA SHTETI" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton onMouseClicked="#tabelaprofesorlenda" prefHeight="41.0" prefWidth="225.0" text="TABELA PROFESOR/LENDA" textFill="WHITE">
+                  <JFXButton fx:id="profesorLendaTable" onMouseClicked="#tabelaprofesorlenda" prefHeight="41.0" prefWidth="225.0" text="TABELA PROFESOR/LENDA" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton onMouseClicked="#tabelaprofesorklasa" prefHeight="42.0" prefWidth="228.0" text="TABELA PROFESOR/KLASA" textFill="WHITE">
+                  <JFXButton fx:id="profesorKlasaTable" onMouseClicked="#tabelaprofesorklasa" prefHeight="42.0" prefWidth="228.0" text="TABELA PROFESOR/KLASA" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
