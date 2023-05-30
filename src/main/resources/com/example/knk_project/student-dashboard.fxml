@@ -142,8 +142,8 @@
             </items>
         </SplitPane>
       <TextField fx:id="searchTextField" layoutX="16.0" layoutY="231.0" prefHeight="26.0" prefWidth="191.0" promptText="Search" style="-fx-background-radius: 20px;" />
-      <ComboBox fx:id="gradeValFilterComboBox" layoutX="238.0" layoutY="231.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-radius: 20px;" />
-      <ComboBox fx:id="subjectFilterComboBox" layoutX="475.0" layoutY="231.0" prefHeight="26.0" prefWidth="191.0" style="-fx-background-radius: 20px;" />
+      <ComboBox fx:id="gradeValFilterComboBox" layoutX="238.0" layoutY="231.0" prefHeight="26.0" prefWidth="200.0" promptText="Sipas Notës" style="-fx-background-radius: 20px;" />
+      <ComboBox fx:id="subjectFilterComboBox" layoutX="475.0" layoutY="231.0" prefHeight="26.0" prefWidth="191.0" promptText="Sipas Lëndës" style="-fx-background-radius: 20px;" />
       <JFXButton layoutX="750.0" layoutY="230.0" onAction="#filterTable" prefHeight="26.0" prefWidth="112.0" style="-fx-border-color: black; -fx-border-radius: 20px;" text="Filter" />
     </children>
 </AnchorPane>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.translations.ManualiView">
+   <children>
+      <Label layoutX="122.0" layoutY="23.0" text="Manuali i përdorimit">
+         <font>
+            <Font size="44.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="manualiTextArea" layoutX="31.0" layoutY="89.0" prefHeight="338.0" prefWidth="578.0" text="Regjistrimi në webfaqe:&#10;&#10;Hapni webfaqen dhe klikoni në lidhjen &quot;Regjistrohu&quot; në faqen kryesore.&#10;Plotësoni të dhënat personale të nevojshme për regjistrimin tuaj, si emrin e përdoruesit dhe fjalëkalimin.&#10;Zgjidhni rolin tuaj në regjistrim, &quot;nxënës&quot; ose &quot;profesor&quot;.&#10;Pas plotësimit të të dhënave, klikoni në butonin &quot;Regjistrohu&quot; për të përfunduar regjistrimin.&#10;Kyçja në llogarinë tuaj:&#10;Pas regjistrimit, kthehuni në faqen kryesore dhe klikoni në lidhjen &quot;Kyçu&quot;.&#10;Shkruani emrin e përdoruesit dhe fjalëkalimin tuaj në fushat e përkatëshme.&#10;Klikoni në butonin &quot;Kyçu&quot; për të hyrë në llogarinë tuaj.&#10;&#10;Për nxënësit:&#10;&#10;Pas kyçjes në llogarinë tuaj, do të shihni një panel kontrolli (dashboard) ku do të mund të shihni të dhënat tuaja personale dhe të tjera informacione relevante.&#10;Në panelin kontrolli, do të ketë një seksion për të parë notat tuaja. Klikoni në lidhjen përkatëse për të shfletuar notat tuaja.&#10;&#10;Për profesorët:&#10;&#10;Kur kyçeni në llogarinë tuaj, do të keni qasje në panelin kontrolli me opsione shtesë përkatëse për rolin e profesorit.&#10;Në panelin kontrolli, do të ketë një opsion për të regjistruar notat e nxënësve.&#10;Klikoni në lidhjen përkatëse për të hapur formularin e regjistrimit të notave.&#10;Plotësoni të dhënat e kërkuara në formular, duke përfshirë emrin e nxënësit dhe notën e tij.&#10;Klikoni në butonin &quot;Regjistro notën&quot; për të regjistruar notën për nxënësin.&#10;&#10;Shumëgjuhësia:&#10;&#10;Webfaqja juaj mbështet shumëgjuhësinë dhe ka butona në navbar për të zgjedhur gjuhën e preferuar.&#10;Klikoni në butonin e gjuhës në navbar dhe zgjidhni gjuhën që dëshironi të përdorni në webfaqe.&#10;">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextArea>
+   </children>
+</AnchorPane>

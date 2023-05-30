@@ -10,4 +10,7 @@ public interface NxenesiDashboardServiceInterface {
     List<NxenesiDashboardTableView> filterNotatByValue(int gradeValue) throws SQLException;
     List<NxenesiDashboardTableView> filterNotatBySubject(String subjectName) throws SQLException;
 
+    List<NxenesiDashboardTableView> filterNotatByGradeAndBySubject(int gradeValue, String subjectName) throws SQLException;
+
+
 }

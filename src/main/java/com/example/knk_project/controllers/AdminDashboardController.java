@@ -24,6 +24,7 @@ import javafx.scene.layout.BorderPane;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class AdminDashboardController implements Initializable {
@@ -99,7 +100,7 @@ public class AdminDashboardController implements Initializable {
             this.numriProfesoreveLabel.setText(this.profesoriService.getNumberOfProfesoreve() + " ");
             this.numriKlasaveLabel.setText(this.klasaService.getNumberOfKlaseve() + " ");
             listOfUsers = FXCollections.observableArrayList(this.adminDashboardService.getAllUsers());
-            this.initializeRoleFilerComboBox();
+            this.initializeRoleFilterComboBox();
             this.initializeUsersTableView();
             initializeSearchTextField();
             this.initializeAdminPieChart();
@@ -166,7 +167,7 @@ public class AdminDashboardController implements Initializable {
         this.mainController = mainController;
     }
 
-    private void initializeRoleFilerComboBox() {
+    private void initializeRoleFilterComboBox() {
        this.roleFilterComboBox.getItems().addAll(this.rolesOptions);
     }
 
@@ -174,10 +175,10 @@ public class AdminDashboardController implements Initializable {
     void filterTableByRole(ActionEvent event) throws SQLException {
         this.searchTextField.setText("");
         String role = this.roleFilterComboBox.getValue();
-        if(role == "nxenes") {
+        if(Objects.equals(role, "nxenes")) {
             listOfUsers = FXCollections.observableArrayList(this.adminDashboardService.getAllUsersNxenes());
         }
-        else if (role == "profesor") {
+        else if (Objects.equals(role, "profesor")) {
             listOfUsers = FXCollections.observableList(this.adminDashboardService.getAllUsersProfesor());
         }
         else {

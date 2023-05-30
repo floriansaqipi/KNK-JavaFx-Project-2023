@@ -25,10 +25,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Array;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class StudentDashboardController implements Initializable {
 
@@ -80,20 +77,16 @@ public class StudentDashboardController implements Initializable {
     private LendaServiceInterface lendaService = new LendaService();
     private NxenesiServiceInterface nxenesiService = new NxenesiService();
     private ProfesoriServiceInterface profesoriService = new ProfesoriService();
-    private KlasaServiceInterface klasaService =  new KlasaService();
+    private KlasaServiceInterface klasaService = new KlasaService();
 
 
     ObservableList<NxenesiDashboardTableView> listOfNxenesiDashboardTableView;
 
-    @FXML
-    void filterTable(ActionEvent event) {
-
-    }
 
     @FXML
-    public void goBackDashboard(ActionEvent event){
+    public void goBackDashboard(ActionEvent event) {
         BorderPane nxenesiPagePane = null;
-        try{
+        try {
 
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/knk_project/studentpage-view.fxml"));
             nxenesiPagePane = fxmlLoader.load();
@@ -114,14 +107,14 @@ public class StudentDashboardController implements Initializable {
             this.nrLendeveLabel.setText(this.lendaService.getNumberOfLendeveOfNxenesi(this.nxenesi.getId()) + " ");
             Klasa klasaENxenesit = this.klasaService.getKlasaByNxenesiId(nxenesi.getId());
             this.nrKlasaveLabel.setText(
-                    klasaENxenesit.getKlasa()+ " / " +
-                    klasaENxenesit.getParalelja());
+                    klasaENxenesit.getKlasa() + " / " +
+                            klasaENxenesit.getParalelja());
 
             listOfNxenesiDashboardTableView = FXCollections.observableArrayList(this.nxenesiDashboardService.getNxenesiDashboardTableView(nxenesi.getId()));
-            initializeNotatTableView();
-            initializeLinechart();
-            initializeFiltersComboBox();
-            initializeSearchTextField();
+            this.initializeNotatTableView();
+            this.initializeLinechart();
+            this.initializeFiltersComboBox();
+            this.initializeSearchTextField();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -142,8 +135,8 @@ public class StudentDashboardController implements Initializable {
 
     private void initializeNotatTableView() throws SQLException {
         vleraNotesTableColumn.setCellValueFactory(p -> new SimpleIntegerProperty(p.getValue().getVleraNotes()).asObject());
-        rubrikaNotesTableColumn.setCellValueFactory( p -> new SimpleIntegerProperty(p.getValue().getRubrikaNotes()).asObject());
-        gjysmevjetoriTableColumn.setCellValueFactory( p -> new SimpleIntegerProperty(p.getValue().getGjysmevjetoriNotes()).asObject());
+        rubrikaNotesTableColumn.setCellValueFactory(p -> new SimpleIntegerProperty(p.getValue().getRubrikaNotes()).asObject());
+        gjysmevjetoriTableColumn.setCellValueFactory(p -> new SimpleIntegerProperty(p.getValue().getGjysmevjetoriNotes()).asObject());
         lendaTableColumn.setCellValueFactory(p -> new SimpleStringProperty(p.getValue().getEmriLendes()));
         profesoriUsernameTableColumn.setCellValueFactory(p -> new SimpleStringProperty(p.getValue().getProfesoriUsername()));
 
@@ -151,37 +144,32 @@ public class StudentDashboardController implements Initializable {
     }
 
     private void initializeSearchTextField() {
-        FilteredList<NxenesiDashboardTableView> filteredData =  new FilteredList<>(listOfNxenesiDashboardTableView, b -> true);
-        searchTextField.textProperty().addListener((observable,oldValue,newValue) ->{
+        FilteredList<NxenesiDashboardTableView> filteredData = new FilteredList<>(listOfNxenesiDashboardTableView, b -> true);
+        searchTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(nota -> {
-                if (newValue.isEmpty() || newValue.isBlank() || newValue == null){
+                if (newValue.isEmpty() || newValue.isBlank() || newValue == null) {
                     return true;
                 }
-                String searchKeyWord =  newValue.toLowerCase();
+                String searchKeyWord = newValue.toLowerCase();
 
-                if(nota.getEmriLendes().toLowerCase().contains(searchKeyWord)){
+                if (nota.getEmriLendes().toLowerCase().contains(searchKeyWord)) {
                     return true;
-                }
-                else if(nota.getProfesoriUsername().toLowerCase().contains(searchKeyWord)){
+                } else if (nota.getProfesoriUsername().toLowerCase().contains(searchKeyWord)) {
                     return true;
-                }
-                else if(Integer.toString(nota.getVleraNotes()).toLowerCase().contains(searchKeyWord)){
+                } else if (Integer.toString(nota.getVleraNotes()).toLowerCase().contains(searchKeyWord)) {
                     return true;
-                }
-                else if (Integer.toString(nota.getRubrikaNotes()).contains(searchKeyWord)) {
+                } else if (Integer.toString(nota.getRubrikaNotes()).contains(searchKeyWord)) {
                     return true;
-                }
-                else if(Integer.toString(nota.getGjysmevjetoriNotes()).toLowerCase().contains(searchKeyWord)){
+                } else if (Integer.toString(nota.getGjysmevjetoriNotes()).toLowerCase().contains(searchKeyWord)) {
                     return true;
-                }
-                 else {
+                } else {
                     return false;
                 }
             });
 
         });
 
-        SortedList<NxenesiDashboardTableView> sortedData =  new SortedList<>(filteredData);
+        SortedList<NxenesiDashboardTableView> sortedData = new SortedList<>(filteredData);
         sortedData.comparatorProperty().bind(notatTableView.comparatorProperty());
         notatTableView.setItems(sortedData);
 
@@ -200,21 +188,26 @@ public class StudentDashboardController implements Initializable {
         lineChart.getData().add(series);
     }
 
-    private void initializeFiltersComboBox(){
+    private void initializeFiltersComboBox() {
         ArrayList<String> subjectOptions = new ArrayList<>();
-        ArrayList<Integer> gradeOptions =  new ArrayList<>();
-         for(NxenesiDashboardTableView n: listOfNxenesiDashboardTableView){
-            if(!subjectOptions.contains(n.getEmriLendes())){
+        ArrayList<Integer> gradeOptions = new ArrayList<>();
+        for (NxenesiDashboardTableView n : listOfNxenesiDashboardTableView) {
+            if (!subjectOptions.contains(n.getEmriLendes())) {
                 subjectOptions.add(n.getEmriLendes());
                 this.subjectFilterComboBox.getItems().add(n.getEmriLendes());
 
             }
-             if(!gradeOptions.contains(n.getVleraNotes())){
-                 gradeOptions.add(n.getVleraNotes());
-                 this.gradeValFilterComboBox.getItems().add(n.getVleraNotes());
-             }
-             Collections.sort(gradeValFilterComboBox.getItems());
+            if (!gradeOptions.contains(n.getVleraNotes())) {
+                gradeOptions.add(n.getVleraNotes());
+                this.gradeValFilterComboBox.getItems().add(n.getVleraNotes());
+            }
+
+
+
         }
+        this.subjectFilterComboBox.getItems().add("Asnjëra");
+        this.gradeValFilterComboBox.getItems().add(0);
+        Collections.sort(gradeValFilterComboBox.getItems());
 //         String[] subjectOptionsAsArray = (String[]) subjectOptions.toArray();
 //         Integer[] gradeOptionsAsArray = (Integer[]) gradeOptions.toArray();
 //        this.subjectFilterComboBox.getItems().addAll(subjectOptionsAsArray);
@@ -222,4 +215,54 @@ public class StudentDashboardController implements Initializable {
     }
 
 
+    void gradeFiltering() throws SQLException {
+        Integer grade = this.gradeValFilterComboBox.getValue();
+        if(grade != 0) {
+            this.listOfNxenesiDashboardTableView = FXCollections.observableArrayList(this.nxenesiDashboardService.filterNotatByValue(grade));
+            initializeSearchTextField();
+        }
+    }
+
+
+    void subjectFiltering() throws SQLException {
+        String subject = this.subjectFilterComboBox.getValue();
+        if(!subject.equals("Asnjëra")) {
+            this.listOfNxenesiDashboardTableView = FXCollections.observableArrayList(this.nxenesiDashboardService.filterNotatBySubject(subject));
+            initializeSearchTextField();
+        }
+    }
+
+    void gradeAndSubjectFiltering() throws SQLException {
+        Integer grade = this.gradeValFilterComboBox.getValue();
+        if(grade != 0) {
+            String subject = this.subjectFilterComboBox.getValue();
+            this.listOfNxenesiDashboardTableView = FXCollections.observableArrayList(this.nxenesiDashboardService.filterNotatByGradeAndBySubject(grade, subject));
+            initializeSearchTextField();
+        }
+    }
+
+
+    @FXML
+    void filterTable(ActionEvent event) throws SQLException {
+
+        this.searchTextField.setText("");
+        if (gradeValFilterComboBox.getValue() != null) {
+            this.gradeFiltering();
+        }
+        if (subjectFilterComboBox.getValue() != null) {
+            this.subjectFiltering();
+        }
+
+        if (subjectFilterComboBox.getValue() != null && gradeValFilterComboBox.getValue() != null
+              && !Objects.equals(subjectFilterComboBox.getValue(), "Asnjëra") && gradeValFilterComboBox.getValue() != 0 ) {
+
+            this.gradeAndSubjectFiltering();
+        }
+
+        if(Objects.equals(subjectFilterComboBox.getValue(), "Asnjëra") && gradeValFilterComboBox.getValue() == 0 ){
+            listOfNxenesiDashboardTableView = FXCollections.observableArrayList(this.nxenesiDashboardService.getNxenesiDashboardTableView(nxenesi.getId()));
+        }
+        this.notatTableView.setItems(this.listOfNxenesiDashboardTableView);
+        initializeSearchTextField();
+    }
 }
