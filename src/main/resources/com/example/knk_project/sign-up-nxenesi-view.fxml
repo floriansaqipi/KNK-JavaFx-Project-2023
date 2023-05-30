@@ -16,12 +16,12 @@
 
 <AnchorPane prefHeight="582.0" prefWidth="622.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.controllers.SignUpNxenesiController">
    <children>
-      <Label layoutX="213.0" layoutY="14.0" text="Sign up as student">
+      <Label layoutX="226.0" layoutY="14.0" text="Kyçu si student">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="messageLabel" layoutX="292.0" layoutY="62.0" text="Label" />
+      <Label fx:id="messageLabel" layoutX="131.0" layoutY="62.0" prefHeight="18.0" prefWidth="348.0" />
       <Button layoutX="176.0" layoutY="512.0" mnemonicParsing="false" onAction="#signUpClick" style="-fx-pref-width: 260; -fx-background-radius: 20;" text="Submit" />
       <ScrollPane layoutY="105.0" prefHeight="371.0" prefWidth="622.0">
          <content>

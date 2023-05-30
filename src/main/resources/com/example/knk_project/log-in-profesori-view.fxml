@@ -18,8 +18,8 @@
       </Label>
       <Label fx:id="messageLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="99.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="30.0" prefWidth="575.0" textAlignment="CENTER" />
       <TextField fx:id="usernameTextField" alignment="CENTER" layoutX="170.0" layoutY="152.0" prefHeight="30.0" prefWidth="260.0" promptText="Enter your username" style="-fx-background-radius: 20px;" />
-      <Button fx:id="logInButton" layoutX="167.0" layoutY="260.0" mnemonicParsing="false" onAction="#logInClick" prefHeight="30.0" prefWidth="260.0" style="-fx-background-radius: 20px;" text="Log in " />
       <PasswordField fx:id="passwordPasswordField" alignment="CENTER" layoutX="167.0" layoutY="200.0" prefHeight="30.0" prefWidth="260.0" promptText="Enter your password" style="-fx-background-radius: 20;" />
+      <Button fx:id="logInButton" layoutX="167.0" layoutY="260.0" mnemonicParsing="false" onAction="#logInClick" prefHeight="30.0" prefWidth="260.0" style="-fx-background-radius: 20px;" text="Log in " />
       <Button layoutX="478.0" layoutY="24.0" mnemonicParsing="false" onAction="#loadEnglishText">
          <graphic>
             <ImageView fitHeight="36.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
