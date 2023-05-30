@@ -25,4 +25,9 @@ public class NxenesiDashboardService implements NxenesiDashboardServiceInterface
     public List<NxenesiDashboardTableView> filterNotatBySubject(String subjectName) throws SQLException {
         return this.nxenesiDashboardRepository.filterNotatBySubject(subjectName);
     }
+
+    @Override
+    public List<NxenesiDashboardTableView> filterNotatByGradeAndBySubject(int gradeValue, String subjectName) throws SQLException {
+        return this.nxenesiDashboardRepository.filterNotatByGradeAndBySubject(gradeValue, subjectName);
+    }
 }

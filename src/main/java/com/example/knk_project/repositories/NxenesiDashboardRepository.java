@@ -96,4 +96,34 @@ public class NxenesiDashboardRepository implements NxenesiDashboardRepositoryInt
         return data;
     }
 
+
+    @Override
+    public List<NxenesiDashboardTableView> filterNotatByGradeAndBySubject(int gradeValue, String subjectName) throws SQLException {
+        String sql = "SELECT * FROM nxenesi_dashboard where vlera = ? and emri = ?";
+        Connection connection = ConnectionUtil.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1,gradeValue);
+        preparedStatement.setString(2,subjectName);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        List<NxenesiDashboardTableView> data = new ArrayList<>();
+
+
+        while (resultSet.next()){
+            data.add(
+                    new NxenesiDashboardTableView(
+                            resultSet.getInt(2),
+                            resultSet.getInt(3),
+                            resultSet.getInt(4),
+                            resultSet.getString(5),
+                            resultSet.getString(6)
+                    )
+            );
+        }
+        return data;
+    }
+
+
+
 }
