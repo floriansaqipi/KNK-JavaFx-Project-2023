@@ -13,7 +13,7 @@
    <top>
       <HBox prefHeight="40.0" prefWidth="900.0" style="-fx-background-color: #150050; -fx-border-color: white;" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" prefHeight="46.0" prefWidth="373.0" text="NAME OF THE SYSTEM" textFill="WHITE">
+            <Label alignment="CENTER" prefHeight="46.0" prefWidth="373.0" text="EMRI I SISTEMIT" textFill="WHITE">
                <font>
                   <Font name="System Italic" size="30.0" />
                </font></Label>
