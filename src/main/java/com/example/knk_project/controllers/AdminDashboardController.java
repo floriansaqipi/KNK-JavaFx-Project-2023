@@ -140,7 +140,7 @@ public class AdminDashboardController extends BaseController implements Initiali
         FilteredList<User> filteredData =  new FilteredList<>(listOfUsers, b -> true);
         searchTextField.textProperty().addListener((observable,oldValue,newValue) ->{
             filteredData.setPredicate(user -> {
-                if (newValue.isEmpty() || newValue.isBlank() || newValue == null){
+                if (newValue.isEmpty() || newValue.isBlank()){
                      return true;
                 }
                 String searchKeyWord =  newValue.toLowerCase();

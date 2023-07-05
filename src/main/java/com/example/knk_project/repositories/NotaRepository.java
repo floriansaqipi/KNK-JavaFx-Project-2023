@@ -2,6 +2,7 @@ package com.example.knk_project.repositories;
 
 import com.example.knk_project.models.Nota;
 import com.example.knk_project.models.dto.CreateNotaDto;
+import com.example.knk_project.models.dto.NotaExistsDto;
 import com.example.knk_project.models.dto.UpdateNotaDto;
 import com.example.knk_project.repositories.interfaces.NotaRepositoryInterface;
 import com.example.knk_project.services.ConnectionUtil;
@@ -145,6 +146,38 @@ public class NotaRepository implements NotaRepositoryInterface {
         preparedStatement.setInt(6, updateNotaDto.getId());
 
         preparedStatement.executeUpdate();
+    }
+
+    @Override
+    public Nota getNotaByNotaExists(NotaExistsDto notaExistsDto) throws SQLException {
+        String sql = "SELECT * FROM notat n WHERE n.gjysmevjetori = ? AND " +
+                "n.rubrika = ? AND n.nxenesi_id = ? AND n.lenda_id = ? ;";
+        Connection connection = ConnectionUtil.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1, notaExistsDto.getGjysmeVjetori());
+        preparedStatement.setInt(2,notaExistsDto.getRubrika());
+        preparedStatement.setInt(3, notaExistsDto.getNxenesiId());
+        preparedStatement.setInt(4,notaExistsDto.getLendaId());
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        Nota nota = null;
+
+        while (resultSet.next()) {
+            nota =
+                    new Nota(
+                            resultSet.getInt(1),
+                            resultSet.getInt(2),
+                            resultSet.getInt(3),
+                            resultSet.getInt(4),
+                            resultSet.getInt(5),
+                            resultSet.getInt(6),
+                            resultSet.getInt(7)
+
+                    );
+
+        }
+        return nota;
     }
 
 

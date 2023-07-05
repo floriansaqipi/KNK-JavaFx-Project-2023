@@ -38,16 +38,6 @@
                         <Font size="16.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton onMouseClicked="#transkripta" prefHeight="46.0" prefWidth="200.0" text="TRANSKRIPTA" textFill="WHITE">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton onMouseClicked="#profili" prefHeight="46.0" prefWidth="199.0" text="PROFILI" textFill="WHITE">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </JFXButton>
                </children>
             </VBox>
          </children>

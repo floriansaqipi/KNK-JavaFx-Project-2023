@@ -29,13 +29,13 @@ CREATE TABLE IF NOT EXISTS profesoret_lendet (
   CONSTRAINT fk_lendet_has_profesoret_lendet
     FOREIGN KEY (lenda_id)
     REFERENCES lendet (id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT fk_lendet_has_profesoret_profesoret1
     FOREIGN KEY (profesori_id)
     REFERENCES profesoret (id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ;
 
 CREATE TABLE IF NOT EXISTS notat (
@@ -43,8 +43,8 @@ CREATE TABLE IF NOT EXISTS notat (
   vlera INT NOT NULL,
   rubrika INT NOT NULL,
   gjysmevjetori INT NOT NULL,
-  profesori_id INT NOT NULL,
-  lenda_id INT NOT NULL,
+  profesori_id INT ,
+  lenda_id INT ,
   nxenesi_id INT NOT NULL,
   PRIMARY KEY (id),
   INDEX fk_notat_profesoret1_idx (profesori_id ASC) VISIBLE,
@@ -53,16 +53,16 @@ CREATE TABLE IF NOT EXISTS notat (
   CONSTRAINT fk_notat_profesoret1
     FOREIGN KEY (profesori_id)
     REFERENCES profesoret (id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
   CONSTRAINT fk_notat_lendet1
     FOREIGN KEY (lenda_id)
     REFERENCES lendet (id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
   CONSTRAINT fk_notat_nxenesit1
     FOREIGN KEY (nxenesi_id)
     REFERENCES nxenesit (id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ;

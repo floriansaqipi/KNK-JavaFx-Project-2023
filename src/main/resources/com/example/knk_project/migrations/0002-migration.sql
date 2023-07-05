@@ -15,8 +15,8 @@ CREATE TABLE IF NOT EXISTS komunat (
   CONSTRAINT fk_komunat_shtetet1
     FOREIGN KEY (shteti_id)
     REFERENCES shtetet (id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ;
 
 
@@ -36,24 +36,24 @@ CREATE TABLE IF NOT EXISTS nxenesit (
   emri VARCHAR(50) NOT NULL,
   mbiemri VARCHAR(50) NOT NULL,
   date_e_lindjes DATE NOT NULL,
-  vendlindja_id INT NOT NULL,
-  komuna_id INT NOT NULL,
+  vendlindja_id INT ,
+  komuna_id INT ,
   prind_id INT NOT NULL,
   CONSTRAINT fk_nxenesit_komunat
     FOREIGN KEY (vendlindja_id)
     REFERENCES komunat (id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
   CONSTRAINT fk_nxenesit_komunat1
     FOREIGN KEY (komuna_id)
     REFERENCES komunat (id)
-    ON DELETE NO ACTION
+    ON DELETE SET NULL
     ON UPDATE NO ACTION,
   CONSTRAINT fk_nxenesit_prinderit1
     FOREIGN KEY (prind_id)
     REFERENCES prinderit (id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ;
 
 

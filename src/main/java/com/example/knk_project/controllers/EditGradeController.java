@@ -4,6 +4,7 @@ import com.example.knk_project.models.*;
 import com.example.knk_project.models.dto.CreateNotaDto;
 import com.example.knk_project.models.dto.UpdateNotaDto;
 import com.example.knk_project.services.*;
+import com.example.knk_project.services.exceptions.NotaExistsException;
 import com.example.knk_project.services.exceptions.ValidationException;
 import com.example.knk_project.services.interfaces.*;
 import com.example.knk_project.services.validators.ValidatorService;
@@ -74,6 +75,8 @@ public class EditGradeController implements Initializable {
 
     @FXML
     void editNotenClick(ActionEvent event) throws SQLException {
+        try {
+            validateInputs();
         int id = this.profesoriNotaTableView.getNota().getId();
         int vlera = this.vleraNotesSpinner.getValue();
         int rubrika = this.rubrikaSpinner.getValue();
@@ -90,8 +93,6 @@ public class EditGradeController implements Initializable {
                 lendaId,
                 nxenesiId
         );
-        try {
-            validateInputs();
             this.notaService.update(updateNotaDto);
             this.messageLabel.setText("Successfully edited grade");
             this.close(event);
@@ -118,6 +119,7 @@ public class EditGradeController implements Initializable {
     }
 
     private void validateInputs() throws ValidationException {
+        this.validator.validateComboBox(klasaComboBox);
         this.validator.validateComboBox(lendaComboBox);
         this.validator.validateComboBox(nxenesiComboBox);
         this.validator.throwIfInvalid();
@@ -163,6 +165,8 @@ public class EditGradeController implements Initializable {
 
     public void generateOtherComboBoxes(ActionEvent event) {
 //        System.out.println(this.klasaComboBox.getValue().getId());
+        this.lendaComboBox.getItems().clear();
+        this.nxenesiComboBox.getItems().clear();
         this.lendaComboBox.setVisible(true);
         this.nxenesiComboBox.setVisible(true);
         try {

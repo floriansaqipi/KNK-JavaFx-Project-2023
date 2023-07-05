@@ -23,7 +23,7 @@
             <Font size="30.0" />
          </font>
       </Label>
-      <Label fx:id="messageLabel" alignment="CENTER" layoutX="224.0" layoutY="77.0" prefHeight="18.0" prefWidth="163.0" text="Message" />
+      <Label fx:id="messageLabel" alignment="CENTER" layoutX="147.0" layoutY="77.0" prefHeight="18.0" prefWidth="330.0" />
       <ComboBox fx:id="lendaComboBox" layoutX="181.0" layoutY="138.0" prefWidth="150.0" promptText="Zgjedh Lenden" style="-fx-pref-width: 260; -fx-background-radius: 20; -fx-pref-height: 30;" visibleRowCount="5" />
       <ComboBox fx:id="profesoriComboBox" layoutX="181.0" layoutY="193.0" prefWidth="150.0" promptText="Zgjedh Profesorin" style="-fx-pref-width: 260; -fx-background-radius: 20; -fx-pref-height: 30;" visibleRowCount="5" />
       <Button layoutX="180.0" layoutY="257.0" mnemonicParsing="false" onAction="#shtoLendenProfesoritClick" prefHeight="30.0" prefWidth="260.0" style="-fx-background-radius: 20px;" text="Shto Lenden Profesorit" />

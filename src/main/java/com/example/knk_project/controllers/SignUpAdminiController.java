@@ -32,14 +32,19 @@ public class SignUpAdminiController {
     private AdminiServiceInterface signUpAdminiService = new AdminiService();
 
     public void signUpClick(){
-        this.validateInputs();
 
-        CreateAdminiDto createAdminiDto = this.initilializeCreateAdminiDto();
 
         try{
-
+            this.validateInputs();
+            CreateAdminiDto createAdminiDto = this.initilializeCreateAdminiDto();
             this.signUpAdminiService.signUp(createAdminiDto);
             this.messageLabel.setText("Successfully added user");
+        }catch (ValidationException exception){
+            exception.printStackTrace();
+            this.messageLabel.setText("Invalid inputs");
+        }catch (DifferentPasswordsException exception){
+            exception.printStackTrace();
+            this.messageLabel.setText("Passwords must match");
         } catch (UserAlreadyExistsException exception){
             exception.printStackTrace();
             this.messageLabel.setText("Username is taken");
@@ -51,22 +56,14 @@ public class SignUpAdminiController {
 
     }
 
-    private void validateInputs(){
+    private void validateInputs() throws DifferentPasswordsException, ValidationException {
 
         this.validator.validateUsernameTextField(usernameTextField);
         this.validator.validatePasswordField(passwordPasswordField);
         this.validator.validatePasswordField(confirmPasswordField);
+        this.validator.validateMatchingPasswords(passwordPasswordField,confirmPasswordField);
+        this.validator.throwIfInvalid();
 
-        try{
-            this.validator.validateMatchingPasswords(passwordPasswordField,confirmPasswordField);
-            this.validator.throwIfInvalid();
-        }catch (ValidationException exception){
-            exception.printStackTrace();
-            this.messageLabel.setText("Invalid inputs");
-        }catch (DifferentPasswordsException exception){
-            exception.printStackTrace();
-            this.messageLabel.setText("Passwords must match");
-        }
     }
 
     private CreateAdminiDto initilializeCreateAdminiDto(){

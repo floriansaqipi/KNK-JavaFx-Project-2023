@@ -48,12 +48,6 @@
                         <Font size="16.0" />
                      </font>
                   </JFXButton>
-
-                  <JFXButton onMouseClicked="#ShikoProfilin" prefHeight="40.0" prefWidth="226.0" text="PROFILI" textFill="WHITE">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </JFXButton>
                </children>
             </VBox>
          </children>

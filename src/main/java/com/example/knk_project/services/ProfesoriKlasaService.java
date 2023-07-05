@@ -9,6 +9,7 @@ import com.example.knk_project.repositories.ProfesoriRepository;
 import com.example.knk_project.repositories.interfaces.KlasaRepositoryInterface;
 import com.example.knk_project.repositories.interfaces.ProfesoriKlasaRepositoryInterface;
 import com.example.knk_project.repositories.interfaces.ProfesoriRepositoryInterface;
+import com.example.knk_project.services.exceptions.ProfesorKlasaException;
 import com.example.knk_project.services.interfaces.ProfesoriKlasaServiceInterface;
 import javafx.collections.ObservableList;
 
@@ -21,7 +22,12 @@ public class ProfesoriKlasaService implements ProfesoriKlasaServiceInterface {
     private KlasaRepositoryInterface klasaRepository = new KlasaRepository();
 
     @Override
-    public void insert(ProfesoriKlasa profesoriKlasa) throws SQLException {
+    public void insert(ProfesoriKlasa profesoriKlasa) throws SQLException, ProfesorKlasaException {
+        ProfesoriKlasa profesoriKlasaFound = null;
+        profesoriKlasaFound = this.profesoriKlasaRepository.getProfesorKlasaById(profesoriKlasa);
+        if(profesoriKlasaFound != null){
+            throw new ProfesorKlasaException("Profesor Klasa Exception");
+        }
         this.profesoriKlasaRepository.insert(profesoriKlasa);
     }
 
@@ -42,7 +48,14 @@ public class ProfesoriKlasaService implements ProfesoriKlasaServiceInterface {
     }
 
     @Override
-    public void update(UpdateProfesoriKlasaDto updateProfesoriKlasaDto) throws SQLException {
+    public void update(UpdateProfesoriKlasaDto updateProfesoriKlasaDto) throws SQLException, ProfesorKlasaException {
+        ProfesoriKlasa profesoriKlasaFound = null;
+        ProfesoriKlasa profesoriKlasa = new ProfesoriKlasa(updateProfesoriKlasaDto.getNewProfesoriId(),
+                updateProfesoriKlasaDto.getNewKlasaId());
+        profesoriKlasaFound = this.profesoriKlasaRepository.getProfesorKlasaById(profesoriKlasa);
+        if(profesoriKlasaFound != null){
+            throw new ProfesorKlasaException("Profesor Klasa Exception");
+        }
         this.profesoriKlasaRepository.update(updateProfesoriKlasaDto);
     }
 }

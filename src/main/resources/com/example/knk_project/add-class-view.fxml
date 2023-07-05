@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.controllers.AddClassController">
    <children>
-      <Label fx:id="messageLabel" layoutX="288.0" layoutY="83.0" text="Label">
+      <Label fx:id="messageLabel" alignment="CENTER" layoutX="145.0" layoutY="83.0" prefHeight="16.0" prefWidth="318.0">
          <font>
             <Font name="Arial" size="13.0" />
          </font>

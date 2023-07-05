@@ -1,9 +1,7 @@
 package com.example.knk_project.controllers;
 
 
-import com.example.knk_project.HelloApplication;
 import com.example.knk_project.services.AdminiService;
-import com.example.knk_project.services.PasswordHasher;
 import com.example.knk_project.services.exceptions.IncorrectPasswordException;
 import com.example.knk_project.services.exceptions.UserNotFoundException;
 import com.example.knk_project.services.exceptions.ValidationException;
@@ -18,7 +16,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;

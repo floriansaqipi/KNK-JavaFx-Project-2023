@@ -25,7 +25,12 @@ public class ValidatorService implements ValidatorInterface {
     public void validateTextField(TextField textField)  {
         if(textField.getText().trim().isEmpty()){
             this.setErrorStyle(textField);
+            if(bundle != null){
+
             textField.setPromptText(bundle.getString("not.empty.val"));
+            }else {
+                textField.setPromptText("Can't be empty");
+            }
             this.isValid = false;
             return;
         }
@@ -36,7 +41,12 @@ public class ValidatorService implements ValidatorInterface {
     public void validateGeneralPasswordField(PasswordField passwordField) {
         if(passwordField.getText().trim().isEmpty()){
             this.setErrorStyle(passwordField);
+            if(bundle != null){
+
             passwordField.setPromptText(bundle.getString("not.empty.val"));
+            }else {
+                passwordField.setPromptText("Can not be empty");
+            }
             this.isValid = false;
             return;
         }
@@ -137,7 +147,7 @@ public class ValidatorService implements ValidatorInterface {
     public void validateVitiShkollorTextField(TextField textField) {
         if(!textField.getText().trim().matches("\\d{4}\\/\\d{4}")) {
             this.setErrorStyle(textField);
-            textField.setPromptText("Sheno vitet e ndara me / dhe rishikoni gjatësinë e viteve");
+            textField.setPromptText("Sipas formatit yyyy/yyyy+1");
             this.isValid = false;
             return;
         }

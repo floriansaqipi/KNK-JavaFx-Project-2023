@@ -8,6 +8,7 @@ import com.example.knk_project.repositories.ProfesoriRepository;
 import com.example.knk_project.repositories.interfaces.LendaRepositoryInterface;
 import com.example.knk_project.repositories.interfaces.ProfesoriLendaRepositoryInterface;
 import com.example.knk_project.repositories.interfaces.ProfesoriRepositoryInterface;
+import com.example.knk_project.services.exceptions.ProfesorLendaException;
 import com.example.knk_project.services.interfaces.ProfesoriLendaServiceInterface;
 import javafx.collections.ObservableList;
 
@@ -19,7 +20,12 @@ public class ProfesoriLendaService implements ProfesoriLendaServiceInterface {
     private ProfesoriRepositoryInterface profesoriRepository = new ProfesoriRepository();
     private LendaRepositoryInterface lendaRepository = new LendaRepository();
     @Override
-    public void insert(ProfesoriLenda profesoriLenda) throws SQLException {
+    public void insert(ProfesoriLenda profesoriLenda) throws SQLException, ProfesorLendaException {
+        ProfesoriLenda profesoriLendaFound = null;
+        profesoriLendaFound = this.profesoriLendaRepository.getProfesoriLendaById(profesoriLenda);
+        if(profesoriLendaFound != null){
+            throw new ProfesorLendaException("Profesor Lenda already exist");
+        }
         this.profesoriLendaRepository.insert(profesoriLenda);
     }
 
@@ -45,7 +51,16 @@ public class ProfesoriLendaService implements ProfesoriLendaServiceInterface {
     }
 
     @Override
-    public void update(UpdateProfesoriLendaDto updateProfesoriLendaDto) throws SQLException {
+    public void update(UpdateProfesoriLendaDto updateProfesoriLendaDto) throws SQLException, ProfesorLendaException {
+        ProfesoriLenda profesoriLendaFound = null;
+        ProfesoriLenda profesoriLenda = new ProfesoriLenda(
+                updateProfesoriLendaDto.getNewProfesoriId(),
+                updateProfesoriLendaDto.getNewLendaId()
+        );
+        profesoriLendaFound = this.profesoriLendaRepository.getProfesoriLendaById(profesoriLenda);
+        if(profesoriLendaFound != null){
+            throw new ProfesorLendaException("Profesor Lenda already exist");
+        }
         this.profesoriLendaRepository.update(updateProfesoriLendaDto);
     }
 }

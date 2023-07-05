@@ -3,6 +3,7 @@ package com.example.knk_project.repositories.interfaces;
 import com.example.knk_project.models.Lenda;
 import com.example.knk_project.models.Nota;
 import com.example.knk_project.models.dto.CreateNotaDto;
+import com.example.knk_project.models.dto.NotaExistsDto;
 import com.example.knk_project.models.dto.UpdateNotaDto;
 
 import java.sql.SQLException;
@@ -21,5 +22,7 @@ public interface NotaRepositoryInterface {
     int getAverageGrade(int studentiID) throws SQLException;
 
     void update(UpdateNotaDto updateNotaDto) throws SQLException;
+
+    Nota getNotaByNotaExists(NotaExistsDto notaExistsDto) throws SQLException;
 
 }

@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="549.0" prefWidth="657.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.controllers.AdminHomePageController">
+<AnchorPane maxHeight="550.0" maxWidth="670.0" minHeight="555.0" minWidth="675.0" prefHeight="550.0" prefWidth="670.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.controllers.AdminHomePageController">
     <children>
-        <ImageView fitHeight="549.0" fitWidth="668.0" pickOnBounds="true">
+        <ImageView fitHeight="555.0" fitWidth="675.0" pickOnBounds="true">
             <image>
                 <Image url="@images/prof-bg.jpg" />
             </image>

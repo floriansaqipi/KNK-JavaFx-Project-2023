@@ -7,6 +7,7 @@ import com.example.knk_project.models.dto.UpdateProfesoriLendaDto;
 import com.example.knk_project.services.LendaService;
 import com.example.knk_project.services.ProfesoriLendaService;
 import com.example.knk_project.services.ProfesoriService;
+import com.example.knk_project.services.exceptions.ProfesorLendaException;
 import com.example.knk_project.services.exceptions.ValidationException;
 import com.example.knk_project.services.interfaces.LendaServiceInterface;
 import com.example.knk_project.services.interfaces.ProfesoriLendaServiceInterface;
@@ -69,6 +70,9 @@ public class EditProfesorLendaController implements Initializable {
         } catch (ValidationException exception) {
             exception.printStackTrace();
             this.messageLabel.setText("Invalid inputs");
+        } catch (ProfesorLendaException exception){
+            exception.printStackTrace();
+            this.messageLabel.setText("Professor Lenda already exists");
         } catch (SQLException exception){
             exception.printStackTrace();
             this.messageLabel.setText("Something went wrong with the database");
