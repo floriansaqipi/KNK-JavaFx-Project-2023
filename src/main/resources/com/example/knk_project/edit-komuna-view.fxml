@@ -14,7 +14,7 @@
          </font>
       </Label>
       <TextField fx:id="komunaTextField" alignment="CENTER" layoutX="205.0" layoutY="169.0" prefHeight="30.0" prefWidth="260.0" promptText="Ndrysho Komunen" style="-fx-background-radius: 20px;" />
-      <Label fx:id="messageLabel" layoutX="321.0" layoutY="116.0" text="Label" />
+      <Label fx:id="messageLabel" alignment="CENTER" layoutX="191.0" layoutY="116.0" prefHeight="18.0" prefWidth="290.0" />
       <Button layoutX="205.0" layoutY="226.0" mnemonicParsing="false" onAction="#editKomunaClick" prefHeight="30.0" prefWidth="260.0" style="-fx-background-radius: 20px;" text="Ndrysho" />
    </children>
 </AnchorPane>

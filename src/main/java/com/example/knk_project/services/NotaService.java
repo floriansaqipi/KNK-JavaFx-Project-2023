@@ -5,6 +5,7 @@ import com.example.knk_project.models.Nota;
 import com.example.knk_project.models.Nxenesi;
 import com.example.knk_project.models.ProfesoriNotaTableView;
 import com.example.knk_project.models.dto.CreateNotaDto;
+import com.example.knk_project.models.dto.NotaExistsDto;
 import com.example.knk_project.models.dto.UpdateNotaDto;
 import com.example.knk_project.repositories.LendaRepository;
 import com.example.knk_project.repositories.NotaRepository;
@@ -12,6 +13,7 @@ import com.example.knk_project.repositories.NxenesiRepository;
 import com.example.knk_project.repositories.interfaces.LendaRepositoryInterface;
 import com.example.knk_project.repositories.interfaces.NotaRepositoryInterface;
 import com.example.knk_project.repositories.interfaces.NxenesiRepositoryInterface;
+import com.example.knk_project.services.exceptions.NotaExistsException;
 import com.example.knk_project.services.interfaces.NotaServiceInterface;
 import javafx.collections.ObservableList;
 
@@ -25,7 +27,18 @@ public class NotaService implements NotaServiceInterface {
     private LendaRepositoryInterface lendaRepository = new LendaRepository();
     private NxenesiRepositoryInterface nxenesiRepository = new NxenesiRepository();
     @Override
-    public void insert(CreateNotaDto createNotaDto) throws SQLException {
+    public void insert(CreateNotaDto createNotaDto) throws SQLException, NotaExistsException {
+        Nota nota = null;
+        NotaExistsDto notaExistsDto = new NotaExistsDto(
+                createNotaDto.getGjysmevjetori(),
+                createNotaDto.getRubrika(),
+                createNotaDto.getNxenesiId(),
+                createNotaDto.getLendaId()
+        );
+        nota = this.notaRepository.getNotaByNotaExists(notaExistsDto);
+        if(nota != null){
+            throw new NotaExistsException("Nota exists");
+        }
         this.notaRepository.insert(createNotaDto);
 
     }

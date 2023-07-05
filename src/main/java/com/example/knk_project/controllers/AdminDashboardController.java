@@ -3,6 +3,7 @@ package com.example.knk_project.controllers;
 import com.example.knk_project.models.User;
 import com.example.knk_project.services.*;
 import com.example.knk_project.services.interfaces.*;
+import com.jfoenix.controls.JFXButton;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -24,10 +25,35 @@ import javafx.scene.layout.BorderPane;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+
+import java.util.Objects;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class AdminDashboardController implements Initializable {
+public class AdminDashboardController extends BaseController implements Initializable {
     private MainController mainController;
+
+
+    @FXML
+    private Label classNumber;
+
+    @FXML
+    private Label dashboardLabel;
+
+    @FXML
+    private JFXButton filterButton;
+
+    @FXML
+    private JFXButton goBackButton;
+
+    @FXML
+    private Label gradeNumber;
+
+    @FXML
+    private Label profNumber;
+
+    @FXML
+    private Label studentNumber;
 
     @FXML
     private PieChart adminPieChart;
@@ -93,13 +119,14 @@ public class AdminDashboardController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        loadLang();
         try {
             this.numriNotaveLabel.setText(this.notaService.getNumberOfGrades() + " ");
             this.numriNxenesveLabel.setText(this.nxenesiService.getNumberOfNxenesve() + " ");
             this.numriProfesoreveLabel.setText(this.profesoriService.getNumberOfProfesoreve() + " ");
             this.numriKlasaveLabel.setText(this.klasaService.getNumberOfKlaseve() + " ");
             listOfUsers = FXCollections.observableArrayList(this.adminDashboardService.getAllUsers());
-            this.initializeRoleFilerComboBox();
+            this.initializeRoleFilterComboBox();
             this.initializeUsersTableView();
             initializeSearchTextField();
             this.initializeAdminPieChart();
@@ -113,7 +140,7 @@ public class AdminDashboardController implements Initializable {
         FilteredList<User> filteredData =  new FilteredList<>(listOfUsers, b -> true);
         searchTextField.textProperty().addListener((observable,oldValue,newValue) ->{
             filteredData.setPredicate(user -> {
-                if (newValue.isEmpty() || newValue.isBlank() || newValue == null){
+                if (newValue.isEmpty() || newValue.isBlank()){
                      return true;
                 }
                 String searchKeyWord =  newValue.toLowerCase();
@@ -166,7 +193,7 @@ public class AdminDashboardController implements Initializable {
         this.mainController = mainController;
     }
 
-    private void initializeRoleFilerComboBox() {
+    private void initializeRoleFilterComboBox() {
        this.roleFilterComboBox.getItems().addAll(this.rolesOptions);
     }
 
@@ -174,10 +201,10 @@ public class AdminDashboardController implements Initializable {
     void filterTableByRole(ActionEvent event) throws SQLException {
         this.searchTextField.setText("");
         String role = this.roleFilterComboBox.getValue();
-        if(role == "nxenes") {
+        if(Objects.equals(role, "nxenes")) {
             listOfUsers = FXCollections.observableArrayList(this.adminDashboardService.getAllUsersNxenes());
         }
-        else if (role == "profesor") {
+        else if (Objects.equals(role, "profesor")) {
             listOfUsers = FXCollections.observableList(this.adminDashboardService.getAllUsersProfesor());
         }
         else {
@@ -185,6 +212,33 @@ public class AdminDashboardController implements Initializable {
         }
         usersTableView.setItems(listOfUsers);
         initializeSearchTextField();
+
+    }
+
+
+    @FXML
+    void loadAlbanianText(ActionEvent event) {
+        Locale.setDefault(new Locale("sq"));
+        loadLang();
+    }
+
+    @FXML
+    void loadEnglishText(ActionEvent event) {
+        Locale.setDefault(new Locale("en"));
+        loadLang();
+    }
+
+    @Override
+    public void translate(ResourceBundle bundle) {
+        this.dashboardLabel.setText(bundle.getString("admin.dashboard.banner"));
+        this.goBackButton.setText(bundle.getString("goback.button"));
+        this.gradeNumber.setText(bundle.getString("grade.count.label"));
+        this.studentNumber.setText(bundle.getString("student.count.label"));
+        this.profNumber.setText(bundle.getString("professor.count.label"));
+        this.classNumber.setText(bundle.getString("class.count.label"));
+        this.searchTextField.setPromptText(bundle.getString("search.placeholder"));
+        this.roleFilterComboBox.setPromptText(bundle.getString("role.comboBox.placeholder"));
+        this.filterButton.setText(bundle.getString("filtering.button"));
 
     }
 }

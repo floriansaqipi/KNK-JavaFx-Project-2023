@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Point3D?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -8,24 +9,27 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="549.0" prefWidth="657.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.controllers.NxenesiHomePageController">
+<AnchorPane maxHeight="550.0" minHeight="550.0" prefHeight="550.0" prefWidth="657.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.controllers.NxenesiHomePageController">
     <children>
-        <ImageView fitHeight="549.0" fitWidth="657.0" pickOnBounds="true">
+        <ImageView fitHeight="560.0" fitWidth="700.0" layoutX="-1.0" pickOnBounds="true">
             <image>
                 <Image url="@images/prof-bg.jpg" />
             </image>
+         <rotationAxis>
+            <Point3D />
+         </rotationAxis>
         </ImageView>
-        <Label layoutX="200.0" layoutY="48.0" text="WELCOME STUDENT">
+        <Label layoutX="206.0" layoutY="77.0" text="WELCOME STUDENT">
             <font>
                 <Font size="28.0" />
             </font>
         </Label>
-        <Label layoutX="190.0" layoutY="153.0" text="Click button below to show dashboard">
+        <Label layoutX="182.0" layoutY="154.0" text="Click button below to show dashboard">
             <font>
                 <Font size="18.0" />
             </font>
         </Label>
-      <Button contentDisplay="TOP" layoutX="247.0" layoutY="228.0" mnemonicParsing="false" onAction="#loadDashboard" prefHeight="152.0" prefWidth="191.0" style="-fx-background-color: #fafffe;" text="Dashboard">
+      <Button contentDisplay="TOP" layoutX="239.0" layoutY="224.0" mnemonicParsing="false" onAction="#loadDashboard" prefHeight="152.0" prefWidth="191.0" style="-fx-background-color: #fafffe;" text="Dashboard">
          <font>
             <Font size="22.0" />
          </font>
@@ -34,4 +38,7 @@
          </graphic>
       </Button>
     </children>
+   <rotationAxis>
+      <Point3D />
+   </rotationAxis>
 </AnchorPane>

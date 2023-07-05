@@ -8,13 +8,13 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.controllers.EditShtetiController">
    <children>
-      <Label fx:id="addStateLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="198.0" layoutY="44.0" prefHeight="34.0" prefWidth="198.0" text="Edit shtetin">
+      <Label fx:id="addStateLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="198.0" layoutY="44.0" prefHeight="34.0" prefWidth="198.0" text="Edito shtetin">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
       <TextField fx:id="shtetiTextField" alignment="CENTER" layoutX="181.0" layoutY="169.0" prefHeight="30.0" prefWidth="260.0" promptText="Edit Shtetin" style="-fx-background-radius: 20px;" />
-      <Label fx:id="messageLabel" layoutX="283.0" layoutY="114.0" text="Label" />
+      <Label fx:id="messageLabel" alignment="CENTER" layoutX="177.0" layoutY="114.0" prefHeight="18.0" prefWidth="277.0" />
       <Button layoutX="181.0" layoutY="211.0" mnemonicParsing="false" onAction="#editShtetinClick" prefHeight="30.0" prefWidth="260.0" style="-fx-background-radius: 20px;" text="Ndrysho" />
    </children>
 </AnchorPane>

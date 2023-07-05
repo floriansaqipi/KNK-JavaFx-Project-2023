@@ -26,26 +26,26 @@ public class ShtetiController {
 
     @FXML
     void shtoShtetinClick(ActionEvent event) {
+        try{
        this.validateInputs();
         CreateShtetiDto createShtetiDto = new CreateShtetiDto(shtetiTextField.getText());
-        try{
 
         this.shtetiService.register(createShtetiDto);
         this.messageLabel.setText("Successfully added state");
+        }catch (ValidationException exception){
+            exception.printStackTrace();
+            this.messageLabel.setText("Invalid inputs");
         } catch (SQLException exception){
             exception.printStackTrace();
             this.messageLabel.setText("Something went wrong with the database");
         }
     }
 
-    private void validateInputs(){
+    private void validateInputs() throws ValidationException {
         this.validator.validateTextField(shtetiTextField);
-        try{
+
             this.validator.throwIfInvalid();
-        }catch (ValidationException exception){
-            exception.printStackTrace();
-            this.messageLabel.setText("Invalid inputs");
-        }
+
     }
 
 }

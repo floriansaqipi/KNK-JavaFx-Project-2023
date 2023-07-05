@@ -7,6 +7,7 @@ import com.example.knk_project.models.Profesori;
 import com.example.knk_project.models.dto.CreateNotaDto;
 import com.example.knk_project.repositories.interfaces.NxenesiRepositoryInterface;
 import com.example.knk_project.services.*;
+import com.example.knk_project.services.exceptions.NotaExistsException;
 import com.example.knk_project.services.exceptions.ValidationException;
 import com.example.knk_project.services.interfaces.*;
 import com.example.knk_project.services.validators.ValidatorService;
@@ -57,6 +58,8 @@ public class AddGradeController implements Initializable {
 
     @FXML
     void shtoNotenClick(ActionEvent event) throws SQLException {
+        try {
+            validateInputs();
         int vlera = this.vleraNotesSpinner.getValue();
         int rubrika = this.rubrikaSpinner.getValue();
         int gjysmevjetori = this.gjysmevjetoriSpinner.getValue();
@@ -71,13 +74,15 @@ public class AddGradeController implements Initializable {
                 lendaId,
                 nxenesiId
         );
-        try {
-            validateInputs();
             this.notaService.insert(createNotaDto);
             this.messageLabel.setText("Successfully added grade");
         }catch (ValidationException exception) {
             exception.printStackTrace();
             this.messageLabel.setText("Invalid inputs");
+        }
+        catch (NotaExistsException exception) {
+            exception.printStackTrace();
+            this.messageLabel.setText("Kjo note ekziston");
         }
         catch (SQLException exception) {
             exception.printStackTrace();
@@ -98,6 +103,7 @@ public class AddGradeController implements Initializable {
     }
 
     private void validateInputs() throws ValidationException {
+        this.validator.validateComboBox(klasaComboBox);
         this.validator.validateComboBox(lendaComboBox);
         this.validator.validateComboBox(nxenesiComboBox);
         this.validator.throwIfInvalid();
@@ -123,6 +129,8 @@ public class AddGradeController implements Initializable {
 
     public void generateOtherComboBoxes(ActionEvent event) {
 //        System.out.println(this.klasaComboBox.getValue().getId());
+        this.lendaComboBox.getItems().clear();
+        this.nxenesiComboBox.getItems().clear();
         this.lendaComboBox.setVisible(true);
         this.nxenesiComboBox.setVisible(true);
         try {

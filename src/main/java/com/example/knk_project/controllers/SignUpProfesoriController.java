@@ -42,15 +42,21 @@ import java.util.ResourceBundle;
     private ProfesoriServiceInterface signUpProfesoriService = new ProfesoriService();
 
     public void signUpClick(){
-       this.validateInputs();
 
-       CreateProfesoriDto createProfesoriDto = this.initilializeCreateProfesoriDto();
 
        try{
+       this.validateInputs();
+       CreateProfesoriDto createProfesoriDto = this.initilializeCreateProfesoriDto();
 
           this.signUpProfesoriService.signUp(createProfesoriDto);
           this.messageLabel.setText("Successfully added user");
-       } catch (UserAlreadyExistsException exception){
+       } catch (ValidationException exception){
+          exception.printStackTrace();
+          this.messageLabel.setText("Invalid inputs");
+       }catch (DifferentPasswordsException exception){
+          exception.printStackTrace();
+          this.messageLabel.setText("Passwords must match");
+       }catch (UserAlreadyExistsException exception){
           exception.printStackTrace();
           this.messageLabel.setText("Username is taken");
        } catch (SQLException exception){
@@ -61,7 +67,7 @@ import java.util.ResourceBundle;
 
     }
 
-    private void validateInputs(){
+    private void validateInputs() throws DifferentPasswordsException, ValidationException {
 
        this.validator.validateUsernameTextField(usernameTextField);
        this.validator.validatePasswordField(passwordPasswordField);
@@ -70,16 +76,10 @@ import java.util.ResourceBundle;
        this.validator.validateMbiemriTextField(mbiemriTextField);
        this.validator.validateTextField(titleTextField);
 
-       try{
+
           this.validator.validateMatchingPasswords(passwordPasswordField,confirmPasswordField);
           this.validator.throwIfInvalid();
-       }catch (ValidationException exception){
-          exception.printStackTrace();
-          this.messageLabel.setText("Invalid inputs");
-       }catch (DifferentPasswordsException exception){
-          exception.printStackTrace();
-          this.messageLabel.setText("Passwords must match");
-       }
+
     }
 
     private CreateProfesoriDto initilializeCreateProfesoriDto(){

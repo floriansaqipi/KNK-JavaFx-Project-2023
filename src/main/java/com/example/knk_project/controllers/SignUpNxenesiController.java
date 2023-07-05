@@ -67,15 +67,21 @@ public class SignUpNxenesiController implements Initializable {
     private KlasaServiceInterface klasaService = new KlasaService();
 
     public void signUpClick() {
+
+        try {
         this.validateInputs();
 
         CreateNxenesiDto createNxenesiDto = this.initilializeCreateNxenesiDto();
         CreatePrindiDto createPrindiDto = this.initializeCreatePrindiDto();
 
-        try {
-
             this.signUpNxenesiService.signUp(createNxenesiDto, createPrindiDto);
             this.messageLabel.setText("Successfully added user");
+        }catch (ValidationException exception) {
+            exception.printStackTrace();
+            this.messageLabel.setText("Invalid inputs");
+        } catch (DifferentPasswordsException exception) {
+            exception.printStackTrace();
+            this.messageLabel.setText("Passwords must match");
         } catch (UserAlreadyExistsException exception) {
             exception.printStackTrace();
             this.messageLabel.setText("Username is taken");
@@ -87,7 +93,7 @@ public class SignUpNxenesiController implements Initializable {
 
     }
 
-    private void validateInputs() {
+    private void validateInputs() throws DifferentPasswordsException, ValidationException {
         this.validator.validateEmriTextField(emriTextField);
         this.validator.validateMbiemriTextField(mbiemriTextField);
         this.validator.validateUsernameTextField(usernameTextField);
@@ -102,16 +108,10 @@ public class SignUpNxenesiController implements Initializable {
         this.validator.validateMbiemriTextField(mbiemriPrinditTextField);
         this.validator.validatePhoneTextField(numriTelefonitPrinditTextField);
         this.validator.validateEmailTextField(emailPrinditTextField);
-        try {
+
             this.validator.validateMatchingPasswords(passwordPasswordField, confirmPasswordField);
             this.validator.throwIfInvalid();
-        } catch (ValidationException exception) {
-            exception.printStackTrace();
-            this.messageLabel.setText("Invalid inputs");
-        } catch (DifferentPasswordsException exception) {
-            exception.printStackTrace();
-            this.messageLabel.setText("Passwords must match");
-        }
+
     }
 
     @Override

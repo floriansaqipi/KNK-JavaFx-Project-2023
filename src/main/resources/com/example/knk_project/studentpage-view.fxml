@@ -13,7 +13,7 @@
    <top>
       <HBox prefHeight="40.0" prefWidth="900.0" style="-fx-background-color: #150050; -fx-border-color: white;" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" prefHeight="46.0" prefWidth="373.0" text="NAME OF THE SYSTEM" textFill="WHITE">
+            <Label alignment="CENTER" prefHeight="46.0" prefWidth="373.0" text="GRADE SYSTEM" textFill="WHITE">
                <font>
                   <Font name="System Italic" size="30.0" />
                </font></Label>
@@ -34,16 +34,6 @@
             <VBox layoutY="190.0" prefHeight="115.0" prefWidth="201.0">
                <children>
                   <JFXButton onAction="#loadNxenesiHomePage" prefHeight="26.0" prefWidth="222.0" text="FAQJA KRYESORE" textFill="WHITE">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton onMouseClicked="#transkripta" prefHeight="46.0" prefWidth="200.0" text="TRANSKRIPTA" textFill="WHITE">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton onMouseClicked="#profili" prefHeight="46.0" prefWidth="199.0" text="PROFILI" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>

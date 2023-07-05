@@ -6,6 +6,7 @@ import com.example.knk_project.services.IntegerRoman;
 import com.example.knk_project.services.KlasaService;
 import com.example.knk_project.services.ProfesoriKlasaService;
 import com.example.knk_project.services.ProfesoriService;
+import com.example.knk_project.services.exceptions.ProfesorKlasaException;
 import com.example.knk_project.services.exceptions.ValidationException;
 import com.example.knk_project.services.interfaces.KlasaServiceInterface;
 import com.example.knk_project.services.interfaces.ProfesoriKlasaServiceInterface;
@@ -63,6 +64,9 @@ public class EditProfesoriKlasaController implements Initializable {
         } catch (ValidationException exception) {
             exception.printStackTrace();
             this.messageLabel.setText("Invalid inputs");
+        }catch (ProfesorKlasaException exception){
+            exception.printStackTrace();
+            this.messageLabel.setText("Professor Klasa already exists");
         } catch (SQLException exception){
             exception.printStackTrace();
             this.messageLabel.setText("Something went wrong with the database");

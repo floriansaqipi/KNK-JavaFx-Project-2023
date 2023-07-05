@@ -14,7 +14,7 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Label fx:id="messageLabel" alignment="CENTER" layoutX="255.0" layoutY="58.0" prefHeight="18.0" prefWidth="89.0" text="Message" />
+      <Label fx:id="messageLabel" alignment="CENTER" layoutX="181.0" layoutY="58.0" prefHeight="18.0" prefWidth="268.0" />
       <Spinner fx:id="vleraNotesSpinner" layoutX="188.0" layoutY="101.0" prefHeight="26.0" prefWidth="260.0" style="-fx-background-radius: 20; -fx-pref-width: 260; -fx-pref-height: 30;" />
       <Label layoutX="188.0" layoutY="82.0" prefHeight="18.0" prefWidth="89.0" text="Vlera e notës :" />
       <ComboBox fx:id="lendaComboBox" layoutX="188.0" layoutY="287.0" prefWidth="150.0" promptText="Zgjedh Lëndën" style="-fx-pref-width: 260; -fx-background-radius: 20; -fx-pref-height: 30;" visibleRowCount="5" />

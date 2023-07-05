@@ -67,4 +67,26 @@ public class ProfesoriLendaRepository implements ProfesoriLendaRepositoryInterfa
         preparedStatement.executeUpdate();
     }
 
+    @Override
+    public ProfesoriLenda getProfesoriLendaById(ProfesoriLenda profesoriLenda) throws SQLException {
+        String sql = "SELECT * FROM profesoret_lendet pl WHERE pl.profesori_id = ? AND pl.lenda_id = ?; ";
+        Connection connection = ConnectionUtil.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1,profesoriLenda.getProfesoriId());
+        preparedStatement.setInt(2,profesoriLenda.getLendaId());
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        ProfesoriLenda profesoriLendaIns = null;
+        if (resultSet.next()){
+            profesoriLendaIns =
+                    new ProfesoriLenda(
+                            resultSet.getInt(1),
+                            resultSet.getInt(2)
+                    );
+
+        }
+        return profesoriLendaIns;
+    }
+
 }

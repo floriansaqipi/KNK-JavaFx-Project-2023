@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="549.0" prefWidth="657.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.controllers.AdminHomePageController">
+<AnchorPane maxHeight="550.0" maxWidth="670.0" minHeight="555.0" minWidth="675.0" prefHeight="550.0" prefWidth="670.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knk_project.controllers.AdminHomePageController">
     <children>
-        <ImageView fitHeight="549.0" fitWidth="668.0" pickOnBounds="true">
+        <ImageView fitHeight="555.0" fitWidth="675.0" pickOnBounds="true">
             <image>
                 <Image url="@images/prof-bg.jpg" />
             </image>
@@ -23,15 +23,33 @@
             <FontAwesomeIcon glyphName="DASHBOARD" size="64" />
          </graphic>
         </Button>
-        <Label layoutX="200.0" layoutY="48.0" text="WELCOME ADMIN">
+        <Label fx:id="welcomeAdminLabel" alignment="CENTER" layoutX="110.0" layoutY="93.0" prefHeight="40.0" prefWidth="470.0" text="WELCOME ADMIN">
             <font>
                 <Font size="28.0" />
             </font>
         </Label>
-        <Label layoutX="190.0" layoutY="153.0" text="Click button below to show dashboard">
+        <Label fx:id="dashboardInfo" alignment="CENTER" layoutX="13.0" layoutY="153.0" prefHeight="27.0" prefWidth="626.0" text="Click button below to show dashboard">
             <font>
                 <Font size="18.0" />
             </font>
         </Label>
+      <Button layoutX="488.0" layoutY="16.0" mnemonicParsing="false" onAction="#loadEnglishText">
+         <graphic>
+            <ImageView fitHeight="36.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/UK-US_flag.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="582.0" layoutY="14.0" mnemonicParsing="false" onAction="#loadAlbanianText">
+         <graphic>
+            <ImageView fitHeight="36.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/Flag_of_the_Democratic_Government_of_Albania_(1944–1946).png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
     </children>
 </AnchorPane>

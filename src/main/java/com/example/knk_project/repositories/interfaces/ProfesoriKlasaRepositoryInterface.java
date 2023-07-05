@@ -16,4 +16,6 @@ public interface ProfesoriKlasaRepositoryInterface {
     void delete(ProfesoriKlasa profesoriKlasa) throws SQLException;
 
     void update(UpdateProfesoriKlasaDto updateProfesoriKlasaDto) throws SQLException;
+
+    ProfesoriKlasa getProfesorKlasaById(ProfesoriKlasa profesoriKlasa) throws SQLException;
 }

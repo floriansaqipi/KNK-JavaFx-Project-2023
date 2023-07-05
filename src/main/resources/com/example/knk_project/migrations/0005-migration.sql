@@ -15,14 +15,14 @@ CREATE TABLE IF NOT EXISTS klasat (
   viti YEAR NOT NULL,
   PRIMARY KEY (id));
   
-ALTER TABLE nxenesit ADD COLUMN klasa_id INT NOT NULL AFTER prindi_id;
+ALTER TABLE nxenesit ADD COLUMN klasa_id INT AFTER prindi_id;
 
 
 ALTER TABLE nxenesit ADD CONSTRAINT fk_nxenesit_klasat1
 FOREIGN KEY (klasa_id)
 REFERENCES klasat (id)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION;
+ON DELETE SET NULL
+ON UPDATE CASCADE;
 
 CREATE TABLE IF NOT EXISTS profesoret_klasat (
   profesori_id INT NOT NULL,
@@ -33,13 +33,13 @@ CREATE TABLE IF NOT EXISTS profesoret_klasat (
   CONSTRAINT fk_profesoret_has_klasat_profesoret1
     FOREIGN KEY (profesori_id)
     REFERENCES profesoret (id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT fk_profesoret_has_klasat_klasat1
     FOREIGN KEY (klasa_id)
     REFERENCES klasat (id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
     
     CREATE TABLE IF NOT EXISTS admin (
   id INT NOT NULL AUTO_INCREMENT,
@@ -59,11 +59,11 @@ CREATE TABLE IF NOT EXISTS profesoret_klasat (
   CONSTRAINT fk_lendet_has_profesoret_lendet
     FOREIGN KEY (lenda_id)
     REFERENCES lendet (id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT fk_lendet_has_profesoret_profesoret1
     FOREIGN KEY (profesori_id)
     REFERENCES profesoret (id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ;

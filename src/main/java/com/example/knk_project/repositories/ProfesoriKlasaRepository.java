@@ -70,5 +70,26 @@ public class ProfesoriKlasaRepository implements ProfesoriKlasaRepositoryInterfa
         preparedStatement.executeUpdate();
     }
 
+    @Override
+    public ProfesoriKlasa getProfesorKlasaById(ProfesoriKlasa profesoriKlasa) throws SQLException {
+        String sql = "SELECT * FROM profesoret_klasat pk WHERE pk.profesori_id = ? AND pk.klasa_id = ? ; ";
+        Connection connection = ConnectionUtil.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1,profesoriKlasa.getProfesoriId());
+        preparedStatement.setInt(2,profesoriKlasa.getKlasaId());
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        ProfesoriKlasa profesoriKlasaIns = null;
+        if (resultSet.next()){
+            profesoriKlasaIns =
+                    new ProfesoriKlasa(
+                            resultSet.getInt(1),
+                            resultSet.getInt(2)
+                    );
+        }
+        return profesoriKlasaIns;
+    }
+
 
 }

@@ -92,6 +92,10 @@ public class HomePageController extends BaseController implements Initializable 
         loadFXML("sign-up-nxenesi-view");
     }
 
+    @FXML
+    void loadManuali(ActionEvent event) {
+        loadFXML("user-manual-view");
+    }
     // Action event handler for the professorItem
     @FXML
     private void professorSignUp(ActionEvent actionEvent) {

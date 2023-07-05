@@ -14,4 +14,6 @@ public interface ProfesoriLendaRepositoryInterface {
     List<ProfesoriLenda> getAllProfesoriLendet() throws SQLException;
 
     void update(UpdateProfesoriLendaDto updateProfesoriLendaDto) throws SQLException;
+
+    ProfesoriLenda getProfesoriLendaById(ProfesoriLenda profesoriLenda) throws SQLException;
 }
